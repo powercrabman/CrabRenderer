@@ -1,0 +1,17 @@
+[2025-01-30 15:07:47.352] [info] Log initialized
+[2025-01-30 15:07:47.695] [debug] DemoScene::OnEnter()
+[2025-01-30 15:07:48.667] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 15:07:48.667] [debug] Enter Key Pressed
+[2025-01-30 15:07:48.669] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 15:07:48.790] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 15:07:48.790] [debug] Enter Key Pressed
+[2025-01-30 15:07:48.850] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 15:07:49.910] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 15:07:49.910] [debug] Enter Key Pressed
+[2025-01-30 15:07:50.000] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 15:07:50.089] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 15:07:50.089] [debug] Enter Key Pressed
+[2025-01-30 15:07:50.177] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 15:07:50.765] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 15:07:50.850] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 15:07:52.477] [debug] Event Occurred. "AppClose_CoreEvent"

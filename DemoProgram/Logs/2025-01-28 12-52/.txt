@@ -1,0 +1,9 @@
+[2025-01-28 21:52:40.575] [info] Log initialized
+[2025-01-28 21:52:41.575] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:52:41.575] [debug] A
+[2025-01-28 21:52:41.598] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:52:41.598] [debug] KP_9
+[2025-01-28 21:52:42.071] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:52:42.071] [debug] A
+[2025-01-28 21:52:42.162] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:52:42.162] [debug] KP_9

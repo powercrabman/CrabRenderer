@@ -1,0 +1,75 @@
+[2025-01-28 22:32:02.474] [info] Log initialized
+[2025-01-28 22:32:03.530] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:03.530] [debug] KP_Minus
+[2025-01-28 22:32:03.538] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:03.538] [debug] KP_Minus
+[2025-01-28 22:32:03.975] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:03.975] [debug] KP_Minus
+[2025-01-28 22:32:04.080] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:04.080] [debug] KP_Minus
+[2025-01-28 22:32:05.525] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:05.525] [debug] KP_Minus
+[2025-01-28 22:32:05.631] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:05.631] [debug] KP_Minus
+[2025-01-28 22:32:05.829] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:05.829] [debug] KP_Multiply
+[2025-01-28 22:32:05.962] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:05.962] [debug] KP_Multiply
+[2025-01-28 22:32:06.370] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:06.370] [debug] KP_Plus
+[2025-01-28 22:32:06.513] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:06.513] [debug] KP_Plus
+[2025-01-28 22:32:07.211] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:07.211] [debug] KP_6
+[2025-01-28 22:32:07.372] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:07.372] [debug] KP_6
+[2025-01-28 22:32:07.964] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:07.964] [debug] KP_3
+[2025-01-28 22:32:08.099] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:08.099] [debug] KP_3
+[2025-01-28 22:32:08.368] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:08.368] [debug] KP_2
+[2025-01-28 22:32:08.512] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:08.512] [debug] KP_2
+[2025-01-28 22:32:09.251] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.251] [debug] KP_1
+[2025-01-28 22:32:09.503] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.503] [debug] KP_1
+[2025-01-28 22:32:09.548] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.548] [debug] KP_1
+[2025-01-28 22:32:09.578] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.578] [debug] KP_1
+[2025-01-28 22:32:09.610] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.610] [debug] KP_1
+[2025-01-28 22:32:09.639] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.639] [debug] KP_1
+[2025-01-28 22:32:09.671] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.671] [debug] KP_1
+[2025-01-28 22:32:09.702] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.702] [debug] KP_1
+[2025-01-28 22:32:09.732] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.732] [debug] KP_1
+[2025-01-28 22:32:09.780] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:09.780] [debug] KP_1
+[2025-01-28 22:32:09.794] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:09.794] [debug] KP_1
+[2025-01-28 22:32:10.082] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:10.082] [debug] KP_0
+[2025-01-28 22:32:10.197] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:10.197] [debug] KP_0
+[2025-01-28 22:32:10.485] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:10.485] [debug] KP_Period
+[2025-01-28 22:32:10.685] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:10.685] [debug] KP_Period
+[2025-01-28 22:32:11.270] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:11.270] [debug] KP_Enter
+[2025-01-28 22:32:11.423] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:11.423] [debug] KP_Enter
+[2025-01-28 22:32:11.930] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:11.930] [debug] KP_Plus
+[2025-01-28 22:32:12.140] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 22:32:12.140] [debug] KP_Plus
+[2025-01-28 22:32:12.545] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 22:32:12.546] [debug] KP_Enter
+[2025-01-28 22:32:12.715] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-

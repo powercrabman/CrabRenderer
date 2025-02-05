@@ -1,0 +1,6 @@
+[2025-01-28 21:11:01.833] [info] Log initialized
+[2025-01-28 21:11:06.798] [debug] Event Occurred. "test"
+[2025-01-28 21:11:06.909] [debug] Event Occurred. "test"
+[2025-01-28 21:11:07.334] [debug] Event Occurred. "test"
+[2025-01-28 21:11:07.400] [debug] Event Occurred. "test"
+[2025-01-28 21:11:12.526] [debug] Event Occurred. "test"

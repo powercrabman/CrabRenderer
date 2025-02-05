@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99. Base">
+      <UniqueIdentifier>{6b2a965a-bb44-4d01-a025-461fbb638f8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Application">
+      <UniqueIdentifier>{3a6ce4e4-44e1-46f9-880a-f78a5f61fedf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Log">
+      <UniqueIdentifier>{69fa41c5-463d-490f-90c3-c3ce3aac6969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. AppWindow">
+      <UniqueIdentifier>{83e78efa-6a75-478f-8234-f15d1914b731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Application\Layer">
+      <UniqueIdentifier>{f8489f56-8205-4f5d-80c1-1e162cdd9ff6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. IO">
+      <UniqueIdentifier>{245c6ad9-cd15-42ff-a25d-e6a2c4b16966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Application\Event">
+      <UniqueIdentifier>{13fc7adb-72ec-479a-836d-34a1381593fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Base\DataStructure">
+      <UniqueIdentifier>{aa33b47a-1968-431d-a9ff-358d24a0d72f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer">
+      <UniqueIdentifier>{0b98f8b0-b56d-43d7-b414-d8fb65b7c763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Buffers">
+      <UniqueIdentifier>{9adff1a8-578b-443b-aab5-ff8fcafc7f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader">
+      <UniqueIdentifier>{1693f430-0417-4015-8807-3c532313062a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Texture">
+      <UniqueIdentifier>{b2a082e9-c170-42b9-b5aa-199fb4927c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\FrameBuffer">
+      <UniqueIdentifier>{296dfdc9-84a8-4bd4-84cc-d97af4a21013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\RenderState">
+      <UniqueIdentifier>{cb8a25d2-ba67-4e68-abe4-f229600eaa49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Utiles">
+      <UniqueIdentifier>{b29488c3-3166-4d97-a6fe-2c8bae63e9d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Base\CompileTimeTypeInfo">
+      <UniqueIdentifier>{00915d50-cb15-453d-bf33-66952a6781e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Scene &amp; Entity">
+      <UniqueIdentifier>{25b4b0e8-bbb5-465a-88f4-155042499901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. ECS">
+      <UniqueIdentifier>{2979dd23-7ab2-4cee-a2c3-e2ab9a56c81f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. ECS\Components">
+      <UniqueIdentifier>{984011ff-604c-4f0a-a440-b457f97c8c0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. ECS\Systems">
+      <UniqueIdentifier>{9aaec4dc-79dc-473a-a4f9-b6c5498d414a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Base\Math">
+      <UniqueIdentifier>{fc06c17f-bad8-4c0c-9c70-867fd9c4325c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Gui">
+      <UniqueIdentifier>{3000170c-f646-44b0-b75f-1e2240264708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Renderer">
+      <UniqueIdentifier>{8076fccc-2742-4c80-bb16-ad3ae0df9354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Mesh">
+      <UniqueIdentifier>{8f476673-fe22-429f-a800-0a19e7f0ee92}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CrabPch.cpp">
+      <Filter>99. Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>01. Application</Filter>
+    </ClCompile>
+    <ClCompile Include="CrabTypes.cpp">
+      <Filter>99. Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>98. Log</Filter>
+    </ClCompile>
+    <ClCompile Include="AppWindow.cpp">
+      <Filter>02. AppWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="ILayer.cpp">
+      <Filter>01. Application\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>03. IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>03. IO</Filter>
+    </ClCompile>
+    <ClCompile Include="EntryPoint.cpp">
+      <Filter>01. Application</Filter>
+    </ClCompile>
+    <ClCompile Include="CrabEvent.cpp">
+      <Filter>01. Application\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="EventDispatcher.cpp">
+      <Filter>01. Application\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="InitSetting.cpp">
+      <Filter>99. Base</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Buffers.cpp">
+      <Filter>04. Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_ConstBuffer.cpp">
+      <Filter>04. Renderer\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Inputlayout.cpp">
+      <Filter>04. Renderer\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Texture.cpp">
+      <Filter>04. Renderer\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>04. Renderer\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_RenderState.cpp">
+      <Filter>04. Renderer\RenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Renderer.cpp">
+      <Filter>04. Renderer\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_RenderTarget.cpp">
+      <Filter>04. Renderer\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>04. Renderer\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Shaders.cpp">
+      <Filter>04. Renderer\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerStack.cpp">
+      <Filter>01. Application\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_DepthStencil.cpp">
+      <Filter>04. Renderer\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_FrameBuffer.cpp">
+      <Filter>04. Renderer\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>05. Scene &amp; Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>06. ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Components.cpp">
+      <Filter>06. ECS\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CrabMath.cpp">
+      <Filter>99. Base\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Imgui.cpp">
+      <Filter>04. Renderer\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>05. Scene &amp; Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="CTTI.cpp">
+      <Filter>99. Base\CompileTimeTypeInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Utiles.cpp">
+      <Filter>04. Renderer\Utiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Mesh.cpp">
+      <Filter>04. Renderer\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexType.cpp">
+      <Filter>04. Renderer\Utiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>04. Renderer\Utiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>04. Renderer\Utiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Model.cpp">
+      <Filter>04. Renderer\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems.cpp">
+      <Filter>06. ECS\Systems</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CrabPch.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>01. Application</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabTypes.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabMacro.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>98. Log</Filter>
+    </ClInclude>
+    <ClInclude Include="AppWindow.h">
+      <Filter>02. AppWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ILayer.h">
+      <Filter>01. Application\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>03. IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>03. IO</Filter>
+    </ClInclude>
+    <ClInclude Include="EntryPoint.h">
+      <Filter>01. Application</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabEvent.h">
+      <Filter>01. Application\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventDispatcher.h">
+      <Filter>01. Application\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="InitSettings.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SCircularQueue.h">
+      <Filter>99. Base\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Buffers.h">
+      <Filter>04. Renderer\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_ConstBuffer.h">
+      <Filter>04. Renderer\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Inputlayout.h">
+      <Filter>04. Renderer\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Texture.h">
+      <Filter>04. Renderer\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>04. Renderer\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_RenderState.h">
+      <Filter>04. Renderer\RenderState</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Renderer.h">
+      <Filter>04. Renderer\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_RenderTarget.h">
+      <Filter>04. Renderer\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>04. Renderer\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Shaders.h">
+      <Filter>04. Renderer\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerStack.h">
+      <Filter>01. Application\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="CTTI.h">
+      <Filter>99. Base\CompileTimeTypeInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_DepthStencil.h">
+      <Filter>04. Renderer\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_FrameBuffer.h">
+      <Filter>04. Renderer\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>05. Scene &amp; Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>06. ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>06. ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabMath.h">
+      <Filter>99. Base\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Imgui.h">
+      <Filter>04. Renderer\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>05. Scene &amp; Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Utiles.h">
+      <Filter>04. Renderer\Utiles</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabInclude.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Mesh.h">
+      <Filter>04. Renderer\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexType.h">
+      <Filter>04. Renderer\Utiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>04. Renderer\Utiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>04. Renderer\Utiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Model.h">
+      <Filter>04. Renderer\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabColors.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems.h">
+      <Filter>06. ECS\Systems</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-format">
+      <Filter>99. Base</Filter>
+    </None>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+</Project>

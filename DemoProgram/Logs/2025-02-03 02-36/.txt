@@ -1,0 +1,2 @@
+[2025-02-03 11:36:17.238] [info] Log initialized
+[2025-02-03 11:36:43.461] [debug] Event Occurred. "AppClose_CoreEvent"

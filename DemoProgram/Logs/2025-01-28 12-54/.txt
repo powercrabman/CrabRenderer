@@ -1,0 +1,78 @@
+[2025-01-28 21:54:13.706] [info] Log initialized
+[2025-01-28 21:54:14.700] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:14.700] [debug] A
+[2025-01-28 21:54:14.702] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:14.702] [debug] A
+[2025-01-28 21:54:16.367] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:16.367] [debug] A
+[2025-01-28 21:54:16.480] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:16.480] [debug] A
+[2025-01-28 21:54:16.750] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:16.750] [debug] Z
+[2025-01-28 21:54:16.840] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:16.840] [debug] X
+[2025-01-28 21:54:16.953] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:16.953] [debug] C
+[2025-01-28 21:54:16.954] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:16.954] [debug] Z
+[2025-01-28 21:54:17.020] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:17.020] [debug] X
+[2025-01-28 21:54:17.132] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:17.132] [debug] C
+[2025-01-28 21:54:17.177] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:17.177] [debug] S
+[2025-01-28 21:54:17.200] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:17.200] [debug] D
+[2025-01-28 21:54:17.245] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:17.245] [debug] S
+[2025-01-28 21:54:17.335] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:17.335] [debug] D
+[2025-01-28 21:54:17.380] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:17.380] [debug] S
+[2025-01-28 21:54:17.492] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:17.492] [debug] E
+[2025-01-28 21:54:17.493] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:17.493] [debug] S
+[2025-01-28 21:54:17.605] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:17.605] [debug] H
+[2025-01-28 21:54:17.627] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:17.627] [debug] E
+[2025-01-28 21:54:17.785] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:17.785] [debug] H
+[2025-01-28 21:54:21.713] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:21.713] [debug] H
+[2025-01-28 21:54:21.813] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:21.813] [debug] H
+[2025-01-28 21:54:25.217] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:25.217] [debug] Q
+[2025-01-28 21:54:25.278] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:25.278] [debug] W
+[2025-01-28 21:54:25.390] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:25.390] [debug] E
+[2025-01-28 21:54:25.412] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:25.412] [debug] Q
+[2025-01-28 21:54:25.502] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:25.502] [debug] W
+[2025-01-28 21:54:25.638] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:25.638] [debug] E
+[2025-01-28 21:54:26.808] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:26.808] [debug] N
+[2025-01-28 21:54:26.875] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:26.875] [debug] N
+[2025-01-28 21:54:26.988] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:26.988] [debug] Z
+[2025-01-28 21:54:27.010] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:27.010] [debug] B
+[2025-01-28 21:54:27.077] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:27.077] [debug] B
+[2025-01-28 21:54:27.122] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-28 21:54:27.122] [debug] Z
+[2025-01-28 21:54:27.123] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:27.123] [debug] K
+[2025-01-28 21:54:27.167] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:27.167] [debug] J
+[2025-01-28 21:54:27.213] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:27.213] [debug] B
+[2025-01-28 21:54:27.213] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-28 21:54:27.213] [debug] G
+[2025-01-28 21:54:27.258] [debug] Event Occurred. "K

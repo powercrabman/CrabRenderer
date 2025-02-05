@@ -1,0 +1,2 @@
+[2025-02-04 13:01:25.749] [info] Log initialized
+[2025-02-04 13:01:31.585] [debug] Event Occurred. "MouseScroll_IOEvent"

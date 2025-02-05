@@ -1,0 +1,3 @@
+[2025-02-05 13:14:57.853] [info] Log initialized
+[2025-02-05 13:15:00.335] [debug] Event Occurred. "Move_WindowEvent"
+[2025-02-05 13:15:06.205] [debug] Event Occurred. "AppClose_CoreEvent"

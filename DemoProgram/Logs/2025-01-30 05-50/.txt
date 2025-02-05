@@ -1,0 +1,3 @@
+[2025-01-30 14:50:12.804] [info] Log initialized
+[2025-01-30 14:50:13.123] [debug] DemoScene::OnEnter()
+[2025-01-30 14:50:13.990] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -1,0 +1,15 @@
+[2025-01-30 14:51:49.354] [info] Log initialized
+[2025-01-30 14:51:49.698] [debug] DemoScene::OnEnter()
+[2025-01-30 14:51:50.230] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 14:51:50.230] [debug] sex sex sex
+[2025-01-30 14:51:50.286] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 14:51:52.154] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 14:51:52.154] [debug] sex sex sex
+[2025-01-30 14:51:52.267] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 14:51:52.354] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 14:51:52.354] [debug] sex sex sex
+[2025-01-30 14:51:52.467] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 14:51:52.559] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-01-30 14:51:52.559] [debug] sex sex sex
+[2025-01-30 14:51:52.647] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-01-30 14:52:00.632] [debug] Event Occurred. "AppClose_CoreEvent"

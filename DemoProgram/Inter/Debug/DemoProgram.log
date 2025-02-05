@@ -1,0 +1,12 @@
+﻿  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NormalPixelShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NormalVertexShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\BlinnPhongPixelShader2.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\CubeMapPixelShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\ImageBasedLightningPixelShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\ReflectionMappingPixelShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\BlinnPhongPixelShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\PhongPixelShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\LightPixelShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\LightVertexShader.cso
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 중간 디렉터리(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\\Inter\Debug\)에 다른 프로젝트(DemoProgram.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
+  DemoProgram.vcxproj -> C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe

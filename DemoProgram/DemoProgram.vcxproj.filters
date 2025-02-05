@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="DemoApp.h" />
+    <ClInclude Include="pch.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIs.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="8. CubeMapDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="1. TriangleDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="2. ColorDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="3. ConstantBufferDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="4. CameraDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="5. Texture2DDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="6. LightDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="7. ModelDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="9. ImageBasedLightningDemo.h">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DemoApp.cpp" />
+    <ClCompile Include="pch.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIs.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="8. CubeMapDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="1. TriangleDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="2. ColorDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="3. ConstantBufferDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="4. CameraDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="5. Texture2DDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="6. LightDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="7. ModelDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="9. ImageBasedLightningDemo.cpp">
+      <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{6051d40d-e67b-49c7-804a-e0e91fbc2e6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene %28Demos%29">
+      <UniqueIdentifier>{224312f5-fcec-43f2-83e7-97e67a397fda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{32e3f33d-8da9-4ebc-8c78-50711f8c343a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{0ad2f9d5-d9de-42b9-afa5-e9b9ceae1566}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\LightDemo">
+      <UniqueIdentifier>{c8adde1c-b1f1-4c58-a06f-f98a32bd6fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\ModelDemo">
+      <UniqueIdentifier>{bbeb01cb-0c30-410f-8e8f-76781530012f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Common">
+      <UniqueIdentifier>{4f16975c-999f-4aaf-8983-88e3d3490703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\CubeMapDemo">
+      <UniqueIdentifier>{9c2ecb15-e323-4a8c-ac0a-1bb0e7d4fa23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\IBL">
+      <UniqueIdentifier>{cca20c18-8441-4145-a2d6-579c80e99818}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-format">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="cpp.hint">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="sample.hlsli">
+      <Filter>Base</Filter>
+    </None>
+    <None Include="LightDemoCommon.hlsli">
+      <Filter>Shaders\LightDemo</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="NormalPixelShader.hlsl">
+      <Filter>Shaders\Common</Filter>
+    </FxCompile>
+    <FxCompile Include="NormalVertexShader.hlsl">
+      <Filter>Shaders\Common</Filter>
+    </FxCompile>
+    <FxCompile Include="LightPixelShader.hlsl">
+      <Filter>Shaders\Common</Filter>
+    </FxCompile>
+    <FxCompile Include="LightVertexShader.hlsl">
+      <Filter>Shaders\Common</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongPixelShader.hlsl">
+      <Filter>Shaders\LightDemo</Filter>
+    </FxCompile>
+    <FxCompile Include="BlinnPhongPixelShader.hlsl">
+      <Filter>Shaders\LightDemo</Filter>
+    </FxCompile>
+    <FxCompile Include="BlinnPhongPixelShader2.hlsl">
+      <Filter>Shaders\ModelDemo</Filter>
+    </FxCompile>
+    <FxCompile Include="CubeMapPixelShader.hlsl">
+      <Filter>Shaders\CubeMapDemo</Filter>
+    </FxCompile>
+    <FxCompile Include="ReflectionMappingPixelShader.hlsl">
+      <Filter>Shaders\CubeMapDemo</Filter>
+    </FxCompile>
+    <FxCompile Include="ImageBasedLightningPixelShader.hlsl">
+      <Filter>Shaders\IBL</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

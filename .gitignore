@@ -1,0 +1,15 @@
+# 빌드 출력물 및 바이너리
+*.lib
+*.ilk
+*.pdb
+*.pch
+
+# Visual Studio 관련 캐시 파일
+.vs/
+*.ipch
+*.db
+
+# 빌드 출력 디렉토리
+CrabEngine/Bin/
+CrabEngine/x64/
+DemoGame/x64/
