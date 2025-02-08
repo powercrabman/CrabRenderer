@@ -15,10 +15,8 @@ Ref<D11_DepthStencilState> D11_DepthStencilState::Create(const D3D11_DEPTH_STENC
 {
     Ref<D11_DepthStencilState> depthStencilState = CreateRef<D11_DepthStencilState>();
     auto                       d                 = D11_API->GetDevice();
-    D11_ASSERT(d->CreateDepthStencilState(&in_desc, depthStencilState->depthStencilState.GetAddressOf()),
+    D11_ASSERT(d->CreateDepthStencilState(&in_desc, depthStencilState->m_depthStencil.GetAddressOf()),
                 "CreateDepthStencilState Fail.");
-
-    depthStencilState->desc = in_desc;
 
     return depthStencilState;
 }
@@ -56,6 +54,11 @@ crab::Ref<crab::D11_DepthStencilState> D11_DepthStencilState::Create(bool in_ena
     return Create(desc);
 }
 
+void D11_DepthStencilState::Bind()
+{
+    D11_API->SetDepthStencilState(m_depthStencil.Get());
+}
+
 //===================================================
 // Rasterizer State
 //===================================================
@@ -64,10 +67,8 @@ Ref<D11_RasterizerState> D11_RasterizerState::Create(const D3D11_RASTERIZER_DESC
 {
     Ref<D11_RasterizerState> rasterizerState = CreateRef<D11_RasterizerState>();
     auto                     d               = D11_API->GetDevice();
-    D11_ASSERT(d->CreateRasterizerState(&in_desc, rasterizerState->rasterizerState.GetAddressOf()),
+    D11_ASSERT(d->CreateRasterizerState(&in_desc, rasterizerState->m_rasterizerState.GetAddressOf()),
                 "CreateRasterizerState Fail.");
-
-    rasterizerState->desc = in_desc;
 
     return rasterizerState;
 }
@@ -89,6 +90,11 @@ Ref<D11_RasterizerState> D11_RasterizerState::Create(eCullMode in_cullmode, eFil
     return Create(desc);
 }
 
+void D11_RasterizerState::Bind()
+{
+    D11_API->SetRasterizerState(m_rasterizerState.Get());
+}
+
 //===================================================
 // Blend State
 //===================================================
@@ -97,10 +103,8 @@ Ref<D11_BlendState> D11_BlendState::Create(const D3D11_BLEND_DESC& in_desc)
 {
     Ref<D11_BlendState> blendState = CreateRef<D11_BlendState>();
     auto                d          = D11_API->GetDevice();
-    D11_ASSERT(d->CreateBlendState(&in_desc, blendState->blendState.GetAddressOf()),
+    D11_ASSERT(d->CreateBlendState(&in_desc, blendState->m_blendState.GetAddressOf()),
                 "CreateBlendState Fail.");
-
-    blendState->desc = in_desc;
 
     return blendState;
 }
@@ -129,6 +133,11 @@ Ref<D11_BlendState> D11_BlendState::Create(bool in_alphaBlend)
     return Create(desc);
 }
 
+void D11_BlendState::Bind()
+{
+    D11_API->SetBlendState(m_blendState.Get());
+}
+
 //===================================================
 // Sampler State
 //===================================================
@@ -137,10 +146,8 @@ Ref<D11_SamplerState> D11_SamplerState::Create(const D3D11_SAMPLER_DESC& in_desc
 {
     Ref<D11_SamplerState> samplerState = CreateRef<D11_SamplerState>();
     auto                  d            = D11_API->GetDevice();
-    D11_ASSERT(d->CreateSamplerState(&in_desc, samplerState->samplerState.GetAddressOf()),
+    D11_ASSERT(d->CreateSamplerState(&in_desc, samplerState->m_samplerState.GetAddressOf()),
                 "CreateSamplerState Fail.");
-
-    samplerState->desc = in_desc;
 
     return samplerState;
 }

@@ -21,6 +21,8 @@ public:
     void ResizeWindow(uint32 in_width, uint32 in_height);
     void MoveWindow(uint32 in_x, uint32 in_y);
     void SetWindowTitle(const std::string_view in_title);
+    void EnableMouseGrabMode(bool in_enable);
+    void EnableMouseRelativeMode(bool in_enabled);
 
     // - Getter
     auto GetWindowSize() const;

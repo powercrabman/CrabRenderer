@@ -5,8 +5,8 @@
 namespace crab
 {
 
-struct D11_VertexBuffer;
-struct D11_IndexBuffer;
+class D11_VertexBuffer;
+class D11_IndexBuffer;
 
 //===================================================
 // Mesh
@@ -21,8 +21,9 @@ struct MeshData
     std::vector<uint32> m_indices;
 };
 
-struct D11_Mesh
+class D11_Mesh
 {
+public:
     template<typename Vertex>
     static Ref<D11_Mesh> Create(const std::vector<Vertex>& in_vertices,
                                 const std::vector<uint32>& in_indices);
@@ -33,8 +34,13 @@ struct D11_Mesh
     static Ref<D11_Mesh> Create(const Ref<D11_VertexBuffer>& in_vb,
                                 const Ref<D11_IndexBuffer>&  in_ib);
 
-    Ref<D11_VertexBuffer> vertexBuffer;
-    Ref<D11_IndexBuffer>  indexBuffer;
+    void Draw() const;
+
+private:
+    // PRIMITIVE_TOPOLOGY will be added later
+
+    Ref<D11_VertexBuffer> m_vertexBuffer;
+    Ref<D11_IndexBuffer>  m_indexBuffer;
 };
 
 //===================================================
@@ -58,7 +64,7 @@ struct MeshFactory2D
     static Ref<D11_Mesh> CreateCircle(float in_radius, uint32 in_slices);
 };
 
-struct D11_Model;
+class D11_Model;
 
 struct MeshFactory3D
 {
@@ -95,7 +101,6 @@ struct MeshFactory3D
     static Ref<D11_Mesh> CreateGrid(const Vec2& in_size, uint32 in_rows, uint32 in_cols);
 
     // Normal mesh
-
     static MeshData<Vertex> CreateNormalLinesMeshData(const MeshData<Vertex>& in_meshData);
     static Ref<D11_Mesh>    CreateNormalLines(const MeshData<Vertex>& in_meshData);
     static Ref<D11_Mesh>    CreateNormalLines(const std::vector<MeshData<Vertex>>& in_meshDatas);
@@ -109,8 +114,8 @@ template<typename Vertex>
 inline Ref<D11_Mesh> D11_Mesh::Create(const std::vector<Vertex>& in_vertices, const std::vector<uint32>& in_indices)
 {
     auto mesh          = CreateRef<D11_Mesh>();
-    mesh->vertexBuffer = D11_VertexBuffer::Create(in_vertices);
-    mesh->indexBuffer  = D11_IndexBuffer::Create(in_indices);
+    mesh->m_vertexBuffer = D11_VertexBuffer::Create(in_vertices);
+    mesh->m_indexBuffer  = D11_IndexBuffer::Create(in_indices);
     return mesh;
 }
 

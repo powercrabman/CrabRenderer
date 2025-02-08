@@ -33,41 +33,26 @@ inline void FastCosSin(float in_rad, float& out_cos, float& out_sin)
     DirectX::XMScalarSinCos(&out_sin, &out_cos, in_rad);
 }
 
-// Vector
-inline constexpr float FastSqrt(float number)
+
+inline Vec2 Normalize(const Vec2& in_vec)
 {
-    // Fast inverse square root
-    // https://en.wikipedia.org/wiki/Fast_inverse_square_root
-
-    union
-    {
-        float    f;
-        uint32_t i;
-    } conv {};
-
-    float           x2;
-    constexpr float threehalfs = 1.5F;
-
-    x2     = number * 0.5F;
-    conv.f = number;
-    conv.i = 0x5f3759df - (conv.i >> 1);
-    conv.f = conv.f * (threehalfs - (x2 * conv.f * conv.f));
-    return conv.f;
+    Vec2 result = in_vec;
+    result.Normalize();
+    return result;
 }
 
-inline Vec2 NormalizedVec2(const Vec2& in_vec)
+inline Vec3 Normalize(const Vec3& in_vec)
 {
-    return in_vec * FastSqrt(in_vec.LengthSquared());
+    Vec3 result = in_vec;
+    result.Normalize();
+    return result;
 }
 
-inline Vec3 NormalizedVec3(const Vec3& in_vec)
+inline Vec4 Normalize(const Vec4& in_vec)
 {
-    return in_vec * FastSqrt(in_vec.LengthSquared());
-}
-
-inline Vec4 NormalizedVec4(const Vec4& in_vec)
-{
-    return in_vec * FastSqrt(in_vec.LengthSquared());
+    Vec4 result = in_vec;
+    result.Normalize();
+    return result;
 }
 
 inline Vec3 EulerFromLookAt(const Vec3& in_from, const Vec3& in_to)
@@ -99,6 +84,72 @@ inline void Warp(Ty& in_val, const Ty& in_min, const Ty& in_max)
         return in_min;
 
     return in_min + std::fmod((in_val - in_min + range), range);
+}
+
+// Rect
+struct Rect
+{
+    Rect() = default;
+    Rect(uint32 in_left, uint32 in_top, uint32 in_right, uint32 in_bottom)
+        : left(in_left)
+        , top(in_top)
+        , right(in_right)
+        , bottom(in_bottom)
+    {
+    }
+
+    uint32 Width() const { return right - left; }
+    uint32 Height() const { return bottom - top; }
+    void   Clamp(uint32 in_left, uint32 in_top, uint32 in_right, uint32 in_bottom) 
+    { 
+        crab::Clamp(left, in_left, in_right);
+        crab::Clamp(top, in_top, in_bottom);
+        crab::Clamp(right, in_left, in_right);
+        crab::Clamp(bottom, in_top, in_bottom);
+        left = std::min(left, right);
+        top  = std::min(top, bottom);
+    }
+
+    uint32 left;
+    uint32 top;
+    uint32 right;
+    uint32 bottom;
+};
+
+struct Vec4UInt
+{
+    uint32 x, y, z, w;
+};
+
+// Vector Cast Helper
+inline Vec4 ToVec4(const Vec3& in_vec, float in_w)
+{
+    return Vec4(in_vec.x, in_vec.y, in_vec.z, in_w);
+}
+
+inline Vec4 ToVec4(const Vec2& in_vec, float in_z, float in_w)
+{
+    return Vec4(in_vec.x, in_vec.y, in_z, in_w);
+}
+
+inline Vec3 ToVec3(const Vec4& in_vec)
+{
+    return Vec3(in_vec.x, in_vec.y, in_vec.z);
+}
+
+inline Vec3 ToVec3(const Vec2& in_vec, float in_z)
+{
+    return Vec3(in_vec.x, in_vec.y, in_z);
+}
+
+inline Vec2 ToVec2(const Vec4& in_vec)
+{
+    return Vec2(in_vec.x, in_vec.y);
+}
+
+inline Vec2 ToVec2(const Vec3& in_vec)
+{
+    return Vec2(in_vec.x, in_vec.y);
 }
 
 }   // namespace crab

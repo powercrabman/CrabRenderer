@@ -3,6 +3,7 @@
 #include "AppWindow.h"
 
 #include "CrabEvent.h"
+#include "Input.h"
 #include <SDL2/SDL_syswm.h>
 
 namespace crab
@@ -22,11 +23,11 @@ AppWindow::~AppWindow()
     }
 }
 
-bool AppWindow::Init(const AppWindowSetting& setting)
+bool AppWindow::Init(const AppWindowSetting& in_setting)
 {
     // - Center Alignment
-    uint32 windowPosX = setting.windowPosX;
-    uint32 windowPosY = setting.windowPosY;
+    uint32 windowPosX = in_setting.windowPosX;
+    uint32 windowPosY = in_setting.windowPosY;
 
     if (windowPosY == AppWindowSetting::CENTER_ALIGNMENT)
         windowPosY = SDL_WINDOWPOS_CENTERED;
@@ -36,11 +37,11 @@ bool AppWindow::Init(const AppWindowSetting& setting)
 
     // - Create Window
     m_window = SDL_CreateWindow(
-        setting.windowTitle.c_str(),
+        in_setting.windowTitle.c_str(),
         windowPosX,
         windowPosY,
-        setting.windowWidth,
-        setting.windowHeight,
+        in_setting.windowWidth,
+        in_setting.windowHeight,
         SDL_WINDOW_SHOWN);
 
     if (!m_window)
@@ -68,6 +69,22 @@ void AppWindow::SetWindowTitle(const std::string_view in_title)
 {
     CRAB_ASSERT(m_window, "Window is not initialized.");
     SDL_SetWindowTitle(m_window, in_title.data());
+}
+
+void AppWindow::EnableMouseGrabMode(bool in_clamp)
+{
+    if (in_clamp)
+        SDL_SetWindowGrab(m_window, SDL_TRUE);
+    else
+        SDL_SetWindowGrab(m_window, SDL_FALSE);
+}
+
+void AppWindow::EnableMouseRelativeMode(bool in_enabled)
+{
+    if (in_enabled)
+        SDL_SetRelativeMouseMode(SDL_TRUE);
+    else
+        SDL_SetRelativeMouseMode(SDL_FALSE);
 }
 
 float AppWindow::GetAspect() const
@@ -164,6 +181,22 @@ void AppWindow::_PollEvent()
                 MouseScroll_IOEvent e;
                 e.dx = event.wheel.x;
                 e.dy = event.wheel.y;
+                GetApplication().DispatchEvent(e);
+            }
+            break;
+
+            case SDL_MOUSEBUTTONDOWN:
+            {
+                MouseDown_IOEvent e;
+                e.button = event.button.button;
+                GetApplication().DispatchEvent(e);
+            }
+            break;
+
+            case SDL_MOUSEBUTTONUP:
+            {
+                MouseUp_IOEvent e;
+                e.button = event.button.button;
                 GetApplication().DispatchEvent(e);
             }
             break;

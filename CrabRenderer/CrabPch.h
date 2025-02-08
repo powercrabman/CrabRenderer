@@ -15,12 +15,12 @@
 #include <vector>
 
 // - DirectX
+#include <DirectXTex.h>
+#include <DirectXTex.inl>
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <d3dcompiler.inl>
 #include <directxtk/SimpleMath.h>
-#include <DirectXTex.h>
-#include <DirectXTex.inl>
 #include <wrl.h>
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "d3dcompiler.lib")
@@ -53,13 +53,13 @@
 #include <entt/entt.hpp>
 
 // - Base
-#include "CrabMacro.h"
-#include "CrabTypes.h"
 #include "CTTI.h"
+#include "CrabColors.h"
+#include "CrabMacro.h"
+#include "CrabMath.h"
+#include "CrabTypes.h"
 #include "InitSettings.h"
 #include "Log.h"
-#include "CrabMath.h"
-#include "CrabColors.h"
 
 // - Data Structure
 #include "SCircularQueue.h"

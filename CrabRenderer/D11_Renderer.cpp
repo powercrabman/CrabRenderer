@@ -14,12 +14,16 @@
 #include "D11_ConstBuffer.h"
 #include "D11_RenderState.h"
 #include "D11_Shaders.h"
-#include "Texture.h"
+#include "D11_Swapchain.h"
+#include "D11_Texture.h"
 
 namespace crab
 {
 
-D11_Renderer::D11_Renderer()  = default;
+D11_Renderer::D11_Renderer()
+{
+}
+
 D11_Renderer::~D11_Renderer() = default;
 
 void D11_Renderer::Init(const RendererSetting& in_setting)
@@ -53,38 +57,7 @@ void D11_Renderer::Init(const RendererSetting& in_setting)
                "D3D11CreateDevice Fail.");
 
     // - Swap Chain
-    DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
-    swapChainDesc.Width                 = 0;
-    swapChainDesc.Height                = 0;
-    swapChainDesc.Format                = in_setting.swapChainFrameBufferSetting.format;
-    swapChainDesc.Stereo                = FALSE;
-    swapChainDesc.SampleDesc.Count      = 1;   // Not use MSAA
-    swapChainDesc.SampleDesc.Quality    = 0;   // Not use MSAA
-    swapChainDesc.BufferUsage           = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    swapChainDesc.BufferCount           = 2;
-    swapChainDesc.Scaling               = DXGI_SCALING_STRETCH;
-    swapChainDesc.SwapEffect            = DXGI_SWAP_EFFECT_FLIP_DISCARD;
-    swapChainDesc.AlphaMode             = DXGI_ALPHA_MODE_UNSPECIFIED;
-    swapChainDesc.Flags                 = 0;
-
-    m_vsync = in_setting.useVSync;
-
-    ComPtr<IDXGIDevice2> dxgiDevice;
-    D11_ASSERT(m_device->QueryInterface(__uuidof(IDXGIDevice2), (void**)dxgiDevice.GetAddressOf()), "QueryInterface Fail.");
-
-    ComPtr<IDXGIAdapter> dxgiAdapter;
-    D11_ASSERT(dxgiDevice->GetParent(__uuidof(IDXGIAdapter), (void**)dxgiAdapter.GetAddressOf()), "GetParent Fail.");
-
-    ComPtr<IDXGIFactory2> dxgiFactory;
-    D11_ASSERT(dxgiAdapter->GetParent(__uuidof(IDXGIFactory2), (void**)dxgiFactory.GetAddressOf()), "GetParent Fail.");
-
-    D11_ASSERT(dxgiFactory->CreateSwapChainForHwnd(m_device.Get(),
-                                                   (HWND)GetApplication().GetAppWindow().GetNativeWindowHandle(),
-                                                   &swapChainDesc,
-                                                   nullptr,
-                                                   nullptr,
-                                                   m_swapChain.GetAddressOf()),
-               "CreateSwapChainForHwnd Fail.");
+    m_swapChain = D11_Swapchain::Create(in_setting.swapChainSetting);
 
 #ifdef _DEBUG
     // - debug
@@ -96,26 +69,8 @@ void D11_Renderer::Init(const RendererSetting& in_setting)
     m_imgui = CreateScope<D11_Imgui>();
     m_imgui->Init();
 
-    // FrameBuffer
-    Viewport viewport    = in_setting.swapChainFrameBufferSetting.viewport;
-    auto [width, height] = GetApplication().GetAppWindow().GetWindowSize();
-    if (viewport.width == 0)
-        viewport.width = (float)width;
-    if (viewport.height == 0)
-        viewport.height = (float)height;
-
-    Ref<D11_DepthStencil> depthStencil = in_setting.swapChainFrameBufferSetting.useDepthStencil ?
-                                             D11_DepthStencil::CreateFromSwapChain(in_setting.swapChainFrameBufferSetting.depthStencilFormat) :
-                                             nullptr;
-
-    m_swapChainBackbuffer = D11_FrameBuffer::Create(
-        D11_RenderTarget::CreateFromSwapChain(),
-        viewport,
-        depthStencil);
-
     // default resources
-    SetFrameBuffer(m_swapChainBackbuffer);
-    m_defaultSamplerState = D11_SamplerState::Create(eSamplerFilter::Linear, eSamplerAddress::Clamp);
+    m_defaultSampler = D11_SamplerState::Create(eSamplerFilter::Linear, eSamplerAddress::Clamp);
 
     // Pipeline State
     m_vsConstantBuffers.fill(nullptr);
@@ -134,19 +89,7 @@ void D11_Renderer::OnEvent(CrabEvent& in_event)
     HANDLE_EVENT(Resize_WindowEvent,
                  [&](const Resize_WindowEvent& e)
                  {
-                     Viewport viewport = m_swapChainBackbuffer->viewport;
-
-                     m_swapChainBackbuffer.reset();
-                     D11_ASSERT(m_swapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0),
-                                "ResizeBuffers Fail.");
-
-                     viewport.width  = (float)e.width;
-                     viewport.height = (float)e.height;
-
-                     m_swapChainBackbuffer = D11_FrameBuffer::Create(
-                         { D11_RenderTarget::CreateFromSwapChain() },
-                         viewport,
-                         m_swapChainBackbuffer->depthStencil);
+                     m_swapChain->OnResize(e.width, e.height);
                  });
 }
 
@@ -162,191 +105,163 @@ void D11_Renderer::DrawIndexed(uint32 in_indexCount, uint32 in_startIndexLocatio
 
 void D11_Renderer::SetTopology(eTopology in_topology)
 {
-    if (m_topology != in_topology)
+    D3D11_PRIMITIVE_TOPOLOGY topology = (D3D11_PRIMITIVE_TOPOLOGY)in_topology;
+    if (m_topology != topology)
     {
-        m_topology = in_topology;
-        m_deviceContext->IASetPrimitiveTopology((D3D11_PRIMITIVE_TOPOLOGY)in_topology);
+        m_topology = topology;
+        m_deviceContext->IASetPrimitiveTopology(topology);
     }
 }
 
-void D11_Renderer::SetVertexBuffer(const Ref<D11_VertexBuffer>& in_vertexBuffer)
+void D11_Renderer::SetVertexBuffer(ID3D11Buffer* in_vertexBuffer, uint32 in_stride, uint32 in_offset)
 {
     if (m_vertexBuffer != in_vertexBuffer)
     {
         m_vertexBuffer = in_vertexBuffer;
-        m_deviceContext->IASetVertexBuffers(0,
-                                            1,
-                                            m_vertexBuffer->buffer.GetAddressOf(),
-                                            &m_vertexBuffer->vertexStride,
-                                            &m_vertexBuffer->offset);
+        m_deviceContext->IASetVertexBuffers(0, 1, &m_vertexBuffer, &in_stride, &in_offset);
     }
 }
 
-void D11_Renderer::SetIndexBuffer(const Ref<D11_IndexBuffer>& in_indexBuffer)
+void D11_Renderer::SetIndexBuffer(ID3D11Buffer* in_indexBuffer)
 {
     if (m_indexBuffer != in_indexBuffer)
     {
         m_indexBuffer = in_indexBuffer;
-        m_deviceContext->IASetIndexBuffer(m_indexBuffer->buffer.Get(),
-                                          DXGI_FORMAT_R32_UINT,
-                                          0);
+        m_deviceContext->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
     }
 }
 
-void D11_Renderer::SetVertexShader(const Ref<D11_VertexShader>& in_vertexShader)
+void D11_Renderer::SetVertexShader(ID3D11VertexShader* in_shader, ID3D11InputLayout* in_layout)
 {
-    if (m_vertesShader != in_vertexShader)
+    if (m_vertexShader != in_shader)
     {
-        m_vertesShader = in_vertexShader;
-        m_deviceContext->VSSetShader(m_vertesShader->vertexShader.Get(), nullptr, 0);
-        m_deviceContext->IASetInputLayout(m_vertesShader->inputLayout.Get());
+        m_vertexShader = in_shader;
+        m_deviceContext->VSSetShader(m_vertexShader, nullptr, 0);
+        m_deviceContext->IASetInputLayout(in_layout);
     }
 }
-
-void D11_Renderer::SetPixelShader(const Ref<D11_PixelShader>& in_pixelShader)
+void D11_Renderer::SetPixelShader(ID3D11PixelShader* in_shader)
 {
-    if (m_pixelShader != in_pixelShader)
+    if (m_pixelShader != in_shader)
     {
-        m_pixelShader = in_pixelShader;
-        m_deviceContext->PSSetShader(m_pixelShader->pixelShader.Get(), nullptr, 0);
+        m_pixelShader = in_shader;
+        m_deviceContext->PSSetShader(m_pixelShader, nullptr, 0);
     }
 }
 
-void D11_Renderer::SetRasterizerState(const Ref<D11_RasterizerState>& in_rasterizerState)
+void D11_Renderer::SetSamplerState(ID3D11SamplerState* in_samplerState, uint32 in_slot, eShaderFlags in_flag)
+{
+    if (BIT_AND(in_flag, eShaderFlags_VertexShader))
+        m_deviceContext->VSSetSamplers(in_slot, 1, &in_samplerState);
+
+    if (BIT_AND(in_flag, eShaderFlags_PixelShader))
+        m_deviceContext->PSSetSamplers(in_slot, 1, &in_samplerState);
+}
+
+void D11_Renderer::SetSamplerStates(const std::vector<ID3D11SamplerState*>& in_samplerStates, uint32 in_startSlot, eShaderFlags in_flag)
+{
+    if (BIT_AND(in_flag, eShaderFlags_VertexShader))
+        if (in_samplerStates.size() > 0)
+            m_deviceContext->VSSetSamplers(in_startSlot, (UINT)in_samplerStates.size(), in_samplerStates.data());
+
+    if (BIT_AND(in_flag, eShaderFlags_PixelShader))
+        m_deviceContext->PSSetSamplers(in_startSlot, (UINT)in_samplerStates.size(), in_samplerStates.data());
+}
+
+void D11_Renderer::SetRasterizerState(ID3D11RasterizerState* in_rasterizerState)
 {
     if (m_rsState != in_rasterizerState)
     {
         m_rsState = in_rasterizerState;
-        m_deviceContext->RSSetState(m_rsState->rasterizerState.Get());
+        m_deviceContext->RSSetState(m_rsState);
     }
 }
 
-void D11_Renderer::SetDepthStencilState(const Ref<D11_DepthStencilState>& in_depthStencilState)
+void D11_Renderer::SetDepthStencilState(ID3D11DepthStencilState* in_depthStencilState)
 {
     if (m_dsState != in_depthStencilState)
     {
         m_dsState = in_depthStencilState;
-        m_deviceContext->OMSetDepthStencilState(m_dsState->depthStencilState.Get(), 0);
+        m_deviceContext->OMSetDepthStencilState(m_dsState, 0);
     }
 }
 
-void D11_Renderer::SetBlendState(const Ref<D11_BlendState>& in_blendState)
+void D11_Renderer::SetBlendState(ID3D11BlendState* in_blendState)
 {
     if (m_bState != in_blendState)
     {
         m_bState = in_blendState;
-        m_deviceContext->OMSetBlendState(m_bState->blendState.Get(), nullptr, 0xffffffff);
+        m_deviceContext->OMSetBlendState(m_bState, nullptr, 0xffffffff);
     }
 }
 
-void D11_Renderer::SetTexture(const Ref<Texture>& in_texture, uint32 in_slot, eShaderFlags in_flag)
+void D11_Renderer::SetShaderResourceView(ID3D11ShaderResourceView* in_srv, uint32 in_slot, eShaderFlags in_flag)
 {
     if (BIT_AND(in_flag, eShaderFlags_VertexShader))
-    {
-        if (in_texture)
-        {
-            m_deviceContext->VSSetShaderResources(in_slot, 1, in_texture->srv.GetAddressOf());
-            m_deviceContext->VSSetSamplers(in_slot, 1, in_texture->samplerState->samplerState.GetAddressOf());
-        }
-        else
-        {
-            ID3D11ShaderResourceView* nullSRV = nullptr;
-            m_deviceContext->VSSetShaderResources(in_slot, 1, &nullSRV);
-            m_deviceContext->VSSetSamplers(in_slot, 1, m_defaultSamplerState->samplerState.GetAddressOf());
-        }
-    }
+        m_deviceContext->VSSetShaderResources(in_slot, 1, &in_srv);
 
     if (BIT_AND(in_flag, eShaderFlags_PixelShader))
-    {
-        if (in_texture)
-        {
-            m_deviceContext->PSSetShaderResources(in_slot, 1, in_texture->srv.GetAddressOf());
-            m_deviceContext->PSSetSamplers(in_slot, 1, in_texture->samplerState->samplerState.GetAddressOf());
-        }
-        else
-        {
-            ID3D11ShaderResourceView* nullSRV = nullptr;
-            m_deviceContext->PSSetShaderResources(in_slot, 1, &nullSRV);
-            m_deviceContext->PSSetSamplers(in_slot, 1, m_defaultSamplerState->samplerState.GetAddressOf());
-        }
-    }
+        m_deviceContext->PSSetShaderResources(in_slot, 1, &in_srv);
 }
 
-void D11_Renderer::SetTextureArray(const TextureArray& in_textures, uint32 in_startSlot, eShaderFlags in_flag)
+void D11_Renderer::SetShaderResourceViews(const std::vector<ID3D11ShaderResourceView*>& in_srvs, uint32 in_startSlot, eShaderFlags in_flag)
 {
     if (BIT_AND(in_flag, eShaderFlags_VertexShader))
-    {
-        m_deviceContext->VSSetShaderResources(in_startSlot, (UINT)in_textures.srvPtrs.size(), in_textures.srvPtrs.data());
-        m_deviceContext->VSSetSamplers(in_startSlot, (UINT)in_textures.statePtrs.size(), in_textures.statePtrs.data());
-    }
+        m_deviceContext->VSSetShaderResources(in_startSlot, (UINT)in_srvs.size(), in_srvs.data());
 
     if (BIT_AND(in_flag, eShaderFlags_PixelShader))
-    {
-        m_deviceContext->PSSetShaderResources(in_startSlot, (UINT)in_textures.srvPtrs.size(), in_textures.srvPtrs.data());
-        m_deviceContext->PSSetSamplers(in_startSlot, (UINT)in_textures.statePtrs.size(), in_textures.statePtrs.data());
-    }
+        m_deviceContext->PSSetShaderResources(in_startSlot, (UINT)in_srvs.size(), in_srvs.data());
 }
 
-void D11_Renderer::SetConstantBuffer(const Ref<D11_ConstantBufferBase>& in_constantBuffer, uint32 in_slot, eShaderFlags in_flag)
+void D11_Renderer::SetConstantBuffer(ID3D11Buffer* in_constantBuffer, uint32 in_slot, eShaderFlags in_flag)
 {
-    if (in_flag & eShaderFlags_VertexShader)
+    if (BIT_AND(in_flag, eShaderFlags_VertexShader))
     {
         if (m_vsConstantBuffers[in_slot] != in_constantBuffer)
         {
             m_vsConstantBuffers[in_slot] = in_constantBuffer;
-            m_deviceContext->VSSetConstantBuffers(in_slot, 1, in_constantBuffer->buffer.GetAddressOf());
+            m_deviceContext->VSSetConstantBuffers(in_slot, 1, &in_constantBuffer);
         }
     }
-    if (in_flag & eShaderFlags_PixelShader)
+
+    if (BIT_AND(in_flag, eShaderFlags_PixelShader))
     {
         if (m_psConstantBuffers[in_slot] != in_constantBuffer)
         {
             m_psConstantBuffers[in_slot] = in_constantBuffer;
-            m_deviceContext->PSSetConstantBuffers(in_slot, 1, in_constantBuffer->buffer.GetAddressOf());
+            m_deviceContext->PSSetConstantBuffers(in_slot, 1, &in_constantBuffer);
         }
     }
 }
 
-void D11_Renderer::SetFrameBuffer(const Ref<D11_FrameBuffer>& in_frameBuffer)
+void D11_Renderer::SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, ID3D11DepthStencilView* in_depthStencilView)
 {
-    m_frameBuffer = in_frameBuffer;
-    m_deviceContext->OMSetRenderTargets(1,
-                                        m_frameBuffer->renderTarget->renderTargetView.GetAddressOf(),
-                                        m_frameBuffer->depthStencil ? m_frameBuffer->depthStencil->dsv.Get() : nullptr);
-    m_deviceContext->RSSetViewports(1, m_frameBuffer->viewport.Get11());
+    m_deviceContext->OMSetRenderTargets(1, &in_renderTargetView, in_depthStencilView);
 }
 
-void D11_Renderer::SetBackBufferToFrameBuffer()
+void D11_Renderer::SetRenderTargets(const std::vector<ID3D11RenderTargetView*>& in_renderTargetViews, ID3D11DepthStencilView* in_depthStencilView)
 {
-    SetFrameBuffer(m_swapChainBackbuffer);
+    m_deviceContext->OMSetRenderTargets((UINT)in_renderTargetViews.size(), in_renderTargetViews.data(), in_depthStencilView);
 }
 
-void D11_Renderer::ClearFrameBuffer(const Color& in_color, bool in_clearDepth, bool in_clearStencil)
+void D11_Renderer::SetViewport(const Viewport& in_viewport)
 {
-    CRAB_ASSERT(m_frameBuffer, "FrameBuffer is nullptr.");
-
-    // - Clear Render Target View
-    m_deviceContext->ClearRenderTargetView(m_frameBuffer->renderTarget->renderTargetView.Get(),
-                                           (FLOAT*)&in_color);
-
-    // - Clear Depth Stencil
-    if (m_frameBuffer->depthStencil)
-    {
-        UINT clearFlags = 0;
-
-        if (in_clearDepth)
-            clearFlags |= D3D11_CLEAR_DEPTH;
-
-        if (in_clearStencil)
-            clearFlags |= D3D11_CLEAR_STENCIL;
-
-        m_deviceContext->ClearDepthStencilView(m_frameBuffer->depthStencil->dsv.Get(), clearFlags, 1.f, 0);
-    }
+    m_deviceContext->RSSetViewports(1, in_viewport.Get11());
 }
 
-void D11_Renderer::ClearFrameBuffer(const Color& in_color)
+void D11_Renderer::SetBackBufferToRenderTarget()
 {
-    ClearFrameBuffer(in_color, true, true);
+    m_swapChain->BindBackBuffer();
+}
+
+void D11_Renderer::ClearBackBuffer(const Color& in_color, bool in_clearDepth, bool in_clearStencil)
+{
+    m_swapChain->Clear(in_color, in_clearDepth, in_clearStencil);
+}
+
+void D11_Renderer::ClearBackBuffer(const Color& in_color)
+{
+    m_swapChain->Clear(in_color, true, true);
 }
 
 void D11_Renderer::BeginRender()
@@ -361,33 +276,22 @@ void D11_Renderer::EndRender()
 
 void D11_Renderer::Present()
 {
-    static DXGI_PRESENT_PARAMETERS presentParameters = {};
-    presentParameters.DirtyRectsCount                = 0;
-    presentParameters.pDirtyRects                    = nullptr;
-    presentParameters.pScrollRect                    = nullptr;
-    presentParameters.pScrollOffset                  = nullptr;
-
-    m_swapChain->Present1(m_vsync ? 1 : 0, 0, &presentParameters);
+    m_swapChain->Present();
 }
 
-crab::ComPtr<ID3D11Device> D11_Renderer::GetDevice() const
+ComPtr<ID3D11Device> D11_Renderer::GetDevice() const
 {
     return m_device;
 }
 
-crab::ComPtr<ID3D11DeviceContext> D11_Renderer::GetContext() const
+ComPtr<ID3D11DeviceContext> D11_Renderer::GetContext() const
 {
     return m_deviceContext;
 }
 
-crab::ComPtr<IDXGISwapChain> D11_Renderer::GetSwapChain() const
+Ref<D11_Swapchain> D11_Renderer::GetSwapChain() const
 {
     return m_swapChain;
-}
-
-crab::Ref<crab::D11_FrameBuffer> D11_Renderer::GetSwapChainFrameBuffer() const
-{
-    return m_swapChainBackbuffer;
 }
 
 }   // namespace crab

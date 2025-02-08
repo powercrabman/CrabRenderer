@@ -1,4 +1,4 @@
-#include "CrabPch.h"
+﻿#include "CrabPch.h"
 
 #include "D11_Mesh.h"
 
@@ -12,10 +12,18 @@ namespace crab
 Ref<D11_Mesh> D11_Mesh::Create(const Ref<D11_VertexBuffer>& in_vb,
                                const Ref<D11_IndexBuffer>&  in_ib)
 {
-    auto mesh          = CreateRef<D11_Mesh>();
-    mesh->vertexBuffer = in_vb;
-    mesh->indexBuffer  = in_ib;
+    auto mesh            = CreateRef<D11_Mesh>();
+    mesh->m_vertexBuffer = in_vb;
+    mesh->m_indexBuffer  = in_ib;
     return mesh;
+}
+
+void D11_Mesh::Draw() const
+{
+    auto* dx = D11_API;
+    m_vertexBuffer->Bind();
+    m_indexBuffer->Bind();
+    dx->DrawIndexed(m_indexBuffer->GetIndexCount());
 }
 
 Ref<D11_Mesh> MeshFactory2D::CreateQuad(const Vec2& in_size, const TexCoordArray& in_texCoord, const ColorArray& in_color)
@@ -293,7 +301,7 @@ Ref<D11_Mesh> MeshFactory3D::CreateCylinder(float in_radius, float in_height, ui
             float y        = stackHeight;
             float z        = stackRadius * sin;
             Vec3  position = Vec3 { x, y, z };
-            Vec3  normal   = NormalizedVec3(position);
+            Vec3  normal   = Normalize(position);
             Vec2  texCoord = Vec2 { static_cast<float>(j) / in_slices, static_cast<float>(i) / in_stacks };
             Vec4  color    = Vec4 { 1.f, 1.f, 1.f, 1.f };
             vertices.push_back(Vertex { position, normal, texCoord, Vec4 { 1.f, 1.f, 1.f, 1.f } });
@@ -345,7 +353,7 @@ MeshData<MeshFactory3D::Vertex> MeshFactory3D::CreateSphereMeshData(float in_rad
             x *= r;
             z *= r;
             Vec3 position = Vec3 { x, y, z };
-            Vec3 normal   = NormalizedVec3(position);
+            Vec3 normal   = Normalize(position);
             Vec2 texCoord = Vec2 { static_cast<float>(j) / in_slices, static_cast<float>(i) / in_stacks };
             Vec4 color    = Vec4 { 1.f, 1.f, 1.f, 1.f };
             vertices.push_back(Vertex { position, normal, texCoord, Vec4 { 1.f, 1.f, 1.f, 1.f } });
@@ -401,12 +409,12 @@ Ref<D11_Mesh> MeshFactory3D::CreateCone(float in_radius, float in_height, uint32
         float x        = in_radius * cos;
         float z        = in_radius * sin;
         Vec3  position = Vec3 { x, 0.f, z };
-        Vec3  normal   = NormalizedVec3({ x, in_radius, z });
+        Vec3  normal   = Normalize({ x, in_radius, z });
         Vec2  texCoord = Vec2 { static_cast<float>(i) / in_slices, 0.f };
         Vec4  color    = Vec4 { 1.f, 1.f, 1.f, 1.f };
         vertices.push_back(Vertex { position, normal, texCoord, Vec4 { 1.f, 1.f, 1.f, 1.f } });
     }
-    vertices.push_back(Vertex { Vec3 { 0.f, in_height, 0.f }, NormalizedVec3({ 0.f, in_radius, 0.f }), Vec2 { 0.5f, 1.f }, Vec4 { 1.f, 1.f, 1.f, 1.f } });
+    vertices.push_back(Vertex { Vec3 { 0.f, in_height, 0.f }, Normalize({ 0.f, in_radius, 0.f }), Vec2 { 0.5f, 1.f }, Vec4 { 1.f, 1.f, 1.f, 1.f } });
 
     // Create indices
     for (uint32 i = 0; i < in_slices; i++)
@@ -429,19 +437,26 @@ Ref<D11_Mesh> MeshFactory3D::CreateTorus(float in_radius, float in_tubeRadius, u
     // Create vertices
     for (uint32 i = 0; i <= in_stacks; i++)
     {
-        float theta = i * PI_2 / in_stacks;
-        float cos, sin;
-        FastCosSin(theta, cos, sin);
-        float x, z;
-        FastCosSin(theta, x, z);
-        x              = (in_radius + in_tubeRadius * cos) * x;
-        z              = (in_radius + in_tubeRadius * cos) * z;
-        float y        = in_tubeRadius * sin;
-        Vec3  position = Vec3 { x, y, z };
-        Vec3  normal   = NormalizedVec3({ x, y, z });
-        Vec2  texCoord = Vec2 { static_cast<float>(i) / in_stacks, 0.f };
-        Vec4  color    = Vec4 { 1.f, 1.f, 1.f, 1.f };
-        vertices.push_back(Vertex { position, normal, texCoord, Vec4 { 1.f, 1.f, 1.f, 1.f } });
+        float theta    = i * PI_2 / in_stacks;
+        float cosTheta = cos(theta);
+        float sinTheta = sin(theta);
+        for (uint32 j = 0; j <= in_slices; j++)
+        {
+            float phi    = j * PI_2 / in_slices;
+            float cosPhi = cos(phi);
+            float sinPhi = sin(phi);
+
+            float x = (in_radius + in_tubeRadius * cosTheta) * cosPhi;
+            float y = in_tubeRadius * sinTheta;
+            float z = (in_radius + in_tubeRadius * cosTheta) * sinPhi;
+
+            Vertex v;
+            v.color = Vec4 { 1.f, 1.f, 1.f, 1.f };
+            v.normal = Normalize({ x, y, z });
+            v.position = Vec3 { x, y, z };
+            v.texCoord = Vec2 { static_cast<float>(j) / in_slices, static_cast<float>(i) / in_stacks };
+            vertices.push_back(v);
+        }
     }
 
     // Create indices
@@ -449,13 +464,15 @@ Ref<D11_Mesh> MeshFactory3D::CreateTorus(float in_radius, float in_tubeRadius, u
     {
         for (uint32 j = 0; j < in_slices; j++)
         {
-            uint32 v0 = i * in_slices + j;
-            uint32 v1 = v0 + 1;
-            uint32 v2 = (i + 1) * in_slices + j;
-            uint32 v3 = v2 + 1;
+            uint32 v0 = i * (in_slices + 1) + j;
+            uint32 v1 = i * (in_slices + 1) + (j + 1);
+            uint32 v2 = (i + 1) * (in_slices + 1) + j;
+            uint32 v3 = (i + 1) * (in_slices + 1) + (j + 1);
+
             indices.push_back(v0);
             indices.push_back(v2);
             indices.push_back(v1);
+
             indices.push_back(v1);
             indices.push_back(v2);
             indices.push_back(v3);
@@ -472,36 +489,50 @@ Ref<D11_Mesh> MeshFactory3D::CreateGrid(const Vec2& in_size, uint32 in_rows, uin
 {
     std::vector<Vertex> vertices;
     std::vector<uint32> indices;
-    float               wDiv2 = in_size.x * 0.5f;
-    float               hDiv2 = in_size.y * 0.5f;
+    float               widthPerCell  = in_size.x / float(in_cols);
+    float               heightPerCell = in_size.y / float(in_rows);
 
     // Create vertices
-    for (uint32 i = 0; i <= in_rows; i++)
-    {
-        float y = hDiv2 - i * in_size.y / in_rows;
-        for (uint32 j = 0; j <= in_cols; j++)
-        {
-            float x = -wDiv2 + j * in_size.x / in_cols;
-            vertices.push_back(Vertex { Vec3 { x, 0.f, y }, NormalizedVec3({ x, 0.f, y }), Vec2 { static_cast<float>(j) / in_cols, static_cast<float>(i) / in_rows }, Vec4 { 1.f, 1.f, 1.f, 1.f } });
-        }
-    }
-
-    // Create indices
     for (uint32 i = 0; i < in_rows; i++)
     {
         for (uint32 j = 0; j < in_cols; j++)
         {
-            uint32 v0 = i * (in_cols + 1) + j;
-            uint32 v1 = v0 + 1;
-            uint32 v2 = (i + 1) * (in_cols + 1) + j;
-            uint32 v3 = v2 + 1;
-            indices.push_back(v0);
-            indices.push_back(v2);
-            indices.push_back(v1);
-            indices.push_back(v1);
-            indices.push_back(v2);
-            indices.push_back(v3);
+            Vertex v1;
+            v1.position = Vec3 { j * widthPerCell, 0.f, (i + 1) * heightPerCell };
+            v1.normal   = Vec3 { 0.f, 1.f, 0.f };
+            v1.texCoord = Vec2 { 0.f, 0.f };
+            v1.color    = Vec4 { 1.f, 1.f, 1.f, 1.f };
+
+            Vertex v2;
+            v2.position = Vec3 { (j + 1) * widthPerCell, 0.f, (i + 1) * heightPerCell };
+            v2.normal   = Vec3 { 0.f, 1.f, 0.f };
+            v2.texCoord = Vec2 { 1.f, 0.f };
+            v2.color    = Vec4 { 1.f, 1.f, 1.f, 1.f };
+
+            Vertex v3;
+            v3.position = Vec3 { (j + 1) * widthPerCell, 0.f, i * heightPerCell };
+            v3.normal   = Vec3 { 0.f, 1.f, 0.f };
+            v3.texCoord = Vec2 { 1.f, 1.f };
+            v3.color    = Vec4 { 1.f, 1.f, 1.f, 1.f };
+
+            Vertex v4;
+            v4.position = Vec3 { j * widthPerCell, 0.f, i * heightPerCell };
+            v4.normal   = Vec3 { 0.f, 1.f, 0.f };
+            v4.texCoord = Vec2 { 0.f, 1.f };
+            v4.color    = Vec4 { 1.f, 1.f, 1.f, 1.f };
+
+            vertices.insert(vertices.end(), { v1, v2, v3, v4 });
         }
+    }
+
+    // Create indices
+    for (uint32 i = 0; i < in_rows * in_cols; i++)
+    {
+        uint32 v0 = i * 4;
+        uint32 v1 = v0 + 1;
+        uint32 v2 = v0 + 2;
+        uint32 v3 = v0 + 3;
+        indices.insert(indices.end(), { v0, v1, v2, v0, v2, v3 });
     }
 
     auto vb = D11_VertexBuffer::Create(vertices);

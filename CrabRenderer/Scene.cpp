@@ -15,20 +15,41 @@ entt::registry& Scene::GetRegistry()
 
 crab::Entity Scene::CreateEntity(uint32 in_id)
 {
-    entt::entity e = m_registry.create(entt::entity(in_id));
-    Entity       entity { this, e };
-    entity.AddComponent<Transform>(Transform {});
-
-    return entity;
+    entt::entity e = entt::entity(in_id);
+    if (m_registry.valid(e))
+    {
+        return Entity { this, e };
+    }
+    else
+    {
+        Entity entity { this, m_registry.create(e) };
+        entity.AddComponent<Transform>();
+        entity.AddComponent<IDComponent>(in_id);
+        return entity;
+    }
 }
 
 crab::Entity Scene::CreateEntity()
 {
     entt::entity e = m_registry.create();
     Entity       entity { this, e };
-    entity.AddComponent<Transform>(Transform {});
+    entity.AddComponent<Transform>();
+    entity.AddComponent<IDComponent>(uint32(e));
 
     return entity;
+}
+
+Entity Scene::FindEntity(uint32 in_id)
+{
+    Entity e { this, entt::entity(in_id) };
+    if (m_registry.valid(e))
+    {
+        return e;
+    }
+    else
+    {
+        return Entity::s_null;
+    }
 }
 
 void Scene::_Init()

@@ -34,7 +34,7 @@ Ref<D11_VertexShader> D11_VertexShader::CreateFromFile(const std::filesystem::pa
                                   "vs_5_0",
                                   compileFlags,
                                   0,
-                                  vs->blob.GetAddressOf(),
+                                  vs->m_blob.GetAddressOf(),
                                   errorBlob.GetAddressOf()),
                "D3DCompileFromFile Fail.");
 
@@ -45,18 +45,18 @@ Ref<D11_VertexShader> D11_VertexShader::CreateFromFile(const std::filesystem::pa
     }
 
     // - Create Vertex Shader
-    D11_ASSERT(d->CreateVertexShader(vs->blob->GetBufferPointer(),
-                                     vs->blob->GetBufferSize(),
+    D11_ASSERT(d->CreateVertexShader(vs->m_blob->GetBufferPointer(),
+                                     vs->m_blob->GetBufferSize(),
                                      nullptr,
-                                     vs->vertexShader.GetAddressOf()),
+                                     vs->m_vertexShader.GetAddressOf()),
                "CreateVertexShader Fail.");
 
     // - Create Input Layout
-    D11_ASSERT(d->CreateInputLayout(in_inputElems.elements.data(),
-                                    (uint32)in_inputElems.elements.size(),
-                                    vs->blob->GetBufferPointer(),
-                                    vs->blob->GetBufferSize(),
-                                    vs->inputLayout.GetAddressOf()),
+    D11_ASSERT(d->CreateInputLayout(in_inputElems.Get(),
+                                    in_inputElems.GetSize(),
+                                    vs->m_blob->GetBufferPointer(),
+                                    vs->m_blob->GetBufferSize(),
+                                    vs->m_inputlayout.GetAddressOf()),
                "CreateInputLayout Fail.");
     return vs;
 }
@@ -84,7 +84,7 @@ Ref<D11_VertexShader> D11_VertexShader::CreateFromString(const std::string_view 
                           "vs_5_0",
                           compileFlags,
                           0,
-                          vs->blob.GetAddressOf(),
+                          vs->m_blob.GetAddressOf(),
                           errorBlob.GetAddressOf()),
                "D3DCompile Fail.");
 
@@ -95,20 +95,26 @@ Ref<D11_VertexShader> D11_VertexShader::CreateFromString(const std::string_view 
     }
 
     // - Create Vertex Shader
-    D11_ASSERT(d->CreateVertexShader(vs->blob->GetBufferPointer(),
-                                     vs->blob->GetBufferSize(),
+    D11_ASSERT(d->CreateVertexShader(vs->m_blob->GetBufferPointer(),
+                                     vs->m_blob->GetBufferSize(),
                                      nullptr,
-                                     vs->vertexShader.GetAddressOf()),
+                                     vs->m_vertexShader.GetAddressOf()),
                "CreateVertexShader Fail.");
 
     // - Create Input Layout
-    D11_ASSERT(d->CreateInputLayout(in_inputElems.elements.data(),
-                                    (uint32)in_inputElems.elements.size(),
-                                    vs->blob->GetBufferPointer(),
-                                    vs->blob->GetBufferSize(),
-                                    vs->inputLayout.GetAddressOf()),
+    D11_ASSERT(d->CreateInputLayout(in_inputElems.Get(),
+                                    in_inputElems.GetSize(),
+                                    vs->m_blob->GetBufferPointer(),
+                                    vs->m_blob->GetBufferSize(),
+                                    vs->m_inputlayout.GetAddressOf()),
                "CreateInputLayout Fail.");
     return vs;
+}
+
+void D11_VertexShader::Bind()
+{
+    auto* dx = D11_API;
+    dx->SetVertexShader(m_vertexShader.Get(), m_inputlayout.Get());
 }
 
 //===================================================
@@ -137,7 +143,7 @@ Ref<D11_PixelShader> D11_PixelShader::CreateFromFile(const std::filesystem::path
                                   "ps_5_0",
                                   compileFlags,
                                   0,
-                                  ps->blob.GetAddressOf(),
+                                  ps->m_blob.GetAddressOf(),
                                   errorBlob.GetAddressOf()),
                "D3DCompileFromFile Fail.");
 
@@ -148,51 +154,10 @@ Ref<D11_PixelShader> D11_PixelShader::CreateFromFile(const std::filesystem::path
     }
 
     // - Create Pixel Shader
-    D11_ASSERT(d->CreatePixelShader(ps->blob->GetBufferPointer(),
-                                    ps->blob->GetBufferSize(),
+    D11_ASSERT(d->CreatePixelShader(ps->m_blob->GetBufferPointer(),
+                                    ps->m_blob->GetBufferSize(),
                                     nullptr,
-                                    ps->pixelShader.GetAddressOf()),
-               "CreatePixelShader Fail.");
-    return ps;
-}
-
-crab::Ref<crab::D11_PixelShader> D11_PixelShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
-{
-    auto                 d  = D11_API->GetDevice();
-    Ref<D11_PixelShader> ps = CreateRef<D11_PixelShader>();
-
-    uint32 compileFlags = 0;
-#ifdef _DEBUG
-    compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
-#else
-    compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
-#endif
-
-    // - Compile Shader
-    ComPtr<ID3DBlob> errorBlob;
-    D11_ASSERT(D3DCompile(in_shaderCode.data(),
-                          in_shaderCode.size(),
-                          nullptr,
-                          nullptr,
-                          D3D_COMPILE_STANDARD_FILE_INCLUDE,
-                          in_entryPoint.data(),
-                          "ps_5_0",
-                          compileFlags,
-                          0,
-                          ps->blob.GetAddressOf(),
-                          errorBlob.GetAddressOf()),
-               "D3DCompile Fail.");
-
-    if (errorBlob)
-    {
-        CRAB_DEBUG_BREAK_V("Error Blob: {0}", (char*)errorBlob->GetBufferPointer());
-        return nullptr;
-    }
-    // - Create Pixel Shader
-    D11_ASSERT(d->CreatePixelShader(ps->blob->GetBufferPointer(),
-                                    ps->blob->GetBufferSize(),
-                                    nullptr,
-                                    ps->pixelShader.GetAddressOf()),
+                                    ps->m_pixelShader.GetAddressOf()),
                "CreatePixelShader Fail.");
     return ps;
 }
@@ -241,6 +206,93 @@ Ref<D11_ComputeShader> D11_ComputeShader::CreateFromFile(const std::filesystem::
     return cs;
 }
 
+crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromFile(const std::filesystem::path& in_shaderPath, const std::string_view in_entryPoint)
+{
+    auto                    d            = D11_API->GetDevice();
+    Ref<D11_GeometryShader> gs           = CreateRef<D11_GeometryShader>();
+    uint32                  compileFlags = 0;
+
+#ifdef _DEBUG
+    compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
+#else
+    compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
+#endif
+
+    // - Compile Shader
+    ComPtr<ID3DBlob> errorBlob;
+    D11_ASSERT(D3DCompileFromFile(in_shaderPath.c_str(),
+                                  nullptr,
+                                  D3D_COMPILE_STANDARD_FILE_INCLUDE,
+                                  in_entryPoint.data(),
+                                  "gs_5_0",
+                                  compileFlags,
+                                  0,
+                                  gs->blob.GetAddressOf(),
+                                  errorBlob.GetAddressOf()),
+               "D3DCompileFromFile Fail.");
+
+    if (errorBlob)
+    {
+        CRAB_DEBUG_BREAK_V("Error Blob: {0}", (char*)errorBlob->GetBufferPointer());
+        return nullptr;
+    }
+
+    // - Create Geometry Shader
+    D11_ASSERT(d->CreateGeometryShader(gs->blob->GetBufferPointer(),
+                                       gs->blob->GetBufferSize(),
+                                       nullptr,
+                                       gs->geometryShader.GetAddressOf()),
+               "CreateGeometryShader Fail.");
+    return gs;
+}
+
+crab::Ref<crab::D11_PixelShader> D11_PixelShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
+{
+    auto                 d  = D11_API->GetDevice();
+    Ref<D11_PixelShader> ps = CreateRef<D11_PixelShader>();
+
+    uint32 compileFlags = 0;
+#ifdef _DEBUG
+    compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
+#else
+    compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
+#endif
+
+    // - Compile Shader
+    ComPtr<ID3DBlob> errorBlob;
+    D11_ASSERT(D3DCompile(in_shaderCode.data(),
+                          in_shaderCode.size(),
+                          nullptr,
+                          nullptr,
+                          D3D_COMPILE_STANDARD_FILE_INCLUDE,
+                          in_entryPoint.data(),
+                          "ps_5_0",
+                          compileFlags,
+                          0,
+                          ps->m_blob.GetAddressOf(),
+                          errorBlob.GetAddressOf()),
+               "D3DCompile Fail.");
+
+    if (errorBlob)
+    {
+        CRAB_DEBUG_BREAK_V("Error Blob: {0}", (char*)errorBlob->GetBufferPointer());
+        return nullptr;
+    }
+    // - Create Pixel Shader
+    D11_ASSERT(d->CreatePixelShader(ps->m_blob->GetBufferPointer(),
+                                    ps->m_blob->GetBufferSize(),
+                                    nullptr,
+                                    ps->m_pixelShader.GetAddressOf()),
+               "CreatePixelShader Fail.");
+    return ps;
+}
+
+void D11_PixelShader::Bind()
+{
+    auto* dx = D11_API;
+    dx->SetPixelShader(m_pixelShader.Get());
+}
+
 Ref<D11_ComputeShader> D11_ComputeShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
 {
     auto                   d  = D11_API->GetDevice();
@@ -280,46 +332,6 @@ Ref<D11_ComputeShader> D11_ComputeShader::CreateFromString(const std::string_vie
                                       cs->computeShader.GetAddressOf()),
                "CreateComputeShader Fail.");
     return cs;
-}
-
-crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromFile(const std::filesystem::path& in_shaderPath, const std::string_view in_entryPoint)
-{
-    auto                    d            = D11_API->GetDevice();
-    Ref<D11_GeometryShader> gs           = CreateRef<D11_GeometryShader>();
-    uint32                  compileFlags = 0;
-
-#ifdef _DEBUG
-    compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
-#else
-    compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
-#endif
-
-    // - Compile Shader
-    ComPtr<ID3DBlob> errorBlob;
-    D11_ASSERT(D3DCompileFromFile(in_shaderPath.c_str(),
-                                  nullptr,
-                                  D3D_COMPILE_STANDARD_FILE_INCLUDE,
-                                  in_entryPoint.data(),
-                                  "gs_5_0",
-                                  compileFlags,
-                                  0,
-                                  gs->blob.GetAddressOf(),
-                                  errorBlob.GetAddressOf()),
-               "D3DCompileFromFile Fail.");
-
-    if (errorBlob)
-    {
-        CRAB_DEBUG_BREAK_V("Error Blob: {0}", (char*)errorBlob->GetBufferPointer());
-        return nullptr;
-    }
-
-    // - Create Geometry Shader
-    D11_ASSERT(d->CreateGeometryShader(gs->blob->GetBufferPointer(),
-                                       gs->blob->GetBufferSize(),
-                                       nullptr,
-                                       gs->geometryShader.GetAddressOf()),
-               "CreateGeometryShader Fail.");
-    return gs;
 }
 
 crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)

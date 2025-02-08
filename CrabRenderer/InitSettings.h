@@ -56,10 +56,10 @@ enum class eRendererAPI
     DirectX11
 };
 
-struct SwapChainFrameBufferSetting
+struct SwapChainSetting
 {
     // swap chain
-    DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    DXGI_FORMAT swapChainFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
 
     // depth stencil
     bool        useDepthStencil    = true;
@@ -67,14 +67,14 @@ struct SwapChainFrameBufferSetting
 
     // viewport
     Viewport viewport = { 0.f, 0.f, 0.f, 0.f, 0.f, 1.f };
+    bool     useVSync = true;
 };
 
 struct RendererSetting
 {
     eRendererAPI rendererAPI = eRendererAPI::DirectX11;
 
-    SwapChainFrameBufferSetting swapChainFrameBufferSetting = {};
-    bool                        useVSync                    = true;
+    SwapChainSetting swapChainSetting = {};
 };
 
 //===================================================

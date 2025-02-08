@@ -75,6 +75,11 @@ inline Application& GetApplication()
     return Application::GetInstance();
 }
 
+inline AppWindow& GetAppWindow()
+{
+    return GetApplication().GetAppWindow();
+}
+
 template<typename Ty>
 void crab::Application::DispatchEvent(Ty& in_event)
 {

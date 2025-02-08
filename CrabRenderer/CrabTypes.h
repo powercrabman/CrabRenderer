@@ -23,6 +23,12 @@ using Vec4 = DirectX::SimpleMath::Vector4;
 using Mat4 = DirectX::SimpleMath::Matrix;
 using Quat = DirectX::SimpleMath::Quaternion;
 
+using AABB           = DirectX::BoundingBox;
+using OBB            = DirectX::BoundingOrientedBox;
+using BoundingShpere = DirectX::BoundingSphere;
+using Ray            = DirectX::SimpleMath::Ray;
+using Plane          = DirectX::SimpleMath::Plane;
+
 using Color    = DirectX::SimpleMath::Color;
 using Viewport = DirectX::SimpleMath::Viewport;
 using Bool     = int32;   // for constant buffer

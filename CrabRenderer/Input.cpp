@@ -2,6 +2,7 @@
 
 #include "Input.h"
 
+#include "AppWindow.h"
 #include "CrabEvent.h"
 #include "EventDispatcher.h"
 #include <SDL2/SDL.h>
@@ -28,21 +29,19 @@ void Input::Update()
                 sizeof(bool) * m_io->isKeyDown.size());
 
     // - Mouse
-    m_io->prevMousePosX = m_io->mousePosX;
-    m_io->prevMousePosY = m_io->mousePosY;
-
-    SDL_GetMouseState(&m_io->mousePosX,
-                      &m_io->mousePosY);
+    std::memcpy(m_io->prevMouseDown.data(),
+                m_io->isMouseDown.data(),
+                sizeof(bool) * m_io->isMouseDown.size());
 }
 
 bool Input::IsKeyDown(eKey in_key)
 {
-    return m_io->isKeyDown[static_cast<uint64>(in_key)] && m_io->prevKeyDown[static_cast<uint64>(in_key)];
+    return m_io->isKeyDown[static_cast<uint64>(in_key)];
 }
 
 bool Input::IsKeyUp(eKey in_key)
 {
-    return !m_io->isKeyDown[static_cast<uint64>(in_key)] && !m_io->prevKeyDown[static_cast<uint64>(in_key)];
+    return !m_io->isKeyDown[static_cast<uint64>(in_key)];
 }
 
 bool Input::IsKeyPressed(eKey in_key)
@@ -57,7 +56,33 @@ bool Input::IsKeyReleased(eKey in_key)
 
 bool Input::IsMouseDown(eMouse in_mouse)
 {
-    return SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(static_cast<int>(in_mouse));
+    return m_io->isMouseDown[(uint32)in_mouse];
+}
+
+bool Input::IsMouseUp(eMouse in_mouse)
+{
+    return !m_io->isMouseDown[(uint32)in_mouse];
+}
+
+bool Input::IsMousePressed(eMouse in_mouse)
+{
+    return m_io->isMouseDown[(uint32)in_mouse] && !m_io->prevMouseDown[(uint32)in_mouse];
+}
+
+bool Input::IsMouseReleased(eMouse in_mouse)
+{
+    return !m_io->isMouseDown[(uint32)in_mouse] && m_io->prevMouseDown[(uint32)in_mouse];
+}
+
+void Input::SetMousePos(uint32 in_x, uint32 in_y)
+{
+    SDL_WarpMouseInWindow(nullptr, in_x, in_y);
+}
+
+void Input::SetMousePosToCenter()
+{
+    auto [w, h] = GetAppWindow().GetWindowSize();
+    SetMousePos(w / 2, h / 2);
 }
 
 // - Mouse
@@ -82,6 +107,18 @@ void Input::OnEvent(CrabEvent& in_event)
                  {
                      m_io->mouseDeltaScrollX = e.dx;
                      m_io->mouseDeltaScrollY = e.dy;
+                 });
+
+    HANDLE_EVENT(MouseDown_IOEvent,
+                 [&](const MouseDown_IOEvent& e)
+                 {
+                     m_io->isMouseDown[static_cast<uint64>(e.button)] = true;
+                 });
+
+    HANDLE_EVENT(MouseUp_IOEvent,
+                 [&](const MouseUp_IOEvent& e)
+                 {
+                     m_io->isMouseDown[static_cast<uint64>(e.button)] = false;
                  });
 }
 

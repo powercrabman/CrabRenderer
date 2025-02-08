@@ -7,13 +7,13 @@
 namespace crab
 {
 
-crab::ComPtr<ID3D11Buffer> D11_ConstantBufferUtile::Create(uint32 in_dataSize)
+crab::ComPtr<ID3D11Buffer> D11_ConstantBufferUtile::Create(uint32 in_dataStride)
 {
     auto d = D11_API->GetDevice();
 
     D3D11_BUFFER_DESC desc = {};
     desc.Usage             = D3D11_USAGE_DYNAMIC;
-    desc.ByteWidth         = in_dataSize;
+    desc.ByteWidth         = in_dataStride;
     desc.BindFlags         = D3D11_BIND_CONSTANT_BUFFER;
     desc.CPUAccessFlags    = D3D11_CPU_ACCESS_WRITE;
 
@@ -32,5 +32,10 @@ void D11_ConstantBufferUtile::UpdateData(ID3D11Buffer* in_buffer, const void* in
     d->Unmap(in_buffer, 0);
 }
 
+
+void D11_ConstantBufferBase::Bind()
+{
+    D11_API->SetConstantBuffer(m_buffer.Get(), m_bindSlot, m_bindFlags);
+}
 
 }   // namespace crab

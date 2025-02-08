@@ -3,6 +3,17 @@
 
 namespace crab
 {
+// - ID
+struct IDComponent
+{
+    uint32 id;
+};
+
+// - Name
+struct TagComponent
+{
+    std::string name;
+};
 
 // - Transform
 struct Transform
@@ -99,40 +110,40 @@ struct CameraComponent
 
 // - Renderer
 
-//struct D11_Mesh;
-//struct D11_VertexShader;
-//struct D11_PixelShader;
-//struct Texture;
-//struct D11_Model;
+// class D11_Mesh;
+// class D11_VertexShader;
+// class D11_PixelShader;
+// struct Texture;
+// class D11_Model;
 //
-//struct MeshRenderer
+// struct MeshRenderer
 //{
-//    eTopology             topology = eTopology::TriangleList;
-//    Ref<D11_Mesh>         mesh;
-//    Ref<D11_VertexShader> vertexShader;
-//    Ref<D11_PixelShader>  pixelShader;
-//};
+//     eTopology             topology = eTopology::TriangleList;
+//     Ref<D11_Mesh>         mesh;
+//     Ref<D11_VertexShader> vertexShader;
+//     Ref<D11_PixelShader>  pixelShader;
+// };
 //
-//struct ModelRenderer
+// struct ModelRenderer
 //{
-//    eTopology             topology = eTopology::TriangleList;
-//    Ref<D11_Model>        model;
-//    Ref<D11_VertexShader> vertexShader;
-//    Ref<D11_PixelShader>  pixelShader;
-//};
+//     eTopology             topology = eTopology::TriangleList;
+//     Ref<D11_Model>        model;
+//     Ref<D11_VertexShader> vertexShader;
+//     Ref<D11_PixelShader>  pixelShader;
+// };
 //
-//struct MaterialComponent
+// struct MaterialComponent
 //{
-//    PhongMaterial material;
-//    bool          useTexture;
-//};
+//     PhongMaterial material;
+//     bool          useTexture;
+// };
 //
-//struct NormalRenderer
+// struct NormalRenderer
 //{
-//    Ref<D11_Mesh>         mesh;
-//    Ref<D11_VertexShader> vertexShader;
-//    Ref<D11_PixelShader>  pixelShader;
-//};
+//     Ref<D11_Mesh>         mesh;
+//     Ref<D11_VertexShader> vertexShader;
+//     Ref<D11_PixelShader>  pixelShader;
+// };
 
 // - Light
 

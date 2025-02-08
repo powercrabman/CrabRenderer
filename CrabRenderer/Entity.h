@@ -4,6 +4,8 @@ namespace crab
 {
 
 class Scene;
+struct IDComponent;
+struct Transform;
 
 class Entity
 {
@@ -11,6 +13,8 @@ public:
     Entity();
     Entity(Scene* in_scene, entt::entity in_entity);
     operator entt::entity() const { return m_entity; }
+    IDComponent& GetID();
+    Transform&   GetTransform();
 
     void Destroy()
     {
@@ -26,7 +30,7 @@ public:
     template<typename Ty, typename... Args>
     Ty& AddComponent(Args&&... in_args)
     {
-       return m_registry->emplace<Ty>(m_entity, std::forward<Args>(in_args)...);
+        return m_registry->emplace<Ty>(m_entity, std::forward<Args>(in_args)...);
     }
 
     template<typename Ty, typename... Args>
@@ -61,9 +65,11 @@ public:
 
     bool IsValid() const
     {
-        return m_registry->valid(m_entity);
+        if (m_registry == nullptr)
+            return false;
+        else
+            return m_registry->valid(m_entity);
     }
-
 
     static Entity s_null;
 

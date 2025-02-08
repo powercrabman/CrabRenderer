@@ -41,7 +41,7 @@ enum
     eKey_Count = static_cast<uint64>(eKey::Count)
 };
 
-enum eMouse
+enum class eMouse
 {
     Left = 1, Middle, Right
 };
@@ -55,14 +55,10 @@ struct CrabIO
     std::array<bool, eKey_Count> prevKeyDown;
 
     // - Mouse
-    int32 mouseDeltaScrollX = 0;
-    int32 mouseDeltaScrollY = 0;
-
-    int32 prevMousePosX = 0;
-    int32 prevMousePosY = 0;
-
-    int32 mousePosX = 0;
-    int32 mousePosY = 0;
+    std::array<bool, 3> isMouseDown;
+    std::array<bool, 3> prevMouseDown;
+    int32               mouseDeltaScrollX = 0;
+    int32               mouseDeltaScrollY = 0;
 };
 
 //===================================================
@@ -86,8 +82,13 @@ public:
 
     // - Mouse
     static bool IsMouseDown(eMouse in_mouse);
+    static bool IsMouseUp(eMouse in_mouse);
+    static bool IsMousePressed(eMouse in_mouse);
+    static bool IsMouseReleased(eMouse in_mouse);
     static auto GetMousePos();
     static auto GetMouseDeltaPos();
+    static void SetMousePos(uint32 in_x, uint32 in_y);
+    static void SetMousePosToCenter();
 
     // - Event
     static void OnEvent(CrabEvent& in_event);
@@ -97,18 +98,21 @@ private:
 };
 
 //===================================================
-// Inline
+//                      Inline
 //===================================================
 
 inline auto Input::GetMousePos()
 {
-    return std::make_pair(m_io->mousePosX, m_io->mousePosY);
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+    return std::make_pair(x, y);
 }
 
 inline auto Input::GetMouseDeltaPos()
 {
-    return std::make_pair(m_io->mousePosX - m_io->prevMousePosX,
-                          m_io->mousePosY - m_io->prevMousePosY);
+    int    dx, dy;
+    Uint32 buttons = SDL_GetRelativeMouseState(&dx, &dy);
+    return std::make_pair(dx, dy);
 }
 
 }   // namespace crab

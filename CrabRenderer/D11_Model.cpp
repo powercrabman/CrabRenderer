@@ -3,7 +3,7 @@
 #include "D11_Mesh.h"
 #include "D11_Model.h"
 #include "D11_RenderState.h"
-#include "Texture.h"
+#include "D11_Texture.h"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
@@ -43,9 +43,7 @@ Ref<D11_Model> D11_ModelLoader::CreateModel()
         meshes.push_back(D11_Mesh::Create(meshData));
     }
 
-    Ref<D11_Model> model = CreateRef<D11_Model>();
-    model->meshes        = meshes;
-    model->textures      = m_textures;
+    Ref<D11_Model> model = D11_Model::Create(meshes, m_textures);
     return model;
 }
 
@@ -54,7 +52,7 @@ std::vector<MeshData<D11_ModelLoader::Vertex>> D11_ModelLoader::GetMeshDatas()
     return m_meshDatas;
 }
 
-std::vector<Ref<Texture>> D11_ModelLoader::GetTextures()
+std::vector<Ref<D11_Texture>> D11_ModelLoader::GetTextures()
 {
     return m_textures;
 }
@@ -131,20 +129,46 @@ MeshData<D11_ModelLoader::Vertex> D11_ModelLoader::_ProcessMesh(aiMesh* in_mesh,
     return MeshData<Vertex>(vertices, indices);
 }
 
-Ref<Texture> D11_ModelLoader::_ProcessMaterial(aiMesh* in_mesh, const aiScene* in_scene)
+Ref<D11_Texture> D11_ModelLoader::_ProcessMaterial(aiMesh* in_mesh, const aiScene* in_scene)
 {
     if (in_mesh->mMaterialIndex >= 0)
     {
         aiMaterial* material = in_scene->mMaterials[in_mesh->mMaterialIndex];
         aiString    path;
+
         if (material->GetTexture(aiTextureType_DIFFUSE, 0, &path) == AI_SUCCESS)
         {
             std::filesystem::path texturePath = m_directory / path.C_Str();
-            return Texture::Create(texturePath,
-                                   D11_SamplerState::Create(eSamplerFilter::Linear, eSamplerAddress::Border));
+            return D11_Texture::Create(texturePath,
+                                       D11_SamplerState::Create(eSamplerFilter::Linear, eSamplerAddress::Border));
         }
     }
     return nullptr;
+}
+
+Ref<D11_Model> D11_Model::Create(
+    const std::vector<Ref<D11_Mesh>>&    in_meshes,
+    const std::vector<Ref<D11_Texture>>& in_textures)
+{
+    Ref<D11_Model> model = CreateRef<D11_Model>();
+
+    CRAB_ASSERT(in_meshes.size() == in_textures.size(), "Meshes and textures size mismatch");
+    for (size_t i = 0; i < in_meshes.size(); i++)
+    {
+        model->m_meshes.push_back(in_meshes[i]);
+        model->m_textures.push_back(in_textures[i]);
+    }
+
+    return model;
+}
+
+void D11_Model::Draw(bool in_useTexture)
+{
+    for (uint32 idx = 0; idx < m_meshes.size(); ++idx)
+    {
+        m_textures[idx]->Bind(0, eShaderFlags_PixelShader);
+        m_meshes[idx]->Draw();
+    }
 }
 
 }   // namespace crab

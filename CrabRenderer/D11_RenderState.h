@@ -8,16 +8,19 @@ namespace crab
 // - Depth Stencil State
 //===================================================
 
-struct D11_DepthStencilState
+class D11_DepthStencilState
 {
+public:
     // - Factory
     static Ref<D11_DepthStencilState> Create(const D3D11_DEPTH_STENCIL_DESC& in_desc);
     static Ref<D11_DepthStencilState> Create(bool in_enableDepthTest,
                                              bool in_enableDepthWrite,
                                              bool in_enableStencilTest);
 
-    ComPtr<ID3D11DepthStencilState> depthStencilState;
-    D3D11_DEPTH_STENCIL_DESC        desc;
+    void Bind();
+
+private:
+    ComPtr<ID3D11DepthStencilState> m_depthStencil;
 };
 
 //===================================================
@@ -39,34 +42,40 @@ enum class eCullMode
 
 enum class eFrontFace
 {
-    ClockWise, // default
+    ClockWise,   // default
     CounterClockWise,
 };
 
-struct D11_RasterizerState
+class D11_RasterizerState
 {
+public:
     // - Factory
     static Ref<D11_RasterizerState>             Create(const D3D11_RASTERIZER_DESC& in_desc);
     static crab::Ref<crab::D11_RasterizerState> Create(eCullMode  in_cullmode,
                                                        eFillMode  in_fillmode,
                                                        eFrontFace in_frontface);
 
-    ComPtr<ID3D11RasterizerState> rasterizerState;
-    D3D11_RASTERIZER_DESC         desc;
+    void Bind();
+
+private:
+    ComPtr<ID3D11RasterizerState> m_rasterizerState;
 };
 
 //===================================================
 // - Blend State
 //===================================================
 
-struct D11_BlendState
+class D11_BlendState
 {
+public:
     // - Factory
     static Ref<D11_BlendState> Create(const D3D11_BLEND_DESC& in_desc);
     static Ref<D11_BlendState> Create(bool in_alphaBlend);
 
-    ComPtr<ID3D11BlendState> blendState;
-    D3D11_BLEND_DESC         desc;
+    void Bind();
+
+private:
+    ComPtr<ID3D11BlendState> m_blendState;
 };
 
 //===================================================
@@ -89,14 +98,17 @@ enum class eSamplerAddress
     MirrorOnce = D3D11_TEXTURE_ADDRESS_MIRROR_ONCE
 };
 
-struct D11_SamplerState
+class D11_SamplerState
 {
+public:
     // - Factory
     static Ref<D11_SamplerState> Create(const D3D11_SAMPLER_DESC& in_desc);
     static Ref<D11_SamplerState> Create(eSamplerFilter in_filter, eSamplerAddress in_address);
 
-    ComPtr<ID3D11SamplerState> samplerState;
-    D3D11_SAMPLER_DESC         desc;
+    ID3D11SamplerState* Get() const { return m_samplerState.Get(); }
+
+private:
+    ComPtr<ID3D11SamplerState> m_samplerState;
 };
 
 }   // namespace crab

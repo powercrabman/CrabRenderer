@@ -67,11 +67,17 @@
     <Filter Include="04. Renderer\Gui">
       <UniqueIdentifier>{3000170c-f646-44b0-b75f-1e2240264708}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\Renderer">
-      <UniqueIdentifier>{8076fccc-2742-4c80-bb16-ad3ae0df9354}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04. Renderer\Mesh">
       <UniqueIdentifier>{8f476673-fe22-429f-a800-0a19e7f0ee92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\PostProcessing">
+      <UniqueIdentifier>{010affd7-d431-4986-b70f-e028ba943721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Device">
+      <UniqueIdentifier>{8076fccc-2742-4c80-bb16-ad3ae0df9354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Snapshot">
+      <UniqueIdentifier>{d8d5d394-1943-455d-aad9-129e86c4b297}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -123,20 +129,17 @@
     <ClCompile Include="D11_Texture.cpp">
       <Filter>04. Renderer\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>04. Renderer\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="D11_RenderState.cpp">
       <Filter>04. Renderer\RenderState</Filter>
     </ClCompile>
     <ClCompile Include="D11_Renderer.cpp">
-      <Filter>04. Renderer\Renderer</Filter>
+      <Filter>04. Renderer\Device</Filter>
     </ClCompile>
     <ClCompile Include="D11_RenderTarget.cpp">
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>04. Renderer\Renderer</Filter>
+      <Filter>04. Renderer\Device</Filter>
     </ClCompile>
     <ClCompile Include="D11_Shaders.cpp">
       <Filter>04. Renderer\Shader</Filter>
@@ -191,6 +194,15 @@
     </ClCompile>
     <ClCompile Include="Systems.cpp">
       <Filter>06. ECS\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcess.cpp">
+      <Filter>04. Renderer\PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Swapchain.cpp">
+      <Filter>04. Renderer\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_Snapshot.cpp">
+      <Filter>04. Renderer\Snapshot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -251,20 +263,17 @@
     <ClInclude Include="D11_Texture.h">
       <Filter>04. Renderer\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>04. Renderer\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="D11_RenderState.h">
       <Filter>04. Renderer\RenderState</Filter>
     </ClInclude>
     <ClInclude Include="D11_Renderer.h">
-      <Filter>04. Renderer\Renderer</Filter>
+      <Filter>04. Renderer\Device</Filter>
     </ClInclude>
     <ClInclude Include="D11_RenderTarget.h">
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>04. Renderer\Renderer</Filter>
+      <Filter>04. Renderer\Device</Filter>
     </ClInclude>
     <ClInclude Include="D11_Shaders.h">
       <Filter>04. Renderer\Shader</Filter>
@@ -326,11 +335,22 @@
     <ClInclude Include="Systems.h">
       <Filter>06. ECS\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="PostProcess.h">
+      <Filter>04. Renderer\PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Swapchain.h">
+      <Filter>04. Renderer\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_Snapshot.h">
+      <Filter>04. Renderer\Snapshot</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
       <Filter>99. Base</Filter>
     </None>
-    <None Include="cpp.hint" />
+    <None Include="cpp.hint">
+      <Filter>99. Base</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #pragma once
 #include <any>
 #include <variant>
+
 namespace crab
 {
 
@@ -20,7 +21,9 @@ enum class eEventType
     // - IO Event
     KeyDown_IOEvent,
     KeyUp_IOEvent,
-    MouseScroll_IOEvent
+    MouseScroll_IOEvent,
+    MouseUp_IOEvent,
+    MouseDown_IOEvent
 };
 
 //===================================================
@@ -90,6 +93,18 @@ struct MouseScroll_IOEvent
 
     int32 dx;
     int32 dy;
+};
+
+struct MouseDown_IOEvent
+{
+    IMPLEMENT_EVENT(MouseDown_IOEvent);
+    int32 button;
+};
+
+struct MouseUp_IOEvent
+{
+    IMPLEMENT_EVENT(MouseUp_IOEvent);
+    int32 button;
 };
 
 }   // namespace crab

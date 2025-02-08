@@ -36,6 +36,7 @@ public:
 
     Entity CreateEntity();
     Entity CreateEntity(uint32 in_id);
+    Entity FindEntity(uint32 in_id);
 
     template<typename... Types>
     auto GetView();
