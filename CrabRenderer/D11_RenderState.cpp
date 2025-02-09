@@ -1,4 +1,4 @@
-#include "CrabPch.h"
+﻿#include "CrabPch.h"
 
 #include "D11_RenderState.h"
 
@@ -21,7 +21,7 @@ Ref<D11_DepthStencilState> D11_DepthStencilState::Create(const D3D11_DEPTH_STENC
     return depthStencilState;
 }
 
-crab::Ref<crab::D11_DepthStencilState> D11_DepthStencilState::Create(bool in_enableDepthTest, bool in_enableDepthWrite, bool in_enableStencilTest)
+Ref<D11_DepthStencilState> D11_DepthStencilState::Create(bool in_enableDepthTest, bool in_enableDepthWrite, bool in_enableStencilTest)
 {
     // this factory is for simple usage.
 
@@ -116,22 +116,37 @@ Ref<D11_BlendState> D11_BlendState::Create(bool in_alphaBlend)
     desc.IndependentBlendEnable = false;
 
     D3D11_RENDER_TARGET_BLEND_DESC rtbd = {};
+    rtbd.BlendEnable                    = in_alphaBlend;
 
-    rtbd.BlendEnable = in_alphaBlend;
+    if (in_alphaBlend)
+    {
+        rtbd.SrcBlend      = D3D11_BLEND_SRC_ALPHA;
+        rtbd.SrcBlendAlpha = D3D11_BLEND_ONE;
 
-    rtbd.SrcBlend      = D3D11_BLEND_SRC_ALPHA;
-    rtbd.SrcBlendAlpha = D3D11_BLEND_ONE;
+        rtbd.DestBlend      = D3D11_BLEND_INV_SRC_ALPHA;
+        rtbd.DestBlendAlpha = D3D11_BLEND_ZERO;
 
-    rtbd.DestBlend      = D3D11_BLEND_INV_SRC_ALPHA;
-    rtbd.DestBlendAlpha = D3D11_BLEND_ZERO;
+        rtbd.BlendOp      = D3D11_BLEND_OP_ADD;
+        rtbd.BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    }
+    else
+    {
+        rtbd.SrcBlend      = D3D11_BLEND_ONE;
+        rtbd.SrcBlendAlpha = D3D11_BLEND_ONE;
 
-    rtbd.BlendOp      = D3D11_BLEND_OP_ADD;
-    rtbd.BlendOpAlpha = D3D11_BLEND_OP_ADD;
+        rtbd.DestBlend      = D3D11_BLEND_ZERO;
+        rtbd.DestBlendAlpha = D3D11_BLEND_ZERO;
+
+        rtbd.BlendOp      = D3D11_BLEND_OP_ADD;
+        rtbd.BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    }
 
     rtbd.RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+    desc.RenderTarget[0]       = rtbd; 
 
     return Create(desc);
 }
+
 
 void D11_BlendState::Bind()
 {
@@ -168,6 +183,11 @@ Ref<D11_SamplerState> D11_SamplerState::Create(eSamplerFilter in_filter, eSample
     desc.MaxLOD = D3D11_FLOAT32_MAX;
 
     return Create(desc);
+}
+
+void D11_SamplerState::Bind(uint32 in_slot, eShaderFlags in_flags)
+{
+    D11_API->SetSamplerState(m_samplerState.Get(), in_slot, in_flags);
 }
 
 }   // namespace crab

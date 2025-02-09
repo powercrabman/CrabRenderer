@@ -4,6 +4,7 @@
 
 #include "Components.h"
 #include "Entity.h"
+#include "Script.h"
 
 namespace crab
 {
@@ -80,6 +81,13 @@ void Scene::_OnExit()
 
 void Scene::_OnUpdate(TimeStamp& in_ts)
 {
+    // script update
+    GetView<ScriptComponent>().each(
+        [&](ScriptComponent& in_script)
+        {
+            in_script.script->OnUpdate(in_ts);
+        });
+
     // update derived scene
     OnUpdate(in_ts);
 }

@@ -25,17 +25,17 @@ crab::ComPtr<ID3D11Buffer> D11_ConstantBufferUtile::Create(uint32 in_dataStride)
 
 void D11_ConstantBufferUtile::UpdateData(ID3D11Buffer* in_buffer, const void* in_data, uint32 in_dataSize)
 {
-    auto                     d = D11_API->GetContext();
+    auto                     d              = D11_API->GetContext();
     D3D11_MAPPED_SUBRESOURCE mappedResource = {};
     D11_ASSERT(d->Map(in_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource), "Map Fail.");
     memcpy(mappedResource.pData, in_data, in_dataSize);
     d->Unmap(in_buffer, 0);
 }
 
-
 void D11_ConstantBufferBase::Bind()
 {
-    D11_API->SetConstantBuffer(m_buffer.Get(), m_bindSlot, m_bindFlags);
+    auto* dx = D11_API;
+    dx->SetConstantBuffer(m_buffer.Get(), m_bindSlot, m_bindFlags);
 }
 
 }   // namespace crab

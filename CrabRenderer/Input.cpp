@@ -32,6 +32,14 @@ void Input::Update()
     std::memcpy(m_io->prevMouseDown.data(),
                 m_io->isMouseDown.data(),
                 sizeof(bool) * m_io->isMouseDown.size());
+
+    // - Mouse Pos
+
+    m_io->prevMousePosX = m_io->mousePosX;
+    m_io->prevMousePosY = m_io->mousePosY;
+
+    SDL_GetMouseState(&m_io->mousePosX, &m_io->mousePosY);
+    SDL_GetRelativeMouseState(&m_io->relativeMouseDeltaX, &m_io->relativeMouseDeltaY);
 }
 
 bool Input::IsKeyDown(eKey in_key)
@@ -44,6 +52,11 @@ bool Input::IsKeyUp(eKey in_key)
     return !m_io->isKeyDown[static_cast<uint64>(in_key)];
 }
 
+bool Input::IsKeyHold(eKey in_key)
+{
+    return m_io->isKeyDown[static_cast<uint64>(in_key)] && m_io->prevKeyDown[static_cast<uint64>(in_key)];
+}
+
 bool Input::IsKeyPressed(eKey in_key)
 {
     return m_io->isKeyDown[static_cast<uint64>(in_key)] && !m_io->prevKeyDown[static_cast<uint64>(in_key)];
@@ -54,24 +67,43 @@ bool Input::IsKeyReleased(eKey in_key)
     return !m_io->isKeyDown[static_cast<uint64>(in_key)] && m_io->prevKeyDown[static_cast<uint64>(in_key)];
 }
 
+bool Input::IsKeyAway(eKey in_key)
+{
+    return !m_io->isKeyDown[static_cast<uint64>(in_key)] && !m_io->prevKeyDown[static_cast<uint64>(in_key)];
+}
+
 bool Input::IsMouseDown(eMouse in_mouse)
 {
-    return m_io->isMouseDown[(uint32)in_mouse];
+    return m_io->isMouseDown[(uint32)in_mouse - 1];
 }
 
 bool Input::IsMouseUp(eMouse in_mouse)
 {
-    return !m_io->isMouseDown[(uint32)in_mouse];
+    return !m_io->isMouseDown[(uint32)in_mouse - 1];
 }
 
 bool Input::IsMousePressed(eMouse in_mouse)
 {
-    return m_io->isMouseDown[(uint32)in_mouse] && !m_io->prevMouseDown[(uint32)in_mouse];
+    uint32 idx = (uint32)in_mouse - 1;
+    return m_io->isMouseDown[idx] && !m_io->prevMouseDown[idx];
+}
+
+bool Input::IsMouseHold(eMouse in_mouse)
+{
+    uint32 idx = (uint32)in_mouse - 1;
+    return m_io->isMouseDown[idx] && m_io->prevMouseDown[idx];
 }
 
 bool Input::IsMouseReleased(eMouse in_mouse)
 {
-    return !m_io->isMouseDown[(uint32)in_mouse] && m_io->prevMouseDown[(uint32)in_mouse];
+    uint32 idx = (uint32)in_mouse - 1;
+    return !m_io->isMouseDown[idx] && m_io->prevMouseDown[idx];
+}
+
+bool Input::IsMouseAway(eMouse in_mouse)
+{
+    uint32 idx = (uint32)in_mouse - 1;
+    return !m_io->isMouseDown[idx] && !m_io->prevMouseDown[idx];
 }
 
 void Input::SetMousePos(uint32 in_x, uint32 in_y)
@@ -112,13 +144,13 @@ void Input::OnEvent(CrabEvent& in_event)
     HANDLE_EVENT(MouseDown_IOEvent,
                  [&](const MouseDown_IOEvent& e)
                  {
-                     m_io->isMouseDown[static_cast<uint64>(e.button)] = true;
+                     m_io->isMouseDown[static_cast<uint64>(e.button) - 1] = true;
                  });
 
     HANDLE_EVENT(MouseUp_IOEvent,
                  [&](const MouseUp_IOEvent& e)
                  {
-                     m_io->isMouseDown[static_cast<uint64>(e.button)] = false;
+                     m_io->isMouseDown[static_cast<uint64>(e.button) - 1] = false;
                  });
 }
 

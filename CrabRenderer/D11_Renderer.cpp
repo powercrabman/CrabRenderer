@@ -69,9 +69,6 @@ void D11_Renderer::Init(const RendererSetting& in_setting)
     m_imgui = CreateScope<D11_Imgui>();
     m_imgui->Init();
 
-    // default resources
-    m_defaultSampler = D11_SamplerState::Create(eSamplerFilter::Linear, eSamplerAddress::Clamp);
-
     // Pipeline State
     m_vsConstantBuffers.fill(nullptr);
     m_psConstantBuffers.fill(nullptr);
@@ -149,23 +146,65 @@ void D11_Renderer::SetPixelShader(ID3D11PixelShader* in_shader)
     }
 }
 
+void D11_Renderer::SetGeometryShader(ID3D11GeometryShader* in_shader)
+{
+    if (m_geometryShader != in_shader)
+    {
+        m_geometryShader = in_shader;
+        m_deviceContext->GSSetShader(m_geometryShader, nullptr, 0);
+    }
+}
+
+void D11_Renderer::SetComputeShader(ID3D11ComputeShader* in_shader)
+{
+    if (m_computeShader != in_shader)
+    {
+        m_computeShader = in_shader;
+        m_deviceContext->CSSetShader(m_computeShader, nullptr, 0);
+    }
+}
+
 void D11_Renderer::SetSamplerState(ID3D11SamplerState* in_samplerState, uint32 in_slot, eShaderFlags in_flag)
 {
     if (BIT_AND(in_flag, eShaderFlags_VertexShader))
-        m_deviceContext->VSSetSamplers(in_slot, 1, &in_samplerState);
+    {
+        if (m_vsSamplerStates[in_slot] != in_samplerState)
+        {
+
+            m_vsSamplerStates[in_slot] = in_samplerState;
+            m_deviceContext->VSSetSamplers(in_slot, 1, &in_samplerState);
+        }
+    }
 
     if (BIT_AND(in_flag, eShaderFlags_PixelShader))
-        m_deviceContext->PSSetSamplers(in_slot, 1, &in_samplerState);
-}
+    {
+        if (m_psSamplerStates[in_slot] != in_samplerState)
+        {
 
-void D11_Renderer::SetSamplerStates(const std::vector<ID3D11SamplerState*>& in_samplerStates, uint32 in_startSlot, eShaderFlags in_flag)
-{
-    if (BIT_AND(in_flag, eShaderFlags_VertexShader))
-        if (in_samplerStates.size() > 0)
-            m_deviceContext->VSSetSamplers(in_startSlot, (UINT)in_samplerStates.size(), in_samplerStates.data());
+            m_psSamplerStates[in_slot] = in_samplerState;
+            m_deviceContext->PSSetSamplers(in_slot, 1, &in_samplerState);
+        }
+    }
 
-    if (BIT_AND(in_flag, eShaderFlags_PixelShader))
-        m_deviceContext->PSSetSamplers(in_startSlot, (UINT)in_samplerStates.size(), in_samplerStates.data());
+    if (BIT_AND(in_flag, eShaderFlags_GeometryShader))
+    {
+        if (m_gsSamplerStates[in_slot] != in_samplerState)
+        {
+
+            m_gsSamplerStates[in_slot] = in_samplerState;
+            m_deviceContext->GSSetSamplers(in_slot, 1, &in_samplerState);
+        }
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_ComputeShader))
+    {
+        if (m_csSamplerStates[in_slot] != in_samplerState)
+        {
+
+            m_csSamplerStates[in_slot] = in_samplerState;
+            m_deviceContext->CSSetSamplers(in_slot, 1, &in_samplerState);
+        }
+    }
 }
 
 void D11_Renderer::SetRasterizerState(ID3D11RasterizerState* in_rasterizerState)
@@ -198,19 +237,75 @@ void D11_Renderer::SetBlendState(ID3D11BlendState* in_blendState)
 void D11_Renderer::SetShaderResourceView(ID3D11ShaderResourceView* in_srv, uint32 in_slot, eShaderFlags in_flag)
 {
     if (BIT_AND(in_flag, eShaderFlags_VertexShader))
-        m_deviceContext->VSSetShaderResources(in_slot, 1, &in_srv);
+    {
+        if (m_vsTextures[in_slot] != in_srv)
+        {
+            m_vsTextures[in_slot] = in_srv;
+            m_deviceContext->VSSetShaderResources(in_slot, 1, &in_srv);
+            m_vsLargestBindedTextureSlot = in_slot;
+        }
+    }
 
     if (BIT_AND(in_flag, eShaderFlags_PixelShader))
-        m_deviceContext->PSSetShaderResources(in_slot, 1, &in_srv);
+    {
+        if (m_psTextures[in_slot] != in_srv)
+        {
+            m_psTextures[in_slot] = in_srv;
+            m_deviceContext->PSSetShaderResources(in_slot, 1, &in_srv);
+            m_psLargestBindedTextureSlot = in_slot;
+        }
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_GeometryShader))
+    {
+        if (m_gsTextures[in_slot] != in_srv)
+        {
+            m_gsTextures[in_slot] = in_srv;
+            m_deviceContext->GSSetShaderResources(in_slot, 1, &in_srv);
+            m_gsLargestBindedTextureSlot = in_slot;
+        }
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_ComputeShader))
+    {
+        if (m_csTextures[in_slot] != in_srv)
+        {
+            m_csTextures[in_slot] = in_srv;
+            m_deviceContext->CSSetShaderResources(in_slot, 1, &in_srv);
+            m_csLargestBindedTextureSlot = in_slot;
+        }
+    }
 }
 
-void D11_Renderer::SetShaderResourceViews(const std::vector<ID3D11ShaderResourceView*>& in_srvs, uint32 in_startSlot, eShaderFlags in_flag)
+void D11_Renderer::ReleaseShaderResourceViews(eShaderFlags in_flag)
 {
     if (BIT_AND(in_flag, eShaderFlags_VertexShader))
-        m_deviceContext->VSSetShaderResources(in_startSlot, (UINT)in_srvs.size(), in_srvs.data());
+    {
+        for (uint32 i = 0; i <= m_vsLargestBindedTextureSlot; ++i)
+            m_vsTextures[i] = nullptr;
+        m_deviceContext->VSSetShaderResources(0, m_vsLargestBindedTextureSlot + 1, m_vsTextures.data());
+    }
 
     if (BIT_AND(in_flag, eShaderFlags_PixelShader))
-        m_deviceContext->PSSetShaderResources(in_startSlot, (UINT)in_srvs.size(), in_srvs.data());
+    {
+        for (uint32 i = 0; i <= m_psLargestBindedTextureSlot; ++i)
+            m_psTextures[i] = nullptr;
+        m_deviceContext->PSSetShaderResources(0, m_psLargestBindedTextureSlot + 1, m_vsTextures.data());
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_GeometryShader))
+    {
+        for (uint32 i = 0; i <= m_gsLargestBindedTextureSlot; ++i)
+            m_gsTextures[i] = nullptr;
+        m_deviceContext->GSSetShaderResources(0, m_gsLargestBindedTextureSlot + 1, m_vsTextures.data());
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_ComputeShader))
+    {
+        for (uint32 i = 0; i <= m_csLargestBindedTextureSlot; ++i)
+            m_csTextures[i] = nullptr;
+        m_deviceContext->CSSetShaderResources(0, m_csLargestBindedTextureSlot + 1, m_vsTextures.data());
+    }
 }
 
 void D11_Renderer::SetConstantBuffer(ID3D11Buffer* in_constantBuffer, uint32 in_slot, eShaderFlags in_flag)
@@ -232,6 +327,24 @@ void D11_Renderer::SetConstantBuffer(ID3D11Buffer* in_constantBuffer, uint32 in_
             m_deviceContext->PSSetConstantBuffers(in_slot, 1, &in_constantBuffer);
         }
     }
+
+    if (BIT_AND(in_flag, eShaderFlags_GeometryShader))
+    {
+        if (m_gsConstantBuffers[in_slot] != in_constantBuffer)
+        {
+            m_gsConstantBuffers[in_slot] = in_constantBuffer;
+            m_deviceContext->GSSetConstantBuffers(in_slot, 1, &in_constantBuffer);
+        }
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_ComputeShader))
+    {
+        if (m_csConstantBuffers[in_slot] != in_constantBuffer)
+        {
+            m_csConstantBuffers[in_slot] = in_constantBuffer;
+            m_deviceContext->CSSetConstantBuffers(in_slot, 1, &in_constantBuffer);
+        }
+    }
 }
 
 void D11_Renderer::SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, ID3D11DepthStencilView* in_depthStencilView)
@@ -242,6 +355,12 @@ void D11_Renderer::SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, 
 void D11_Renderer::SetRenderTargets(const std::vector<ID3D11RenderTargetView*>& in_renderTargetViews, ID3D11DepthStencilView* in_depthStencilView)
 {
     m_deviceContext->OMSetRenderTargets((UINT)in_renderTargetViews.size(), in_renderTargetViews.data(), in_depthStencilView);
+}
+
+void D11_Renderer::ReleaseRenderTargets()
+{
+    std::array<ID3D11RenderTargetView*, 8> nullRTVs = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
+    m_deviceContext->OMSetRenderTargets((UINT)nullRTVs.size(), nullRTVs.data(), nullptr);
 }
 
 void D11_Renderer::SetViewport(const Viewport& in_viewport)

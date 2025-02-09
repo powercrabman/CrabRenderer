@@ -51,9 +51,11 @@ public:
     static Ref<D11_GeometryShader> CreateFromString(const std::string_view in_shaderCode,
                                                     const std::string_view in_entryPoint);
 
+    void Bind();
+
 private:
-    ComPtr<ID3D11GeometryShader> geometryShader;
-    ComPtr<ID3DBlob>             blob;
+    ComPtr<ID3D11GeometryShader> m_geometryShader;
+    ComPtr<ID3DBlob>             m_blob;
 };
 
 class D11_ComputeShader
@@ -66,9 +68,11 @@ public:
     static Ref<D11_ComputeShader> CreateFromString(const std::string_view in_shaderCode,
                                                    const std::string_view in_entryPoint);
 
+    void Bind();
+
 private:
-    ComPtr<ID3D11ComputeShader> computeShader;
-    ComPtr<ID3DBlob>            blob;
+    ComPtr<ID3D11ComputeShader> m_computeShader;
+    ComPtr<ID3DBlob>            m_blob;
 };
 
 }   // namespace crab

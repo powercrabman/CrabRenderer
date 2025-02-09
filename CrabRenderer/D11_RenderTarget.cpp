@@ -38,10 +38,7 @@ Ref<D11_RenderTarget> D11_RenderTarget::Create(ID3D11Texture2D* in_texture)
         srvDesc.Texture2D.MostDetailedMip       = 0;
         srvDesc.Texture2D.MipLevels             = 1;
 
-        rt->m_texture = D11_Texture::Create(
-            in_texture,
-            srvDesc,
-            D11_SamplerState::Create(eSamplerFilter::Linear, eSamplerAddress::Clamp));
+        rt->m_texture = D11_Texture::Create(in_texture, srvDesc);
     }
     rt->m_format = texDesc.Format;
 

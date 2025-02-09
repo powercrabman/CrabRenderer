@@ -106,6 +106,7 @@ public:
     static Ref<D11_SamplerState> Create(eSamplerFilter in_filter, eSamplerAddress in_address);
 
     ID3D11SamplerState* Get() const { return m_samplerState.Get(); }
+    void                Bind(uint32 in_slot, eShaderFlags in_flags);
 
 private:
     ComPtr<ID3D11SamplerState> m_samplerState;

@@ -15,6 +15,7 @@
 // - ECS
 #include "Entity.h"
 #include "Components.h"
+#include "Script.h"
 
 // - Renderer
 #include "D11_Buffers.h"

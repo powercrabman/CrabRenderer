@@ -7,10 +7,12 @@ namespace crab
 {
 
 class D11_FrameBuffer;
-class D11_FrameBufferArray;
+class D11_FrameBufferList;
 class D11_VertexShader;
 class D11_PixelShader;
 class D11_PixelShader;
+class D11_ComputeShader;
+class D11_GeometryShader;
 class D11_RenderTarget;
 class D11_Mesh;
 
@@ -65,8 +67,7 @@ public:
     void SetRenderTarget(const Ref<D11_FrameBuffer>& in_fb);
     void SetRenderTargets(const std::vector<Ref<D11_FrameBuffer>>& in_fbs);
 
-    void SetTexture(const Ref<D11_Texture>& in_tex);
-    void SetTextures(const std::vector<Ref<D11_Texture>>& in_texs);
+    void SetTexture(const Ref<D11_Texture>& in_tex, uint32 in_slot);
 
     void UpdateConstantData(const CB_PostProcess& in_constatnData);
     void UpdateConstantData(float in_threshhold, float in_strength);
@@ -81,18 +82,22 @@ public:
 private:
     using D11_ConstantBuffer = D11_ConstantBuffer<CB_PostProcess>;
 
-    Ref<D11_FrameBuffer>    m_frameBuffer;
+    Ref<D11_FrameBuffer> m_frameBuffer;
+
     Ref<D11_VertexShader>   m_vertexShader;
     Ref<D11_PixelShader>    m_pixelShader;
+    Ref<D11_ComputeShader>  m_computeShader;
+    Ref<D11_GeometryShader> m_geometryShader;
+
     Ref<D11_ConstantBuffer> m_cbPostProcessing;
     Ref<D11_Mesh>           m_quadMesh;
     Ref<D11_SamplerState>   m_samplerState;
 
-    float  m_deltaX;
-    float  m_deltaY;
+    float m_deltaX;
+    float m_deltaY;
 
+    std::vector<Ref<D11_Texture>>        m_textures;
     std::vector<ID3D11RenderTargetView*> m_rtvs;
-    std::vector<ID3D11ShaderResourceView*> m_dsvs;
 };
 
 }   // namespace crab

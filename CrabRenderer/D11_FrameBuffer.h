@@ -31,14 +31,14 @@ private:
     Viewport              m_viewport;
 };
 
-class D11_FrameBufferArray
+class D11_FrameBufferList
 {
 public:
-    D11_FrameBufferArray()  = default;
-    ~D11_FrameBufferArray() = default;
+    D11_FrameBufferList()  = default;
+    ~D11_FrameBufferList() = default;
 
-    void Clear(const std::vector<Color>& in_colors, bool in_clearDepth, bool in_clearStencil);
     void Bind();
+    void Clear(const std::vector<Color>& in_colors, bool in_clearDepth, bool in_clearStencil);
 
     void AddRenderTarget(const Ref<D11_RenderTarget>& in_rt);
     void SetDepthStencil(const Ref<D11_DepthStencil>& in_ds);

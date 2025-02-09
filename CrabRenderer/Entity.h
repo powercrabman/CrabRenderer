@@ -33,12 +33,6 @@ public:
         return m_registry->emplace<Ty>(m_entity, std::forward<Args>(in_args)...);
     }
 
-    template<typename Ty, typename... Args>
-    void ReplaceComponent(Args&&... in_args)
-    {
-        m_registry->replace<Ty>(m_entity, std::forward<Args>(in_args)...);
-    }
-
     template<typename... Ty>
     void RemoveComponent()
     {

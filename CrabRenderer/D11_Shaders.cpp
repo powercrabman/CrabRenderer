@@ -187,7 +187,7 @@ Ref<D11_ComputeShader> D11_ComputeShader::CreateFromFile(const std::filesystem::
                                   "cs_5_0",
                                   compileFlags,
                                   0,
-                                  cs->blob.GetAddressOf(),
+                                  cs->m_blob.GetAddressOf(),
                                   errorBlob.GetAddressOf()),
                "D3DCompileFromFile Fail.");
 
@@ -198,10 +198,10 @@ Ref<D11_ComputeShader> D11_ComputeShader::CreateFromFile(const std::filesystem::
     }
 
     // - Create Compute Shader
-    D11_ASSERT(d->CreateComputeShader(cs->blob->GetBufferPointer(),
-                                      cs->blob->GetBufferSize(),
+    D11_ASSERT(d->CreateComputeShader(cs->m_blob->GetBufferPointer(),
+                                      cs->m_blob->GetBufferSize(),
                                       nullptr,
-                                      cs->computeShader.GetAddressOf()),
+                                      cs->m_computeShader.GetAddressOf()),
                "CreateComputeShader Fail.");
     return cs;
 }
@@ -227,7 +227,7 @@ crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromFile(const std
                                   "gs_5_0",
                                   compileFlags,
                                   0,
-                                  gs->blob.GetAddressOf(),
+                                  gs->m_blob.GetAddressOf(),
                                   errorBlob.GetAddressOf()),
                "D3DCompileFromFile Fail.");
 
@@ -238,10 +238,10 @@ crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromFile(const std
     }
 
     // - Create Geometry Shader
-    D11_ASSERT(d->CreateGeometryShader(gs->blob->GetBufferPointer(),
-                                       gs->blob->GetBufferSize(),
+    D11_ASSERT(d->CreateGeometryShader(gs->m_blob->GetBufferPointer(),
+                                       gs->m_blob->GetBufferSize(),
                                        nullptr,
-                                       gs->geometryShader.GetAddressOf()),
+                                       gs->m_geometryShader.GetAddressOf()),
                "CreateGeometryShader Fail.");
     return gs;
 }
@@ -316,7 +316,7 @@ Ref<D11_ComputeShader> D11_ComputeShader::CreateFromString(const std::string_vie
                           "cs_5_0",
                           compileFlags,
                           0,
-                          cs->blob.GetAddressOf(),
+                          cs->m_blob.GetAddressOf(),
                           errorBlob.GetAddressOf()),
                "D3DCompile Fail.");
 
@@ -326,12 +326,18 @@ Ref<D11_ComputeShader> D11_ComputeShader::CreateFromString(const std::string_vie
         return nullptr;
     }
     // - Create Compute Shader
-    D11_ASSERT(d->CreateComputeShader(cs->blob->GetBufferPointer(),
-                                      cs->blob->GetBufferSize(),
+    D11_ASSERT(d->CreateComputeShader(cs->m_blob->GetBufferPointer(),
+                                      cs->m_blob->GetBufferSize(),
                                       nullptr,
-                                      cs->computeShader.GetAddressOf()),
+                                      cs->m_computeShader.GetAddressOf()),
                "CreateComputeShader Fail.");
     return cs;
+}
+
+void D11_ComputeShader::Bind()
+{
+    auto* dx = D11_API;
+    dx->SetComputeShader(m_computeShader.Get());
 }
 
 crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
@@ -357,7 +363,7 @@ crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromString(const s
                           "gs_5_0",
                           compileFlags,
                           0,
-                          gs->blob.GetAddressOf(),
+                          gs->m_blob.GetAddressOf(),
                           errorBlob.GetAddressOf()),
                "D3DCompile Fail.");
 
@@ -367,12 +373,18 @@ crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromString(const s
         return nullptr;
     }
     // - Create Geometry Shader
-    D11_ASSERT(d->CreateGeometryShader(gs->blob->GetBufferPointer(),
-                                       gs->blob->GetBufferSize(),
+    D11_ASSERT(d->CreateGeometryShader(gs->m_blob->GetBufferPointer(),
+                                       gs->m_blob->GetBufferSize(),
                                        nullptr,
-                                       gs->geometryShader.GetAddressOf()),
+                                       gs->m_geometryShader.GetAddressOf()),
                "CreateGeometryShader Fail.");
     return gs;
+}
+
+void D11_GeometryShader::Bind()
+{
+    auto* dx = D11_API;
+    dx->SetGeometryShader(m_geometryShader.Get());
 }
 
 }   // namespace crab

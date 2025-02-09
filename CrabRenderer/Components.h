@@ -22,7 +22,7 @@ struct Transform
     {
         return DirectX::XMMatrixAffineTransformation(scale,
                                                      Vec3::Zero,
-                                                     Quat::CreateFromYawPitchRoll(rotation.y, rotation.x, rotation.z),
+                                                     quaternion,
                                                      position);
     }
 
@@ -33,19 +33,19 @@ struct Transform
 
     Vec3 Forward() const
     {
-        Mat4 rMat = Mat4::CreateFromYawPitchRoll(rotation.y, rotation.x, rotation.z);
+        Mat4 rMat = Mat4::CreateFromQuaternion(quaternion);
         return rMat.Backward();
     }
 
     Vec3 Right() const
     {
-        Mat4 rMat = Mat4::CreateFromYawPitchRoll(rotation.y, rotation.x, rotation.z);
+        Mat4 rMat = Mat4::CreateFromQuaternion(quaternion);
         return rMat.Right();
     }
 
     Vec3 Up() const
     {
-        Mat4 rMat = Mat4::CreateFromYawPitchRoll(rotation.y, rotation.x, rotation.z);
+        Mat4 rMat = Mat4::CreateFromQuaternion(quaternion);
         return rMat.Up();
     }
 
@@ -64,9 +64,9 @@ struct Transform
         return -Up();
     }
 
-    Vec3 position = Vec3::Zero;
-    Vec3 rotation = Vec3::Zero;   // pitch yaw roll
-    Vec3 scale    = Vec3::One;
+    Vec3 position   = Vec3::Zero;
+    Vec3 scale      = Vec3::One;
+    Quat quaternion = Quat::Identity;
 };
 
 // - Camera
@@ -80,7 +80,7 @@ struct CameraComponent
 {
     Mat4 GetView(const Transform& in_transform) const
     {
-        Mat4 rMat = Mat4::CreateFromYawPitchRoll(in_transform.rotation.y, in_transform.rotation.x, in_transform.rotation.z);
+        Mat4 rMat = Mat4::CreateFromQuaternion(in_transform.quaternion);
         return DirectX::XMMatrixLookToLH(in_transform.position, rMat.Backward(), rMat.Up());
     }
 
@@ -89,9 +89,9 @@ struct CameraComponent
         switch (projectionType)
         {
             case eProjectionType::Orthographic:
-                return DirectX::XMMatrixOrthographicLH(aspect, 1, nearPlane, farPlane);
+                return DirectX::XMMatrixOrthographicLH(aspect, 1, nearZ, farZ);
             case eProjectionType::Perspective:
-                return DirectX::XMMatrixPerspectiveFovLH(fov, aspect, nearPlane, farPlane);
+                return DirectX::XMMatrixPerspectiveFovLH(fov, aspect, nearZ, farZ);
         }
         return Mat4::Identity;
     }
@@ -103,65 +103,16 @@ struct CameraComponent
 
     eProjectionType projectionType = eProjectionType::Orthographic;
     float           aspect         = 1.f;   // in perspective
-    float           nearPlane      = 0.1f;
-    float           farPlane       = 100.0f;
+    float           nearZ          = 0.1f;
+    float           farZ           = 100.0f;
     float           fov            = DirectX::XMConvertToRadians(45.f);
 };
 
-// - Renderer
+class Script;
 
-// class D11_Mesh;
-// class D11_VertexShader;
-// class D11_PixelShader;
-// struct Texture;
-// class D11_Model;
-//
-// struct MeshRenderer
-//{
-//     eTopology             topology = eTopology::TriangleList;
-//     Ref<D11_Mesh>         mesh;
-//     Ref<D11_VertexShader> vertexShader;
-//     Ref<D11_PixelShader>  pixelShader;
-// };
-//
-// struct ModelRenderer
-//{
-//     eTopology             topology = eTopology::TriangleList;
-//     Ref<D11_Model>        model;
-//     Ref<D11_VertexShader> vertexShader;
-//     Ref<D11_PixelShader>  pixelShader;
-// };
-//
-// struct MaterialComponent
-//{
-//     PhongMaterial material;
-//     bool          useTexture;
-// };
-//
-// struct NormalRenderer
-//{
-//     Ref<D11_Mesh>         mesh;
-//     Ref<D11_VertexShader> vertexShader;
-//     Ref<D11_PixelShader>  pixelShader;
-// };
-
-// - Light
-
-enum class eLightType
+struct ScriptComponent
 {
-    Directional,
-    Point,
-    Spot
+    Scope<Script> script;
 };
-
-// struct LightComponent
-//{
-//     Vec3       lightColor;
-//     float      lightIntensity;
-//     float      falloffStart;   // Point + Spot
-//     float      falloffEnd;     // Point + Spot
-//     float      spotPower;      // Spot
-//     eLightType lightType;
-// };
 
 }   // namespace crab

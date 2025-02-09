@@ -57,8 +57,18 @@ struct CrabIO
     // - Mouse
     std::array<bool, 3> isMouseDown;
     std::array<bool, 3> prevMouseDown;
-    int32               mouseDeltaScrollX = 0;
-    int32               mouseDeltaScrollY = 0;
+
+    int32 mouseDeltaScrollX = 0;
+    int32 mouseDeltaScrollY = 0;
+
+    int32 mousePosX     = 0;
+    int32 mousePosY     = 0;
+
+    int32 prevMousePosX = 0;
+    int32 prevMousePosY = 0;
+
+    int32 relativeMouseDeltaX = 0;
+    int32 relativeMouseDeltaY = 0;
 };
 
 //===================================================
@@ -76,17 +86,26 @@ public:
 
     // - Keyboard
     static bool IsKeyDown(eKey in_key);
-    static bool IsKeyUp(eKey in_key);
+    static bool IsKeyHold(eKey in_key);   // IsKeyDown, but not IsKeyPressed
     static bool IsKeyPressed(eKey in_key);
+
+    static bool IsKeyUp(eKey in_key);
     static bool IsKeyReleased(eKey in_key);
+    static bool IsKeyAway(eKey in_key);   // IsKeyUp, but not IsKeyReleased
 
     // - Mouse
     static bool IsMouseDown(eMouse in_mouse);
-    static bool IsMouseUp(eMouse in_mouse);
     static bool IsMousePressed(eMouse in_mouse);
+    static bool IsMouseHold(eMouse in_mouse);   // IsMouseDown, but not IsMousePressed
+
+    static bool IsMouseUp(eMouse in_mouse);
     static bool IsMouseReleased(eMouse in_mouse);
+    static bool IsMouseAway(eMouse in_mouse);   // IsMouseUp, but not IsMouseReleased
+
     static auto GetMousePos();
+    static auto GetPrevMousePos();
     static auto GetMouseDeltaPos();
+    static auto GetMouseRelativeDeltaPos();
     static void SetMousePos(uint32 in_x, uint32 in_y);
     static void SetMousePosToCenter();
 
@@ -97,22 +116,28 @@ private:
     static Scope<CrabIO> m_io;
 };
 
-//===================================================
-//                      Inline
-//===================================================
-
 inline auto Input::GetMousePos()
 {
-    int x, y;
-    SDL_GetMouseState(&x, &y);
-    return std::make_pair(x, y);
+    return std::make_pair(m_io->mousePosX, m_io->mousePosY);
 }
 
 inline auto Input::GetMouseDeltaPos()
 {
-    int    dx, dy;
-    Uint32 buttons = SDL_GetRelativeMouseState(&dx, &dy);
+    int dx, dy;
+    dx = m_io->mousePosX - m_io->prevMousePosX;
+    dy = m_io->mousePosY - m_io->prevMousePosY;
     return std::make_pair(dx, dy);
 }
+
+inline auto Input::GetPrevMousePos()
+{
+    return std::make_pair(m_io->prevMousePosX, m_io->prevMousePosY);
+}
+
+inline auto Input::GetMouseRelativeDeltaPos()
+{
+    return std::make_pair(m_io->relativeMouseDeltaX, m_io->relativeMouseDeltaY);
+}
+
 
 }   // namespace crab

@@ -42,20 +42,21 @@ public:
 
     void SetVertexShader(ID3D11VertexShader* in_shader, ID3D11InputLayout* in_layout);
     void SetPixelShader(ID3D11PixelShader* in_shader);
+    void SetGeometryShader(ID3D11GeometryShader* in_shader);
+    void SetComputeShader(ID3D11ComputeShader* in_shader);
 
     void SetSamplerState(ID3D11SamplerState* in_samplerState, uint32 in_slot, eShaderFlags in_flag);
-    void SetSamplerStates(const  std::vector<ID3D11SamplerState*>& in_samplerStates, uint32 in_startSlot, eShaderFlags in_flag);
     void SetRasterizerState(ID3D11RasterizerState* in_rasterizerState);
     void SetDepthStencilState(ID3D11DepthStencilState* in_depthStencilState);
     void SetBlendState(ID3D11BlendState* in_blendState);
 
     void SetShaderResourceView(ID3D11ShaderResourceView* in_srv, uint32 in_slot, eShaderFlags in_flag);
-    void SetShaderResourceViews(const std::vector<ID3D11ShaderResourceView*>& in_srvs, uint32 in_startSlot, eShaderFlags in_flag);
-
+    void ReleaseShaderResourceViews(eShaderFlags in_flag);
     void SetConstantBuffer(ID3D11Buffer* in_constantBuffer, uint32 in_slot, eShaderFlags in_flag);
 
     void SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, ID3D11DepthStencilView* in_depthStencilView);
     void SetRenderTargets(const std::vector<ID3D11RenderTargetView*>& in_renderTargetViews, ID3D11DepthStencilView* in_depthStencilView);
+    void ReleaseRenderTargets();
 
     void SetViewport(const Viewport& in_viewport);
     void SetBackBufferToRenderTarget();
@@ -74,7 +75,6 @@ public:
     ComPtr<ID3D11DeviceContext> GetContext() const;
     Ref<D11_Swapchain>          GetSwapChain() const;
 
-
 private:
     // Device
     ComPtr<ID3D11Device>        m_device;
@@ -91,14 +91,13 @@ private:
     // imgui
     Scope<D11_Imgui> m_imgui;
 
-    // Default Resources
-    Ref<D11_SamplerState> m_defaultSampler;
-
     //===================================================
     // Pipeline State
     //===================================================
 
-    using PipelineConstantBufferArray = std::array<ID3D11Buffer*, CONSTANT_BUFFER_MAX>;
+    using PipelineConstantBufferArray = std::array<ID3D11Buffer*, CONSTANT_BUFFER_SLOT_MAX>;
+    using PipelineTextureArray        = std::array<ID3D11ShaderResourceView*, TEXTURE_SLOT_MAX>;
+    using PipelineSamplerStateArray   = std::array<ID3D11SamplerState*, SAMPLER_SLOT_MAX>;
 
     // Input Assembler
     D3D11_PRIMITIVE_TOPOLOGY m_topology     = D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED;
@@ -108,12 +107,32 @@ private:
     // Vertex Shader
     ID3D11VertexShader*         m_vertexShader = nullptr;
     PipelineConstantBufferArray m_vsConstantBuffers;
+    PipelineTextureArray        m_vsTextures;
+    uint32                      m_vsLargestBindedTextureSlot = 0;
+    PipelineSamplerStateArray   m_vsSamplerStates;
 
     // Pixel Shader
     ID3D11PixelShader*          m_pixelShader = nullptr;
     PipelineConstantBufferArray m_psConstantBuffers;
+    PipelineTextureArray        m_psTextures;
+    uint32                      m_psLargestBindedTextureSlot = 0;
+    PipelineSamplerStateArray   m_psSamplerStates;
 
-    // RenderState (sampler state exist in texture)
+    // Geometry Shader
+    ID3D11GeometryShader*       m_geometryShader = nullptr;
+    PipelineConstantBufferArray m_gsConstantBuffers;
+    PipelineTextureArray        m_gsTextures;
+    uint32                      m_gsLargestBindedTextureSlot = 0;
+    PipelineSamplerStateArray   m_gsSamplerStates;
+
+    // Compute Shader
+    ID3D11ComputeShader*        m_computeShader = nullptr;
+    PipelineConstantBufferArray m_csConstantBuffers;
+    PipelineTextureArray        m_csTextures;
+    uint32                      m_csLargestBindedTextureSlot = 0;
+    PipelineSamplerStateArray   m_csSamplerStates;
+
+    // RenderState
     ID3D11RasterizerState*   m_rsState = nullptr;
     ID3D11DepthStencilState* m_dsState = nullptr;
     ID3D11BlendState*        m_bState  = nullptr;

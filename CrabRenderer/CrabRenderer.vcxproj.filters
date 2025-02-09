@@ -49,9 +49,6 @@
     <Filter Include="99. Base\CompileTimeTypeInfo">
       <UniqueIdentifier>{00915d50-cb15-453d-bf33-66952a6781e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05. Scene &amp; Entity">
-      <UniqueIdentifier>{25b4b0e8-bbb5-465a-88f4-155042499901}</UniqueIdentifier>
-    </Filter>
     <Filter Include="06. ECS">
       <UniqueIdentifier>{2979dd23-7ab2-4cee-a2c3-e2ab9a56c81f}</UniqueIdentifier>
     </Filter>
@@ -78,6 +75,9 @@
     </Filter>
     <Filter Include="04. Renderer\Snapshot">
       <UniqueIdentifier>{d8d5d394-1943-455d-aad9-129e86c4b297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Scene">
+      <UniqueIdentifier>{25b4b0e8-bbb5-465a-88f4-155042499901}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -154,7 +154,7 @@
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>05. Scene &amp; Entity</Filter>
+      <Filter>05. Scene</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>06. ECS</Filter>
@@ -169,7 +169,7 @@
       <Filter>04. Renderer\Gui</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>05. Scene &amp; Entity</Filter>
+      <Filter>05. Scene</Filter>
     </ClCompile>
     <ClCompile Include="CTTI.cpp">
       <Filter>99. Base\CompileTimeTypeInfo</Filter>
@@ -203,6 +203,9 @@
     </ClCompile>
     <ClCompile Include="D11_Snapshot.cpp">
       <Filter>04. Renderer\Snapshot</Filter>
+    </ClCompile>
+    <ClCompile Include="Script.cpp">
+      <Filter>06. ECS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -291,7 +294,7 @@
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>05. Scene &amp; Entity</Filter>
+      <Filter>05. Scene</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>06. ECS</Filter>
@@ -306,7 +309,7 @@
       <Filter>04. Renderer\Gui</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>05. Scene &amp; Entity</Filter>
+      <Filter>05. Scene</Filter>
     </ClInclude>
     <ClInclude Include="D11_Utiles.h">
       <Filter>04. Renderer\Utiles</Filter>
@@ -343,6 +346,9 @@
     </ClInclude>
     <ClInclude Include="D11_Snapshot.h">
       <Filter>04. Renderer\Snapshot</Filter>
+    </ClInclude>
+    <ClInclude Include="Script.h">
+      <Filter>06. ECS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

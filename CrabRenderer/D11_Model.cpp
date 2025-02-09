@@ -139,8 +139,7 @@ Ref<D11_Texture> D11_ModelLoader::_ProcessMaterial(aiMesh* in_mesh, const aiScen
         if (material->GetTexture(aiTextureType_DIFFUSE, 0, &path) == AI_SUCCESS)
         {
             std::filesystem::path texturePath = m_directory / path.C_Str();
-            return D11_Texture::Create(texturePath,
-                                       D11_SamplerState::Create(eSamplerFilter::Linear, eSamplerAddress::Border));
+            return D11_Texture::Create(texturePath);
         }
     }
     return nullptr;

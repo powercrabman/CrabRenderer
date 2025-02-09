@@ -42,6 +42,7 @@
     <ClInclude Include="D11_Snapshot.h" />
     <ClInclude Include="D11_Swapchain.h" />
     <ClInclude Include="PostProcess.h" />
+    <ClInclude Include="Script.h" />
     <ClInclude Include="Systems.h" />
     <ClInclude Include="D11_Texture.h" />
     <ClInclude Include="D11_Utiles.h" />
@@ -91,6 +92,7 @@
     <ClCompile Include="D11_Snapshot.cpp" />
     <ClCompile Include="D11_Swapchain.cpp" />
     <ClCompile Include="PostProcess.cpp" />
+    <ClCompile Include="Script.cpp" />
     <ClCompile Include="Systems.cpp" />
     <ClCompile Include="D11_Texture.cpp" />
     <ClCompile Include="D11_Utiles.cpp" />

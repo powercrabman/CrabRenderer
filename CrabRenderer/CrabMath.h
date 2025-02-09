@@ -11,6 +11,8 @@ constexpr float PI_DIV4 = PI / 4.0f;
 constexpr float RAD2DEG = 180.0f / PI;
 constexpr float DEG2RAD = PI / 180.0f;
 
+constexpr float SMALL_NUMBER = 1e-5f;
+
 // Convert degree ~ radian
 inline constexpr float ToRad(float in_deg)
 {
@@ -150,6 +152,15 @@ inline Vec2 ToVec2(const Vec4& in_vec)
 inline Vec2 ToVec2(const Vec3& in_vec)
 {
     return Vec2(in_vec.x, in_vec.y);
+}
+
+//===================================================
+// Quaternion Helper
+//===================================================
+
+inline Quat QuatFromEuler(const Vec3& in_euler)
+{
+    return Quat::CreateFromYawPitchRoll(in_euler.y, in_euler.x, in_euler.z);
 }
 
 }   // namespace crab

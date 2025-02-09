@@ -114,17 +114,12 @@ void PostProcess::SetRenderTargets(const std::vector<Ref<D11_FrameBuffer>>& in_f
         m_rtvs.push_back(fb->GetRenderTarget()->Get());
 }
 
-void PostProcess::SetTexture(const Ref<D11_Texture>& in_tex)
+void PostProcess::SetTexture(const Ref<D11_Texture>& in_tex, uint32 in_slot)
 {
-    m_dsvs.clear();
-    m_dsvs.push_back(in_tex->Get());
-}
+    if (m_textures.size() < in_slot + 1)
+        m_textures.resize(in_slot + 1, nullptr);
 
-void PostProcess::SetTextures(const std::vector<Ref<D11_Texture>>& in_texs)
-{
-    m_dsvs.clear();
-    for (const auto& tex: in_texs)
-        m_dsvs.push_back(tex->Get());
+    m_textures[in_slot] = in_tex;
 }
 
 void PostProcess::UpdateConstantData(float in_threshhold, float in_strength)
@@ -163,14 +158,25 @@ void PostProcess::Render() const
     // unbind before render target and shader resource view
     // to avoid resource conflict
     // shader resource cannot be used input and output at the same time
-    dx->SetRenderTarget(nullptr, nullptr);
-    dx->SetShaderResourceView(nullptr, 0, eShaderFlags_PixelShader);
+    dx->ReleaseShaderResourceViews(eShaderFlags_PixelShader);
 
     dx->SetTopology(eTopology::TriangleList);
     dx->SetRenderTargets(m_rtvs, nullptr);
     dx->SetViewport(m_frameBuffer->GetViewport());
     dx->SetSamplerState(m_samplerState->Get(), 0, eShaderFlags_PixelShader);
-    dx->SetShaderResourceViews(m_dsvs, 0, eShaderFlags_PixelShader);
+
+    for (uint32 i = 0; i < m_textures.size(); ++i)
+        m_textures[i]->Bind(i, eShaderFlags_PixelShader);
+
+    if (m_geometryShader)
+        m_geometryShader->Bind();
+    else
+        dx->SetGeometryShader(nullptr);
+
+    if (m_computeShader)
+        m_computeShader->Bind();
+    else
+        dx->SetComputeShader(nullptr);
 
     m_vertexShader->Bind();
     m_pixelShader->Bind();
