@@ -187,7 +187,6 @@ struct hash<crab::TypeInfo>
     std::hash<crab::TypeIndex> hasher;
     size_t                     operator()(const crab::TypeInfo& id) const { return hasher(id.index); }
 };
-}   // namespace std
 
 #else
 
@@ -200,3 +199,6 @@ constexpr TypeIndex getTypeIndex()
 }
 
 #endif
+
+}   // namespace std
+

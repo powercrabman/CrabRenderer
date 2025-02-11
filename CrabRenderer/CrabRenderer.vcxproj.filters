@@ -37,9 +37,6 @@
     <Filter Include="04. Renderer\Texture">
       <UniqueIdentifier>{b2a082e9-c170-42b9-b5aa-199fb4927c4e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\FrameBuffer">
-      <UniqueIdentifier>{296dfdc9-84a8-4bd4-84cc-d97af4a21013}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04. Renderer\RenderState">
       <UniqueIdentifier>{cb8a25d2-ba67-4e68-abe4-f229600eaa49}</UniqueIdentifier>
     </Filter>
@@ -78,6 +75,9 @@
     </Filter>
     <Filter Include="05. Scene">
       <UniqueIdentifier>{25b4b0e8-bbb5-465a-88f4-155042499901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\FrameBuffer">
+      <UniqueIdentifier>{0e5e81c3-151f-44ff-9e46-ca437f5e188f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,9 +135,6 @@
     <ClCompile Include="D11_Renderer.cpp">
       <Filter>04. Renderer\Device</Filter>
     </ClCompile>
-    <ClCompile Include="D11_RenderTarget.cpp">
-      <Filter>04. Renderer\FrameBuffer</Filter>
-    </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>04. Renderer\Device</Filter>
     </ClCompile>
@@ -146,12 +143,6 @@
     </ClCompile>
     <ClCompile Include="LayerStack.cpp">
       <Filter>01. Application\Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="D11_DepthStencil.cpp">
-      <Filter>04. Renderer\FrameBuffer</Filter>
-    </ClCompile>
-    <ClCompile Include="D11_FrameBuffer.cpp">
-      <Filter>04. Renderer\FrameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>05. Scene</Filter>
@@ -195,7 +186,7 @@
     <ClCompile Include="Systems.cpp">
       <Filter>06. ECS\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="PostProcess.cpp">
+    <ClCompile Include="ImageFilter.cpp">
       <Filter>04. Renderer\PostProcessing</Filter>
     </ClCompile>
     <ClCompile Include="D11_Swapchain.cpp">
@@ -206,6 +197,15 @@
     </ClCompile>
     <ClCompile Include="Script.cpp">
       <Filter>06. ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcess.cpp">
+      <Filter>04. Renderer\PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_DepthBuffer.cpp">
+      <Filter>04. Renderer\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="D11_RenderTarget.cpp">
+      <Filter>04. Renderer\FrameBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -272,9 +272,6 @@
     <ClInclude Include="D11_Renderer.h">
       <Filter>04. Renderer\Device</Filter>
     </ClInclude>
-    <ClInclude Include="D11_RenderTarget.h">
-      <Filter>04. Renderer\FrameBuffer</Filter>
-    </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>04. Renderer\Device</Filter>
     </ClInclude>
@@ -286,12 +283,6 @@
     </ClInclude>
     <ClInclude Include="CTTI.h">
       <Filter>99. Base\CompileTimeTypeInfo</Filter>
-    </ClInclude>
-    <ClInclude Include="D11_DepthStencil.h">
-      <Filter>04. Renderer\FrameBuffer</Filter>
-    </ClInclude>
-    <ClInclude Include="D11_FrameBuffer.h">
-      <Filter>04. Renderer\FrameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>05. Scene</Filter>
@@ -338,7 +329,7 @@
     <ClInclude Include="Systems.h">
       <Filter>06. ECS\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="PostProcess.h">
+    <ClInclude Include="ImageFilter.h">
       <Filter>04. Renderer\PostProcessing</Filter>
     </ClInclude>
     <ClInclude Include="D11_Swapchain.h">
@@ -349,6 +340,15 @@
     </ClInclude>
     <ClInclude Include="Script.h">
       <Filter>06. ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcess.h">
+      <Filter>04. Renderer\PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_DepthBuffer.h">
+      <Filter>04. Renderer\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="D11_RenderTarget.h">
+      <Filter>04. Renderer\FrameBuffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

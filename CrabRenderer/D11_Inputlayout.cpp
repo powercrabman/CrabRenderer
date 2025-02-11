@@ -25,7 +25,7 @@ D11_InputElements& D11_InputElements::Add(const std::string_view in_sementic, ui
     return *this;
 }
 
-D11_InputElements& D11_InputElements::Add(const std::string_view in_sementic, uint32 in_sementicIndex, eDataFormat in_format)
+D11_InputElements& D11_InputElements::Add(const std::string_view in_sementic, uint32 in_sementicIndex, eVertexFormat in_format)
 {
     elements.emplace_back(
         in_sementic.data(),

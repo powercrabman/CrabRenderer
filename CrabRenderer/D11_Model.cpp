@@ -52,7 +52,7 @@ std::vector<MeshData<D11_ModelLoader::Vertex>> D11_ModelLoader::GetMeshDatas()
     return m_meshDatas;
 }
 
-std::vector<Ref<D11_Texture>> D11_ModelLoader::GetTextures()
+std::vector<Ref<D11_Texture2D>> D11_ModelLoader::GetTextures()
 {
     return m_textures;
 }
@@ -129,7 +129,7 @@ MeshData<D11_ModelLoader::Vertex> D11_ModelLoader::_ProcessMesh(aiMesh* in_mesh,
     return MeshData<Vertex>(vertices, indices);
 }
 
-Ref<D11_Texture> D11_ModelLoader::_ProcessMaterial(aiMesh* in_mesh, const aiScene* in_scene)
+Ref<D11_Texture2D> D11_ModelLoader::_ProcessMaterial(aiMesh* in_mesh, const aiScene* in_scene)
 {
     if (in_mesh->mMaterialIndex >= 0)
     {
@@ -139,7 +139,7 @@ Ref<D11_Texture> D11_ModelLoader::_ProcessMaterial(aiMesh* in_mesh, const aiScen
         if (material->GetTexture(aiTextureType_DIFFUSE, 0, &path) == AI_SUCCESS)
         {
             std::filesystem::path texturePath = m_directory / path.C_Str();
-            return D11_Texture::Create(texturePath);
+            return D11_Texture2D::Create(texturePath);
         }
     }
     return nullptr;
@@ -147,7 +147,7 @@ Ref<D11_Texture> D11_ModelLoader::_ProcessMaterial(aiMesh* in_mesh, const aiScen
 
 Ref<D11_Model> D11_Model::Create(
     const std::vector<Ref<D11_Mesh>>&    in_meshes,
-    const std::vector<Ref<D11_Texture>>& in_textures)
+    const std::vector<Ref<D11_Texture2D>>& in_textures)
 {
     Ref<D11_Model> model = CreateRef<D11_Model>();
 

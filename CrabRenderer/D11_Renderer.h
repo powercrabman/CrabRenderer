@@ -9,14 +9,15 @@ class D11_VertexShader;
 class D11_PixelShader;
 class D11_VertexBuffer;
 class D11_IndexBuffer;
-class D11_Texture;
-class D11_FrameBuffer;
+class D11_Texture2D;
 class D11_RasterizerState;
 class D11_DepthStencilState;
 class D11_BlendState;
 class D11_ConstantBufferBase;
 class D11_SamplerState;
 class D11_Swapchain;
+class D11_RenderTarget;
+class D11_DepthBuffer;
 
 class D11_Renderer
 {
@@ -27,6 +28,9 @@ public:
     // - Core
     void Init(const RendererSetting& in_setting);
     void Shutdown();
+
+    void BeginGUI();
+    void EndGUI();
 
     void OnEvent(CrabEvent& in_event);
 
@@ -44,6 +48,8 @@ public:
     void SetPixelShader(ID3D11PixelShader* in_shader);
     void SetGeometryShader(ID3D11GeometryShader* in_shader);
     void SetComputeShader(ID3D11ComputeShader* in_shader);
+    void SetHullShader(ID3D11HullShader* in_shader);
+    void SetDomainShader(ID3D11DomainShader* in_shader);
 
     void SetSamplerState(ID3D11SamplerState* in_samplerState, uint32 in_slot, eShaderFlags in_flag);
     void SetRasterizerState(ID3D11RasterizerState* in_rasterizerState);
@@ -59,21 +65,28 @@ public:
     void ReleaseRenderTargets();
 
     void SetViewport(const Viewport& in_viewport);
-    void SetBackBufferToRenderTarget();
 
-    // - Clear
-    void ClearBackBuffer(const Color& in_color, bool in_clearDepth, bool in_clearStencil);
-    void ClearBackBuffer(const Color& in_color);
+    // back buffer helper
+    void                  BindBackBuffer();
+    void                  ClearBackBuffer(const Color& in_color);
+    Ref<D11_RenderTarget> GetBackBuffer();
+
+    void                  BindFloatBackBuffer();
+    void                  ClearFloatBackBuffer(const Color& in_color);
+    Ref<D11_RenderTarget> GetFloatBackBuffer();
+
+    void                 ClearDepthBuffer(float in_depth = 1.f, uint8 in_stencil = 0) const;
+    Ref<D11_DepthBuffer> GetDepthBuffer() const;
 
     // - Swap Chain
-    void BeginRender();
-    void EndRender();
-    void Present();
+    void                  Present();
+    Ref<D11_Swapchain>    GetSwapChain() const;
+    Ref<D11_RenderTarget> GetBackBuffer() const;
+    Ref<D11_RenderTarget> GetFloatBackBuffer() const;
 
     // - Getter (Native)
     ComPtr<ID3D11Device>        GetDevice() const;
     ComPtr<ID3D11DeviceContext> GetContext() const;
-    Ref<D11_Swapchain>          GetSwapChain() const;
 
 private:
     // Device
@@ -111,12 +124,19 @@ private:
     uint32                      m_vsLargestBindedTextureSlot = 0;
     PipelineSamplerStateArray   m_vsSamplerStates;
 
-    // Pixel Shader
-    ID3D11PixelShader*          m_pixelShader = nullptr;
-    PipelineConstantBufferArray m_psConstantBuffers;
-    PipelineTextureArray        m_psTextures;
-    uint32                      m_psLargestBindedTextureSlot = 0;
-    PipelineSamplerStateArray   m_psSamplerStates;
+    // Hull Shader
+    ID3D11HullShader*           m_hullShader = nullptr;
+    PipelineConstantBufferArray m_hsConstantBuffers;
+    PipelineTextureArray        m_hsTextures;
+    uint32                      m_hsLargestBindedTextureSlot = 0;
+    PipelineSamplerStateArray   m_hsSamplerStates;
+
+    // Domain Shader
+    ID3D11DomainShader*         m_domainShader = nullptr;
+    PipelineConstantBufferArray m_dsConstantBuffers;
+    PipelineTextureArray        m_dsTextures;
+    uint32                      m_dsLargestBindedTextureSlot = 0;
+    PipelineSamplerStateArray   m_dsSamplerStates;
 
     // Geometry Shader
     ID3D11GeometryShader*       m_geometryShader = nullptr;
@@ -124,6 +144,13 @@ private:
     PipelineTextureArray        m_gsTextures;
     uint32                      m_gsLargestBindedTextureSlot = 0;
     PipelineSamplerStateArray   m_gsSamplerStates;
+
+    // Pixel Shader
+    ID3D11PixelShader*          m_pixelShader = nullptr;
+    PipelineConstantBufferArray m_psConstantBuffers;
+    PipelineTextureArray        m_psTextures;
+    uint32                      m_psLargestBindedTextureSlot = 0;
+    PipelineSamplerStateArray   m_psSamplerStates;
 
     // Compute Shader
     ID3D11ComputeShader*        m_computeShader = nullptr;
@@ -136,6 +163,7 @@ private:
     ID3D11RasterizerState*   m_rsState = nullptr;
     ID3D11DepthStencilState* m_dsState = nullptr;
     ID3D11BlendState*        m_bState  = nullptr;
+    Viewport                 m_viewport;
 };
 
 }   // namespace crab

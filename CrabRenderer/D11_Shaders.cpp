@@ -117,6 +117,12 @@ void D11_VertexShader::Bind()
     dx->SetVertexShader(m_vertexShader.Get(), m_inputlayout.Get());
 }
 
+void D11_VertexShader::Unbind()
+{
+    auto* dx = D11_API;
+    dx->SetVertexShader(nullptr, nullptr);
+}
+
 //===================================================
 // Pixel Shader
 //===================================================
@@ -206,7 +212,7 @@ Ref<D11_ComputeShader> D11_ComputeShader::CreateFromFile(const std::filesystem::
     return cs;
 }
 
-crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromFile(const std::filesystem::path& in_shaderPath, const std::string_view in_entryPoint)
+Ref<D11_GeometryShader> D11_GeometryShader::CreateFromFile(const std::filesystem::path& in_shaderPath, const std::string_view in_entryPoint)
 {
     auto                    d            = D11_API->GetDevice();
     Ref<D11_GeometryShader> gs           = CreateRef<D11_GeometryShader>();
@@ -246,7 +252,7 @@ crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromFile(const std
     return gs;
 }
 
-crab::Ref<crab::D11_PixelShader> D11_PixelShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
+Ref<D11_PixelShader> D11_PixelShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
 {
     auto                 d  = D11_API->GetDevice();
     Ref<D11_PixelShader> ps = CreateRef<D11_PixelShader>();
@@ -291,6 +297,12 @@ void D11_PixelShader::Bind()
 {
     auto* dx = D11_API;
     dx->SetPixelShader(m_pixelShader.Get());
+}
+
+void D11_PixelShader::Unbind()
+{
+    auto* dx = D11_API;
+    dx->SetPixelShader(nullptr);
 }
 
 Ref<D11_ComputeShader> D11_ComputeShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
@@ -340,7 +352,13 @@ void D11_ComputeShader::Bind()
     dx->SetComputeShader(m_computeShader.Get());
 }
 
-crab::Ref<crab::D11_GeometryShader> D11_GeometryShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
+void D11_ComputeShader::Unbind()
+{
+    auto* dx = D11_API;
+    dx->SetComputeShader(nullptr);
+}
+
+Ref<D11_GeometryShader> D11_GeometryShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
 {
     auto                    d            = D11_API->GetDevice();
     Ref<D11_GeometryShader> gs           = CreateRef<D11_GeometryShader>();
@@ -385,6 +403,188 @@ void D11_GeometryShader::Bind()
 {
     auto* dx = D11_API;
     dx->SetGeometryShader(m_geometryShader.Get());
+}
+
+void D11_GeometryShader::Unbind()
+{
+    auto* dx = D11_API;
+    dx->SetGeometryShader(nullptr);
+}
+
+Ref<D11_HullShader> D11_HullShader::CreateFromFile(const std::filesystem::path& in_shaderPath, const std::string_view in_entryPoint)
+{
+    auto                d            = D11_API->GetDevice();
+    Ref<D11_HullShader> hs           = CreateRef<D11_HullShader>();
+    uint32              compileFlags = 0;
+
+#ifdef _DEBUG
+    compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
+#else
+    compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
+#endif
+    // - Compile Shader
+    ComPtr<ID3DBlob> errorBlob;
+    D11_ASSERT(D3DCompileFromFile(in_shaderPath.c_str(),
+                                  nullptr,
+                                  D3D_COMPILE_STANDARD_FILE_INCLUDE,
+                                  in_entryPoint.data(),
+                                  "hs_5_0",
+                                  compileFlags,
+                                  0,
+                                  hs->m_blob.GetAddressOf(),
+                                  errorBlob.GetAddressOf()),
+               "D3DCompileFromFile Fail.");
+    if (errorBlob)
+    {
+        CRAB_DEBUG_BREAK_V("Error Blob: {0}", (char*)errorBlob->GetBufferPointer());
+        return nullptr;
+    }
+    // - Create Hull Shader
+    D11_ASSERT(d->CreateHullShader(hs->m_blob->GetBufferPointer(),
+                                   hs->m_blob->GetBufferSize(),
+                                   nullptr,
+                                   hs->m_hullShader.GetAddressOf()),
+               "CreateHullShader Fail.");
+    return hs;
+}
+
+Ref<D11_HullShader> D11_HullShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
+{
+    auto                d            = D11_API->GetDevice();
+    Ref<D11_HullShader> hs           = CreateRef<D11_HullShader>();
+    uint32              compileFlags = 0;
+
+#ifdef _DEBUG
+    compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
+#else
+    compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
+#endif
+    // - Compile Shader
+    ComPtr<ID3DBlob> errorBlob;
+    D11_ASSERT(D3DCompile(in_shaderCode.data(),
+                          in_shaderCode.size(),
+                          nullptr,
+                          nullptr,
+                          D3D_COMPILE_STANDARD_FILE_INCLUDE,
+                          in_entryPoint.data(),
+                          "hs_5_0",
+                          compileFlags,
+                          0,
+                          hs->m_blob.GetAddressOf(),
+                          errorBlob.GetAddressOf()),
+               "D3DCompile Fail.");
+    if (errorBlob)
+    {
+        CRAB_DEBUG_BREAK_V("Error Blob: {0}", (char*)errorBlob->GetBufferPointer());
+        return nullptr;
+    }
+    // - Create Hull Shader
+    D11_ASSERT(d->CreateHullShader(hs->m_blob->GetBufferPointer(),
+                                   hs->m_blob->GetBufferSize(),
+                                   nullptr,
+                                   hs->m_hullShader.GetAddressOf()),
+               "CreateHullShader Fail.");
+    return hs;
+}
+
+void D11_HullShader::Bind()
+{
+    auto* dx = D11_API;
+    dx->SetHullShader(m_hullShader.Get());
+}
+
+void D11_HullShader::Unbind()
+{
+    auto* dx = D11_API;
+    dx->SetHullShader(nullptr);
+}
+
+Ref<D11_DomainShader> D11_DomainShader::CreateFromFile(const std::filesystem::path& in_shaderPath, const std::string_view in_entryPoint)
+{
+    auto                  d            = D11_API->GetDevice();
+    Ref<D11_DomainShader> ds           = CreateRef<D11_DomainShader>();
+    uint32                compileFlags = 0;
+
+#ifdef _DEBUG
+    compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
+#else
+    compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
+#endif
+    // - Compile Shader
+    ComPtr<ID3DBlob> errorBlob;
+    D11_ASSERT(D3DCompileFromFile(in_shaderPath.c_str(),
+                                  nullptr,
+                                  D3D_COMPILE_STANDARD_FILE_INCLUDE,
+                                  in_entryPoint.data(),
+                                  "ds_5_0",
+                                  compileFlags,
+                                  0,
+                                  ds->m_blob.GetAddressOf(),
+                                  errorBlob.GetAddressOf()),
+               "D3DCompileFromFile Fail.");
+    if (errorBlob)
+    {
+        CRAB_DEBUG_BREAK_V("Error Blob: {0}", (char*)errorBlob->GetBufferPointer());
+        return nullptr;
+    }
+    // - Create Domain Shader
+    D11_ASSERT(d->CreateDomainShader(ds->m_blob->GetBufferPointer(),
+                                     ds->m_blob->GetBufferSize(),
+                                     nullptr,
+                                     ds->m_domainShader.GetAddressOf()),
+               "CreateDomainShader Fail.");
+    return ds;
+}
+
+Ref<D11_DomainShader> D11_DomainShader::CreateFromString(const std::string_view in_shaderCode, const std::string_view in_entryPoint)
+{
+    auto                  d            = D11_API->GetDevice();
+    Ref<D11_DomainShader> ds           = CreateRef<D11_DomainShader>();
+    uint32                compileFlags = 0;
+
+#ifdef _DEBUG
+    compileFlags |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
+#else
+    compileFlags |= D3DCOMPILE_OPTIMIZATION_LEVEL3;
+#endif
+    // - Compile Shader
+    ComPtr<ID3DBlob> errorBlob;
+    D11_ASSERT(D3DCompile(in_shaderCode.data(),
+                          in_shaderCode.size(),
+                          nullptr,
+                          nullptr,
+                          D3D_COMPILE_STANDARD_FILE_INCLUDE,
+                          in_entryPoint.data(),
+                          "ds_5_0",
+                          compileFlags,
+                          0,
+                          ds->m_blob.GetAddressOf(),
+                          errorBlob.GetAddressOf()),
+               "D3DCompile Fail.");
+    if (errorBlob)
+    {
+        CRAB_DEBUG_BREAK_V("Error Blob: {0}", (char*)errorBlob->GetBufferPointer());
+        return nullptr;
+    }
+    // - Create Domain Shader
+    D11_ASSERT(d->CreateDomainShader(ds->m_blob->GetBufferPointer(),
+                                     ds->m_blob->GetBufferSize(),
+                                     nullptr,
+                                     ds->m_domainShader.GetAddressOf()),
+               "CreateDomainShader Fail.");
+    return ds;
+}
+
+void D11_DomainShader::Bind()
+{
+    auto* dx = D11_API;
+    dx->SetDomainShader(m_domainShader.Get());
+}
+
+void D11_DomainShader::Unbind()
+{
+    auto* dx = D11_API;
+    dx->SetDomainShader(nullptr);
 }
 
 }   // namespace crab

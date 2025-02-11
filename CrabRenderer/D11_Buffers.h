@@ -29,6 +29,8 @@ public:
         return vb;
     }
 
+    uint32 GetVertexCount();
+
     void Bind() const;
 
 private:
@@ -47,7 +49,7 @@ class D11_IndexBuffer
 public:
     static Ref<D11_IndexBuffer> Create(const std::vector<uint32>& in_indices);
 
-    void Bind() const;
+    void   Bind() const;
     uint32 GetIndexCount() const { return m_indexCount; }
 
 private:

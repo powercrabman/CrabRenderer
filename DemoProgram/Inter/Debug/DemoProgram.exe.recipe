@@ -7,34 +7,31 @@
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NormalPixelShader.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\BloomPixelShader.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NormalVertexShader.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NMDemoPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\BlinnPhongPixelShader2.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NMHeightDemoVS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\CubeMapPixelShader.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\HDRICubemapPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\ImageBasedLightningPixelShader.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\ToneMapPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\ReflectionMappingPixelShader.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\SamplingPostProcessPS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\BlinnPhongPixelShader.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NMDemoVS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\PhongPixelShader.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\PostProcessVS.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\LightPixelShader.cso</FullPath>
-    </ContentFile>
-    <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\LightVertexShader.cso</FullPath>
+      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\HDRICubemapVS.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

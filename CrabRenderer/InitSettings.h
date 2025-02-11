@@ -68,6 +68,14 @@ struct SwapChainSetting
     // viewport
     Viewport viewport = { 0.f, 0.f, 0.f, 0.f, 0.f, 1.f };
     bool     useVSync = true;
+
+    // For HDR rendering
+    bool useFloatRenderTarget = false;
+
+    // MSAA
+    bool  enableMSAA      = false;
+    int32 MSAASampleCount = 4;
+    int32 MSAAQuality     = -1;   // if -1, it will be set to the highest quality level
 };
 
 struct RendererSetting

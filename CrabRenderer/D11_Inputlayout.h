@@ -4,6 +4,11 @@
 namespace crab
 {
 
+
+//===================================================
+//                 Input Elements
+//===================================================
+
 class D11_InputElements
 {
 public:
@@ -11,7 +16,7 @@ public:
 
     D11_InputElements& Add(const std::string_view in_sementic,
                            uint32                 in_sementicIndex,
-                           eDataFormat            in_format);
+                           eVertexFormat            in_format);
 
     D11_InputElements& Add(const std::string_view in_sementic,
                            uint32                 in_sementicIndex,

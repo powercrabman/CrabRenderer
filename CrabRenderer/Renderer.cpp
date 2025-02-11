@@ -33,12 +33,12 @@ void* Renderer::GetNativeRenderingAPI()
 
 void Renderer::BeginRender()
 {
-    m_renderer->BeginRender();
+    m_renderer->BeginGUI();
 }
 
 void Renderer::EndRender()
 {
-    m_renderer->EndRender();
+    m_renderer->EndGUI();
 }
 
 void Renderer::Present()

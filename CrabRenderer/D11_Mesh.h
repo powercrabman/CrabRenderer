@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VertexType.h"
+#include "D11_Buffers.h"
 
 namespace crab
 {

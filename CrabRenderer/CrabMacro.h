@@ -90,3 +90,6 @@
 #define BIT_OR(x, y)  ((x) | (y))
 #define BIT_XOR(x, y) ((x) ^ (y))
 #define BIT_NOT(x)    (~(x))
+
+// - Rendering
+#define cbuffer       struct alignas(16)

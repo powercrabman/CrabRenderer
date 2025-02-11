@@ -3,7 +3,8 @@
 namespace crab
 {
 
-class D11_FrameBuffer;
+
+class D11_RenderTarget;
 
 class D11_Snapshot
 {

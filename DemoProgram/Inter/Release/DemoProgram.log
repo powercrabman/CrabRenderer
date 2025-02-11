@@ -1,56 +1,73 @@
-﻿  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\NormalPixelShader.cso
-  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\NormalVertexShader.cso
-  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\BlinnPhongPixelShader.cso
-  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\PhongPixelShader.cso
-  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\LightPixelShader.cso
-  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\LightVertexShader.cso
-  pch.cpp
-  unity_JCFULWFEB2OI1UE0.cpp
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x339 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+﻿  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\BloomPixelShader.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\NMDemoPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\NMHeightDemoVS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\HDRICubemapPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\BlurCombinePS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\DownBlurPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\UpBlurPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\ToneMapPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\SamplingPostProcessPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\NMDemoVS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\PostProcessVS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\HDRICubemapVS.cso
+  unity_CD7XVD7MKS8WNG1P.cpp
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(474,55): warning C4244: '인수': 'float'에서 '_Ty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(474,55): warning C4244:         with
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(474,55): warning C4244:         [
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(474,55): warning C4244:             _Ty=crab::uint32
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(474,55): warning C4244:         ]
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x35d 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(475,61): warning C4244: '인수': 'float'에서 '_Ty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(475,61): warning C4244:         with
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(475,61): warning C4244:         [
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(475,61): warning C4244:             _Ty=crab::uint32
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(475,61): warning C4244:         ]
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x35e 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(476,65): warning C4244: '인수': 'float'에서 '_Ty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(476,65): warning C4244:         with
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(476,65): warning C4244:         [
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(476,65): warning C4244:             _Ty=crab::uint32
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(476,65): warning C4244:         ]
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x35f 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(477,55): warning C4244: '인수': 'float'에서 '_Ty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(477,55): warning C4244:         with
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(477,55): warning C4244:         [
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(477,55): warning C4244:             _Ty=crab::uint32
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(477,55): warning C4244:         ]
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x385 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(478,65): warning C4244: '인수': 'float'에서 '_Ty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(478,65): warning C4244:         with
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(478,65): warning C4244:         [
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(478,65): warning C4244:             _Ty=crab::uint32
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(478,65): warning C4244:         ]
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x386 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(479,59): warning C4244: '인수': 'float'에서 '_Ty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(479,59): warning C4244:         with
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(479,59): warning C4244:         [
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(479,59): warning C4244:             _Ty=crab::uint32
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(479,59): warning C4244:         ]
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x387 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(704,68): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x3ad 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(704,65): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x3ae 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(716,66): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x3af 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
-  
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x3b5 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
-  
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x3b6 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
-  
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x3b8 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
-  
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\6. LightDemo.h(1,1): warning C4828: 파일에 0x3b9 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
-  (소스 파일 'Inter/Release/unity_JCFULWFEB2OI1UE0.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\18. HDRIDemo.cpp(716,63): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Release/unity_CD7XVD7MKS8WNG1P.cpp'을(를) 컴파일하는 중)
   
   코드를 생성하고 있습니다.
-  736 of 9917 functions ( 7.4%) were compiled, the rest were copied from previous compilation.
-    127 functions were new in current compilation
-    464 functions had inline decision re-evaluated but remain unchanged
+  6 of 9411 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    8 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   DemoProgram.vcxproj -> C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\DemoProgram.exe

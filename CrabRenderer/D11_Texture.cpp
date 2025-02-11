@@ -4,29 +4,33 @@
 
 #include "D11_RenderState.h"
 #include "D11_Renderer.h"
+#include <DirectXTexEXR.h>
 #include <directxtk/DDSTextureLoader.h>
+#include "D11_Swapchain.h"
 
 namespace crab
 {
 
-Ref<D11_Texture> D11_Texture::Create(
+Ref<D11_Texture2D> D11_Texture2D::Create(
     ID3D11Texture2D*                       in_texture,
     const D3D11_SHADER_RESOURCE_VIEW_DESC& in_desc)
 {
-    auto             d   = D11_API->GetDevice();
-    Ref<D11_Texture> tex = CreateRef<D11_Texture>();
-    D11_ASSERT(d->CreateShaderResourceView(in_texture, &in_desc, tex->m_srv.GetAddressOf()), "CreateShaderResourceView Fail.");
+    auto               d   = D11_API->GetDevice();
+    Ref<D11_Texture2D> tex = CreateRef<D11_Texture2D>();
+    D11_ASSERT(d->CreateShaderResourceView(in_texture,
+                                           &in_desc,
+                                           tex->m_srv.GetAddressOf()),
+               "CreateShaderResourceView Fail.");
+
     return tex;
 }
 
-Ref<D11_Texture> D11_Texture::Create(const std::filesystem::path& in_path)
+Ref<D11_Texture2D> D11_Texture2D::Create(const std::filesystem::path& in_path)
 {
-    Ref<D11_Texture> tex = CreateRef<D11_Texture>();
-    auto             d   = D11_API->GetDevice();
+    Ref<D11_Texture2D> tex = CreateRef<D11_Texture2D>();
+    auto               d   = D11_API->GetDevice();
 
-    DirectX::ScratchImage image;
-    D11_ASSERT(DirectX::LoadFromWICFile(in_path.c_str(), DirectX::WIC_FLAGS_NONE, nullptr, image), "LoadFromWICFile Fail.");
-
+    DirectX::ScratchImage image    = D11_TextureUtile::LoadImageFromFile(in_path);
     DirectX::TexMetadata  metadata = image.GetMetadata();
     const DirectX::Image* images   = image.GetImages();
     D11_ASSERT(DirectX::CreateShaderResourceView(d.Get(),
@@ -36,12 +40,12 @@ Ref<D11_Texture> D11_Texture::Create(const std::filesystem::path& in_path)
                                                  tex->m_srv.GetAddressOf()),
                "CreateShaderResourceView Fail.");
 
-    tex->m_imageData = metadata;
+    tex->m_image = *image.GetImages();
 
     return tex;
 }
 
-Ref<D11_Texture> D11_Texture::CreateTextureCube(
+Ref<D11_Texture2D> D11_Texture2D::CreateTextureCube(
     const std::filesystem::path& in_pathPX,
     const std::filesystem::path& in_pathNX,
     const std::filesystem::path& in_pathPY,
@@ -64,9 +68,7 @@ Ref<D11_Texture> D11_Texture::CreateTextureCube(
 
     for (size_t i = 0; i < pathes.size(); i++)
     {
-        D11_ASSERT_V(LoadFromWICFile(pathes[i].c_str(), WIC_FLAGS_NONE, nullptr, scratchImages[i]),
-                     "LoadFromWICFile Fail: {}",
-                     pathes[i].string().c_str());
+        scratchImages[i] = D11_TextureUtile::LoadImageFromFile(pathes[i]);
 
         if (i == 0)
         {
@@ -91,8 +93,8 @@ Ref<D11_Texture> D11_Texture::CreateTextureCube(
     metadata.arraySize = 6;
     metadata.miscFlags |= TEX_MISC_TEXTURECUBE;
 
-    Ref<D11_Texture> tex = CreateRef<D11_Texture>();
-    auto             d   = D11_API->GetDevice();
+    Ref<D11_Texture2D> tex = CreateRef<D11_Texture2D>();
+    auto               d   = D11_API->GetDevice();
 
     D11_ASSERT(CreateShaderResourceView(
                    d.Get(),
@@ -102,17 +104,17 @@ Ref<D11_Texture> D11_Texture::CreateTextureCube(
                    tex->m_srv.GetAddressOf()),
                "CreateShaderResourceView Fail.");
 
-    tex->m_imageData = metadata;
+    tex->m_image = images[0];
 
     return tex;
 }
 
-Ref<D11_Texture> D11_Texture::CreateTextureCubeByDDS(const std::filesystem::path& in_path)
+Ref<D11_Texture2D> D11_Texture2D::CreateTextureCubeByDDS(const std::filesystem::path& in_path)
 {
     using namespace DirectX;
     auto d3dDevice = D11_API->GetDevice();
 
-    Ref<D11_Texture> tex = CreateRef<D11_Texture>();
+    Ref<D11_Texture2D> tex = CreateRef<D11_Texture2D>();
 
     ComPtr<ID3D11Resource> resource;
     DDS_ALPHA_MODE         alphaMode = DDS_ALPHA_MODE_UNKNOWN;
@@ -136,15 +138,16 @@ Ref<D11_Texture> D11_Texture::CreateTextureCubeByDDS(const std::filesystem::path
 
     D3D11_TEXTURE2D_DESC desc = {};
     tex2D->GetDesc(&desc);
-    tex->m_imageData.width     = desc.Width;
-    tex->m_imageData.height    = desc.Height;
-    tex->m_imageData.mipLevels = desc.MipLevels;
-    tex->m_imageData.format    = desc.Format;
+    tex->m_image.width      = desc.Width;
+    tex->m_image.height     = desc.Height;
+    tex->m_image.format     = desc.Format;
+    tex->m_image.rowPitch   = static_cast<uint64>(desc.Width) * 4;
+    tex->m_image.slicePitch = tex->m_image.rowPitch * desc.Height;
 
     return tex;
 }
 
-Ref<D11_Texture> D11_Texture::CreateTexture2DArray(const std::vector<std::filesystem::path>& in_paths)
+Ref<D11_Texture2D> D11_Texture2D::CreateTextureArray(const std::vector<std::filesystem::path>& in_paths)
 {
     using namespace DirectX;
     std::vector<ScratchImage> scratchImages(in_paths.size());
@@ -152,9 +155,8 @@ Ref<D11_Texture> D11_Texture::CreateTexture2DArray(const std::vector<std::filesy
 
     for (size_t i = 0; i < in_paths.size(); i++)
     {
-        D11_ASSERT_V(LoadFromWICFile(in_paths[i].c_str(), WIC_FLAGS_NONE, nullptr, scratchImages[i]),
-                     "LoadFromWICFile Fail: {}",
-                     in_paths[i].string().c_str());
+        scratchImages[i] = D11_TextureUtile::LoadImageFromFile(in_paths[i]);
+
         if (i == 0)
         {
             metadata = scratchImages[i].GetMetadata();
@@ -173,9 +175,9 @@ Ref<D11_Texture> D11_Texture::CreateTexture2DArray(const std::vector<std::filesy
     {
         images[i] = *scratchImages[i].GetImage(0, 0, 0);
     }
-    metadata.arraySize   = in_paths.size();
-    Ref<D11_Texture> tex = CreateRef<D11_Texture>();
-    auto             d   = D11_API->GetDevice();
+    metadata.arraySize     = in_paths.size();
+    Ref<D11_Texture2D> tex = CreateRef<D11_Texture2D>();
+    auto               d   = D11_API->GetDevice();
     D11_ASSERT(CreateShaderResourceView(
                    d.Get(),
                    images.data(),
@@ -183,19 +185,101 @@ Ref<D11_Texture> D11_Texture::CreateTexture2DArray(const std::vector<std::filesy
                    metadata,
                    tex->m_srv.GetAddressOf()),
                "CreateShaderResourceView Fail.");
-    tex->m_imageData = metadata;
+
+    tex->m_image = images[0];
     return tex;
 }
 
-void D11_Texture::Bind(uint32 in_slot, eShaderFlags in_flag)
+Ref<D11_Texture2D> D11_Texture2D::CreateMipmap(const std::filesystem::path& in_path, uint32 in_mipLevel)
+{
+    using namespace DirectX;
+    auto dx = D11_API->GetDevice();
+
+    ScratchImage srcImage = D11_TextureUtile::LoadImageFromFile(in_path);
+    TexMetadata  metadata = srcImage.GetMetadata();
+
+    ScratchImage mipChain;
+    D11_ASSERT(GenerateMipMaps(srcImage.GetImages(),
+                               1,
+                               metadata,
+                               TEX_FILTER_DEFAULT,
+                               in_mipLevel,
+                               mipChain),
+               "GenerateMipMaps Fail.");
+
+    Ref<D11_Texture2D> tex = CreateRef<D11_Texture2D>();
+    D11_ASSERT(CreateShaderResourceView(dx.Get(),
+                                        mipChain.GetImages(),
+                                        mipChain.GetImageCount(),
+                                        mipChain.GetMetadata(),
+                                        tex->m_srv.GetAddressOf()),
+               "CreateShaderResourceView Fail.");
+
+    tex->m_image = *mipChain.GetImages();
+
+    return tex;
+}
+
+void D11_Texture2D::Bind(uint32 in_slot, eShaderFlags in_flag)
 {
     auto* dx = D11_API;
     dx->SetShaderResourceView(m_srv.Get(), in_slot, in_flag);
 }
 
-ID3D11ShaderResourceView* D11_Texture::Get() const
+ID3D11ShaderResourceView* D11_Texture2D::GetSRV() const
 {
     return m_srv.Get();
+}
+
+void D11_TextureList::ClearList()
+{
+    m_nodes.clear();
+}
+
+D11_TextureList& D11_TextureList::Add(Ref<D11_Texture2D> in_texture, uint32 in_slot, eShaderFlags in_flag)
+{
+    m_nodes.push_back({ in_texture, in_slot, in_flag });
+    return *this;
+}
+
+Ref<D11_Texture2D> D11_TextureList::GetTexture(uint32 in_index) const
+{
+    return m_nodes[in_index].texture;
+}
+
+void D11_TextureList::Bind()
+{
+    for (auto& node: m_nodes)
+        node.texture->Bind(node.slot, node.flag);
+}
+
+DirectX::ScratchImage D11_TextureUtile::LoadImageFromFile(const std::filesystem::path& in_path)
+{
+    using namespace DirectX;
+
+    const std::filesystem::path ext = in_path.extension();
+    ScratchImage                image;
+
+    if (ext == ".dds")
+    {
+        D11_ASSERT(LoadFromDDSFile(in_path.c_str(), DDS_FLAGS_NONE, nullptr, image), "LoadFromDDSFile Fail.");
+        return image;
+    }
+    if (ext == ".exr")
+    {
+        D11_ASSERT(LoadFromEXRFile(in_path.c_str(), nullptr, image), "LoadFromEXRFile Fail.");
+        return image;
+    }
+    else
+    {
+        WIC_FLAGS flags = WIC_FLAGS_NONE;
+
+        if (D11_API->GetSwapChain()->HasFloatRenderTarget())
+            flags = WIC_FLAGS_DEFAULT_SRGB;
+
+        D11_ASSERT(LoadFromWICFile(in_path.c_str(), flags, nullptr, image), "LoadFromWICFile Fail.");
+        return image;
+    }
 }
 
 }   // namespace crab

@@ -2,9 +2,10 @@
 
 #include "D11_RenderTarget.h"
 
+#include "D11_RenderState.h"
 #include "D11_Renderer.h"
 #include "D11_Texture.h"
-#include "D11_RenderState.h"
+#include "D11_DepthBuffer.h"
 
 namespace crab
 {
@@ -21,8 +22,12 @@ Ref<D11_RenderTarget> D11_RenderTarget::Create(ID3D11Texture2D* in_texture)
     // - Create Render Target View
     D3D11_RENDER_TARGET_VIEW_DESC desc = {};
     desc.Format                        = texDesc.Format;
-    desc.ViewDimension                 = D3D11_RTV_DIMENSION_TEXTURE2D;
     desc.Texture2D.MipSlice            = 0;
+
+    if (texDesc.SampleDesc.Count > 1)
+        desc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2DMS;
+    else
+        desc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
 
     D11_ASSERT(d->CreateRenderTargetView(in_texture,
                                          &desc,
@@ -34,15 +39,24 @@ Ref<D11_RenderTarget> D11_RenderTarget::Create(ID3D11Texture2D* in_texture)
         // - Create Shader Resource View
         D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
         srvDesc.Format                          = texDesc.Format;
-        srvDesc.ViewDimension                   = D3D11_SRV_DIMENSION_TEXTURE2D;
         srvDesc.Texture2D.MostDetailedMip       = 0;
         srvDesc.Texture2D.MipLevels             = 1;
 
-        rt->m_texture = D11_Texture::Create(in_texture, srvDesc);
+        if (texDesc.SampleDesc.Count > 1)
+            srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2DMS;
+        else
+            srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+
+        rt->m_texture = D11_Texture2D::Create(in_texture, srvDesc);
     }
     rt->m_format = texDesc.Format;
 
     return rt;
+}
+
+void D11_RenderTarget::Bind()
+{
+    D11_API->SetRenderTarget(m_renderTargetView.Get(), nullptr);
 }
 
 void D11_RenderTarget::Clear(const Color& in_color)

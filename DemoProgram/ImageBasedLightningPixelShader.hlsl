@@ -59,6 +59,8 @@ cbuffer CB_PixelShader : register(b2)
     float g_diffuseMapStrength;
     float g_specularMapStrength;
     bool g_useSmoothStep;
+    float g_speculerShininess;
+
 }
 
 Texture2D g_texture : register(t0);
@@ -171,28 +173,29 @@ void ComputeSpotLight(LightComponent in_light,
 float4 main(PSInput input) : SV_TARGET
 {
     float3 E = normalize(eyePosW - input.posW);
-    float3 L = normalize(input.normalW);
+    float3 N = normalize(input.normalW);
 
     float3 diffuse = float3(0.f, 0.f, 0.f);
     float3 specular = float3(0.f, 0.f, 0.f);
     float3 ambiant = float3(0.f, 0.f, 0.f);
     
-    ComputeDirLight(g_dirLight, input.posW, E, L, ambiant, diffuse, specular);
-    //ComputePointLight(g_pointLight, input.posW, E, L, ambiant, diffuse, specular);
-    //ComputeSpotLight(g_spotLight, input.posW, E, L, ambiant, diffuse, specular);
+    ComputeDirLight(g_dirLight, input.posW, E, N, ambiant, diffuse, specular);
+    //ComputePointLight(g_pointLight, input.posW, E, N, ambiant, diffuse, specular);
+    //ComputeSpotLight(g_spotLight, input.posW, E, N, ambiant, diffuse, specular);
     
     //smoothstep
     ambiant = lerp(ambiant, smoothstep(0.0f, 1.0f, ambiant), g_useSmoothStep);
     diffuse = lerp(diffuse, smoothstep(0.0f, 1.0f, diffuse), g_useSmoothStep);
     specular = lerp(specular, smoothstep(0.0f, 1.0f, specular), g_useSmoothStep);
 
-    // diffuse map
-    float3 R = reflect(-E, L);
+   // diffuse map
+    float3 R = reflect(-E, N);
     float3 diffuseMap = g_diffuseTexture.Sample(g_sampler, R).rgb * g_material.diffuse.rgb;
     diffuse = lerp(diffuse, diffuseMap, g_diffuseMapStrength);
 
     // specular map
     float3 specularMap = g_specularTexture.Sample(g_sampler, R).rgb;
+    specularMap = pow(specularMap, g_speculerShininess) * g_material.specular.rgb;
     specular = lerp(specular, specularMap, g_specularMapStrength);
 
     // base color 
@@ -202,7 +205,8 @@ float4 main(PSInput input) : SV_TARGET
     float4 texColor = lerp(float4(1.0f, 1.0f, 1.0f, 1.0f),
                        g_texture.Sample(g_sampler, input.texCoord),
                        g_useTexture);
-
-    float4 finalColor = saturate(baseColor * texColor);
+    
+    diffuse *= texColor.rgb;
+    float4 finalColor = float4(saturate(ambiant + diffuse + specular), 1.f);
     return finalColor;
 }

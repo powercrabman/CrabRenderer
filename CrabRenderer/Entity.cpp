@@ -2,8 +2,8 @@
 
 #include "Entity.h"
 
-#include "Scene.h"
 #include "Components.h"
+#include "Scene.h"
 
 namespace crab
 {
@@ -18,11 +18,11 @@ Entity::Entity(Scene* in_scene, entt::entity in_entity)
 
 Entity::Entity()
 {
-    m_entity = entt::null;
+    m_entity   = entt::null;
     m_registry = nullptr;
 }
 
-crab::IDComponent& Entity::GetID() 
+crab::IDComponent& Entity::GetID()
 {
     return GetComponent<IDComponent>();
 }

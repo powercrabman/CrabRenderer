@@ -29,13 +29,32 @@ void ImageBasedLightningDemo::Init()
 
     auto samplerState = D11_SamplerState::Create(eSamplerFilter::Linear, eSamplerAddress::Wrap);
 
-    m_diffuseCubeMap = Texture::CreateTextureCubeByDDS(
-        R"(Resources\cubemap\4\diffuse.dds)",
-        samplerState);
+    // Cube map load
+    {
+        m_cubeMapDatas[0].name           = "forest";
+        m_cubeMapDatas[0].diffuseCubeMap = D11_Texture::CreateTextureCubeByDDS(
+            R"(Resources\cubemap\4\diffuse.dds)",
+            samplerState);
+        m_cubeMapDatas[0].specularCubeMap = D11_Texture::CreateTextureCubeByDDS(
+            R"(Resources\cubemap\4\specular.dds)",
+            samplerState);
 
-    m_specularCubeMap = Texture::CreateTextureCubeByDDS(
-        R"(Resources\cubemap\4\specular.dds)",
-        samplerState);
+        m_cubeMapDatas[1].name           = "garden";
+        m_cubeMapDatas[1].diffuseCubeMap = D11_Texture::CreateTextureCubeByDDS(
+            R"(Resources\cubemap\5\diffuse.dds)",
+            samplerState);
+        m_cubeMapDatas[1].specularCubeMap = D11_Texture::CreateTextureCubeByDDS(
+            R"(Resources\cubemap\5\specular.dds)",
+            samplerState);
+
+        m_cubeMapDatas[2].name           = "building";
+        m_cubeMapDatas[2].diffuseCubeMap = D11_Texture::CreateTextureCubeByDDS(
+            R"(Resources\cubemap\6\diffuse.dds)",
+            samplerState);
+        m_cubeMapDatas[2].specularCubeMap = D11_Texture::CreateTextureCubeByDDS(
+            R"(Resources\cubemap\6\specular.dds)",
+            samplerState);
+    }
 
     // Model Entity
     {
@@ -80,7 +99,7 @@ void ImageBasedLightningDemo::Init()
         lc.lightType          = eLightType::Directional;
         lc.lightColor         = Vec3(1.f, 1.f, 1.f);
         lc.lightIntensity     = 1.f;
-        lc.falloffStart       = 1.f;
+        lc.falloffStart       = 32.f;
         lc.falloffEnd         = 50.f;
 
         dirLightEntity.GetComponent<Transform>().rotation = EulerFromLookAt({ 0.f, 0.f, 0.f }, { 1.f, -1.f, 1.f });
@@ -113,8 +132,6 @@ void ImageBasedLightningDemo::Init()
         mr.vertexShader = m_commonVS;
         mr.pixelShader  = D11_PixelShader::CreateFromFile("CubeMapPixelShader.hlsl", "main");
         auto& mat       = m_cubeMapEntity.AddComponent<MaterialComponent>();
-        mat.useTexture  = true;
-        mat.material.textureArray.Add(m_specularCubeMap);
     }
 
     // Primitive Cube
@@ -126,13 +143,11 @@ void ImageBasedLightningDemo::Init()
         mr.vertexShader = m_commonVS;
         mr.pixelShader  = m_IBLPS;
 
-        auto& mat                     = e.AddComponent<MaterialComponent>();
-        mat.material.ambient          = Vec4(0.3f, 0.3f, 0.3f, 1.f);
-        mat.material.diffuse          = Vec4(0.8f, 0.8f, 0.8f, 1.f);
-        mat.material.specular         = Vec4(1.f, 1.f, 1.f, 1.f);
-        mat.material.shininess        = 32.f;
-        mat.useTexture                = false;
-        mat.material.textureStartSlot = 1;
+        auto& mat              = e.AddComponent<MaterialComponent>();
+        mat.material.ambient   = Vec4(0.3f, 0.3f, 0.3f, 1.f);
+        mat.material.diffuse   = Vec4(0.8f, 0.8f, 0.8f, 1.f);
+        mat.material.specular  = Vec4(1.f, 1.f, 1.f, 1.f);
+        mat.material.shininess = 32.f;
 
         auto& nr        = e.AddComponent<NormalRenderer>();
         nr.mesh         = MeshFactory3D::CreateNormalLines(meshdata);
@@ -155,7 +170,7 @@ void ImageBasedLightningDemo::Init()
         mat.material.ambient   = Vec4(0.3f, 0.3f, 0.3f, 1.f);
         mat.material.diffuse   = Vec4(0.8f, 0.8f, 0.8f, 1.f);
         mat.material.specular  = Vec4(1.f, 1.f, 1.f, 1.f);
-        mat.material.shininess = 32.f;
+        mat.material.shininess = 1.f;
         mat.useTexture         = false;
 
         auto& nr        = e.AddComponent<NormalRenderer>();
@@ -165,9 +180,6 @@ void ImageBasedLightningDemo::Init()
         Transform& t    = e.GetComponent<Transform>();
         t.position      = Vec3(2.f, 0.f, 0.f);
     }
-
-    // CubeMap Array
-    m_cubeMapArray.Add(m_diffuseCubeMap).Add(m_specularCubeMap);
 }
 
 void ImageBasedLightningDemo::OnEnter()
@@ -178,6 +190,7 @@ void ImageBasedLightningDemo::OnEnter()
     dx->SetConstantBuffer(m_cbPixelShader, 2, eShaderFlags_PixelShader);
     dx->SetDepthStencilState(m_dsState);
     _CreateRasterizerState();
+    _SetCubeMap(0);
 }
 
 void ImageBasedLightningDemo::OnExit()
@@ -239,7 +252,6 @@ void ImageBasedLightningDemo::OnRender(TimeStamp& in_ts)
     auto* dx = D11_API;
     dx->SetBackBufferToFrameBuffer();
     dx->ClearFrameBuffer(color::GRAY, true, false);
-
     dx->SetTextureArray(m_cubeMapArray, 1, eShaderFlags_PixelShader);
 
     GetView<CameraComponent, Transform>().each(
@@ -281,6 +293,7 @@ void ImageBasedLightningDemo::OnRender(TimeStamp& in_ts)
     pixelShaderData.diffuseMapStrength  = m_diffuseMapStrength;
     pixelShaderData.specularMapStrength = m_specularMapStrength;
     pixelShaderData.useSmoothStep       = m_useSmoothStep;
+    pixelShaderData.speculerShininess   = m_specularShininess;
     m_cbPixelShader->UpdateData(pixelShaderData);
 
     GetView<ModelRenderer, Transform, MaterialComponent>().each(
@@ -389,7 +402,6 @@ void ImageBasedLightningDemo::OnRenderGUI(TimeStamp& in_ts)
                           // Shader
                           ImGui::SeparatorText("Pixel Shader");
 
-                          const char* items[] = { "Phong", "BlinnPhong" };
                           // radio
 
                           ImGui::TextUnformatted("BlinnPhong Reflection Model");
@@ -397,6 +409,7 @@ void ImageBasedLightningDemo::OnRenderGUI(TimeStamp& in_ts)
                           ImGui::TextUnformatted("Pixel shader Setting");
                           ImGui::DragFloat("Diffuse Map Strength", &m_diffuseMapStrength, 0.01f, 0.f, 1.f, "%.3f");
                           ImGui::DragFloat("Specular Map Strength", &m_specularMapStrength, 0.01f, 0.f, 1.f, "%.3f");
+                          ImGui::DragFloat("Specular Map Shininess", &m_specularShininess, 0.01f, 0.f);
                           ImGui::Checkbox("Use Smooth Step", &m_useSmoothStep);
                       });
 
@@ -408,11 +421,7 @@ void ImageBasedLightningDemo::OnRenderGUI(TimeStamp& in_ts)
         ImGui::ColorEdit3("Ambient", (float*)&out_m.material.ambient);
         ImGui::ColorEdit3("Diffuse", (float*)&out_m.material.diffuse);
         ImGui::ColorEdit3("Specular", (float*)&out_m.material.specular);
-        if (ImGui::InputFloat("Shininess", &out_m.material.shininess))
-        {
-            if (out_m.material.shininess <= 0.f)
-                out_m.material.shininess = 1.f;
-        }
+        ImGui::DragFloat("Shininess", &out_m.material.shininess, 0.1f, 0.f, 0.f, "%.3f");
 
         ImGui::Checkbox("Use Texture", &out_m.useTexture);
     };
@@ -474,6 +483,18 @@ void ImageBasedLightningDemo::OnRenderGUI(TimeStamp& in_ts)
     ImGui::Checkbox("Show Normal", &m_showNormal);
 
     ImGui::End();
+
+    ImGui::Begin("Map Selector", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+
+    for (int i = 0; i < ARRAYSIZE(m_cubeMapDatas); ++i)
+    {
+        if (ImGui::Button(m_cubeMapDatas[i].name.c_str()))
+            _SetCubeMap(i);
+
+        ImGui::SameLine();
+    }
+
+    ImGui::End();
 }
 
 void ImageBasedLightningDemo::OnEvent(CrabEvent& in_event)
@@ -488,4 +509,15 @@ void ImageBasedLightningDemo::_CreateRasterizerState()
         eFrontFace::ClockWise);
 
     D11_API->SetRasterizerState(m_rsState);
+}
+
+void ImageBasedLightningDemo::_SetCubeMap(uint32 in_index)
+{
+    m_cubeMapArray.Clear();
+    m_cubeMapArray.Add(m_cubeMapDatas[in_index].diffuseCubeMap);
+    m_cubeMapArray.Add(m_cubeMapDatas[in_index].specularCubeMap);
+
+    auto& texArr = m_cubeMapEntity.GetComponent<MaterialComponent>().material.textureArray;
+    texArr.Clear();
+    texArr.Add(m_cubeMapDatas[in_index].specularCubeMap);
 }

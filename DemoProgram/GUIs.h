@@ -32,6 +32,13 @@ inline void DrawDemoInspector(
     ImGui::Text("Frame per sec: %d fps", ts.framePerSec);
     ImGui::Text("Refresh rate: %.3f Hz", 1.f / ts.deltaTime);
 
+    ImGui::SeparatorText("IO");
+    auto [mx, my] = Input::GetMousePos();
+    ImGui::Text("Mouse Pos: %d, %d", mx, my);
+
+    auto [dx, dy] = Input::GetMouseDeltaPos();
+    ImGui::Text("Mouse Delta: %d, %d", dx, dy);
+
     if (in_drawFunc)
     {
         in_drawFunc();
@@ -48,17 +55,16 @@ inline void DrawDemoInspector(const std::string_view in_sceneName)
 inline void DrawTransformInspector(Transform&         out_trans,
                                    DrawInspectorFlags in_flags = 0)
 {
-    Vec3 rotation = {};
-    rotation.x    = out_trans.rotation.x * RAD2DEG;
-    rotation.y    = out_trans.rotation.y * RAD2DEG;
-    rotation.z    = out_trans.rotation.z * RAD2DEG;
+    Vec3 rotate = out_trans.quaternion.ToEuler();
+    rotate *= RAD2DEG;
 
     ImGui::DragFloat3("Position", (float*)&out_trans.position, 0.01f);
-    if (ImGui::DragFloat3("Rotation", (float*)&rotation, 0.1f, 0.f, 0.f, "%.3f Deg"))
+    if (ImGui::DragFloat3("Rotation", (float*)&rotate, 0.1f, 0.f, 0.f, "%.3f Deg"))
     {
-        out_trans.rotation.x = rotation.x * DEG2RAD;
-        out_trans.rotation.y = rotation.y * DEG2RAD;
-        out_trans.rotation.z = rotation.z * DEG2RAD;
+        rotate *= DEG2RAD;
+        Quat q = Quat::CreateFromYawPitchRoll(rotate.y, rotate.x, rotate.z);
+        out_trans.quaternion = q;
+
     }
     ImGui::DragFloat3("Scale", (float*)&out_trans.scale, 0.01f, 0.01f, 0.f);
 }
@@ -77,31 +83,29 @@ inline void DrawCameraInspector(Transform&       out_trans,
         out_cmr.projectionType = eProjectionType::Perspective;
 
     // Camera Transform
-    Vec3 cmrRotation = {};
-    cmrRotation.x    = out_trans.rotation.x * RAD2DEG;
-    cmrRotation.y    = out_trans.rotation.y * RAD2DEG;
-    cmrRotation.z    = out_trans.rotation.z * RAD2DEG;
+    Vec3 cmrRotation = out_trans.quaternion.ToEuler();
+    cmrRotation *= RAD2DEG;
 
     ImGui::DragFloat3("Camera Position", (float*)&out_trans.position, 0.01f);
 
     if (ImGui::DragFloat3("Camera Rotation", (float*)&cmrRotation, 0.1f, 0.f, 0.f, "%.3f Deg"))
     {
-        out_trans.rotation.x = cmrRotation.x * DEG2RAD;
-        out_trans.rotation.y = cmrRotation.y * DEG2RAD;
-        out_trans.rotation.z = cmrRotation.z * DEG2RAD;
+        cmrRotation *= DEG2RAD;
+        Quat q = Quat::CreateFromYawPitchRoll(cmrRotation.y, cmrRotation.x, cmrRotation.z);
+        out_trans.quaternion = q;
     }
 
     if (out_cmr.projectionType == eProjectionType::Orthographic)
     {
         ImGui::DragFloat("Orthographic Aspect", &out_cmr.aspect, 0.01f);
-        ImGui::DragFloat("Orthographic Near Plane", &out_cmr.nearPlane, 0.01f);
-        ImGui::DragFloat("Orthographic Far Plane", &out_cmr.farPlane, 0.01f);
+        ImGui::DragFloat("Orthographic Near Plane", &out_cmr.nearZ, 0.01f);
+        ImGui::DragFloat("Orthographic Far Plane", &out_cmr.farZ, 0.01f);
 
-        if (out_cmr.nearPlane >= out_cmr.farPlane)
-            out_cmr.nearPlane = out_cmr.farPlane - 0.1f;
+        if (out_cmr.nearZ >= out_cmr.farZ)
+            out_cmr.nearZ = out_cmr.farZ - 0.1f;
 
-        if (out_cmr.farPlane <= out_cmr.nearPlane)
-            out_cmr.farPlane = out_cmr.nearPlane + 0.1f;
+        if (out_cmr.farZ <= out_cmr.nearZ)
+            out_cmr.farZ = out_cmr.nearZ + 0.1f;
 
         if (ImGui::SmallButton("Suit Aspect"))
         {
@@ -118,14 +122,14 @@ inline void DrawCameraInspector(Transform&       out_trans,
         }
 
         ImGui::DragFloat("Perspective Aspect", &out_cmr.aspect, 0.01f);
-        ImGui::DragFloat("Perspective Near Plane", &out_cmr.nearPlane, 0.01f);
-        ImGui::DragFloat("Perspective Far Plane", &out_cmr.farPlane, 0.01f);
+        ImGui::DragFloat("Perspective Near Plane", &out_cmr.nearZ, 0.01f);
+        ImGui::DragFloat("Perspective Far Plane", &out_cmr.farZ, 0.01f);
 
-        if (out_cmr.nearPlane >= out_cmr.farPlane)
-            out_cmr.nearPlane = out_cmr.farPlane - 0.1f;
+        if (out_cmr.nearZ >= out_cmr.farZ)
+            out_cmr.nearZ = out_cmr.farZ - 0.1f;
 
-        if (out_cmr.farPlane <= out_cmr.nearPlane)
-            out_cmr.farPlane = out_cmr.nearPlane + 0.1f;
+        if (out_cmr.farZ <= out_cmr.nearZ)
+            out_cmr.farZ = out_cmr.nearZ + 0.1f;
 
         if (ImGui::SmallButton("Suit Aspect"))
         {

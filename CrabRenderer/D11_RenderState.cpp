@@ -172,7 +172,6 @@ Ref<D11_SamplerState> D11_SamplerState::Create(eSamplerFilter in_filter, eSample
     D3D11_SAMPLER_DESC desc = {};
 
     desc.Filter = static_cast<D3D11_FILTER>(in_filter);
-
     desc.AddressU = static_cast<D3D11_TEXTURE_ADDRESS_MODE>(in_address);
     desc.AddressV = static_cast<D3D11_TEXTURE_ADDRESS_MODE>(in_address);
     desc.AddressW = static_cast<D3D11_TEXTURE_ADDRESS_MODE>(in_address);
@@ -188,6 +187,28 @@ Ref<D11_SamplerState> D11_SamplerState::Create(eSamplerFilter in_filter, eSample
 void D11_SamplerState::Bind(uint32 in_slot, eShaderFlags in_flags)
 {
     D11_API->SetSamplerState(m_samplerState.Get(), in_slot, in_flags);
+}
+
+void D11_SamplerStateList::ClearList()
+{
+    m_nodes.clear();
+}
+
+void D11_SamplerStateList::Bind()
+{
+    for (auto& node: m_nodes)
+        node.sampler->Bind(node.slot, node.flags);
+}
+
+crab::D11_SamplerStateList& D11_SamplerStateList::Add(Ref<D11_SamplerState> in_sampler, uint32 in_slot, eShaderFlags in_flags)
+{
+    m_nodes.push_back({ in_sampler, in_slot, in_flags });
+    return *this;
+}
+
+crab::Ref<crab::D11_SamplerState> D11_SamplerStateList::GetSampler(uint32 in_index) const
+{
+    return m_nodes[in_index].sampler;
 }
 
 }   // namespace crab

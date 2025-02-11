@@ -27,7 +27,7 @@ struct Vertex_Pos2D
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float2);
+        elem.Add("POSITION", 0, eVertexFormat::Float2);
         return elem;
     }();
 };
@@ -40,8 +40,8 @@ struct Vertex_Pos2D_Color
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float2)
-            .Add("COLOR", 0, eDataFormat::Float4);
+        elem.Add("POSITION", 0, eVertexFormat::Float2)
+            .Add("COLOR", 0, eVertexFormat::Float4);
         return elem;
     }();
 };
@@ -54,8 +54,8 @@ struct Vertex_Pos2D_Tex
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float2)
-            .Add("TEXCOORD", 0, eDataFormat::Float2);
+        elem.Add("POSITION", 0, eVertexFormat::Float2)
+            .Add("TEXCOORD", 0, eVertexFormat::Float2);
         return elem;
     }();
 };
@@ -69,9 +69,9 @@ struct Vertex_Pos2D_Tex_Color
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float2)
-            .Add("TEXCOORD", 0, eDataFormat::Float2)
-            .Add("COLOR", 0, eDataFormat::Float4);
+        elem.Add("POSITION", 0, eVertexFormat::Float2)
+            .Add("TEXCOORD", 0, eVertexFormat::Float2)
+            .Add("COLOR", 0, eVertexFormat::Float4);
         return elem;
     }();
 };
@@ -87,7 +87,7 @@ struct Vertex_Pos3D
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float3);
+        elem.Add("POSITION", 0, eVertexFormat::Float3);
         return elem;
     }();
 };
@@ -100,8 +100,8 @@ struct Vertex_Pos3D_Color
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float3)
-            .Add("COLOR", 0, eDataFormat::Float4);
+        elem.Add("POSITION", 0, eVertexFormat::Float3)
+            .Add("COLOR", 0, eVertexFormat::Float4);
         return elem;
     }();
 };
@@ -114,8 +114,8 @@ struct Vertex_Pos3D_Tex
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float3)
-            .Add("TEXCOORD", 0, eDataFormat::Float2);
+        elem.Add("POSITION", 0, eVertexFormat::Float3)
+            .Add("TEXCOORD", 0, eVertexFormat::Float2);
         return elem;
     }();
 };
@@ -129,9 +129,9 @@ struct Vertex_Pos3D_Tex_Color
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float3)
-            .Add("TEXCOORD", 0, eDataFormat::Float2)
-            .Add("COLOR", 0, eDataFormat::Float4);
+        elem.Add("POSITION", 0, eVertexFormat::Float3)
+            .Add("TEXCOORD", 0, eVertexFormat::Float2)
+            .Add("COLOR", 0, eVertexFormat::Float4);
         return elem;
     }();
 };
@@ -144,8 +144,8 @@ struct Vertex_Pos3D_Normal
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float3)
-            .Add("NORMAL", 0, eDataFormat::Float3);
+        elem.Add("POSITION", 0, eVertexFormat::Float3)
+            .Add("NORMAL", 0, eVertexFormat::Float3);
         return elem;
     }();
 };
@@ -159,9 +159,9 @@ struct Vertex_Pos3D_Normal_Tex
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float3)
-            .Add("NORMAL", 0, eDataFormat::Float3)
-            .Add("TEXCOORD", 0, eDataFormat::Float2);
+        elem.Add("POSITION", 0, eVertexFormat::Float3)
+            .Add("NORMAL", 0, eVertexFormat::Float3)
+            .Add("TEXCOORD", 0, eVertexFormat::Float2);
         return elem;
     }();
 };
@@ -176,10 +176,10 @@ struct Vertex_Pos3D_Normal_Tex_Color
     inline static D11_InputElements s_inputElements = []()
     {
         D11_InputElements elem;
-        elem.Add("POSITION", 0, eDataFormat::Float3)
-            .Add("NORMAL", 0, eDataFormat::Float3)
-            .Add("TEXCOORD", 0, eDataFormat::Float2)
-            .Add("COLOR", 0, eDataFormat::Float4);
+        elem.Add("POSITION", 0, eVertexFormat::Float3)
+            .Add("NORMAL", 0, eVertexFormat::Float3)
+            .Add("TEXCOORD", 0, eVertexFormat::Float2)
+            .Add("COLOR", 0, eVertexFormat::Float4);
         return elem;
     }();
 };

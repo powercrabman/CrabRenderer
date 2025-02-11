@@ -19,10 +19,10 @@ enum class eTopology
     LineStrip     = D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP,
     TriangleList  = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST,
     TriangleStrip = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP,
-    Patchlist_3   = D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST,
-    Patchlist_4   = D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST,
-    Patchlist_5   = D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST,
-    Patchlist_6   = D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST,
+    PatchList_3   = D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST,
+    PatchList_4   = D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST,
+    PatchList_5   = D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST,
+    PatchList_6   = D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST,
 };
 
 //===================================================
@@ -54,9 +54,13 @@ enum eShaderFlags_
 {
     eShaderFlags_None           = 0,
     eShaderFlags_VertexShader   = BIT(0),
-    eShaderFlags_PixelShader    = BIT(1),
-    eShaderFlags_ComputeShader  = BIT(2),
+    eShaderFlags_HullShader     = BIT(1),
+    eShaderFlags_DomainShader   = BIT(2),
     eShaderFlags_GeometryShader = BIT(3),
+    eShaderFlags_PixelShader    = BIT(4),
+    eShaderFlags_ComputeShader  = BIT(5),
+
+    eShaderFlags_VertexPixelShader = eShaderFlags_VertexShader | eShaderFlags_PixelShader
 };
 
 using eShaderFlags = uint32;
@@ -64,6 +68,9 @@ using eShaderFlags = uint32;
 enum class eShader
 {
     VertexShader,
+    HullShader,
+    DomainShader,
+    GeometryShader,
     PixelShader,
     ComputeShader
 };
@@ -72,7 +79,7 @@ enum class eShader
 // Data Type
 //===================================================
 
-enum class eDataFormat
+enum class eVertexFormat
 {
     Float,
     Float2,
@@ -80,20 +87,20 @@ enum class eDataFormat
     Float4
 };
 
-inline DXGI_FORMAT ToDXGI_FORMAT(eDataFormat in_datatype)
+inline DXGI_FORMAT ToDXGI_FORMAT(eVertexFormat in_datatype)
 {
     switch (in_datatype)
     {
-        case eDataFormat::Float:
+        case eVertexFormat::Float:
             return DXGI_FORMAT_R32_FLOAT;
 
-        case eDataFormat::Float2:
+        case eVertexFormat::Float2:
             return DXGI_FORMAT_R32G32_FLOAT;
 
-        case eDataFormat::Float3:
+        case eVertexFormat::Float3:
             return DXGI_FORMAT_R32G32B32_FLOAT;
 
-        case eDataFormat::Float4:
+        case eVertexFormat::Float4:
             return DXGI_FORMAT_R32G32B32A32_FLOAT;
 
         default:
@@ -103,15 +110,31 @@ inline DXGI_FORMAT ToDXGI_FORMAT(eDataFormat in_datatype)
 }
 
 //===================================================
-// Macro
+// ID3D11Texture2D
 //===================================================
 
-#define cbuffer struct alignas(16)
+struct ID3D11Texture2DFactory
+{
+    static ComPtr<ID3D11Texture2D> CreateID3D11Texture2D(const D3D11_TEXTURE2D_DESC& in_desc);
+    static ComPtr<ID3D11Texture2D> CreateID3D11StagingTexture2D(
+        uint32      in_width,
+        uint32      in_height,
+        DXGI_FORMAT in_format,
+        uint32      in_MSAASampleCount,
+        uint32      in_MSAASampleQuality,
+        uint32      in_mipLevels,
+        uint32      in_arraySize);
+};
 
 //===================================================
-// Texture
+// MSAA Description
 //===================================================
 
-ComPtr<ID3D11Texture2D> CreateID3D11Texture2D(const D3D11_TEXTURE2D_DESC& in_desc);
+struct MSAADesc
+{
+    DXGI_FORMAT format;
+    int32       sampleCount;
+    int32       quality;
+};
 
 }   // namespace crab

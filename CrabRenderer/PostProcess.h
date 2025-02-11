@@ -1,54 +1,18 @@
 #pragma once
 
-#include "D11_ConstBuffer.h"
-#include "D11_Texture.h"
+#include "D11_Inputlayout.h"
 
 namespace crab
 {
 
-class D11_FrameBuffer;
-class D11_FrameBufferList;
-class D11_VertexShader;
-class D11_PixelShader;
-class D11_PixelShader;
-class D11_ComputeShader;
-class D11_GeometryShader;
-class D11_RenderTarget;
+class D11_Texture2D;
 class D11_Mesh;
+class ImageFilter;
 
-struct PostProcessSetting
-{
-    // - Render Target
-    uint32      renderTargetWidth  = 0;   // if 0 then use back buffer size
-    uint32      renderTargetHeight = 0;   // if 0 then use back buffer size
-    DXGI_FORMAT renderTargetFormat = DXGI_FORMAT_R32G32B32A32_FLOAT;
-
-    // - Viewport
-    uint32 viewportTopLeftX = 0;
-    uint32 viewportTopLeftY = 0;
-
-    // - Shader
-    Ref<D11_VertexShader> vertexShader;
-    Ref<D11_PixelShader>  pixelShader;
-
-    // - Sampler
-    Ref<D11_SamplerState> samplerState = nullptr;   // if nullptr then use default sampler
-};
-
-// Constant Buffer
-struct alignas(16) CB_PostProcess
-{
-    float dx;
-    float dy;
-    float threshold;
-    float strength;
-    Vec4  userValues;
-};
-
-struct PostProcessingVertex
+struct PostProcessVertex
 {
     Vec2 position;
-    Vec2 texcoord;
+    Vec2 texCoord;
 
     inline static D11_InputElements s_inputElements = []()
     {
@@ -62,42 +26,19 @@ struct PostProcessingVertex
 class PostProcess
 {
 public:
-    static Ref<PostProcess> Create(const PostProcessSetting& in_setting);
+    static Ref<PostProcess> Create();
 
-    void SetRenderTarget(const Ref<D11_FrameBuffer>& in_fb);
-    void SetRenderTargets(const std::vector<Ref<D11_FrameBuffer>>& in_fbs);
+    void AddFilter(const Ref<ImageFilter>&   in_filter);
 
-    void SetTexture(const Ref<D11_Texture>& in_tex, uint32 in_slot);
+    Ref<ImageFilter> GetLastFilter() const;
+    void             ClearFilterList();
 
-    void UpdateConstantData(const CB_PostProcess& in_constatnData);
-    void UpdateConstantData(float in_threshhold, float in_strength);
-    void UpdateConstantData(float in_threshhold, float in_strength, const Vec4& in_userData);
-
-    void Render() const;
-
-    Ref<D11_Texture> GetTexture() const;
-
-    using Vertex = PostProcessingVertex;
+    void Render();
 
 private:
-    using D11_ConstantBuffer = D11_ConstantBuffer<CB_PostProcess>;
+    Ref<D11_Mesh> m_mesh;
 
-    Ref<D11_FrameBuffer> m_frameBuffer;
-
-    Ref<D11_VertexShader>   m_vertexShader;
-    Ref<D11_PixelShader>    m_pixelShader;
-    Ref<D11_ComputeShader>  m_computeShader;
-    Ref<D11_GeometryShader> m_geometryShader;
-
-    Ref<D11_ConstantBuffer> m_cbPostProcessing;
-    Ref<D11_Mesh>           m_quadMesh;
-    Ref<D11_SamplerState>   m_samplerState;
-
-    float m_deltaX;
-    float m_deltaY;
-
-    std::vector<Ref<D11_Texture>>        m_textures;
-    std::vector<ID3D11RenderTargetView*> m_rtvs;
+    std::vector<Ref<ImageFilter>> m_filters;
 };
 
 }   // namespace crab

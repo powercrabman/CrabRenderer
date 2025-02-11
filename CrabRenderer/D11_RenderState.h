@@ -112,4 +112,23 @@ private:
     ComPtr<ID3D11SamplerState> m_samplerState;
 };
 
+class D11_SamplerStateList
+{
+public:
+    void ClearList();
+    void Bind();
+
+    D11_SamplerStateList& Add(Ref<D11_SamplerState> in_sampler, uint32 in_slot, eShaderFlags in_flags);
+    Ref<D11_SamplerState> GetSampler(uint32 in_index) const;
+
+private:
+    struct SamplerNode
+    {
+        Ref<D11_SamplerState> sampler;
+        uint32                slot;
+        eShaderFlags          flags;
+    };
+    std::vector<SamplerNode> m_nodes;
+};
+
 }   // namespace crab

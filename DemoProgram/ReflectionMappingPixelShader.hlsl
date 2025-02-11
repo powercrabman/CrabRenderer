@@ -147,15 +147,16 @@ float4 main(PSInput input) : SV_TARGET
     
     lighting = lerp(lighting, smoothstep(0.0f, 1.0f, lighting), g_useSmoothStep);
 
-    float4 texColor = lerp(float4(1.0f, 1.0f, 1.0f, 1.0f),
-                           g_texture.Sample(g_sampler, input.texCoord),
-                           g_useTexture);
 
     float3 R = reflect(-E, L);
     float4 reflSample = g_reflectionTexture.Sample(g_sampler, R);
     float4 reflectionColor = lerp(float4(1.0f, 1.0f, 1.0f, 1.0f),
                                   reflSample,
                                   g_useReflection);
+
+    float4 texColor = lerp(float4(1.0f, 1.0f, 1.0f, 1.0f),
+                           g_texture.Sample(g_sampler, input.texCoord),
+                           g_useTexture);
     
     float4 baseColor = lighting * texColor;
 

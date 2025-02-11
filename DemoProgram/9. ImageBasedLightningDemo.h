@@ -17,6 +17,7 @@ public:
 
 private:
     void _CreateRasterizerState();
+    void _SetCubeMap(uint32 in_index);
 
     using Vertex = Vertex_Pos3D_Normal_Tex_Color;
 
@@ -112,11 +113,21 @@ private:
         float             diffuseMapStrength;
         float             specularMapStrength;
         Bool              useSmoothStep;
+        float             speculerShininess;
+    };
+
+    struct CubeMapData
+    {
+        std::string name;
+
+        Ref<D11_Texture> diffuseCubeMap;
+        Ref<D11_Texture> specularCubeMap;
     };
 
     float m_diffuseMapStrength  = 0.5f;
     float m_specularMapStrength = 0.5f;
     bool  m_useSmoothStep       = true;
+    float m_specularShininess   = 1.f;
 
     // entity
     Entity m_modelEntity;
@@ -126,8 +137,7 @@ private:
     bool   m_showNormal = false;
 
     // cube texture
-    Ref<Texture> m_diffuseCubeMap;
-    Ref<Texture> m_specularCubeMap;
+    CubeMapData m_cubeMapDatas[3];
     TextureArray m_cubeMapArray;
 
     // constant buffer

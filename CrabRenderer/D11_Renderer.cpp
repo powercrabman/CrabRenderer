@@ -5,8 +5,7 @@
 #include "D11_Renderer.h"
 
 #include "CrabEvent.h"
-#include "D11_DepthStencil.h"
-#include "D11_FrameBuffer.h"
+#include "D11_DepthBuffer.h"
 #include "D11_RenderTarget.h"
 #include "EventDispatcher.h"
 
@@ -164,6 +163,24 @@ void D11_Renderer::SetComputeShader(ID3D11ComputeShader* in_shader)
     }
 }
 
+void D11_Renderer::SetHullShader(ID3D11HullShader* in_shader)
+{
+    if (m_hullShader != in_shader)
+    {
+        m_hullShader = in_shader;
+        m_deviceContext->HSSetShader(m_hullShader, nullptr, 0);
+    }
+}
+
+void D11_Renderer::SetDomainShader(ID3D11DomainShader* in_shader)
+{
+    if (m_domainShader != in_shader)
+    {
+        m_domainShader = in_shader;
+        m_deviceContext->DSSetShader(m_domainShader, nullptr, 0);
+    }
+}
+
 void D11_Renderer::SetSamplerState(ID3D11SamplerState* in_samplerState, uint32 in_slot, eShaderFlags in_flag)
 {
     if (BIT_AND(in_flag, eShaderFlags_VertexShader))
@@ -203,6 +220,24 @@ void D11_Renderer::SetSamplerState(ID3D11SamplerState* in_samplerState, uint32 i
 
             m_csSamplerStates[in_slot] = in_samplerState;
             m_deviceContext->CSSetSamplers(in_slot, 1, &in_samplerState);
+        }
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_HullShader))
+    {
+        if (m_hsSamplerStates[in_slot] != in_samplerState)
+        {
+            m_hsSamplerStates[in_slot] = in_samplerState;
+            m_deviceContext->HSSetSamplers(in_slot, 1, &in_samplerState);
+        }
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_DomainShader))
+    {
+        if (m_dsSamplerStates[in_slot] != in_samplerState)
+        {
+            m_dsSamplerStates[in_slot] = in_samplerState;
+            m_deviceContext->DSSetSamplers(in_slot, 1, &in_samplerState);
         }
     }
 }
@@ -275,6 +310,26 @@ void D11_Renderer::SetShaderResourceView(ID3D11ShaderResourceView* in_srv, uint3
             m_csLargestBindedTextureSlot = in_slot;
         }
     }
+
+    if (BIT_AND(in_flag, eShaderFlags_HullShader))
+    {
+        if (m_hsTextures[in_slot] != in_srv)
+        {
+            m_hsTextures[in_slot] = in_srv;
+            m_deviceContext->HSSetShaderResources(in_slot, 1, &in_srv);
+            m_hsLargestBindedTextureSlot = in_slot;
+        }
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_DomainShader))
+    {
+        if (m_dsTextures[in_slot] != in_srv)
+        {
+            m_dsTextures[in_slot] = in_srv;
+            m_deviceContext->DSSetShaderResources(in_slot, 1, &in_srv);
+            m_dsLargestBindedTextureSlot = in_slot;
+        }
+    }
 }
 
 void D11_Renderer::ReleaseShaderResourceViews(eShaderFlags in_flag)
@@ -305,6 +360,20 @@ void D11_Renderer::ReleaseShaderResourceViews(eShaderFlags in_flag)
         for (uint32 i = 0; i <= m_csLargestBindedTextureSlot; ++i)
             m_csTextures[i] = nullptr;
         m_deviceContext->CSSetShaderResources(0, m_csLargestBindedTextureSlot + 1, m_vsTextures.data());
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_HullShader))
+    {
+        for (uint32 i = 0; i <= m_hsLargestBindedTextureSlot; ++i)
+            m_hsTextures[i] = nullptr;
+        m_deviceContext->HSSetShaderResources(0, m_hsLargestBindedTextureSlot + 1, m_vsTextures.data());
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_DomainShader))
+    {
+        for (uint32 i = 0; i <= m_dsLargestBindedTextureSlot; ++i)
+            m_dsTextures[i] = nullptr;
+        m_deviceContext->DSSetShaderResources(0, m_dsLargestBindedTextureSlot + 1, m_vsTextures.data());
     }
 }
 
@@ -345,6 +414,24 @@ void D11_Renderer::SetConstantBuffer(ID3D11Buffer* in_constantBuffer, uint32 in_
             m_deviceContext->CSSetConstantBuffers(in_slot, 1, &in_constantBuffer);
         }
     }
+
+    if (BIT_AND(in_flag, eShaderFlags_HullShader))
+    {
+        if (m_hsConstantBuffers[in_slot] != in_constantBuffer)
+        {
+            m_hsConstantBuffers[in_slot] = in_constantBuffer;
+            m_deviceContext->HSSetConstantBuffers(in_slot, 1, &in_constantBuffer);
+        }
+    }
+
+    if (BIT_AND(in_flag, eShaderFlags_DomainShader))
+    {
+        if (m_dsConstantBuffers[in_slot] != in_constantBuffer)
+        {
+            m_dsConstantBuffers[in_slot] = in_constantBuffer;
+            m_deviceContext->DSSetConstantBuffers(in_slot, 1, &in_constantBuffer);
+        }
+    }
 }
 
 void D11_Renderer::SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, ID3D11DepthStencilView* in_depthStencilView)
@@ -365,30 +452,66 @@ void D11_Renderer::ReleaseRenderTargets()
 
 void D11_Renderer::SetViewport(const Viewport& in_viewport)
 {
-    m_deviceContext->RSSetViewports(1, in_viewport.Get11());
+    if (m_viewport != in_viewport)
+    {
+        m_viewport = in_viewport;
+        m_deviceContext->RSSetViewports(1, in_viewport.Get11());
+    }
 }
 
-void D11_Renderer::SetBackBufferToRenderTarget()
+void D11_Renderer::BindBackBuffer()
 {
-    m_swapChain->BindBackBuffer();
-}
+    auto rtv = m_swapChain->GetBackBuffer();
+    auto dsv = m_swapChain->GetDepthBuffer();
+    SetViewport(m_swapChain->GetViewport());
 
-void D11_Renderer::ClearBackBuffer(const Color& in_color, bool in_clearDepth, bool in_clearStencil)
-{
-    m_swapChain->Clear(in_color, in_clearDepth, in_clearStencil);
+    if (m_swapChain->HasFloatRenderTarget())
+        SetRenderTarget(rtv->Get(), nullptr);
+    else
+        SetRenderTarget(rtv->Get(), dsv ? dsv->Get() : nullptr);
 }
 
 void D11_Renderer::ClearBackBuffer(const Color& in_color)
 {
-    m_swapChain->Clear(in_color, true, true);
+    m_swapChain->GetBackBuffer()->Clear(in_color);
 }
 
-void D11_Renderer::BeginRender()
+void D11_Renderer::ClearDepthBuffer(float in_depth, uint8 in_stencil) const
+{
+    if (auto buffer = GetDepthBuffer())
+        buffer->Clear(in_depth, in_stencil);
+}
+
+Ref<D11_DepthBuffer> D11_Renderer::GetDepthBuffer() const
+{
+    return m_swapChain->GetDepthBuffer();
+}
+
+void D11_Renderer::BindFloatBackBuffer()
+{
+    if (auto rtv = GetFloatBackBuffer())
+    {
+        auto dsv = m_swapChain->GetDepthBuffer();
+        SetViewport(m_swapChain->GetViewport());
+        SetRenderTarget(rtv->Get(), dsv ? dsv->Get() : nullptr);
+    }
+    else
+    {
+        CRAB_DEBUG_BREAK("Not use Float Render Target.");
+    }
+}
+
+void D11_Renderer::ClearFloatBackBuffer(const Color& in_color)
+{
+    GetFloatBackBuffer()->Clear(in_color);
+}
+
+void D11_Renderer::BeginGUI()
 {
     m_imgui->BeginRender();
 }
 
-void D11_Renderer::EndRender()
+void D11_Renderer::EndGUI()
 {
     m_imgui->EndRender();
 }
@@ -396,6 +519,16 @@ void D11_Renderer::EndRender()
 void D11_Renderer::Present()
 {
     m_swapChain->Present();
+}
+
+Ref<D11_RenderTarget> D11_Renderer::GetFloatBackBuffer() const
+{
+    return m_swapChain->GetFloatRenderTarget();
+}
+
+Ref<D11_RenderTarget> D11_Renderer::GetFloatBackBuffer()
+{
+    return m_swapChain->GetFloatRenderTarget();
 }
 
 ComPtr<ID3D11Device> D11_Renderer::GetDevice() const
@@ -411,6 +544,16 @@ ComPtr<ID3D11DeviceContext> D11_Renderer::GetContext() const
 Ref<D11_Swapchain> D11_Renderer::GetSwapChain() const
 {
     return m_swapChain;
+}
+
+Ref<D11_RenderTarget> D11_Renderer::GetBackBuffer() const
+{
+    return m_swapChain->GetBackBuffer();
+}
+
+Ref<D11_RenderTarget> D11_Renderer::GetBackBuffer()
+{
+    return m_swapChain->GetBackBuffer();
 }
 
 }   // namespace crab
