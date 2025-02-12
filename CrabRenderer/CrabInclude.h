@@ -27,7 +27,7 @@
 #include "D11_Renderer.h"
 #include "D11_Texture.h"
 #include "D11_Shaders.h"
-#include "D11_Utiles.h"
+#include "D11_Utils.h"
 #include "D11_Mesh.h"
 #include "D11_Model.h"
 #include "D11_Swapchain.h"

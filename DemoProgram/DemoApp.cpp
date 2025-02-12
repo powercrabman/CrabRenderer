@@ -19,7 +19,16 @@
 // #include "15. TessellationSubdivision.h"
 // #include "16. MipmapDemo.h"
 // #include "17. NormalMapDemo.h"
-#include "18. HDRIDemo.h"
+//#include "18. HDRIDemo.h"
+#include "19. PBRDemo.h"
+
+DemoApp::DemoApp()
+{
+}
+
+DemoApp::~DemoApp()
+{
+}
 
 ApplicationSetting DemoApp::ConfigureApplication()
 {
@@ -30,12 +39,12 @@ ApplicationSetting DemoApp::ConfigureApplication()
     setting.windowSetting.windowWidth  = 1920;
     setting.windowSetting.windowHeight = 1080;
 
-    setting.rendererSetting.swapChainSetting.useDepthStencil      = true;
-    setting.rendererSetting.swapChainSetting.useVSync             = true;
-    setting.rendererSetting.swapChainSetting.useFloatRenderTarget = true;
-    setting.rendererSetting.swapChainSetting.enableMSAA           = true;
-    setting.rendererSetting.swapChainSetting.MSAAQuality          = -1;
-    setting.rendererSetting.swapChainSetting.MSAASampleCount      = 4;
+    setting.rendererSetting.swapChainSetting.enableDepthBuffer       = true;
+    setting.rendererSetting.swapChainSetting.enableVSync             = true;
+    setting.rendererSetting.swapChainSetting.enableFloatRenderTarget = true;
+    setting.rendererSetting.swapChainSetting.enableMSAA              = true;
+    setting.rendererSetting.swapChainSetting.MSAAQuality             = MSAA_MAX_QUALITY;
+    setting.rendererSetting.swapChainSetting.MSAASampleCount         = 4;
 
     return setting;
 }
@@ -60,9 +69,10 @@ void DemoApp::OnInit()
     // sm.CreateScene<TessellationSubdivision>();
     // sm.CreateScene<MipmapDemo>();
     // sm.CreateScene<NormalMapDemo>();
+    //sm.CreateScene<HDRIDemo>();
+    sm.CreateScene<PBRDemo>();
 
-    sm.CreateScene<HDRIDemo>();
-    sm.ChangeScene<HDRIDemo>();
+    sm.ChangeScene<PBRDemo>();
 }
 
 void DemoApp::OnShutdown()

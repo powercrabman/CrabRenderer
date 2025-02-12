@@ -25,12 +25,12 @@ D11_InputElements& D11_InputElements::Add(const std::string_view in_sementic, ui
     return *this;
 }
 
-D11_InputElements& D11_InputElements::Add(const std::string_view in_sementic, uint32 in_sementicIndex, eVertexFormat in_format)
+D11_InputElements& D11_InputElements::Add(const std::string_view in_sementic, uint32 in_sementicIndex, eD11_Format in_format)
 {
     elements.emplace_back(
         in_sementic.data(),
         in_sementicIndex,
-        ToDXGI_FORMAT(in_format),
+        eD11_FormatToDXGIFormat(in_format),
         0,
         D3D11_APPEND_ALIGNED_ELEMENT,
         D3D11_INPUT_PER_VERTEX_DATA,

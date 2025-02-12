@@ -25,7 +25,7 @@ class Application
 
 public:
     Application();
-    ~Application();
+    virtual ~Application();
 
     // - Getter
     AppWindow&          GetAppWindow();

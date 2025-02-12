@@ -36,26 +36,26 @@ public:
 // Model Loader
 //===================================================
 
-class D11_ModelLoader
-{
-public:
-    using Vertex = Vertex_Pos3D_Normal_Tex_Color;
-
-    bool Load(const std::filesystem::path& in_path);
-
-    Ref<D11_Model>                CreateModel();
-    std::vector<MeshData<Vertex>> GetMeshDatas();
-    std::vector<Ref<D11_Texture2D>> GetTextures();
-
-private:
-    void _ProcessNode(aiNode* in_node, const aiScene* in_scene);
-
-    MeshData<Vertex> _ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene);
-    Ref<D11_Texture2D> _ProcessMaterial(aiMesh* in_mesh, const aiScene* in_scene);
-
-    std::vector<MeshData<Vertex>> m_meshDatas;
-    std::vector<Ref<D11_Texture2D>> m_textures;
-    std::filesystem::path         m_directory;
-};
+//class D11_ModelLoader
+//{
+//public:
+//    using Vertex = Vertex_Pos3D_Normal_Tex_Color;
+//
+//    bool Load(const std::filesystem::path& in_path);
+//
+//    Ref<D11_Model>                CreateModel();
+//    std::vector<MeshData<Vertex>> GetMeshDatas();
+//    std::vector<Ref<D11_Texture2D>> GetTextures();
+//
+//private:
+//    void _ProcessNode(aiNode* in_node, const aiScene* in_scene);
+//
+//    MeshData<Vertex> _ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene);
+//    Ref<D11_Texture2D> _ProcessMaterial(aiMesh* in_mesh, const aiScene* in_scene);
+//
+//    std::vector<MeshData<Vertex>> m_meshDatas;
+//    std::vector<Ref<D11_Texture2D>> m_textures;
+//    std::filesystem::path         m_directory;
+//};
 
 }   // namespace crab

@@ -1,26 +1,23 @@
 #pragma once
-#include "D11_Utiles.h"
+#include "D11_Utils.h"
 
 namespace crab
 {
-struct D11_ConstantBufferUtile
-{
-    static ComPtr<ID3D11Buffer> Create(uint32 in_dataStride);
-    static void                 UpdateData(ID3D11Buffer* in_buffer, const void* in_data, uint32 in_dataSize);
-};
 
 class D11_ConstantBufferBase
 {
 public:
+    virtual              ~D11_ConstantBufferBase() = default;
+
     void                 Bind(uint32 in_slot, eShaderFlags in_flag);
     ComPtr<ID3D11Buffer> Get() const { return m_buffer; }
-    uint32               GetStride() const { return m_dataStride; }
+    uint32               GetDataSize() const { return m_dataSize; }
 
     virtual TypeInfo GetTypeInfo() const = 0;
 
 protected:
     ComPtr<ID3D11Buffer> m_buffer;
-    uint32               m_dataStride;
+    uint32               m_dataSize = 0;
 };
 
 template<typename Ty>
@@ -29,15 +26,18 @@ class D11_ConstantBuffer : public D11_ConstantBufferBase
 public:
     static Ref<D11_ConstantBuffer<Ty>> Create()
     {
-        auto cb          = CreateRef<D11_ConstantBuffer<Ty>>();
-        cb->m_dataStride = sizeof(Ty);
-        cb->m_buffer     = D11_ConstantBufferUtile::Create(cb->m_dataStride);
+        auto cb        = CreateRef<D11_ConstantBuffer<Ty>>();
+        cb->m_buffer   = ID3D11BufferUtil::CreateConstantBuffer(sizeof(Ty));
+        cb->m_dataSize = sizeof(Ty);
         return cb;
     }
 
     void UpdateData(const Ty& in_data)
     {
-        D11_ConstantBufferUtile::UpdateData(m_buffer.Get(), &in_data, sizeof(Ty));
+        ID3D11BufferUtil::WriteToBuffer(
+            m_buffer.Get(),
+            &in_data,
+            sizeof(Ty));
     }
 
     TypeInfo GetTypeInfo() const override

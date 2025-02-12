@@ -8,7 +8,7 @@
     <ClInclude Include="GUIs.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="18. HDRIDemo.h">
+    <ClInclude Include="19. PBRDemo.h">
       <Filter>Scene %28Demos%29</Filter>
     </ClInclude>
   </ItemGroup>
@@ -20,7 +20,7 @@
     <ClCompile Include="GUIs.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
-    <ClCompile Include="18. HDRIDemo.cpp">
+    <ClCompile Include="19. PBRDemo.cpp">
       <Filter>Scene %28Demos%29</Filter>
     </ClCompile>
   </ItemGroup>
@@ -85,6 +85,9 @@
     <Filter Include="Shaders\PostProcess %28for PBR%29">
       <UniqueIdentifier>{47234efc-778f-4ca5-8306-c1a6fa1ec13e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders\PBR">
+      <UniqueIdentifier>{ad3ae581-7ef4-44dc-889b-1c50c1229a9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -125,6 +128,9 @@
     </None>
     <None Include="HDRICubemapCommon.hlsli">
       <Filter>Shaders\HDRIDemo</Filter>
+    </None>
+    <None Include="PBRCommon.hlsli">
+      <Filter>Shaders\PBR</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +283,12 @@
     </FxCompile>
     <FxCompile Include="DownBlurPS.hlsl">
       <Filter>Shaders\PostProcess %28for PBR%29</Filter>
+    </FxCompile>
+    <FxCompile Include="PBRCommonPS.hlsl">
+      <Filter>Shaders\PBR</Filter>
+    </FxCompile>
+    <FxCompile Include="PBRCommonVS.hlsl">
+      <Filter>Shaders\PBR</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

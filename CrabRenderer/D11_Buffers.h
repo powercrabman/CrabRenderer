@@ -1,5 +1,7 @@
 #pragma once
 
+#include "D11_Utils.h"
+
 namespace crab
 {
 
@@ -7,14 +9,7 @@ namespace crab
 // Vertex Buffer
 //===================================================
 
-struct D11_VertexBufferUtile
-{
-    static ComPtr<ID3D11Buffer> Create(const void* in_data,
-                                       uint32      in_vertexCount,
-                                       uint32      in_vertexStride);
-};
-
-class D11_VertexBuffer : public std::enable_shared_from_this<D11_VertexBuffer>
+class D11_VertexBuffer
 {
 public:
     template<typename VertexType>
@@ -22,22 +17,26 @@ public:
     {
         auto vb = CreateRef<D11_VertexBuffer>();
 
-        vb->m_vertexCount  = (uint32)in_vertices.size();
+        vb->m_buffer = ID3D11BufferUtil::CreateVertexBuffer(
+            sizeof(VertexType),
+            static_cast<uint32>(in_vertices.size()),
+            in_vertices.data());
+
+        vb->m_vertexCount  = static_cast<uint32>(in_vertices.size());
         vb->m_vertexStride = sizeof(VertexType);
         vb->m_offset       = 0;
-        vb->m_buffer       = D11_VertexBufferUtile::Create(in_vertices.data(), vb->m_vertexCount, vb->m_vertexStride);
+
         return vb;
     }
 
-    uint32 GetVertexCount();
-
-    void Bind() const;
+    uint32 GetVertexCount() const;
+    void   Bind() const;
 
 private:
     ComPtr<ID3D11Buffer> m_buffer;
-    uint32               m_vertexCount;
-    uint32               m_vertexStride;
-    uint32               m_offset;
+    uint32               m_vertexCount  = 0;
+    uint32               m_vertexStride = 0;
+    uint32               m_offset       = 0;
 };
 
 //===================================================
@@ -54,7 +53,7 @@ public:
 
 private:
     ComPtr<ID3D11Buffer> m_buffer;
-    uint32               m_indexCount;
+    uint32               m_indexCount = 0;
 };
 
 }   // namespace crab

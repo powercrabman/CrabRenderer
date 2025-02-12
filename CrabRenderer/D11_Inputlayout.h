@@ -1,5 +1,5 @@
 #pragma once
-#include "D11_Utiles.h"
+#include "D11_Utils.h"
 
 namespace crab
 {
@@ -16,7 +16,7 @@ public:
 
     D11_InputElements& Add(const std::string_view in_sementic,
                            uint32                 in_sementicIndex,
-                           eVertexFormat            in_format);
+                           eD11_Format            in_format);
 
     D11_InputElements& Add(const std::string_view in_sementic,
                            uint32                 in_sementicIndex,

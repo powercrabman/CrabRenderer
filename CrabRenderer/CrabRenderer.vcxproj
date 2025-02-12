@@ -31,8 +31,10 @@
     <ClInclude Include="D11_Buffers.h" />
     <ClInclude Include="D11_ConstBuffer.h" />
     <ClInclude Include="D11_DepthBuffer.h" />
+    <ClInclude Include="D11_Enums.h" />
     <ClInclude Include="D11_Imgui.h" />
     <ClInclude Include="D11_Inputlayout.h" />
+    <ClInclude Include="D11_MeshFactory.h" />
     <ClInclude Include="D11_Model.h" />
     <ClInclude Include="D11_RenderState.h" />
     <ClInclude Include="D11_RenderTarget.h" />
@@ -45,7 +47,7 @@
     <ClInclude Include="Script.h" />
     <ClInclude Include="Systems.h" />
     <ClInclude Include="D11_Texture.h" />
-    <ClInclude Include="D11_Utiles.h" />
+    <ClInclude Include="D11_Utils.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="EventDispatcher.h" />
@@ -53,10 +55,8 @@
     <ClInclude Include="InitSettings.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="LayerStack.h" />
-    <ClInclude Include="Light.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="D11_Mesh.h" />
-    <ClInclude Include="Material.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -81,8 +81,10 @@
     <ClCompile Include="D11_Buffers.cpp" />
     <ClCompile Include="D11_ConstBuffer.cpp" />
     <ClCompile Include="D11_DepthBuffer.cpp" />
+    <ClCompile Include="D11_Enums.cpp" />
     <ClCompile Include="D11_Imgui.cpp" />
     <ClCompile Include="D11_Inputlayout.cpp" />
+    <ClCompile Include="D11_MeshFactory.cpp" />
     <ClCompile Include="D11_Model.cpp" />
     <ClCompile Include="D11_RenderState.cpp" />
     <ClCompile Include="D11_RenderTarget.cpp" />
@@ -95,7 +97,7 @@
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="Systems.cpp" />
     <ClCompile Include="D11_Texture.cpp" />
-    <ClCompile Include="D11_Utiles.cpp" />
+    <ClCompile Include="D11_Utils.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="EventDispatcher.cpp" />
@@ -103,10 +105,8 @@
     <ClCompile Include="InitSetting.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="LayerStack.cpp" />
-    <ClCompile Include="Light.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="D11_Mesh.cpp" />
-    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />

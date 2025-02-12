@@ -461,7 +461,7 @@ void D11_Renderer::SetViewport(const Viewport& in_viewport)
 
 void D11_Renderer::BindBackBuffer()
 {
-    auto rtv = m_swapChain->GetBackBuffer();
+    auto rtv = m_swapChain->GetBackBufferRT();
     auto dsv = m_swapChain->GetDepthBuffer();
     SetViewport(m_swapChain->GetViewport());
 
@@ -473,7 +473,7 @@ void D11_Renderer::BindBackBuffer()
 
 void D11_Renderer::ClearBackBuffer(const Color& in_color)
 {
-    m_swapChain->GetBackBuffer()->Clear(in_color);
+    m_swapChain->GetBackBufferRT()->Clear(in_color);
 }
 
 void D11_Renderer::ClearDepthBuffer(float in_depth, uint8 in_stencil) const
@@ -523,12 +523,12 @@ void D11_Renderer::Present()
 
 Ref<D11_RenderTarget> D11_Renderer::GetFloatBackBuffer() const
 {
-    return m_swapChain->GetFloatRenderTarget();
+    return m_swapChain->GetFloatBackBufferRT();
 }
 
 Ref<D11_RenderTarget> D11_Renderer::GetFloatBackBuffer()
 {
-    return m_swapChain->GetFloatRenderTarget();
+    return m_swapChain->GetFloatBackBufferRT();
 }
 
 ComPtr<ID3D11Device> D11_Renderer::GetDevice() const
@@ -548,12 +548,12 @@ Ref<D11_Swapchain> D11_Renderer::GetSwapChain() const
 
 Ref<D11_RenderTarget> D11_Renderer::GetBackBuffer() const
 {
-    return m_swapChain->GetBackBuffer();
+    return m_swapChain->GetBackBufferRT();
 }
 
 Ref<D11_RenderTarget> D11_Renderer::GetBackBuffer()
 {
-    return m_swapChain->GetBackBuffer();
+    return m_swapChain->GetBackBufferRT();
 }
 
 }   // namespace crab

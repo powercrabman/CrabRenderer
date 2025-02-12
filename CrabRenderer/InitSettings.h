@@ -59,23 +59,23 @@ enum class eRendererAPI
 struct SwapChainSetting
 {
     // swap chain
-    DXGI_FORMAT swapChainFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
+    eD11_Format swapChainFormat = eD11_Format::UNorm8x4;
 
     // depth stencil
-    bool        useDepthStencil    = true;
-    DXGI_FORMAT depthStencilFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
+    eD11_DepthFormat depthBufferFormat = eD11_DepthFormat::D24_UNorm_S8_Uint;
+    bool             enableDepthBuffer = true;
 
     // viewport
     Viewport viewport = { 0.f, 0.f, 0.f, 0.f, 0.f, 1.f };
-    bool     useVSync = true;
+    bool     enableVSync = true;
 
     // For HDR rendering
-    bool useFloatRenderTarget = false;
+    bool enableFloatRenderTarget = false;
 
     // MSAA
     bool  enableMSAA      = false;
     int32 MSAASampleCount = 4;
-    int32 MSAAQuality     = -1;   // if -1, it will be set to the highest quality level
+    int32 MSAAQuality     = MSAA_MAX_QUALITY;
 };
 
 struct RendererSetting

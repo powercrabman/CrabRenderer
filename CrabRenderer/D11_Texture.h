@@ -1,16 +1,18 @@
 #pragma once
-#include "D11_Utiles.h"
+#include "D11_Utils.h"
 
 namespace crab
 {
 
 //===================================================
-//                     Utile
+//                     Utils
 //===================================================
 
-struct D11_TextureUtile
+struct D11_TextureLoader
 {
-    static DirectX::ScratchImage LoadImageFromFile(const std::filesystem::path& in_path);
+    static bool LoadImageFromFile(const std::filesystem::path& in_path,
+                                  DirectX::ScratchImage*       out_scratchImage,
+                                  DirectX::TexMetadata*        out_metaData);
 };
 
 //===================================================
@@ -29,39 +31,28 @@ public:
 
     static Ref<D11_Texture2D> Create(const std::filesystem::path& in_path);
     static Ref<D11_Texture2D> CreateMipmap(const std::filesystem::path& in_path, uint32 in_mipLevel = 0);
+    static Ref<D11_Texture2D> CreateTextureCube(const std::filesystem::path& in_path);
 
     //===================================================
     //                  Texture Array
     //===================================================
 
     static Ref<D11_Texture2D> CreateTextureArray(const std::vector<std::filesystem::path>& in_paths);
-
-    //===================================================
-    //                    Cube map
-    //===================================================
-
-    static Ref<D11_Texture2D> CreateTextureCube(
-        const std::filesystem::path& in_pathPX,
-        const std::filesystem::path& in_pathNX,
-        const std::filesystem::path& in_pathPY,
-        const std::filesystem::path& in_pathNY,
-        const std::filesystem::path& in_pathPZ,
-        const std::filesystem::path& in_pathNZ);
-
-    static Ref<D11_Texture2D> CreateTextureCubeByDDS(const std::filesystem::path& in_path);
+    static Ref<D11_Texture2D> CreateMipmapTextureArray(const std::vector<std::filesystem::path>& in_paths, uint32 in_mipLevel = 0);
+    static Ref<D11_Texture2D> CreateTextureCubeArray(const std::vector<std::filesystem::path>& in_paths);
 
     //===================================================
     //                 Member Function
     //===================================================
 
-    void Bind(uint32 in_slot, eShaderFlags in_flag);
+    void Bind(uint32 in_slot, eShaderFlags in_flag) const;
 
     ID3D11ShaderResourceView* GetSRV() const;
     DirectX::Image            GetImageData() const { return m_image; }
 
 private:
     ComPtr<ID3D11ShaderResourceView> m_srv;
-    DirectX::Image                   m_image;
+    DirectX::Image                   m_image = {};
 };
 
 //===================================================
@@ -79,7 +70,7 @@ public:
 
     Ref<D11_Texture2D> GetTexture(uint32 in_index) const;
 
-    void Bind();
+    void Bind() const;
 
 private:
     struct TextureNode

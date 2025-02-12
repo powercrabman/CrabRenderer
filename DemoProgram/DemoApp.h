@@ -3,8 +3,8 @@
 class DemoApp : public Application
 {
 public:
-	DemoApp() = default;
-	~DemoApp() = default;
+	DemoApp();
+	~DemoApp();
 
 	ApplicationSetting ConfigureApplication() override;
 
