@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "D11_Inputlayout.h"
+#include "InputElements.h"
 
 namespace crab
 {
@@ -20,12 +20,12 @@ struct Vertex2D_PosColor
     Vec2 position;
     Vec4 color;
 
-    inline static D11_InputElements s_elements = []()
+    inline static InputElements s_elements = []()
     {
-        D11_InputElements elements = {};
+        InputElements elements = {};
         elements
-            .Add("POSITION", 0, eD11_Format::Float32x2)
-            .Add("COLOR", 0, eD11_Format::Float32x4);
+            .Add("POSITION", 0, eFormat::Float32x2)
+            .Add("COLOR", 0, eFormat::Float32x4);
 
         return elements;
     }();
@@ -36,12 +36,12 @@ struct Vertex2D_PosTex
     Vec2 position;
     Vec2 texCoord;
 
-    inline static D11_InputElements s_elements = []()
+    inline static InputElements s_elements = []()
     {
-        D11_InputElements elements = {};
+        InputElements elements = {};
         elements
-            .Add("POSITION", 0, eD11_Format::Float32x2)
-            .Add("TEXCOORD", 0, eD11_Format::Float32x2);
+            .Add("POSITION", 0, eFormat::Float32x2)
+            .Add("TEXCOORD", 0, eFormat::Float32x2);
 
         return elements;
     }();
@@ -53,13 +53,13 @@ struct Vertex2D_PosTexColor
     Vec2 texCoord;
     Vec4 color;
 
-    inline static D11_InputElements s_elements = []()
+    inline static InputElements s_elements = []()
     {
-        D11_InputElements elements = {};
+        InputElements elements = {};
         elements
-            .Add("POSITION", 0, eD11_Format::Float32x2)
-            .Add("TEXCOORD", 0, eD11_Format::Float32x2)
-            .Add("COLOR", 0, eD11_Format::Float32x4);
+            .Add("POSITION", 0, eFormat::Float32x2)
+            .Add("TEXCOORD", 0, eFormat::Float32x2)
+            .Add("COLOR", 0, eFormat::Float32x4);
 
         return elements;
     }();
@@ -74,12 +74,12 @@ struct Vertex3D_PosColor
     Vec3 position;
     Vec4 color;
 
-    inline static D11_InputElements s_elements = []()
+    inline static InputElements s_elements = []()
     {
-        D11_InputElements elements = {};
+        InputElements elements = {};
         elements
-            .Add("POSITION", 0, eD11_Format::Float32x3)
-            .Add("COLOR", 0, eD11_Format::Float32x4);
+            .Add("POSITION", 0, eFormat::Float32x3)
+            .Add("COLOR", 0, eFormat::Float32x4);
 
         return elements;
     }();
@@ -91,13 +91,13 @@ struct Vertex3D_PosNormalColor
     Vec3 normal;
     Vec4 color;
 
-    inline static D11_InputElements s_elements = []()
+    inline static InputElements s_elements = []()
     {
-        D11_InputElements elements = {};
+        InputElements elements = {};
         elements
-            .Add("POSITION", 0, eD11_Format::Float32x3)
-            .Add("NORMAL", 0, eD11_Format::Float32x3)
-            .Add("COLOR", 0, eD11_Format::Float32x4);
+            .Add("POSITION", 0, eFormat::Float32x3)
+            .Add("NORMAL", 0, eFormat::Float32x3)
+            .Add("COLOR", 0, eFormat::Float32x4);
 
         return elements;
     }();
@@ -109,13 +109,13 @@ struct Vertex3D_PosNormalTex
     Vec3 normal;
     Vec2 texCoord;
 
-    inline static D11_InputElements s_elements = []()
+    inline static InputElements s_elements = []()
     {
-        D11_InputElements elements = {};
+        InputElements elements = {};
         elements
-            .Add("POSITION", 0, eD11_Format::Float32x3)
-            .Add("NORMAL", 0, eD11_Format::Float32x3)
-            .Add("TEXCOORD", 0, eD11_Format::Float32x2);
+            .Add("POSITION", 0, eFormat::Float32x3)
+            .Add("NORMAL", 0, eFormat::Float32x3)
+            .Add("TEXCOORD", 0, eFormat::Float32x2);
 
         return elements;
     }();
@@ -128,14 +128,14 @@ struct Vertex3D_PosNormalTexTangent
     Vec2 texCoord;
     Vec3 tangent;
 
-    inline static D11_InputElements s_elements = []()
+    inline static InputElements s_elements = []()
     {
-        D11_InputElements elements = {};
+        InputElements elements = {};
         elements
-            .Add("POSITION", 0, eD11_Format::Float32x3)
-            .Add("NORMAL", 0, eD11_Format::Float32x3)
-            .Add("TEXCOORD", 0, eD11_Format::Float32x2)
-            .Add("TANGENT", 0, eD11_Format::Float32x3);
+            .Add("POSITION", 0, eFormat::Float32x3)
+            .Add("NORMAL", 0, eFormat::Float32x3)
+            .Add("TEXCOORD", 0, eFormat::Float32x2)
+            .Add("TANGENT", 0, eFormat::Float32x3);
 
         return elements;
     }();

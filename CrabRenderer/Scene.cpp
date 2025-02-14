@@ -53,6 +53,19 @@ Entity Scene::FindEntity(uint32 in_id)
     }
 }
 
+Entity Scene::FindEntity(const IDComponent& in_id)
+{
+    Entity e { this, entt::entity(in_id.id) };
+    if (m_registry.valid(e))
+    {
+        return e;
+    }
+    else
+    {
+        return Entity::s_null;
+    }
+}
+
 void Scene::_Init()
 {
     if (!m_isInit)

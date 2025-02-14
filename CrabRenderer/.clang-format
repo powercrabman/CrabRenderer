@@ -46,4 +46,7 @@ SpacesInParentheses: 'false'
 SpacesInSquareBrackets: 'false'
 Standard: Auto
 
+AlignOperands: true
+BreakBeforeBinaryOperators: NonAssignment
+AllowShortCaseLabelsOnASingleLine: false
 ...

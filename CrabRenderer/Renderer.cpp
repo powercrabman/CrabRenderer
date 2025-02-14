@@ -2,17 +2,17 @@
 
 #include "Renderer.h"
 
-#include "D11_Renderer.h"
+#include "D11Renderer.h"
 
 namespace crab
 {
 
-Scope<D11_Renderer> Renderer::m_renderer;
+Scope<D11Renderer> Renderer::m_renderer;
 
 void Renderer::Init(const RendererSetting& in_setting)
 {
     // todo..
-    m_renderer = CreateScope<D11_Renderer>();
+    m_renderer = CreateScope<D11Renderer>();
     m_renderer->Init(in_setting);
 }
 

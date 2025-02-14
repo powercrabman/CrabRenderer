@@ -2,8 +2,8 @@
 
 #include "PostProcess.h"
 
-#include "D11_Mesh.h"
-#include "D11_Texture.h"
+#include "Mesh.h"
+#include "Texture.h"
 #include "ImageFilter.h"
 
 namespace crab
@@ -22,7 +22,7 @@ Ref<PostProcess> PostProcess::Create()
 
     std::vector<uint32> indices = { 0, 1, 2, 0, 2, 3 };
 
-    pp->m_mesh = D11_Mesh::Create(vertices, indices);
+    pp->m_mesh = Mesh::Create(vertices, indices);
 
     return pp;
 }

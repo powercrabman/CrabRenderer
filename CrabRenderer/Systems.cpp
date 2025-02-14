@@ -3,9 +3,9 @@
 #include "Systems.h"
 
 #include "Components.h"
-#include "D11_Buffers.h"
-#include "D11_Mesh.h"
-#include "D11_Renderer.h"
+#include "Buffers.h"
+#include "Mesh.h"
+#include "D11Renderer.h"
 #include "Scene.h"
 
 namespace crab

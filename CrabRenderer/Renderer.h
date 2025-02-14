@@ -3,7 +3,7 @@
 namespace crab
 {
 
-class D11_Renderer;
+class D11Renderer;
 
 class Renderer
 {
@@ -21,12 +21,12 @@ public:
     static void Present();
 
 private:
-    static Scope<D11_Renderer> m_renderer;
+    static Scope<D11Renderer> m_renderer;
 };
 
 // Helper (Temp)
 
 #define D11_API \
-    static_cast<D11_Renderer*>(Renderer::GetNativeRenderingAPI())
+    static_cast<D11Renderer*>(Renderer::GetNativeRenderingAPI())
 
 }   // namespace crab

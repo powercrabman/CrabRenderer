@@ -3,27 +3,47 @@
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NMHeightDemoVS.cso
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\HDRICubemapPS.cso
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\BlurCombinePS.cso
-  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DownBlurPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\BlurXPS.cso
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\PBRCommonVS.cso
-  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\UpBlurPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\BlurYPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\EnvmapPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\PBRCommonPS.cso
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\ToneMapPS.cso
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\SamplingPostProcessPS.cso
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\NMDemoVS.cso
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\PostProcessVS.cso
   compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\HDRICubemapVS.cso
-  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\PBRCommonPS.cso
+  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\EnvmapVS.cso
 C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 중간 디렉터리(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\\Inter\Debug\)에 다른 프로젝트(DemoProgram.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
   unity_C9DBRKLV8ELBM213.cpp
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(298,68): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(562,23): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(298,65): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(568,72): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(310,66): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(568,69): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(310,63): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(576,72): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(576,69): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(584,23): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(590,70): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(590,67): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(597,70): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.cpp(597,67): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   (소스 파일 'Inter/Debug/unity_C9DBRKLV8ELBM213.cpp'을(를) 컴파일하는 중)
   
 C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\19. PBRDemo.h(17,1): warning C4172: 지역 변수 또는 임시 의 주소를 반환하는 중

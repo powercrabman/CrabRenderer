@@ -132,6 +132,9 @@
     <None Include="PBRCommon.hlsli">
       <Filter>Shaders\PBR</Filter>
     </None>
+    <None Include="EnvmapCommon.hlsli">
+      <Filter>Shaders\PBR</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="NormalPixelShader.hlsl">
@@ -275,19 +278,25 @@
     <FxCompile Include="HDRICubemapVS.hlsl">
       <Filter>Shaders\HDRIDemo</Filter>
     </FxCompile>
-    <FxCompile Include="UpBlurPS.hlsl">
+    <FxCompile Include="BlurYPS.hlsl">
       <Filter>Shaders\PostProcess %28for PBR%29</Filter>
     </FxCompile>
     <FxCompile Include="BlurCombinePS.hlsl">
       <Filter>Shaders\PostProcess %28for PBR%29</Filter>
     </FxCompile>
-    <FxCompile Include="DownBlurPS.hlsl">
+    <FxCompile Include="BlurXPS.hlsl">
       <Filter>Shaders\PostProcess %28for PBR%29</Filter>
     </FxCompile>
-    <FxCompile Include="PBRCommonPS.hlsl">
+    <FxCompile Include="PBRCommonVS.hlsl">
       <Filter>Shaders\PBR</Filter>
     </FxCompile>
-    <FxCompile Include="PBRCommonVS.hlsl">
+    <FxCompile Include="EnvmapPS.hlsl">
+      <Filter>Shaders\PBR</Filter>
+    </FxCompile>
+    <FxCompile Include="EnvmapVS.hlsl">
+      <Filter>Shaders\PBR</Filter>
+    </FxCompile>
+    <FxCompile Include="PBRCommonPS.hlsl">
       <Filter>Shaders\PBR</Filter>
     </FxCompile>
   </ItemGroup>

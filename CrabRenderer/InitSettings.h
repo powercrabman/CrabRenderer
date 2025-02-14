@@ -59,10 +59,10 @@ enum class eRendererAPI
 struct SwapChainSetting
 {
     // swap chain
-    eD11_Format swapChainFormat = eD11_Format::UNorm8x4;
+    eFormat swapChainFormat = eFormat::UNorm8x4;
 
     // depth stencil
-    eD11_DepthFormat depthBufferFormat = eD11_DepthFormat::D24_UNorm_S8_Uint;
+    eDepthFormat depthBufferFormat = eDepthFormat::D24_UNorm_S8_Uint;
     bool             enableDepthBuffer = true;
 
     // viewport

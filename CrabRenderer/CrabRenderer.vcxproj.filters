@@ -79,6 +79,9 @@
     <Filter Include="04. Renderer\FrameBuffer">
       <UniqueIdentifier>{0e5e81c3-151f-44ff-9e46-ca437f5e188f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="07. Assets">
+      <UniqueIdentifier>{f8bb8dee-f16e-4420-8551-9aa2a5b2d715}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CrabPch.cpp">
@@ -117,28 +120,28 @@
     <ClCompile Include="InitSetting.cpp">
       <Filter>99. Base</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Buffers.cpp">
+    <ClCompile Include="Buffers.cpp">
       <Filter>04. Renderer\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="D11_ConstBuffer.cpp">
+    <ClCompile Include="ConstantBuffer.cpp">
       <Filter>04. Renderer\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Inputlayout.cpp">
+    <ClCompile Include="InputElements.cpp">
       <Filter>04. Renderer\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Texture.cpp">
+    <ClCompile Include="Texture.cpp">
       <Filter>04. Renderer\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="D11_RenderState.cpp">
+    <ClCompile Include="RenderStates.cpp">
       <Filter>04. Renderer\RenderState</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Renderer.cpp">
+    <ClCompile Include="D11Renderer.cpp">
       <Filter>04. Renderer\Device</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>04. Renderer\Device</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Shaders.cpp">
+    <ClCompile Include="Shaders.cpp">
       <Filter>04. Renderer\Shader</Filter>
     </ClCompile>
     <ClCompile Include="LayerStack.cpp">
@@ -156,7 +159,7 @@
     <ClCompile Include="CrabMath.cpp">
       <Filter>99. Base\Math</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Imgui.cpp">
+    <ClCompile Include="ImguiVendor.cpp">
       <Filter>04. Renderer\Gui</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
@@ -165,16 +168,16 @@
     <ClCompile Include="CTTI.cpp">
       <Filter>99. Base\CompileTimeTypeInfo</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Utils.cpp">
+    <ClCompile Include="D11Utils.cpp">
       <Filter>04. Renderer\Utiles</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Mesh.cpp">
+    <ClCompile Include="Mesh.cpp">
       <Filter>04. Renderer\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="VertexType.cpp">
       <Filter>04. Renderer\Utiles</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Model.cpp">
+    <ClCompile Include="Model.cpp">
       <Filter>04. Renderer\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="Systems.cpp">
@@ -183,10 +186,10 @@
     <ClCompile Include="ImageFilter.cpp">
       <Filter>04. Renderer\PostProcessing</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Swapchain.cpp">
+    <ClCompile Include="Swapchain.cpp">
       <Filter>04. Renderer\Device</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Snapshot.cpp">
+    <ClCompile Include="Snapshot.cpp">
       <Filter>04. Renderer\Snapshot</Filter>
     </ClCompile>
     <ClCompile Include="Script.cpp">
@@ -195,17 +198,20 @@
     <ClCompile Include="PostProcess.cpp">
       <Filter>04. Renderer\PostProcessing</Filter>
     </ClCompile>
-    <ClCompile Include="D11_DepthBuffer.cpp">
+    <ClCompile Include="DepthBuffer.cpp">
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="D11_RenderTarget.cpp">
+    <ClCompile Include="RenderTarget.cpp">
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="D11_Enums.cpp">
+    <ClCompile Include="D11Enums.cpp">
       <Filter>04. Renderer\Utiles</Filter>
     </ClCompile>
-    <ClCompile Include="D11_MeshFactory.cpp">
+    <ClCompile Include="MeshFactory.cpp">
       <Filter>04. Renderer\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderStateStorage.cpp">
+      <Filter>04. Renderer\RenderState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,28 +260,28 @@
     <ClInclude Include="SCircularQueue.h">
       <Filter>99. Base\DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Buffers.h">
+    <ClInclude Include="Buffers.h">
       <Filter>04. Renderer\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="D11_ConstBuffer.h">
+    <ClInclude Include="ConstantBuffer.h">
       <Filter>04. Renderer\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Inputlayout.h">
+    <ClInclude Include="InputElements.h">
       <Filter>04. Renderer\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Texture.h">
+    <ClInclude Include="Texture.h">
       <Filter>04. Renderer\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="D11_RenderState.h">
+    <ClInclude Include="RenderStates.h">
       <Filter>04. Renderer\RenderState</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Renderer.h">
+    <ClInclude Include="D11Renderer.h">
       <Filter>04. Renderer\Device</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>04. Renderer\Device</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Shaders.h">
+    <ClInclude Include="Shaders.h">
       <Filter>04. Renderer\Shader</Filter>
     </ClInclude>
     <ClInclude Include="LayerStack.h">
@@ -296,25 +302,25 @@
     <ClInclude Include="CrabMath.h">
       <Filter>99. Base\Math</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Imgui.h">
+    <ClInclude Include="ImguiVendor.h">
       <Filter>04. Renderer\Gui</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>05. Scene</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Utils.h">
+    <ClInclude Include="D11Utils.h">
       <Filter>04. Renderer\Utiles</Filter>
     </ClInclude>
     <ClInclude Include="CrabInclude.h">
       <Filter>99. Base</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Mesh.h">
+    <ClInclude Include="Mesh.h">
       <Filter>04. Renderer\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="VertexType.h">
       <Filter>04. Renderer\Utiles</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Model.h">
+    <ClInclude Include="Model.h">
       <Filter>04. Renderer\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="CrabColors.h">
@@ -326,10 +332,10 @@
     <ClInclude Include="ImageFilter.h">
       <Filter>04. Renderer\PostProcessing</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Swapchain.h">
+    <ClInclude Include="Swapchain.h">
       <Filter>04. Renderer\Device</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Snapshot.h">
+    <ClInclude Include="Snapshot.h">
       <Filter>04. Renderer\Snapshot</Filter>
     </ClInclude>
     <ClInclude Include="Script.h">
@@ -338,17 +344,20 @@
     <ClInclude Include="PostProcess.h">
       <Filter>04. Renderer\PostProcessing</Filter>
     </ClInclude>
-    <ClInclude Include="D11_DepthBuffer.h">
+    <ClInclude Include="DepthBuffer.h">
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="D11_RenderTarget.h">
+    <ClInclude Include="RenderTarget.h">
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="D11_Enums.h">
+    <ClInclude Include="D11Enums.h">
       <Filter>04. Renderer\Utiles</Filter>
     </ClInclude>
-    <ClInclude Include="D11_MeshFactory.h">
+    <ClInclude Include="MeshFactory.h">
       <Filter>04. Renderer\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderStateStorage.h">
+      <Filter>04. Renderer\RenderState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
