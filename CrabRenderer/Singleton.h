@@ -12,7 +12,7 @@ public:
     {
         if (!s_instance)
         {
-            s_instance = std::make_unique<T>();
+            s_instance = std::unique_ptr<T>(new T{});
         }
         return *s_instance;
     }

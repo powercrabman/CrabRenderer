@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <functional> 
+#include <string>
 #include <string_view>
 
 #ifndef STATIC_TYPE_INFO_USE_MEMBER_POINTER
@@ -41,15 +42,6 @@ namespace detail
 //===================================================
 
 using TypeIndex = decltype(&detail::IDGenerator<void>::id);
-
-//===================================================
-// detail
-//===================================================
-
-namespace detail
-{
-    void _RegisterType(TypeName name, const TypeIndex& index);
-}   // namespace detail
 
 //===================================================
 // Compile Time Hash
@@ -137,29 +129,20 @@ struct TypeInfo
     constexpr bool operator==(const TypeInfo& other) const { return index == other.index; }
     constexpr bool operator!=(const TypeInfo& other) const { return index != other.index; }
     constexpr bool operator<(const TypeInfo& other) const { return index < other.index; }
+
+    template<typename Ty>
+    static TypeInfo Get()
+    {
+        return { detail::_GetTypeName<Ty>(), detail::_GetTypeIndex<Ty>() };
+    }
 };
 
-//===================================================
-// GetTypeInfo
-//===================================================
 
-template<typename T>
-constexpr TypeInfo GetTypeInfo()
+inline std::string ExtractStringInTypeName(TypeName in_name)
 {
-    static bool registered = []()
-    {
-        detail::_RegisterType(detail::_GetTypeName<T>(), detail::_GetTypeIndex<T>());
-        return true;
-    }();
-
-    return TypeInfo { detail::_GetTypeName<T>(), detail::_GetTypeIndex<T>() };
+    size_t idx = in_name.find_first_of(' ');
+    return std::string(in_name.substr(idx + 1));
 }
-
-//===================================================
-// Getter 
-//===================================================
-
-TypeInfo GetTypeInfo(TypeName in_name);
 
 //===================================================
 // std::hash 특수화

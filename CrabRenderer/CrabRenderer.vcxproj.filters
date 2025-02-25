@@ -40,20 +40,11 @@
     <Filter Include="04. Renderer\RenderState">
       <UniqueIdentifier>{cb8a25d2-ba67-4e68-abe4-f229600eaa49}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\Utiles">
-      <UniqueIdentifier>{b29488c3-3166-4d97-a6fe-2c8bae63e9d2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="99. Base\CompileTimeTypeInfo">
       <UniqueIdentifier>{00915d50-cb15-453d-bf33-66952a6781e0}</UniqueIdentifier>
     </Filter>
     <Filter Include="06. ECS">
       <UniqueIdentifier>{2979dd23-7ab2-4cee-a2c3-e2ab9a56c81f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="06. ECS\Components">
-      <UniqueIdentifier>{984011ff-604c-4f0a-a440-b457f97c8c0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="06. ECS\Systems">
-      <UniqueIdentifier>{9aaec4dc-79dc-473a-a4f9-b6c5498d414a}</UniqueIdentifier>
     </Filter>
     <Filter Include="99. Base\Math">
       <UniqueIdentifier>{fc06c17f-bad8-4c0c-9c70-867fd9c4325c}</UniqueIdentifier>
@@ -61,17 +52,8 @@
     <Filter Include="04. Renderer\Gui">
       <UniqueIdentifier>{3000170c-f646-44b0-b75f-1e2240264708}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\Mesh">
-      <UniqueIdentifier>{8f476673-fe22-429f-a800-0a19e7f0ee92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Renderer\PostProcessing">
-      <UniqueIdentifier>{010affd7-d431-4986-b70f-e028ba943721}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04. Renderer\Device">
       <UniqueIdentifier>{8076fccc-2742-4c80-bb16-ad3ae0df9354}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Renderer\Snapshot">
-      <UniqueIdentifier>{d8d5d394-1943-455d-aad9-129e86c4b297}</UniqueIdentifier>
     </Filter>
     <Filter Include="05. Scene">
       <UniqueIdentifier>{25b4b0e8-bbb5-465a-88f4-155042499901}</UniqueIdentifier>
@@ -81,6 +63,39 @@
     </Filter>
     <Filter Include="07. Assets">
       <UniqueIdentifier>{f8bb8dee-f16e-4420-8551-9aa2a5b2d715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\PostProcess">
+      <UniqueIdentifier>{010affd7-d431-4986-b70f-e028ba943721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Utils">
+      <UniqueIdentifier>{b29488c3-3166-4d97-a6fe-2c8bae63e9d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Utils\Snapshot">
+      <UniqueIdentifier>{d8d5d394-1943-455d-aad9-129e86c4b297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Utils\Raycast">
+      <UniqueIdentifier>{9c3f5b61-66af-4a17-a1fb-5a0ac7234741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\PostProcess\Sample">
+      <UniqueIdentifier>{f3409081-4bc9-4336-9418-d831d6efefec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. AppWindow\Third party">
+      <UniqueIdentifier>{1b4aed6a-91a0-4742-b600-b8b0803609b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\RenderPass">
+      <UniqueIdentifier>{122212a8-7316-458f-b4e0-9d842786739a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Mesh/Material">
+      <UniqueIdentifier>{8f476673-fe22-429f-a800-0a19e7f0ee92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\todo ... Particle System">
+      <UniqueIdentifier>{fd1628e6-a510-4661-8989-a698f37d99b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97. Json">
+      <UniqueIdentifier>{ae233562-3673-4ae6-b428-8455ae77b3c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Utils\imguizmo">
+      <UniqueIdentifier>{26a21180-8dab-4545-afd7-e3fc13d9a04c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -123,22 +138,16 @@
     <ClCompile Include="Buffers.cpp">
       <Filter>04. Renderer\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="ConstantBuffer.cpp">
-      <Filter>04. Renderer\Buffers</Filter>
-    </ClCompile>
     <ClCompile Include="InputElements.cpp">
       <Filter>04. Renderer\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
+    <ClCompile Include="Textures.cpp">
       <Filter>04. Renderer\Texture</Filter>
     </ClCompile>
     <ClCompile Include="RenderStates.cpp">
       <Filter>04. Renderer\RenderState</Filter>
     </ClCompile>
     <ClCompile Include="D11Renderer.cpp">
-      <Filter>04. Renderer\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
       <Filter>04. Renderer\Device</Filter>
     </ClCompile>
     <ClCompile Include="Shaders.cpp">
@@ -153,9 +162,6 @@
     <ClCompile Include="Entity.cpp">
       <Filter>06. ECS</Filter>
     </ClCompile>
-    <ClCompile Include="Components.cpp">
-      <Filter>06. ECS\Components</Filter>
-    </ClCompile>
     <ClCompile Include="CrabMath.cpp">
       <Filter>99. Base\Math</Filter>
     </ClCompile>
@@ -169,34 +175,31 @@
       <Filter>99. Base\CompileTimeTypeInfo</Filter>
     </ClCompile>
     <ClCompile Include="D11Utils.cpp">
-      <Filter>04. Renderer\Utiles</Filter>
+      <Filter>04. Renderer\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
-      <Filter>04. Renderer\Mesh</Filter>
+      <Filter>04. Renderer\Mesh/Material</Filter>
     </ClCompile>
-    <ClCompile Include="VertexType.cpp">
-      <Filter>04. Renderer\Utiles</Filter>
+    <ClCompile Include="CrabVertex.cpp">
+      <Filter>04. Renderer\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
-      <Filter>04. Renderer\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="Systems.cpp">
-      <Filter>06. ECS\Systems</Filter>
+      <Filter>04. Renderer\Mesh/Material</Filter>
     </ClCompile>
     <ClCompile Include="ImageFilter.cpp">
-      <Filter>04. Renderer\PostProcessing</Filter>
+      <Filter>04. Renderer\PostProcess</Filter>
     </ClCompile>
     <ClCompile Include="Swapchain.cpp">
       <Filter>04. Renderer\Device</Filter>
     </ClCompile>
     <ClCompile Include="Snapshot.cpp">
-      <Filter>04. Renderer\Snapshot</Filter>
+      <Filter>04. Renderer\Utils\Snapshot</Filter>
     </ClCompile>
     <ClCompile Include="Script.cpp">
       <Filter>06. ECS</Filter>
     </ClCompile>
     <ClCompile Include="PostProcess.cpp">
-      <Filter>04. Renderer\PostProcessing</Filter>
+      <Filter>04. Renderer\PostProcess</Filter>
     </ClCompile>
     <ClCompile Include="DepthBuffer.cpp">
       <Filter>04. Renderer\FrameBuffer</Filter>
@@ -205,13 +208,49 @@
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="D11Enums.cpp">
-      <Filter>04. Renderer\Utiles</Filter>
+      <Filter>04. Renderer\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="MeshFactory.cpp">
-      <Filter>04. Renderer\Mesh</Filter>
+    <ClCompile Include="GeometryFactory.cpp">
+      <Filter>04. Renderer\Mesh/Material</Filter>
     </ClCompile>
-    <ClCompile Include="RenderStateStorage.cpp">
+    <ClCompile Include="CommonState.cpp">
       <Filter>04. Renderer\RenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderPass.cpp">
+      <Filter>04. Renderer\RenderPass</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCast.cpp">
+      <Filter>04. Renderer\Utils\Raycast</Filter>
+    </ClCompile>
+    <ClCompile Include="D11ResourceList.cpp">
+      <Filter>04. Renderer\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CrabComponents.cpp">
+      <Filter>06. ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyfiledialogs.cpp">
+      <Filter>02. AppWindow\Third party</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystem.cpp">
+      <Filter>02. AppWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="convention.txt">
+      <Filter>99. Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageLoader.cpp">
+      <Filter>04. Renderer\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorHandler.cpp">
+      <Filter>99. Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>04. Renderer\Mesh/Material</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonSerializer.cpp">
+      <Filter>97. Json</Filter>
+    </ClCompile>
+    <ClCompile Include="GizmoController.cpp">
+      <Filter>04. Renderer\Utils\imguizmo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -263,22 +302,16 @@
     <ClInclude Include="Buffers.h">
       <Filter>04. Renderer\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="ConstantBuffer.h">
-      <Filter>04. Renderer\Buffers</Filter>
-    </ClInclude>
     <ClInclude Include="InputElements.h">
       <Filter>04. Renderer\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
+    <ClInclude Include="Textures.h">
       <Filter>04. Renderer\Texture</Filter>
     </ClInclude>
     <ClInclude Include="RenderStates.h">
       <Filter>04. Renderer\RenderState</Filter>
     </ClInclude>
     <ClInclude Include="D11Renderer.h">
-      <Filter>04. Renderer\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
       <Filter>04. Renderer\Device</Filter>
     </ClInclude>
     <ClInclude Include="Shaders.h">
@@ -296,9 +329,6 @@
     <ClInclude Include="Entity.h">
       <Filter>06. ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>06. ECS\Components</Filter>
-    </ClInclude>
     <ClInclude Include="CrabMath.h">
       <Filter>99. Base\Math</Filter>
     </ClInclude>
@@ -309,40 +339,37 @@
       <Filter>05. Scene</Filter>
     </ClInclude>
     <ClInclude Include="D11Utils.h">
-      <Filter>04. Renderer\Utiles</Filter>
+      <Filter>04. Renderer\Utils</Filter>
     </ClInclude>
     <ClInclude Include="CrabInclude.h">
       <Filter>99. Base</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
-      <Filter>04. Renderer\Mesh</Filter>
+      <Filter>04. Renderer\Mesh/Material</Filter>
     </ClInclude>
-    <ClInclude Include="VertexType.h">
-      <Filter>04. Renderer\Utiles</Filter>
+    <ClInclude Include="CrabVertex.h">
+      <Filter>04. Renderer\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>04. Renderer\Mesh</Filter>
+      <Filter>04. Renderer\Mesh/Material</Filter>
     </ClInclude>
     <ClInclude Include="CrabColors.h">
       <Filter>99. Base</Filter>
     </ClInclude>
-    <ClInclude Include="Systems.h">
-      <Filter>06. ECS\Systems</Filter>
-    </ClInclude>
     <ClInclude Include="ImageFilter.h">
-      <Filter>04. Renderer\PostProcessing</Filter>
+      <Filter>04. Renderer\PostProcess</Filter>
     </ClInclude>
     <ClInclude Include="Swapchain.h">
       <Filter>04. Renderer\Device</Filter>
     </ClInclude>
     <ClInclude Include="Snapshot.h">
-      <Filter>04. Renderer\Snapshot</Filter>
+      <Filter>04. Renderer\Utils\Snapshot</Filter>
     </ClInclude>
     <ClInclude Include="Script.h">
       <Filter>06. ECS</Filter>
     </ClInclude>
     <ClInclude Include="PostProcess.h">
-      <Filter>04. Renderer\PostProcessing</Filter>
+      <Filter>04. Renderer\PostProcess</Filter>
     </ClInclude>
     <ClInclude Include="DepthBuffer.h">
       <Filter>04. Renderer\FrameBuffer</Filter>
@@ -351,13 +378,46 @@
       <Filter>04. Renderer\FrameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="D11Enums.h">
-      <Filter>04. Renderer\Utiles</Filter>
+      <Filter>04. Renderer\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="MeshFactory.h">
-      <Filter>04. Renderer\Mesh</Filter>
+    <ClInclude Include="GeometryFactory.h">
+      <Filter>04. Renderer\Mesh/Material</Filter>
     </ClInclude>
-    <ClInclude Include="RenderStateStorage.h">
+    <ClInclude Include="CommonState.h">
       <Filter>04. Renderer\RenderState</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderPass.h">
+      <Filter>04. Renderer\RenderPass</Filter>
+    </ClInclude>
+    <ClInclude Include="RayCast.h">
+      <Filter>04. Renderer\Utils\Raycast</Filter>
+    </ClInclude>
+    <ClInclude Include="D11ResourceList.h">
+      <Filter>04. Renderer\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabComponents.h">
+      <Filter>06. ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyfiledialogs.h">
+      <Filter>02. AppWindow\Third party</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem.h">
+      <Filter>02. AppWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLoader.h">
+      <Filter>04. Renderer\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorHandler.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>04. Renderer\Mesh/Material</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonSerializer.h">
+      <Filter>97. Json</Filter>
+    </ClInclude>
+    <ClInclude Include="GizmoController.h">
+      <Filter>04. Renderer\Utils\imguizmo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

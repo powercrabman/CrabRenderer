@@ -10,12 +10,12 @@ public:
     Script(Entity in_owner);
     virtual ~Script();
 
-    virtual void OnUpdate(TimeStamp& in_ts) {}
+    virtual void OnUpdate(TimeStamp& in_ts) = 0;
 
     virtual Entity GetEntity() final;
 
-private:
-    Entity m_owner;
+protected:
+    Entity m_ownerEntity;
 };
 
 // todo - maybe add more functions like OnRender, OnEvent, etc.

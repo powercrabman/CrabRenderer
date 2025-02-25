@@ -17,6 +17,8 @@ using uint16 = unsigned __int16;
 using uint32 = unsigned __int32;
 using uint64 = unsigned __int64;
 
+using wchar = wchar_t;
+
 using Vec2 = DirectX::SimpleMath::Vector2;
 using Vec3 = DirectX::SimpleMath::Vector3;
 using Vec4 = DirectX::SimpleMath::Vector4;
@@ -31,7 +33,7 @@ using Plane          = DirectX::SimpleMath::Plane;
 
 using Color    = DirectX::SimpleMath::Color;
 using Viewport = DirectX::SimpleMath::Viewport;
-using Bool     = int32;   // for constant buffer
+using Bool     = int32;   // for constant texture
 
 //===================================================
 // Data Limit
@@ -61,13 +63,13 @@ using Ref = std::shared_ptr<T>;
 template<typename T, typename... Args>
 Scope<T> CreateScope(Args&&... args)
 {
-    return std::make_unique<T>(std::forward<Args>(args)...);
+    return Scope<T>(new T(std::forward<Args>(args)...));
 }
 
 template<typename T, typename... Args>
 Ref<T> CreateRef(Args&&... args)
 {
-    return std::make_shared<T>(std::forward<Args>(args)...);
+    return Ref<T>(new T(std::forward<Args>(args)...));
 }
 
 template<typename T>

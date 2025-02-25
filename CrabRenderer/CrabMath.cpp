@@ -2,6 +2,8 @@
 
 #include "CrabMath.h"
 
+#include "AppWindow.h"
+
 #include <random>
 
 namespace crab
@@ -23,6 +25,15 @@ float RandomFloat(float in_min, float in_max)
 {
     std::uniform_real_distribution<float> dist(in_min, in_max);
     return dist(RandomGenerator::gen);
+}
+
+Vec2 ScreenToNDC(uint32 in_x, uint32 in_y)
+{
+    auto [width, height] = GetAppWindow().GetWindowSize();
+    Vec2 result;
+    result.x = (2.f * in_x) / width - 1.f;
+    result.y = 1.f - (2.f * in_y) / height;
+    return result;
 }
 
 }   // namespace crab

@@ -4,6 +4,7 @@
 
 #include "AppWindow.h"
 #include "CrabEvent.h"
+#include "D11Renderer.h"
 #include "EventDispatcher.h"
 #include "ILayer.h"
 #include "Input.h"
@@ -61,7 +62,7 @@ void Application::_Init(const ApplicationSetting&         in_setting,
     m_applicationName = in_setting.applicationName;
     m_appWindow->Init(in_setting.windowSetting);
     Input::Init();
-    Renderer::Init(in_setting.rendererSetting);
+    GetRenderer().Init(in_setting.rendererSetting);
 
     // - Init Derived Application
     OnInit();
@@ -91,13 +92,14 @@ int Application::_Run()
         sc.OnUpdate(m_timeStamp);
 
         // render
-        Renderer::BeginRender();
         sc.OnRender(m_timeStamp);
+
+        GetRenderer().BeginGUI();
         sc.OnRenderGUI(m_timeStamp);
+        GetRenderer().EndGUI();
 
         // end
-        Renderer::EndRender();
-        Renderer::Present();
+        GetRenderer().Present();
 
         // update input
         Input::Update();
@@ -154,6 +156,12 @@ void Application::_OnEvent(CrabEvent& in_event)
 const crab::TimeStamp& Application::GetTimeStamp() const
 {
     return m_timeStamp;
+}
+
+void Application::Quit()
+{
+    AppClose_CoreEvent event {};
+    DispatchEvent(event);
 }
 
 }   // namespace crab

@@ -3,3 +3,16 @@
 #include "../CrabRenderer/CrabPch.h"
 #include "../CrabRenderer/CrabInclude.h"
 using namespace crab;
+
+// Base
+#include "Enums.h"
+
+// Rendering
+#include "Constants.h"
+#include "GlobalConstants.h"
+#include "GlobalShader.h"
+#include "GlobalRenderPass.h"
+
+// ECS
+#include "Components.h"
+

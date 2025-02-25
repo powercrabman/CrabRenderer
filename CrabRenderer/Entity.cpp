@@ -2,7 +2,7 @@
 
 #include "Entity.h"
 
-#include "Components.h"
+#include "CrabComponents.h"
 #include "Scene.h"
 
 namespace crab
@@ -27,9 +27,9 @@ crab::IDComponent& Entity::GetID()
     return GetComponent<IDComponent>();
 }
 
-crab::Transform& Entity::GetTransform()
+crab::TransformComponent& Entity::GetTransform()
 {
-    return GetComponent<Transform>();
+    return GetComponent<TransformComponent>();
 }
 
 }   // namespace crab

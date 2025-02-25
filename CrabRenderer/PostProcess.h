@@ -5,7 +5,7 @@
 namespace crab
 {
 
-class Texture2D;
+class Image2D;
 class Mesh;
 class ImageFilter;
 
@@ -26,18 +26,17 @@ struct PostProcessVertex
 class PostProcess
 {
 public:
-    static Ref<PostProcess> Create();
+    void Init();
 
-    void AddFilter(const Ref<ImageFilter>&   in_filter);
+    void AddFilter(const Ref<ImageFilter>& in_filter);
 
     Ref<ImageFilter> GetLastFilter() const;
     void             ClearFilterList();
 
-    void Render();
+    void Render() const;
 
 private:
-    Ref<Mesh> m_mesh;
-
+    Ref<Mesh>                     m_mesh;
     std::vector<Ref<ImageFilter>> m_filters;
 };
 

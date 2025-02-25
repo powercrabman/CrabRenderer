@@ -21,8 +21,16 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="AppWindow.h" />
-    <ClInclude Include="RenderStateStorage.h" />
-    <ClInclude Include="Components.h" />
+    <ClInclude Include="D11ResourceList.h" />
+    <ClInclude Include="ErrorHandler.h" />
+    <ClInclude Include="FileSystem.h" />
+    <ClInclude Include="GizmoController.h" />
+    <ClInclude Include="JsonSerializer.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="RenderPass.h" />
+    <ClInclude Include="RayCast.h" />
+    <ClInclude Include="CommonState.h" />
+    <ClInclude Include="CrabComponents.h" />
     <ClInclude Include="CrabEvent.h" />
     <ClInclude Include="CrabInclude.h" />
     <ClInclude Include="CrabMacro.h" />
@@ -30,12 +38,11 @@
     <ClInclude Include="CrabPch.h" />
     <ClInclude Include="CrabTypes.h" />
     <ClInclude Include="Buffers.h" />
-    <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DepthBuffer.h" />
     <ClInclude Include="D11Enums.h" />
     <ClInclude Include="ImguiVendor.h" />
     <ClInclude Include="InputElements.h" />
-    <ClInclude Include="MeshFactory.h" />
+    <ClInclude Include="GeometryFactory.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="RenderStates.h" />
     <ClInclude Include="RenderTarget.h" />
@@ -46,8 +53,7 @@
     <ClInclude Include="ImageFilter.h" />
     <ClInclude Include="PostProcess.h" />
     <ClInclude Include="Script.h" />
-    <ClInclude Include="Systems.h" />
-    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Textures.h" />
     <ClInclude Include="D11Utils.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntryPoint.h" />
@@ -58,21 +64,30 @@
     <ClInclude Include="LayerStack.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SCircularQueue.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="CTTI.h" />
-    <ClInclude Include="VertexType.h" />
+    <ClInclude Include="CrabVertex.h" />
     <ClInclude Include="CrabColors.h" />
+    <ClInclude Include="tinyfiledialogs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="AppWindow.cpp" />
-    <ClCompile Include="RenderStateStorage.cpp" />
-    <ClCompile Include="Components.cpp" />
+    <ClCompile Include="D11ResourceList.cpp" />
+    <ClCompile Include="ErrorHandler.cpp" />
+    <ClCompile Include="FileSystem.cpp" />
+    <ClCompile Include="GizmoController.cpp" />
+    <ClCompile Include="JsonSerializer.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="RenderPass.cpp" />
+    <ClCompile Include="RayCast.cpp" />
+    <ClCompile Include="CommonState.cpp" />
+    <ClCompile Include="CrabComponents.cpp" />
     <ClCompile Include="CrabEvent.cpp" />
     <ClCompile Include="CrabMath.cpp" />
     <ClCompile Include="CrabPch.cpp">
@@ -81,12 +96,11 @@
     </ClCompile>
     <ClCompile Include="CrabTypes.cpp" />
     <ClCompile Include="Buffers.cpp" />
-    <ClCompile Include="ConstantBuffer.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
     <ClCompile Include="D11Enums.cpp" />
     <ClCompile Include="ImguiVendor.cpp" />
     <ClCompile Include="InputElements.cpp" />
-    <ClCompile Include="MeshFactory.cpp" />
+    <ClCompile Include="GeometryFactory.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="RenderStates.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
@@ -97,8 +111,7 @@
     <ClCompile Include="ImageFilter.cpp" />
     <ClCompile Include="PostProcess.cpp" />
     <ClCompile Include="Script.cpp" />
-    <ClCompile Include="Systems.cpp" />
-    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Textures.cpp" />
     <ClCompile Include="D11Utils.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
@@ -109,15 +122,20 @@
     <ClCompile Include="LayerStack.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="CTTI.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="VertexType.cpp" />
+    <ClCompile Include="CrabVertex.cpp" />
+    <ClCompile Include="tinyfiledialogs.cpp" />
+    <ClCompile Include="convention.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />

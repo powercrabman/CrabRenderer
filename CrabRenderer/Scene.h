@@ -11,8 +11,7 @@ class Scene
     friend class SceneManager;
 
 public:
-    Scene()  = default;
-    ~Scene() = default;
+    virtual ~Scene() = default;
 
     // pure virtual
     virtual void Init() = 0;
@@ -20,64 +19,61 @@ public:
     virtual void OnEnter() = 0;
     virtual void OnExit()  = 0;
 
-    virtual void OnUpdate(TimeStamp& in_ts)    = 0;
-    virtual void OnRender(TimeStamp& in_ts)    = 0;
-    virtual void OnRenderGUI(TimeStamp& in_ts) = 0;
+    virtual void OnUpdate(TimeStamp& in_ts)     = 0;
+    virtual void OnRender(TimeStamp& in_ts)     = 0;
+    virtual void OnPostRender(TimeStamp& in_ts) = 0;
+    virtual void OnRenderGUI(TimeStamp& in_ts)  = 0;
 
     virtual void OnEvent(CrabEvent& in_event) = 0;
 
     // getter
-    virtual const TypeInfo& GetTypeInfo() const = 0;
-    virtual const char*     GetName() const     = 0;
+    const TypeInfo& GetTypeInfo() const { return m_sceneTypeInfo; }
+    const char*     GetName() const { return m_sceneName.c_str(); }
+    bool            IsInited() const { return m_isInit; }
 
     // entt
     entt::registry&       GetRegistry();
     const entt::registry& GetRegistry() const { return m_registry; }
 
     Entity CreateEntity();
+    Entity CreateEntity(std::string_view in_tag);
     Entity CreateEntity(uint32 in_id);
+
     Entity FindEntity(uint32 in_id);
     Entity FindEntity(const IDComponent& in_id);
 
-    template<typename... Types>
-    auto GetView();
+    template<class... Types, class... Exclude>
+    auto GetView(entt::exclude_t<Exclude...> exclude = entt::exclude_t {});
+
+protected:
+    Scene() = default;
 
 private:
-    // Internal calls
-    virtual void _Init() final;
-
-    virtual void _OnEnter() final;
-    virtual void _OnExit() final;
-
-    virtual void _OnUpdate(TimeStamp& in_ts) final;
-    virtual void _OnRender(TimeStamp& in_ts) final;
-
-    virtual void _OnEvent(CrabEvent& in_event) final;
+    Entity _CreateEntity(entt::entity e);
 
     bool           m_isInit = false;
     entt::registry m_registry;
+
+    TypeInfo    m_sceneTypeInfo = {};
+    std::string m_sceneName     = {};
 };
+
+inline Entity Scene::_CreateEntity(entt::entity e)
+{
+    Entity entity = { this, e };
+    entity.CreateComponent<TransformComponent>();
+    entity.CreateComponent<IDComponent>(static_cast<uint32>(e));
+    return entity;
+}
 
 //===================================================
 // Inline
 //===================================================
 
-template<typename... Types>
-auto Scene::GetView()
+template<typename... Types, typename... Exclude>
+auto Scene::GetView(entt::exclude_t<Exclude...> exclude)
 {
-    return m_registry.view<Types...>();
+    return m_registry.view<Types...>(exclude);
 }
-
-#define IMPLEMENT_SCENE(Ty)                       \
-public:                                           \
-    const TypeInfo& GetTypeInfo() const override  \
-    {                                             \
-        return ::GetTypeInfo<Ty>();               \
-    }                                             \
-    const char* GetName() const override          \
-    {                                             \
-        return #Ty;                               \
-    }                                             \
-    inline static const char* s_staticName = #Ty
 
 }   // namespace crab

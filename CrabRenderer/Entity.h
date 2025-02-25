@@ -5,7 +5,7 @@ namespace crab
 
 class Scene;
 struct IDComponent;
-struct Transform;
+struct TransformComponent;
 
 class Entity
 {
@@ -13,10 +13,11 @@ public:
     Entity();
     Entity(Scene* in_scene, entt::entity in_entity);
     operator entt::entity() const { return m_entity; }
-    IDComponent& GetID();
-    Transform&   GetTransform();
 
-    void Destroy()
+    IDComponent&        GetID();
+    TransformComponent& GetTransform();
+
+    void Destroy() const
     {
         m_registry->destroy(m_entity);
     }
@@ -28,13 +29,19 @@ public:
     }
 
     template<typename Ty, typename... Args>
-    Ty& AddComponent(Args&&... in_args)
+    void CreateComponent(Args&&... in_args)
+    {
+        m_registry->emplace<Ty>(m_entity, std::forward<Args>(in_args)...);
+    }
+
+    template<typename Ty, typename... Args>
+    Ty& GetOrCreateComponent(Args&&... in_args)
     {
         return m_registry->emplace<Ty>(m_entity, std::forward<Args>(in_args)...);
     }
 
     template<typename... Ty>
-    void RemoveComponent()
+    void RemoveComponent() const
     {
         m_registry->remove<Ty...>(m_entity);
     }
@@ -46,7 +53,7 @@ public:
     }
 
     template<typename... Ty>
-    auto GetComponents()
+    auto GetComponents() const
     {
         return m_registry->get<Ty...>(m_entity);
     }

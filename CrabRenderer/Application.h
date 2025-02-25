@@ -37,6 +37,9 @@ public:
     template<typename Ty>
     void DispatchEvent(Ty& in_event);
 
+    // - Helper
+    void Quit();
+
     // - Virtual
     virtual ApplicationSetting ConfigureApplication() = 0;
     virtual void               OnInit()               = 0;   // in the derived class

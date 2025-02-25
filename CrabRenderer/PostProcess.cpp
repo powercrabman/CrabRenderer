@@ -2,17 +2,18 @@
 
 #include "PostProcess.h"
 
+#include "D11Renderer.h"
 #include "Mesh.h"
-#include "Texture.h"
+#include "Textures.h"
 #include "ImageFilter.h"
+#include "RenderStates.h"
+#include "CommonState.h"
 
 namespace crab
 {
 
-Ref<PostProcess> PostProcess::Create()
+void PostProcess::Init()
 {
-    auto pp = CreateRef<PostProcess>();
-
     // Mesh
     std::vector<PostProcessVertex> vertices;
     vertices.push_back({ Vec2 { -1.f, 1.f }, Vec2 { 0.f, 0.f } });
@@ -21,10 +22,8 @@ Ref<PostProcess> PostProcess::Create()
     vertices.push_back({ Vec2 { -1.f, -1.f }, Vec2 { 0.f, 1.f } });
 
     std::vector<uint32> indices = { 0, 1, 2, 0, 2, 3 };
-
-    pp->m_mesh = Mesh::Create(vertices, indices);
-
-    return pp;
+    
+    m_mesh = Mesh::Create(vertices, indices, eTopology::TriangleList);
 }
 
 void PostProcess::AddFilter(const Ref<ImageFilter>&   in_filter)
@@ -42,8 +41,13 @@ void PostProcess::ClearFilterList()
     m_filters.clear();
 }
 
-void PostProcess::Render()
+void PostProcess::Render() const
 {
+    // post process common state
+    GetCommonState()->DepthStencil_DepthNone()->Bind();
+    GetCommonState()->Rasterizer_CullCounterClockwise(true)->Bind();
+    GetCommonState()->Blend_Opaque(true)->Bind();
+
     for (auto& filter: m_filters)
     {
         filter->Bind();

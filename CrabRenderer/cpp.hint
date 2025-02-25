@@ -2,6 +2,6 @@
 // 해석하는 데 도움이 됩니다.
 // 자세한 내용은 다음을 참조하세요. https://go.microsoft.com/fwlink/?linkid=865984
 #define CONSTANT_STRUCT struct alignas(16)
-#define D11_ASSERT(hr, hint) do { if (FAILED(hr)) { std::string hrMessage = TranslateHRESULT(hr); std::string message = fmt::format("**********\n" "D11 assert fail: {}\n" "HRESULT: {}" "**********\n", hint, hrMessage.c_str()); Log::Error(message.c_str()); OutputDebugStringA(message.c_str()); __debugbreak(); } } while (0)
-#define D11_ASSERT(hr, hint) ((void)0)
+#define D11ResultCheck(hr, hint) do { if (FAILED(hr)) { std::string hrMessage = TranslateHRESULT(hr); std::string message = fmt::format("**********\n" "D11 assert fail: {}\n" "HRESULT: {}" "**********\n", hint, hrMessage.c_str()); Log::Error(message.c_str()); OutputDebugStringA(message.c_str()); __debugbreak(); } } while (0)
+#define D11ResultCheck(hr, hint) ((void)0)
 #define SUCCEEDED(hr) (((HRESULT)(hr)) >= 0)

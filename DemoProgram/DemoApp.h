@@ -3,13 +3,15 @@
 class DemoApp : public Application
 {
 public:
-	DemoApp();
-	~DemoApp();
+    DemoApp();
+    ~DemoApp() override;
 
-	ApplicationSetting ConfigureApplication() override;
+    ApplicationSetting ConfigureApplication() override;
 
-	void OnInit() override;
-	void OnShutdown() override;
+    void OnInit() override;
+    void OnShutdown() override;
+
+    void PreLoadResources();
 };
 
 CRAB_ENTRY_POINT(DemoApp);

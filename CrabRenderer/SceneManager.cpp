@@ -2,13 +2,30 @@
 
 #include "SceneManager.h"
 
+#include "CrabComponents.h"
 #include "Scene.h"
+
+#include "Script.h"
 
 namespace crab
 {
 
 SceneManager::SceneManager()
 {
+}
+
+void SceneManager::_EnterScene() const
+{
+    if (m_currentScene)
+    {
+        if (!m_currentScene->IsInited())
+        {
+            m_currentScene->Init();
+            m_currentScene->m_isInit = true;
+        }
+
+        m_currentScene->OnEnter();
+    }
 }
 
 SceneManager::~SceneManager()
@@ -35,11 +52,11 @@ void SceneManager::DeleteSceneByName(std::string_view in_name)
     DeleteScene(FindSceneByName(in_name));
 }
 
-void SceneManager::DeleteScene(Scene* in_scene)
+void SceneManager::DeleteScene(const Scene* in_scene)
 {
     if (m_currentScene == in_scene)
     {
-        m_currentScene->_OnExit();
+        m_currentScene->OnExit();
         m_currentScene = nullptr;
     }
 
@@ -47,10 +64,7 @@ void SceneManager::DeleteScene(Scene* in_scene)
     if (it != m_scenes.end())
     {
         m_scenes.erase(it);
-        m_sceneNames.erase(std::remove(m_sceneNames.begin(),
-                                       m_sceneNames.end(),
-                                       in_scene->GetName()),
-                           m_sceneNames.end());
+        std::erase(m_sceneNames, in_scene->GetName());
     }
     else
     {
@@ -58,7 +72,7 @@ void SceneManager::DeleteScene(Scene* in_scene)
     }
 }
 
-void SceneManager::ChnageSceneByName(std::string_view in_name)
+void SceneManager::ChangeSceneByName(std::string_view in_name)
 {
     ChangeScene(FindSceneByName(in_name));
 }
@@ -67,29 +81,37 @@ void SceneManager::ChangeScene(Scene* in_scene)
 {
     if (m_currentScene)
     {
-        m_currentScene->_OnExit();
+        m_currentScene->OnExit();
     }
     m_currentScene = in_scene;
-    m_currentScene->_OnEnter();
+    _EnterScene();
 }
 
-void SceneManager::OnUpdate(TimeStamp& in_ts)
+void SceneManager::OnUpdate(TimeStamp& in_ts) const
 {
     if (m_currentScene)
     {
-        m_currentScene->_OnUpdate(in_ts);
+        // script update
+        m_currentScene->GetView<ScriptComponent>().each(
+            [&](const ScriptComponent& in_script)
+            {
+                in_script.script->OnUpdate(in_ts);
+            });
+
+        m_currentScene->OnUpdate(in_ts);
     }
 }
 
-void SceneManager::OnRender(TimeStamp& in_ts)
+void SceneManager::OnRender(TimeStamp& in_ts) const
 {
     if (m_currentScene)
     {
-        m_currentScene->_OnRender(in_ts);
+        m_currentScene->OnRender(in_ts);
+        m_currentScene->OnPostRender(in_ts);
     }
 }
 
-void SceneManager::OnRenderGUI(TimeStamp& in_ts)
+void SceneManager::OnRenderGUI(TimeStamp& in_ts) const
 {
     if (m_currentScene)
     {
@@ -97,11 +119,11 @@ void SceneManager::OnRenderGUI(TimeStamp& in_ts)
     }
 }
 
-void SceneManager::OnEvent(CrabEvent& in_event)
+void SceneManager::OnEvent(CrabEvent& in_event) const
 {
     if (m_currentScene)
     {
-        m_currentScene->_OnEvent(in_event);
+        m_currentScene->OnEvent(in_event);
     }
 }
 

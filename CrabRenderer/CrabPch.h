@@ -61,6 +61,7 @@
 #include "D11Enums.h"
 #include "InitSettings.h"
 #include "Log.h"
+#include "ErrorHandler.h"
 
 // - Data Structure
 #include "SCircularQueue.h"
@@ -68,6 +69,3 @@
 // - Application
 #include "Application.h"
 #include "EntryPoint.h"
-
-// - Renderer
-#include "Renderer.h"

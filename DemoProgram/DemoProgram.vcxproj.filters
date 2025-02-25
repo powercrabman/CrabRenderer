@@ -1,26 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="DemoApp.h" />
     <ClInclude Include="pch.h">
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="GUIs.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="19. PBRDemo.h">
+    <ClInclude Include="DemoApp.h" />
+    <ClInclude Include="CameraScript.h">
+      <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexType.h">
+      <Filter>Rendering\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalShader.h">
+      <Filter>Rendering\Global Library</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalRenderPass.h">
+      <Filter>Rendering\Global Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Rendering\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilterFactory.h">
+      <Filter>Rendering\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalConstants.h">
+      <Filter>Rendering\Global Library</Filter>
+    </ClInclude>
+    <ClInclude Include="enums.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="28. AnimationDemo.h">
       <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="Tags.h">
+      <Filter>ECS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DemoApp.cpp" />
     <ClCompile Include="pch.cpp">
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="GUIs.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
-    <ClCompile Include="19. PBRDemo.cpp">
+    <ClCompile Include="DemoApp.cpp" />
+    <ClCompile Include="CameraScript.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalShader.cpp">
+      <Filter>Rendering\Global Library</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalRenderPass.cpp">
+      <Filter>Rendering\Global Library</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFilterFactory.cpp">
+      <Filter>Rendering\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Components.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalConstants.cpp">
+      <Filter>Rendering\Global Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>Rendering\Constants</Filter>
+    </ClCompile>
+    <ClCompile Include="28. AnimationDemo.cpp">
       <Filter>Scene %28Demos%29</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,59 +85,38 @@
     <Filter Include="GUI">
       <UniqueIdentifier>{32e3f33d-8da9-4ebc-8c78-50711f8c343a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders">
+    <Filter Include="Script">
+      <UniqueIdentifier>{b8fbd514-b597-4d09-ae77-cc363ca3fe55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{1833c9fc-4537-47b3-a2be-b7a9bd2e6118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Vertex">
+      <UniqueIdentifier>{be40b928-7f44-4567-a25c-c29c447940c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Shaders">
       <UniqueIdentifier>{0ad2f9d5-d9de-42b9-afa5-e9b9ceae1566}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders\LightDemo">
-      <UniqueIdentifier>{c8adde1c-b1f1-4c58-a06f-f98a32bd6fae}</UniqueIdentifier>
+    <Filter Include="Rendering\Constants">
+      <UniqueIdentifier>{afa2ce38-d9e1-4f17-bae8-9b192534c035}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders\ModelDemo">
-      <UniqueIdentifier>{bbeb01cb-0c30-410f-8e8f-76781530012f}</UniqueIdentifier>
+    <Filter Include="Rendering\Global Library">
+      <UniqueIdentifier>{e42cfe9c-0144-40d2-ad33-f07dedf10429}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders\Common">
-      <UniqueIdentifier>{4f16975c-999f-4aaf-8983-88e3d3490703}</UniqueIdentifier>
+    <Filter Include="Rendering\PostProcess">
+      <UniqueIdentifier>{4b514bd6-5ea6-4c4a-ab34-ad99a7297b1b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders\CubeMapDemo">
-      <UniqueIdentifier>{9c2ecb15-e323-4a8c-ac0a-1bb0e7d4fa23}</UniqueIdentifier>
+    <Filter Include="ECS">
+      <UniqueIdentifier>{57574cbb-4aa5-4e6c-a1bb-104d58e08ab7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders\IBL">
-      <UniqueIdentifier>{cca20c18-8441-4145-a2d6-579c80e99818}</UniqueIdentifier>
+    <Filter Include="Rendering\Shaders\ComputeShader">
+      <UniqueIdentifier>{be01f0d0-ebd0-4854-9f1e-ee848e2a03bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders\PostProcessing">
-      <UniqueIdentifier>{7274393c-0fff-45e0-8ff8-aa8791db96ff}</UniqueIdentifier>
+    <Filter Include="Rendering\Shaders\ComputeShader\FireParticle">
+      <UniqueIdentifier>{308adba7-d932-4f75-a5d8-dbd961ca66c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders\MousePickingDemo">
-      <UniqueIdentifier>{d67f8804-1f7e-402c-9fb1-fb8159356677}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\GeometryDemo">
-      <UniqueIdentifier>{3f7ea7c5-4141-4074-bdfa-aa4808f525a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\GeometryDemo\DrawFireball">
-      <UniqueIdentifier>{1807bb95-5563-4b5f-92da-b82deb0c99ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\GeometryDemo\Billborad">
-      <UniqueIdentifier>{112e76e6-48ec-4421-b55e-ad5a162c5f1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\GeometryDemo\DrawNormal">
-      <UniqueIdentifier>{d08fe0dc-9179-4040-bf13-6508defafc52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\TessellationDemo">
-      <UniqueIdentifier>{11da00cc-d290-4e29-ac29-680c4eaf0ee9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\MipmapDemo">
-      <UniqueIdentifier>{88ca0b18-6722-4274-a666-a9ce97da5715}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\NormalMappingDemo">
-      <UniqueIdentifier>{b5468707-61ad-46e0-a516-d8fe746da13a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\HDRIDemo">
-      <UniqueIdentifier>{9b8d13cb-2869-4a62-a9fa-81647b15ab3a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\PostProcess %28for PBR%29">
-      <UniqueIdentifier>{47234efc-778f-4ca5-8306-c1a6fa1ec13e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\PBR">
-      <UniqueIdentifier>{ad3ae581-7ef4-44dc-889b-1c50c1229a9f}</UniqueIdentifier>
+    <Filter Include="Rendering\Shaders\ComputeShader\SPH">
+      <UniqueIdentifier>{b2c3d372-f728-4541-9f8a-c7313a4cdfd2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -99,205 +129,139 @@
     <None Include="sample.hlsli">
       <Filter>Base</Filter>
     </None>
-    <None Include="LightDemoCommon.hlsli">
-      <Filter>Shaders\LightDemo</Filter>
+    <None Include="Shaders\DrawNormalCommon.hlsli">
+      <Filter>Rendering\Shaders</Filter>
     </None>
-    <None Include="PostProcessingCommon.hlsli">
-      <Filter>Shaders\PostProcessing</Filter>
+    <None Include="Shaders\PBRCommon.hlsli">
+      <Filter>Rendering\Shaders</Filter>
     </None>
-    <None Include="MousePickingDemoCommon.hlsli">
-      <Filter>Shaders\MousePickingDemo</Filter>
+    <None Include="Shaders\PostProcessCommon.hlsli">
+      <Filter>Rendering\Shaders</Filter>
     </None>
-    <None Include="DrawFireballCommon.hlsli">
-      <Filter>Shaders\GeometryDemo\DrawFireball</Filter>
+    <None Include="ParticleCommon.hlsli">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </None>
-    <None Include="BillboradDemoCommon.hlsli">
-      <Filter>Shaders\GeometryDemo\Billborad</Filter>
+    <None Include="FireParticleDemoCommon.hlsli">
+      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
     </None>
-    <None Include="DrawNormalCommon.hlsli">
-      <Filter>Shaders\GeometryDemo\DrawNormal</Filter>
-    </None>
-    <None Include="TDCommon.hlsli">
-      <Filter>Shaders\TessellationDemo</Filter>
-    </None>
-    <None Include="NMDemoCommon.hlsli">
-      <Filter>Shaders\NormalMappingDemo</Filter>
-    </None>
-    <None Include="PostProcessCommon.hlsli">
-      <Filter>Shaders\PostProcess %28for PBR%29</Filter>
-    </None>
-    <None Include="HDRICubemapCommon.hlsli">
-      <Filter>Shaders\HDRIDemo</Filter>
-    </None>
-    <None Include="PBRCommon.hlsli">
-      <Filter>Shaders\PBR</Filter>
-    </None>
-    <None Include="EnvmapCommon.hlsli">
-      <Filter>Shaders\PBR</Filter>
+    <None Include="SPHCommon.hlsli">
+      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="NormalPixelShader.hlsl">
-      <Filter>Shaders\Common</Filter>
+    <FxCompile Include="Shaders\DrawNormalGS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="NormalVertexShader.hlsl">
-      <Filter>Shaders\Common</Filter>
+    <FxCompile Include="Shaders\DrawNormalPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="LightPixelShader.hlsl">
-      <Filter>Shaders\Common</Filter>
+    <FxCompile Include="Shaders\DrawNormalVS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="LightVertexShader.hlsl">
-      <Filter>Shaders\Common</Filter>
+    <FxCompile Include="Shaders\PBRPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="PhongPixelShader.hlsl">
-      <Filter>Shaders\LightDemo</Filter>
+    <FxCompile Include="Shaders\PBRVS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="BlinnPhongPixelShader.hlsl">
-      <Filter>Shaders\LightDemo</Filter>
+    <FxCompile Include="Shaders\PostProcessVS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="BlinnPhongPixelShader2.hlsl">
-      <Filter>Shaders\ModelDemo</Filter>
+    <FxCompile Include="Shaders\SamplingPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="CubeMapPixelShader.hlsl">
-      <Filter>Shaders\CubeMapDemo</Filter>
+    <FxCompile Include="Shaders\SkyboxPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="ReflectionMappingPixelShader.hlsl">
-      <Filter>Shaders\CubeMapDemo</Filter>
+    <FxCompile Include="Shaders\SkyboxVS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="SimpleIBLPixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="Shaders\BlurDownPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="PostProcessingVertexShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="Shaders\BlurUpPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="SamplingPixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="Shaders\CombinePS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="BlueFilterPixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="Shaders\ToneMapPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="GaussianBlurXPixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="Shaders\DepthOnlyPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="GaussianBlurYPixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="Shaders\DepthOnlyVS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="BloomPixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="Shaders\PostEffectPS.hlsl">
+      <Filter>Rendering\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="GaussianBlurPixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="ComputeDemoCS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="BlackholePixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="ComputeDemoVS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="MPCommonVS.hlsl">
-      <Filter>Shaders\MousePickingDemo</Filter>
+    <FxCompile Include="ComputeDemoPS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="ImageBasedLightningPixelShader.hlsl">
-      <Filter>Shaders\IBL</Filter>
+    <FxCompile Include="CSBlurXCS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="MPCubeMapPS.hlsl">
-      <Filter>Shaders\MousePickingDemo</Filter>
+    <FxCompile Include="CSBlurYCS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="MPIBLPS.hlsl">
-      <Filter>Shaders\MousePickingDemo</Filter>
+    <FxCompile Include="SBDemoPS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="FXAAPS.hlsl">
-      <Filter>Shaders\MousePickingDemo</Filter>
+    <FxCompile Include="SBDemoVS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="MPBBDebugPS.hlsl">
-      <Filter>Shaders\MousePickingDemo</Filter>
+    <FxCompile Include="SBDemoCS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="CombinePixelShader.hlsl">
-      <Filter>Shaders\PostProcessing</Filter>
+    <FxCompile Include="ParticleCS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="DrawFireballVS.hlsl">
-      <Filter>Shaders\GeometryDemo\DrawFireball</Filter>
+    <FxCompile Include="ParticleVS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="DrawFireballPS.hlsl">
-      <Filter>Shaders\GeometryDemo\DrawFireball</Filter>
+    <FxCompile Include="ParticlePS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="DrawFireballGS.hlsl">
-      <Filter>Shaders\GeometryDemo\DrawFireball</Filter>
+    <FxCompile Include="ParticleGS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
-    <FxCompile Include="BillboradDemoVS.hlsl">
-      <Filter>Shaders\GeometryDemo\Billborad</Filter>
+    <FxCompile Include="FireParticleDemoVS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
     </FxCompile>
-    <FxCompile Include="BillboradDemoGS.hlsl">
-      <Filter>Shaders\GeometryDemo\Billborad</Filter>
+    <FxCompile Include="FireParticleDemoCS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
     </FxCompile>
-    <FxCompile Include="BillboradDemoPS.hlsl">
-      <Filter>Shaders\GeometryDemo\Billborad</Filter>
+    <FxCompile Include="FireParticleDemoPS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
     </FxCompile>
-    <FxCompile Include="DrawNormalGS.hlsl">
-      <Filter>Shaders\GeometryDemo\DrawNormal</Filter>
+    <FxCompile Include="FireParticleDemoGS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
     </FxCompile>
-    <FxCompile Include="DrawNormalPS.hlsl">
-      <Filter>Shaders\GeometryDemo\DrawNormal</Filter>
+    <FxCompile Include="SPHVS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
     </FxCompile>
-    <FxCompile Include="DrawNormalVS.hlsl">
-      <Filter>Shaders\GeometryDemo\DrawNormal</Filter>
+    <FxCompile Include="SPHGS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
     </FxCompile>
-    <FxCompile Include="TDVS.hlsl">
-      <Filter>Shaders\TessellationDemo</Filter>
+    <FxCompile Include="SPHPS.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
     </FxCompile>
-    <FxCompile Include="TDDS.hlsl">
-      <Filter>Shaders\TessellationDemo</Filter>
+    <FxCompile Include="SPHComputeDensityPressure.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
     </FxCompile>
-    <FxCompile Include="TDPS.hlsl">
-      <Filter>Shaders\TessellationDemo</Filter>
+    <FxCompile Include="SPHComputeForce.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
     </FxCompile>
-    <FxCompile Include="TDHS.hlsl">
-      <Filter>Shaders\TessellationDemo</Filter>
-    </FxCompile>
-    <FxCompile Include="MipmapDemoIBLPS.hlsl">
-      <Filter>Shaders\MipmapDemo</Filter>
-    </FxCompile>
-    <FxCompile Include="NMDemoPS.hlsl">
-      <Filter>Shaders\NormalMappingDemo</Filter>
-    </FxCompile>
-    <FxCompile Include="NMDemoVS.hlsl">
-      <Filter>Shaders\NormalMappingDemo</Filter>
-    </FxCompile>
-    <FxCompile Include="NMHeightDemoVS.hlsl">
-      <Filter>Shaders\NormalMappingDemo</Filter>
-    </FxCompile>
-    <FxCompile Include="PostProcessVS.hlsl">
-      <Filter>Shaders\PostProcess %28for PBR%29</Filter>
-    </FxCompile>
-    <FxCompile Include="SamplingPostProcessPS.hlsl">
-      <Filter>Shaders\PostProcess %28for PBR%29</Filter>
-    </FxCompile>
-    <FxCompile Include="ToneMapPS.hlsl">
-      <Filter>Shaders\PostProcess %28for PBR%29</Filter>
-    </FxCompile>
-    <FxCompile Include="HDRICubemapPS.hlsl">
-      <Filter>Shaders\HDRIDemo</Filter>
-    </FxCompile>
-    <FxCompile Include="HDRICubemapVS.hlsl">
-      <Filter>Shaders\HDRIDemo</Filter>
-    </FxCompile>
-    <FxCompile Include="BlurYPS.hlsl">
-      <Filter>Shaders\PostProcess %28for PBR%29</Filter>
-    </FxCompile>
-    <FxCompile Include="BlurCombinePS.hlsl">
-      <Filter>Shaders\PostProcess %28for PBR%29</Filter>
-    </FxCompile>
-    <FxCompile Include="BlurXPS.hlsl">
-      <Filter>Shaders\PostProcess %28for PBR%29</Filter>
-    </FxCompile>
-    <FxCompile Include="PBRCommonVS.hlsl">
-      <Filter>Shaders\PBR</Filter>
-    </FxCompile>
-    <FxCompile Include="EnvmapPS.hlsl">
-      <Filter>Shaders\PBR</Filter>
-    </FxCompile>
-    <FxCompile Include="EnvmapVS.hlsl">
-      <Filter>Shaders\PBR</Filter>
-    </FxCompile>
-    <FxCompile Include="PBRCommonPS.hlsl">
-      <Filter>Shaders\PBR</Filter>
+    <FxCompile Include="SPHIntegrate.hlsl">
+      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

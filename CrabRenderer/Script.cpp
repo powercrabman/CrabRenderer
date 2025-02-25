@@ -8,7 +8,7 @@ namespace crab
 {
 
  Script::Script(Entity in_owner)
-    : m_owner(in_owner)
+    : m_ownerEntity(in_owner)
 {
 }
 
@@ -18,12 +18,12 @@ namespace crab
 
 Entity Script::GetEntity()
 {
-    if (!m_owner.IsValid())
+    if (!m_ownerEntity.IsValid())
     {
-        CRAB_DEBUG_BREAK(" m_owner is nullptr.");
+        CRAB_DEBUG_BREAK(" m_ownerEntity is nullptr.");
         return Entity::s_null;
     }
-    return m_owner;
+    return m_ownerEntity;
 }
 
 }   // namespace crab
