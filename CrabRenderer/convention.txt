@@ -1,0 +1,8 @@
+// 네이밍
+
+데이터 하나의 바이트 사이즈			itemByteStride = sizeof(데이터)
+단순 데이터 뭉치의 바이트 사이즈		byteWidth = itemCount * itemByteStride
+배열의 전체 바이트 사이즈			bufferByteWidth = itemCount * itemByteWidth
+
+현재 배열 속 아이템의 개수			itemCount
+현재 배열의 총 용량				itemMaxCount

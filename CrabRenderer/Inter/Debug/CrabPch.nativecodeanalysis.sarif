@@ -1,0 +1,1856 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26800",
+          "level": "warning",
+          "message": {
+            "text": "개체에서 이동됨 사용: ''user_chars'' (lifetime.1)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabpch.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                },
+                "region": {
+                  "startLine": 1333,
+                  "startColumn": 9
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "spdlog::pattern_formatter::compile_pattern_",
+                  "decoratedName": "?compile_pattern_@pattern_formatter@spdlog@@AEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1303,
+                            "startColumn": 39
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1304,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1304,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1305,
+                            "startColumn": 51
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1305,
+                            "startColumn": 51
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1306,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1307,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1307,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1307,
+                            "startColumn": 40
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1307,
+                            "startColumn": 40
+                          }
+                        },
+                        "message": {
+                          "text": "조건 'result.=='을(를) 기반으로 분기합니다. 'false' 분기를 가져왔습니다."
+                        }
+                      },
+                      "kinds": [
+                        "Branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1308,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1308,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "조건 '(int )(result.*) == 37'을(를) 기반으로 분기합니다. 'true' 분기를 가져왔습니다."
+                        }
+                      },
+                      "kinds": [
+                        "Branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1309,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1309,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "조건 'result.._N'을(를) 기반으로 분기합니다. 'true' 분기를 가져왔습니다."
+                        }
+                      },
+                      "kinds": [
+                        "Branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1311,
+                            "startColumn": 44
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1311,
+                            "startColumn": 48
+                          }
+                        },
+                        "message": {
+                          "text": "개체 'user_chars'이(가) 이동되었습니다."
+                        }
+                      },
+                      "kinds": [
+                        "Custom"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1311,
+                            "startColumn": 38
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1311,
+                            "startColumn": 48
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1314,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1314,
+                            "startColumn": 50
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1314,
+                            "startColumn": 50
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1314,
+                            "startColumn": 44
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1314,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1316,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1316,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "조건 'result.=='을(를) 기반으로 분기합니다. 'true' 분기를 가져왔습니다."
+                        }
+                      },
+                      "kinds": [
+                        "Branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1323,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+                          },
+                          "region": {
+                            "startLine": 1333,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "level": "warning",
+          "message": {
+            "text": "스위치 레이블 간에 주석 처리되지 않은 fallthrough입니다(es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabpch.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/SDL2/SDL_stdinc.h"
+                },
+                "region": {
+                  "startLine": 553,
+                  "startColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "SDL_memset4",
+                  "decoratedName": "SDL_memset4",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "level": "warning",
+          "message": {
+            "text": "스위치 레이블 간에 주석 처리되지 않은 fallthrough입니다(es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabpch.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/SDL2/SDL_stdinc.h"
+                },
+                "region": {
+                  "startLine": 554,
+                  "startColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "SDL_memset4",
+                  "decoratedName": "SDL_memset4",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "level": "warning",
+          "message": {
+            "text": "스위치 레이블 간에 주석 처리되지 않은 fallthrough입니다(es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabpch.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/SDL2/SDL_stdinc.h"
+                },
+                "region": {
+                  "startLine": 555,
+                  "startColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "SDL_memset4",
+                  "decoratedName": "SDL_memset4",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "level": "warning",
+          "message": {
+            "text": "스위치 레이블 간에 주석 처리되지 않은 fallthrough입니다(es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabpch.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/SDL2/SDL_stdinc.h"
+                },
+                "region": {
+                  "startLine": 556,
+                  "startColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "SDL_memset4",
+                  "decoratedName": "SDL_memset4",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26498",
+          "level": "warning",
+          "message": {
+            "text": "'fmt::v11::detail::num_bits<unsigned __int64>' 함수가 constexpr이며, 컴파일 시간 계산이 필요한 경우 'shift' 변수를 constexpr로 표시합니다(con.5)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabpch.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/fmt/format.h"
+                },
+                "region": {
+                  "startLine": 2788,
+                  "startColumn": 15,
+                  "endLine": 2788,
+                  "endColumn": 47
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "fmt::v11::detail::bigint::multiply",
+                  "decoratedName": "??$multiply@Vuint128_fallback@detail@v11@fmt@@$0A@@bigint@detail@v11@fmt@@AEAAXVuint128_fallback@123@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.42.34436.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabpch.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "585c74a4afdb69775ac05fa922d4ddfa19139ed06bb030642b12202ec48094d8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter-inl.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "1c13576d5d8eb1060be974e8b03bd094e38c8934f4ab448d6752ca8e8926f9c5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/SDL2/SDL_stdinc.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "0c2b96ac5b57b3f913b4025dc6be8b9e735bf48cce02c4373e78ad34d08b0dc9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Ahnjiwoo/Desktop/Projects/vcpkg/installed/x64-windows/include/fmt/format.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "b2119dab01c5f640651f92f5e37cc0e8bb7ddcca50b2f6a7a67b662ffbebee00"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabpch.h"
+          },
+          "hashes": {
+            "sha-256": "00659d213ed1736349e3d631ec3b0a362f0d6e1db6e183a71993cbe497a3448e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxtex.h"
+          },
+          "hashes": {
+            "sha-256": "74c749debb1266afdb029143bc0eb9c1e6148dad69b4059e0776a2663009776a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxmath.h"
+          },
+          "hashes": {
+            "sha-256": "46d248a44054602427f8d71f1c5f92b79609875b311ada5e2454ada19f75d475"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxmathconvert.inl"
+          },
+          "hashes": {
+            "sha-256": "aec241bb47ba9a6458bc048c0913c3e9f5223d5defd462b2b637a2035001f1ad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxmathvector.inl"
+          },
+          "hashes": {
+            "sha-256": "70fe825b3aa5019b0df0adb713e17b70b23e1c452b7dac6c4665805781d3339e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxmathmatrix.inl"
+          },
+          "hashes": {
+            "sha-256": "ec8f1ce63fa906c5121c023296e281d18935bc197a399e9039b1f850da04fbeb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxmathmisc.inl"
+          },
+          "hashes": {
+            "sha-256": "469ca3b1c8b2ad78e58ff3a9cf095125965c11c594f3e102ee8d72bf39dae91d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxtex.inl"
+          },
+          "hashes": {
+            "sha-256": "7f32481db173d7fe6b2eda815dbcafc355b56e79e8efa62591fee310b995e44a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxtk/simplemath.h"
+          },
+          "hashes": {
+            "sha-256": "5bd362efca8b82a7a2fd188eea53a6ed2f8a4ccc6ef1f685aa5022850654bc15"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxpackedvector.h"
+          },
+          "hashes": {
+            "sha-256": "1814de4b611d60b086858e0a466e82f12c4d921ef038e670bab833d1cee438df"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxpackedvector.inl"
+          },
+          "hashes": {
+            "sha-256": "efe8128f7bbe1c8900ed9e01ddaabf565119a5711364cf02dbc48c62c3759099"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxcollision.h"
+          },
+          "hashes": {
+            "sha-256": "979c6a2396768c8f5d36ae62c63b0c07d22945633677ef660256b15b5d04d46c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxcollision.inl"
+          },
+          "hashes": {
+            "sha-256": "100c840b77875f87b9a900558899167712c8bd0e47771a752d02343572acad2c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/directxtk/simplemath.inl"
+          },
+          "hashes": {
+            "sha-256": "c2f52420fc682dbce209780d47c8b657ab8adbc26e6ed129bcfe1f3998d81707"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/imgui.h"
+          },
+          "hashes": {
+            "sha-256": "e61697ec1775727738d8bc73a409fa237d895266f72f885f8fc2c9f6b83ac4c7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/imconfig.h"
+          },
+          "hashes": {
+            "sha-256": "bd89b32de6a8a286700383bae47b4f4bba753ba13058d1a350770c5232b2e4e8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/imgui_impl_dx11.h"
+          },
+          "hashes": {
+            "sha-256": "e1fc506f6eb2d93230d95651f78e205be80aede764cb4ef60a1e726d6eb03f66"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/imgui_impl_sdl2.h"
+          },
+          "hashes": {
+            "sha-256": "82b35689eca4e7c63b06d9f82b93d9ae19ec92eb69779fda9c4f4a838ca01b53"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/imgui_internal.h"
+          },
+          "hashes": {
+            "sha-256": "763dc48fddefe8db393be2c588f36fd894e43589a60855cedd2d0c3f0ce63f7c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/imgui_stdlib.h"
+          },
+          "hashes": {
+            "sha-256": "36aa98f5b89470cf84fe4d548e42cce124fbd27e1f7e3481bbb972bc5a134585"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/magic_enum/magic_enum.hpp"
+          },
+          "hashes": {
+            "sha-256": "38bef46843c8049b7dc5b3f25cc55b67b9e06ffefd1092be123bac76e6c41325"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/fmt/core.h"
+          },
+          "hashes": {
+            "sha-256": "b2b6692145b11c7c2774db106078c97575a47d18e80c7783c68566475325ebb4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/fmt/base.h"
+          },
+          "hashes": {
+            "sha-256": "959d86e06105e15138dea3bb8858e215dee878ed71d5ad9de6674a9db3e1c6eb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entt.hpp"
+          },
+          "hashes": {
+            "sha-256": "22e75e71a816e710dabad276916449456229055e428a624aeefb3756941a12d7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/config/config.h"
+          },
+          "hashes": {
+            "sha-256": "7cf49d6c9af3b1e1105e0d40edfbf6ee53d3b1009aad5a346090c3837f16ccfd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/config/version.h"
+          },
+          "hashes": {
+            "sha-256": "05da7e61a01f96775374efb43e2d3de7448644ebb153c7d8c215fc77c0b01113"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/config/macro.h"
+          },
+          "hashes": {
+            "sha-256": "20e3c4368034f1be2afc95de574551089aba48e1380049671d572feb42fc5d28"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/container/dense_map.hpp"
+          },
+          "hashes": {
+            "sha-256": "69682abd843a686631d4163867806e10abc3d1b4b010acccaadba1d57cfd0df2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/bit.hpp"
+          },
+          "hashes": {
+            "sha-256": "32eb2f15b7e44d030f30e68e7fd2ebc31347eeb5e5baeba66c22bcca608ddaee"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/compressed_pair.hpp"
+          },
+          "hashes": {
+            "sha-256": "6fb91423e2e6c9c2a97f21db1d18a66075bbb2bf0027d00687f4c94726816733"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "9adc95a3f97a7d20b1e0aef29667e46a9e99dcdf867a3078d1868baa460ae730"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/type_traits.hpp"
+          },
+          "hashes": {
+            "sha-256": "dd486af9da144233b4a86738afee04b9409dbafeab2c601769c448dfe76a7fd9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/iterator.hpp"
+          },
+          "hashes": {
+            "sha-256": "627cf2c6cc4fb4d9f8988a15a93c1896d8f9f5dde319d6aa448446e8517a91b3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/memory.hpp"
+          },
+          "hashes": {
+            "sha-256": "3480cb19b4ba6251393275df95c11671cea172dca45d3a4b6da5771c7a51c102"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/container/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "c0d6a69e0c26a666ea92ab7ee09f54f6c485520bd1d4d2b9963a0712e9fba560"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/container/dense_set.hpp"
+          },
+          "hashes": {
+            "sha-256": "f91828f191e15e769cecebcc2de35c8b2a2da360a91fa8e1cf86fd3bdfabd788"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/container/table.hpp"
+          },
+          "hashes": {
+            "sha-256": "862e904da0bffeae662e53366f93398fc8301ddf8115f7794514b80ab4660c72"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/algorithm.hpp"
+          },
+          "hashes": {
+            "sha-256": "93cf987db7e7cbf19990dfb8e3b8765d2f05a300f57b8c6b12d3ba7b065fa46a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/utility.hpp"
+          },
+          "hashes": {
+            "sha-256": "2493f5dc0a0e9feb057614ebdffeefbdde9908ec7c2e370844bd5f46f0b1fde6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/any.hpp"
+          },
+          "hashes": {
+            "sha-256": "da4e9f391f6b894f6321202cf48fa38db6ecf1b5cb243731e2fd82a62d700aaa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/type_info.hpp"
+          },
+          "hashes": {
+            "sha-256": "46f21c006e1c0b21a9f5da42a29970bf9e8c1d20794961ce1e0518e92ea2d7da"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/attribute.h"
+          },
+          "hashes": {
+            "sha-256": "1491e04d77c28281187493f64fd69c5e9112cfbc15dbe69b26725954a226f7de"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/hashed_string.hpp"
+          },
+          "hashes": {
+            "sha-256": "d8ee528aaf6fdcb3eb6b74ec168ac80aaf97b41333ba3aa009a89e3a15f12895"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/enum.hpp"
+          },
+          "hashes": {
+            "sha-256": "0945e1b775c1d13b4caa93d7f50c0eb3ed8168ddf199785976a6075027f2a508"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/family.hpp"
+          },
+          "hashes": {
+            "sha-256": "0a6a0d62b9f9f40054d20ea675cff29e7b6104ecd00dbb6cc76b2070e3c4fad4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/ident.hpp"
+          },
+          "hashes": {
+            "sha-256": "aeb39c3ff57652251f15cefc44254a1a39c479549264a35e8c53d04fc897619a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/monostate.hpp"
+          },
+          "hashes": {
+            "sha-256": "d5998a64b7192b026c77782216e613a4e0eb79d8e1a36c425ae1f2e08d0e99fd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/ranges.hpp"
+          },
+          "hashes": {
+            "sha-256": "c436acb5ad466f3a273db9ffb9a62587a29f342bc7758b17cc1a9e618d86ca6d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/core/tuple.hpp"
+          },
+          "hashes": {
+            "sha-256": "48c3b24cca5ee81dd28f51a4f9674dde3e95543a33faa434754d8c43f3b40d0c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/component.hpp"
+          },
+          "hashes": {
+            "sha-256": "2ca0f8a8e1ebe758e6cdbbddccf17ecd441b5312033878ce44af8aa484cfe84a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "a423be642954f5ca7424ec4695fe42724fe48f08a4b370aae539f383e3e29618"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/entity.hpp"
+          },
+          "hashes": {
+            "sha-256": "db69cb90b8e30394078df6f5596cd32d038c3842d571e923cda79894973a2f01"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/group.hpp"
+          },
+          "hashes": {
+            "sha-256": "ada6be8f4f977e336aec385fb59dc9304f2e3edddf7edf1ed1d94d2b9e184fcd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/handle.hpp"
+          },
+          "hashes": {
+            "sha-256": "137799f61b1a5a3d55e673b8094bf02b20daf7e7f3dcbfb36469c6faac1df8ed"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/helper.hpp"
+          },
+          "hashes": {
+            "sha-256": "8ba7bc70a53be01513a630d66eb2cbbd4ae74119a27f10894704681e80d1acdb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/storage.hpp"
+          },
+          "hashes": {
+            "sha-256": "8676cb49fbb325db75cd5210807b8fd11fe1e92212f665f387add3ce23c7c125"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/sparse_set.hpp"
+          },
+          "hashes": {
+            "sha-256": "48e37e8f6421bca1c292e824aaf55d5aa26ada9d95a28ae2e5d5d2a3203b3a34"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/view.hpp"
+          },
+          "hashes": {
+            "sha-256": "88eb143e27a21cf7f4daa3537652ae41a65408f28c216448e3ce795b15c3af56"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/mixin.hpp"
+          },
+          "hashes": {
+            "sha-256": "4a97295a066462bb31973c4fc1c1d2b438502e4c94b86c0f685cbad947f6c08a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/signal/sigh.hpp"
+          },
+          "hashes": {
+            "sha-256": "f9f8f154d3efcb1c676ce13953e606141282a39c4776f12160aa56eb462ad2fb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/signal/delegate.hpp"
+          },
+          "hashes": {
+            "sha-256": "c5807548a3f798a6011e150520e8fb420a5e443d7644623259154e15f0b1c57e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/signal/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "1774ddde69be95b383ca14ec2ec70ed7d9470a096e671fdefa9748137c03d549"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/observer.hpp"
+          },
+          "hashes": {
+            "sha-256": "4bc37bcff22a3ab0bed930e1b0f968a14191ceb926bbd9800ff6af360f8255c8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/organizer.hpp"
+          },
+          "hashes": {
+            "sha-256": "0cbdc7eeaa69ba5666ce2070b4324d10cdb036fb3ceaacc196765bc5eb64eb41"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/graph/adjacency_matrix.hpp"
+          },
+          "hashes": {
+            "sha-256": "fe1f31f0ce0b72b3cfaf9a4ae67d499860789f93612cc7e997f8fb6de12058dd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/graph/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "0a30baa79539a3382acb118f5ae8b15114ab7bc1943c8e3be8e948e640852918"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/graph/flow.hpp"
+          },
+          "hashes": {
+            "sha-256": "6452466a7131a0ad2ab429c2da62e69ccae4c162a9b303193c016735ca867a80"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/ranges.hpp"
+          },
+          "hashes": {
+            "sha-256": "c0dbb6999745db580f01c0b31c56e4b21fdef07862a4ff703d5b64904c820eb6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/registry.hpp"
+          },
+          "hashes": {
+            "sha-256": "cb95c84d15bf31f74fab4f365a62b48b6e94ede7cc2fa1103c90414cb1a568d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/runtime_view.hpp"
+          },
+          "hashes": {
+            "sha-256": "012caaddd5980f9dc727fa3296e975044d5a1c0f0d2a07af51ef4eaa9957b146"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/entity/snapshot.hpp"
+          },
+          "hashes": {
+            "sha-256": "5b60aa54eb3fb8cb30d0c7022d249bd36a6ff7f96c630ca57c7c3e685341e390"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/graph/dot.hpp"
+          },
+          "hashes": {
+            "sha-256": "c0846d0cb7c3d52c7d9ef958250e214565dd86da7f90fca18fdb7446d9e0235d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/locator/locator.hpp"
+          },
+          "hashes": {
+            "sha-256": "4e8ee5cb2e2be8b95014bdb14d885562e2cf8169c71001d99835f7a07b8f9680"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/adl_pointer.hpp"
+          },
+          "hashes": {
+            "sha-256": "cea9e4d2079ab6fe0e77bd64d73b75c7c965ec097d91b5ff658744aa5b0ca2ce"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/container.hpp"
+          },
+          "hashes": {
+            "sha-256": "1e2434b294f628c122fb352556ddffd5038a63b0898e6e7f7351d6d27e94dbee"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/context.hpp"
+          },
+          "hashes": {
+            "sha-256": "3f25d075bd99e76e551cb168c23d4540bd8c24a23675fe551db5665248293de6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/meta.hpp"
+          },
+          "hashes": {
+            "sha-256": "5f8be2b566047cd0397cf6fbcf0602f0d74b50c632fd18126d09d26ef3e8a908"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "020947f913ee4696cecf62c1d15938b3400bb53bffea89c8b4f83d2e99b6ff15"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/node.hpp"
+          },
+          "hashes": {
+            "sha-256": "60291f134800c6f59da5f5a5f14b14ef0e1129c081e22e8b242723af0ab33b2b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/type_traits.hpp"
+          },
+          "hashes": {
+            "sha-256": "61d2ec0b0df585afe68cc62eb45180fbb5d139f41a5119eceed290e0d6683194"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/range.hpp"
+          },
+          "hashes": {
+            "sha-256": "438692779e55112d2f710eb4a6cac21b61d5e17db9dce192a93ef5bc04439251"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/factory.hpp"
+          },
+          "hashes": {
+            "sha-256": "8a33951246c4756fc15c7faac67a4356f5a0926de01958b3aaaf8326b9052ece"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/policy.hpp"
+          },
+          "hashes": {
+            "sha-256": "82b00b2892bc417ccdb528b19745229103d3671c32e126812351fbe974e7cc71"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/resolve.hpp"
+          },
+          "hashes": {
+            "sha-256": "daa962bf2f4fa91ae239cc9a989dbe05766af8d9c4bc75a632a8f8208663dd77"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/utility.hpp"
+          },
+          "hashes": {
+            "sha-256": "9eeda36bb53af7a9e62daddbd8ebae8bad6cccfd44e74082ed5573596162af58"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/pointer.hpp"
+          },
+          "hashes": {
+            "sha-256": "685b091cf5232564b54dd24a49b9ed82c814893ab4185564995adb1c85d9bc4a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/meta/template.hpp"
+          },
+          "hashes": {
+            "sha-256": "f8bc38d444d227e9f6b60937e75ba3c60190bb121fea74bf54574b87d4cf1f93"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/poly/poly.hpp"
+          },
+          "hashes": {
+            "sha-256": "13ae676c69aa7f9a7ee35c5f0030db65dd903b6e960fdb062429c63af2578010"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/poly/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "683479f258bdca46d1447a11deddf419935b8dbbd89116250c78a0021faeabf6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/process/process.hpp"
+          },
+          "hashes": {
+            "sha-256": "b53a1aec7a805e1cf6b0006e11f182fec2065753e95baa664e8e33d2eadd6b68"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/process/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "8eeb68608fc8ecb9d3a47b125022a68b3dc5ad6d4dda09026409402ffa887119"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/process/scheduler.hpp"
+          },
+          "hashes": {
+            "sha-256": "4791c118902052967f4e67f2653215845e023f2466d50e219cb293e9ae1788c0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/resource/cache.hpp"
+          },
+          "hashes": {
+            "sha-256": "369a388f7f35e0b0aa1165414a69bdbc403c28e4944928c94c3a4bb66a3959f0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/resource/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "84873358353469a9e85e66a14f0db5f74ef7664f6d7263f7c270f04a01f229e0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/resource/loader.hpp"
+          },
+          "hashes": {
+            "sha-256": "66b64038f5fb6481513ac60c172270b42e430091eb7074b06ce215839d639f28"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/resource/resource.hpp"
+          },
+          "hashes": {
+            "sha-256": "cdd16044fabf06f172994d097b7838e0d251f2c9084a7550f4531d2d53f2919b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/signal/dispatcher.hpp"
+          },
+          "hashes": {
+            "sha-256": "d3300f4bd8aab79435139ef570dca89ac88cdcec5d9e0a0a68ac92b1c67fc5bb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/entt/signal/emitter.hpp"
+          },
+          "hashes": {
+            "sha-256": "c8431bf4db7386793c60879044d8a9312f71d3c2f3dc2169e4d6c67849966777"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/ctti.h"
+          },
+          "hashes": {
+            "sha-256": "3b4d2cb4b05837512415c1ec872952bdcf7139620cc2fa8ce91ec324014d044c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabcolors.h"
+          },
+          "hashes": {
+            "sha-256": "fb52173621c9d1f964dd26ed494da8e450a9a88c1d966eb17f1f0952c0435e9e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabtypes.h"
+          },
+          "hashes": {
+            "sha-256": "7e70dfc68d7300ef03efbe895ba42e105e0d9ed20992aec64383cea85c82b914"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabmacro.h"
+          },
+          "hashes": {
+            "sha-256": "04ad0156f378277512cdfe23908159c6122180b550ef872e47ac1a3f21fa1685"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/crabmath.h"
+          },
+          "hashes": {
+            "sha-256": "91e6e57b5337b04a92c408f638cb1c13dd066f3c4912b3d65a83aa1630d65513"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/initsettings.h"
+          },
+          "hashes": {
+            "sha-256": "f332471cdb4fecffcbc14ad6a19874afeeb2f63a838df88ef41733b72273813f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/log.h"
+          },
+          "hashes": {
+            "sha-256": "b8faf5e2d945e49eab21bf31e8cf320f017ee45e0f46b5afb51bba5350053e50"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/spdlog.h"
+          },
+          "hashes": {
+            "sha-256": "54e35376e5b504df65f219e961c8c94f7cec6d664e0533c50bbf2c60e391e12a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/common.h"
+          },
+          "hashes": {
+            "sha-256": "6b8f6167ee30860cab811209bd3be976fe648de3673deae43051145d314667ab"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/null_mutex.h"
+          },
+          "hashes": {
+            "sha-256": "1377fde4b54417dca1b3d162d0f18c35f9418e1db91a333949952f1c877127b1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/tweakme.h"
+          },
+          "hashes": {
+            "sha-256": "309266603415c1b314b6e1b886b09d3a884b7bed39df8512fb7b8f1cf3b84d61"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/fmt/fmt.h"
+          },
+          "hashes": {
+            "sha-256": "dc488c1dc67d55c7b0618018f57e51c2bc84644f9da1412f5dd39506ddbcb0f1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/common-inl.h"
+          },
+          "hashes": {
+            "sha-256": "c8c7db736c3fb61ccd84b1f5d5f9c748a1e3dbfe77a986bb820fcfe20da32751"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/registry.h"
+          },
+          "hashes": {
+            "sha-256": "ed45ed0bae8c7c907bb6279ce0ca1ead4a010e57e1d9b0a969372c2b18bb9edc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/periodic_worker.h"
+          },
+          "hashes": {
+            "sha-256": "5e514551070364a20f35b076b83820a7e577b3b23f66aa254d8bd9ea0b8c7b17"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/periodic_worker-inl.h"
+          },
+          "hashes": {
+            "sha-256": "298c84f55ac417e43974d044f5055364b4aa59fec9d2c8d24a001b73f79ae113"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/registry-inl.h"
+          },
+          "hashes": {
+            "sha-256": "dc04b045314a2d998f9436fe626e19adedcc762493728dd0789f011f6b2aa2d5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/logger.h"
+          },
+          "hashes": {
+            "sha-256": "b298ef3f9daea67f946781a6b73eec267b889191d06392b38bc602298f86e8a0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/backtracer.h"
+          },
+          "hashes": {
+            "sha-256": "e0d6f5f72d5936f0fddf681b590e87ee880a2ea40ed44551b8fdf59e0868a1e5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/circular_q.h"
+          },
+          "hashes": {
+            "sha-256": "0bc4025c81425023f4d58711d6aa6231a55ee606bb1fc88f4fb3e655e807e265"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/log_msg_buffer.h"
+          },
+          "hashes": {
+            "sha-256": "0d4b89aa2d47490f3d89d04fbba49cab751e696657f2857899f432a5919b9d26"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/log_msg.h"
+          },
+          "hashes": {
+            "sha-256": "13a78b8cc0a8b71fd6a49633792f98453aeb8844d525d10bc55b22089a120281"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/log_msg-inl.h"
+          },
+          "hashes": {
+            "sha-256": "83e6c837a4f3094671d6745a835c718c5c0b922288be371a19429093ab856272"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/os.h"
+          },
+          "hashes": {
+            "sha-256": "87b7d26dd83e17a978bed8ea686a2dad7a40f47194e4d2cf03a7091cf2373c29"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/os-inl.h"
+          },
+          "hashes": {
+            "sha-256": "4e7f13cdbea844e68a9e3e39a9f9d4ce083b40fe03549d31d53706f64f4e6239"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/windows_include.h"
+          },
+          "hashes": {
+            "sha-256": "aaedb3b90bd662563d82887fedaf338167c951254f45f9ebfef27adade2bd186"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/log_msg_buffer-inl.h"
+          },
+          "hashes": {
+            "sha-256": "c4ca45a0401b17de9f57ea65462b44ea159d152d83bdd086ff675ef9e035456f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/backtracer-inl.h"
+          },
+          "hashes": {
+            "sha-256": "30891d3c75154cf278ac30dbce584bfa28dae17c0f93418c363483c7e9dc9431"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/logger-inl.h"
+          },
+          "hashes": {
+            "sha-256": "2b6d6c11dce4bd4cceb4e724c6ffe6a508f3ae9cff8b44438ae92438c3c35470"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/pattern_formatter.h"
+          },
+          "hashes": {
+            "sha-256": "33c08b3918f7182df15d6f1bab3f9f93fc271c178c2cb2baba69a30e0ad6ea23"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/formatter.h"
+          },
+          "hashes": {
+            "sha-256": "213631628274dc6c26fcc9a3bed36a3a9a83edea5e6b9f027baea58ca9c5eff3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/fmt_helper.h"
+          },
+          "hashes": {
+            "sha-256": "d66b3ec0617a439ca7a4fd661046d5be54beed89c6fae2849d4d46c3f28ef8a9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/mdc.h"
+          },
+          "hashes": {
+            "sha-256": "3dd0b301987253e555b731c8710fe964c81509fa1a7e21f6fc4621c002ec59d7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/sinks/sink.h"
+          },
+          "hashes": {
+            "sha-256": "7fa4a5c69c42f9eee9d6cd5cc4d525be4beb77299cc88b09b4a01f155f3cc215"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/sinks/sink-inl.h"
+          },
+          "hashes": {
+            "sha-256": "e3efbe6fc7b15fccc046b740b061f0ab5867f8bd7d6cf30ed2180a3cdb04aefb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/sinks/wincolor_sink.h"
+          },
+          "hashes": {
+            "sha-256": "cbbdabbc9f7613b6c092ef1d3f279f65f0faa7a896f0a4ebb00350f477b7a72e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/console_globals.h"
+          },
+          "hashes": {
+            "sha-256": "3dced73dc2bc5eacc678eec34af6458f910740c8949fd1bc8449808d1345467a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/sinks/wincolor_sink-inl.h"
+          },
+          "hashes": {
+            "sha-256": "e63df5159517dda6f5289c64886818819aa6ee9b25446cfc7601f9eb07ba017c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/details/synchronous_factory.h"
+          },
+          "hashes": {
+            "sha-256": "3fcfcc28aa4edc2998e9e00d218362600605b89e0c58ebf2c7267950412e1cdc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/version.h"
+          },
+          "hashes": {
+            "sha-256": "58a4c9dc6675571fbb962f19bc250ff1b4d177aa0579260e071e60dd8ac7266c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/spdlog/spdlog-inl.h"
+          },
+          "hashes": {
+            "sha-256": "1b9a282607e3dedf806f3e2b9285b6a89e3e6c06284c59f5936ea023f23a19da"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/scircularqueue.h"
+          },
+          "hashes": {
+            "sha-256": "b00acb937ead38c12cb15d07c9eb88a080f3e25e05b3588cc5bd1d0c175e0660"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/application.h"
+          },
+          "hashes": {
+            "sha-256": "2a1f1489a163c66b78e50c233613e86f874c8a4573dbf4d65e5641b15062e58f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/timer.h"
+          },
+          "hashes": {
+            "sha-256": "3eb4cc0220eea7cdd2afbfcf62ab6e2654447f7f42cdccf60c77856837cc4cfa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/sdl2/sdl_main.h"
+          },
+          "hashes": {
+            "sha-256": "0bfe572ce7c0cf732ffbbc1aa157c2434bc55604ad2307a109b3cebc383700d3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/sdl2/sdl_config.h"
+          },
+          "hashes": {
+            "sha-256": "554fca43eb4c91cbeb8506645465bd454ee9bfb55f5479fc723c793cee3b64c4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/sdl2/sdl_platform.h"
+          },
+          "hashes": {
+            "sha-256": "74ab9814d8f1f5428d99035e8820c8a18f6984b76a05c47aa7595dd30abbf1db"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/sdl2/begin_code.h"
+          },
+          "hashes": {
+            "sha-256": "0b61a158e4ee9834da0b35fef6ca017b928407c40ebc2fbe848410738c2105b1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/vcpkg/installed/x64-windows/include/sdl2/close_code.h"
+          },
+          "hashes": {
+            "sha-256": "4599e9cedba7451ff07a6306f0b7531beed05b1c5a65b1a2613d1b771be43fda"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/entrypoint.h"
+          },
+          "hashes": {
+            "sha-256": "5f5d120a969826f0ca0a8f7b6b440d0fcc735025f7c9d35e5090064ed5bfb660"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/ahnjiwoo/desktop/projects/crabrenderer/crabrenderer/renderer.h"
+          },
+          "hashes": {
+            "sha-256": "2eb26a7ee8a510fd62b9a51a84bafbeb94918dd4a9413b300e7f41f0e8f96cbd"
+          }
+        }
+      ]
+    }
+  ]
+}
