@@ -328,7 +328,7 @@ Ref<ComputeShader> ComputeShader::CreateFromCode(
     const ShaderMacros&    in_macro)
 {
     auto gs   = CreateRef<ComputeShader>();
-    auto blob = ShaderUtil::LoadShaderCode(in_shaderCode, in_entryPoint, "cs_5_0", in_macro);
+    auto blob = ShaderUtil::LoadShaderCode(in_shaderCode, in_entryPoint, "cs_5_0");
     gs->_CreateComputeShader(blob);
 
     return gs;

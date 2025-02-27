@@ -53,7 +53,7 @@
 #include <entt/entt.hpp>
 
 // - Base
-#include "CTTI.h"
+#include "TypeInfo.h"
 #include "CrabColors.h"
 #include "CrabMacro.h"
 #include "CrabMath.h"

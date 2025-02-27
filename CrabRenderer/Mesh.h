@@ -30,6 +30,12 @@ public:
     static Ref<Mesh> Create(const std::vector<Vertex>& in_vertices, eTopology in_topology);
     static Ref<Mesh> Create(const Ref<VertexBuffer>& in_vb, eTopology in_topology);
 
+    eTopology GetTopology() const { return m_topology; }
+    uint32    GetIndexCount() const { return m_indexBuffer->GetIndexCount(); }
+    uint32    GetIndexStride() const { return sizeof(UINT); }
+    uint32    GetVertexCount() const { return m_vertexBuffer->GetVertexCount(); }
+    uint32    GetVertexStride() const { return m_vertexBuffer->GetVertexStride(); }
+
     void Draw() const;
 
 private:

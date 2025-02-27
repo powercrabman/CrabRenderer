@@ -21,29 +21,20 @@ class ImageFilter
     D11_RESOURCE_CTOR(ImageFilter);
 
 public:
-    static Ref<ImageFilter> Create(uint32                   in_filterWidth,
-                                   uint32                   in_filterHeight,
-                                   const Ref<VertexShader>& in_vertexShader,
-                                   const Ref<PixelShader>&  in_pixelShader);
+    static Ref<ImageFilter> Create(uint32                    in_filterWidth,
+                                   uint32                    in_filterHeight,
+                                   const Ref<VertexShader>&  in_vertexShader,
+                                   const Ref<PixelShader>&   in_pixelShader,
+                                   const Image2DList&        in_inputTextures,
+                                   const SamplerList&   in_samplerLists,
+                                   const ConstantList& in_constantBuffers);
 
     Ref<ImageFilter> Clone() const;
 
     void Bind() const;
-    void SetOnBindCallback(const std::function<void()>& in_func) { m_onBindFunc = in_func; }
 
     // Render Target
     void SetRenderTarget(const Ref<RenderTarget>& in_rt);
-
-    // Image Filter Resources
-    void ClearInputImages() { m_inputImages.ClearList(); }
-    void ClearConstantBuffers() { m_constantBuffers.ClearList(); }
-    void ClearSamplerStates() { m_samplerStates.ClearList(); }
-
-    void AddInputImage(const Ref<Image2D>& in_textures, uint32 in_slot);
-    void AddConstantBuffer(const Ref<ConstantBufferBase>& in_buffer, uint32 in_slot);
-    void AddSamplerState(const Ref<SamplerState>& in_samplerState, uint32 in_slot);
-
-    ConstantBufferList GetConstantBufferList() const { return m_constantBuffers; }
 
     // Getter
     auto         GetResolution() const;
@@ -56,11 +47,9 @@ private:
     Ref<VertexShader> m_vertexShader;
     Ref<PixelShader>  m_pixelShader;
 
-    std::function<void()> m_onBindFunc;
-
     Image2DList        m_inputImages;
-    SamplerStateList   m_samplerStates;
-    ConstantBufferList m_constantBuffers;
+    SamplerList   m_samplerStates;
+    ConstantList m_constantBuffers;
 };
 
 //===================================================

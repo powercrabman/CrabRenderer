@@ -169,7 +169,7 @@ Ref<Image2D> Swapchain::GetBackBufferHDRImage() const
     }
 }
 
-Ref<Image2D> Swapchain::GetResolvedImage() const
+Ref<Image2D> Swapchain::GetResolvedBackBufferImage() const
 {
     if (m_enableHDRRendering)
     {

@@ -24,35 +24,58 @@ ImageLoaderData ImageLoader::LoadFromFile(const std::filesystem::path& in_path)
     if (ext == ".dds")
     {
         loadData.succeed = CheckD3D11Result(LoadFromDDSFile(
-                                              in_path.c_str(),
-                                              DDS_FLAGS_NONE,
-                                              &loadData.metadata,
-                                              loadData.scratchImage),
-                                          "LoadFromDDSFile Fail.");
+                                                in_path.c_str(),
+                                                DDS_FLAGS_NONE,
+                                                &loadData.metadata,
+                                                loadData.scratchImage),
+                                            "LoadFromDDSFile Fail.");
     }
     else if (ext == ".exr")
     {
         loadData.succeed = CheckD3D11Result(LoadFromEXRFile(
-                                              in_path.c_str(),
-                                              &loadData.metadata,
-                                              loadData.scratchImage),
-                                          "LoadFromEXRFile Fail.");
+                                                in_path.c_str(),
+                                                &loadData.metadata,
+                                                loadData.scratchImage),
+                                            "LoadFromEXRFile Fail.");
     }
     else
     {
         WIC_FLAGS flags = WIC_FLAGS_NONE;
 
-        if (GetRenderer().GetSwapChain()->IsHDR())
-            flags = WIC_FLAGS_DEFAULT_SRGB;
-
         loadData.succeed = CheckD3D11Result(LoadFromWICFile(
-                                              in_path.c_str(),
-                                              flags,
-                                              &loadData.metadata,
-                                              loadData.scratchImage),
-                                          "LoadFromWICFile Fail.");
+                                                in_path.c_str(),
+                                                flags,
+                                                &loadData.metadata,
+                                                loadData.scratchImage),
+                                            "LoadFromWICFile Fail.");
     }
 
+    return loadData;
+}
+
+ImageLoaderData ImageLoader::LoadFromFileWICEx(
+    const std::filesystem::path& in_path,
+    DirectX::WIC_FLAGS           in_flags)
+{
+    using namespace DirectX;
+    const std::filesystem::path ext = in_path.extension();
+
+    ImageLoaderData loadData = {};
+    loadData.path            = in_path;
+
+    if (ext == ".exr" || ext == ".dds")
+    {
+        return LoadFromFile(in_path);
+    }
+    else
+    {
+        loadData.succeed = CheckD3D11Result(LoadFromWICFile(
+                                                in_path.c_str(),
+                                                in_flags,
+                                                &loadData.metadata,
+                                                loadData.scratchImage),
+                                            "LoadFromWICFile Fail.");
+    }
     return loadData;
 }
 
@@ -67,19 +90,19 @@ ImageLoaderData ImageLoader::LoadTextureCubeFromFile(const std::filesystem::path
     if (ext == ".dds")
     {
         loadData.succeed = CheckD3D11Result(LoadFromDDSFile(
-                                              in_path.c_str(),
-                                              DDS_FLAGS_NONE,
-                                              &loadData.metadata,
-                                              loadData.scratchImage),
-                                          "LoadFromDDSFile Fail.");
+                                                in_path.c_str(),
+                                                DDS_FLAGS_NONE,
+                                                &loadData.metadata,
+                                                loadData.scratchImage),
+                                            "LoadFromDDSFile Fail.");
     }
     else if (ext == ".exr")
     {
         loadData.succeed = CheckD3D11Result(LoadFromEXRFile(
-                                              in_path.c_str(),
-                                              &loadData.metadata,
-                                              loadData.scratchImage),
-                                          "LoadFromEXRFile Fail.");
+                                                in_path.c_str(),
+                                                &loadData.metadata,
+                                                loadData.scratchImage),
+                                            "LoadFromEXRFile Fail.");
     }
     else
     {
@@ -107,13 +130,13 @@ void ImageLoader::GenerateMipmap(ImageLoaderData& inout_data)
     {
         ScratchImage mipChain;
         if (CheckD3D11Result(GenerateMipMaps(
-                               inout_data.scratchImage.GetImages(),
-                               inout_data.scratchImage.GetImageCount(),
-                               inout_data.metadata,
-                               TEX_FILTER_FLAGS::TEX_FILTER_DEFAULT,
-                               0,
-                               mipChain),
-                           "GenerateMipMaps Fail."))
+                                 inout_data.scratchImage.GetImages(),
+                                 inout_data.scratchImage.GetImageCount(),
+                                 inout_data.metadata,
+                                 TEX_FILTER_FLAGS::TEX_FILTER_DEFAULT,
+                                 0,
+                                 mipChain),
+                             "GenerateMipMaps Fail."))
         {
             inout_data.scratchImage = std::move(mipChain);
             inout_data.metadata     = inout_data.scratchImage.GetMetadata();

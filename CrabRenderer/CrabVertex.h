@@ -18,6 +18,7 @@ struct GeometryData
     std::vector<Vec3> normals;
     std::vector<Vec2> texCoords;
     std::vector<Vec3> tangents;
+    std::vector<Vec3> bitangents;
     std::vector<Vec3> colors;
 
     std::vector<uint32> indices;

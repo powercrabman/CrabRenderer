@@ -1,6 +1,6 @@
 #pragma once
 
-// - Assert
+// Assert
 #if defined(_DEBUG) | 1
 
 #    define CRAB_ASSERT(x, hint)                                           \
@@ -31,18 +31,18 @@
 #    define CRAB_DEBUG_BREAK_V(x, hint_format, ...) ((void)0)
 #endif
 
-// - Template Meta Programming
+// Template Meta Programming
 #define IS_SAME(Type1, Type2)     std::is_same<Type1, Type2>::value
 #define IS_BASE_OF(Base, Derived) std::is_base_of<Base, Derived>::value
 
-// - Bit
+// Bit
 #define BIT(x)        (1 << x)
 #define BIT_AND(x, y) ((x) & (y))
 #define BIT_OR(x, y)  ((x) | (y))
 #define BIT_XOR(x, y) ((x) ^ (y))
 #define BIT_NOT(x)    (~(x))
 
-// - Rendering
+// Rendering
 #define cbuffer struct alignas(16)
 
 #define D11_RESOURCE_CTOR(ClassName)              \
@@ -55,4 +55,5 @@ protected:                                        \
                                                   \
 private:
 
+// etc..
 #define TODO(msg) static_assert(false, msg)

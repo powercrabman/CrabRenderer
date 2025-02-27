@@ -30,7 +30,7 @@ bool ModelLoader::Load(const std::filesystem::path& in_modelPath)
 
     if (!pScene)
     {
-        CRAB_DEBUG_BREAK_V("Failed to load mesh file: {0}", in_modelPath.string().c_str());
+        CRAB_DEBUG_BREAK_V("Failed to load mesh file: {0}\n{1}", in_modelPath.string().c_str(), importer.GetErrorString());
         return false;
     }
 
@@ -254,20 +254,10 @@ void ModelLoader::_ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene)
         }
     }
 
+    modelData.name = material->GetName().C_Str();
     m_modelNodes.emplace_back(modelData);
 }
 
-ModelNode Model::GetNode(uint32 in_index) const
-{
-    if (in_index < m_nodes.size())
-    {
-        return m_nodes[in_index];
-    }
-    else
-    {
-        return {};
-    }
-}
 
 Ref<Model> Model::Create(const std::vector<ModelNode>& in_meshNodes)
 {
@@ -277,13 +267,24 @@ Ref<Model> Model::Create(const std::vector<ModelNode>& in_meshNodes)
     return model;
 }
 
-void Model::SetNode(uint32 in_index, const ModelNode& in_node)
+ModelNode* Model::FindNode(std::string_view in_name)
 {
-    // Resize
-    if (in_index >= m_nodes.size())
-        m_nodes.resize(in_index + 1);
+    auto it = std::ranges::find_if(m_nodes,
+                                   [&](const ModelNode& node)
+                                   { return node.name == in_name; });
 
-    m_nodes[in_index] = in_node;
+
+
+    if (it != m_nodes.end())
+    {
+        return &*it;
+    }
+    else
+    {
+        CRAB_DEBUG_BREAK_V("Model node not found: {0}", in_name.data());
+        return nullptr;
+    }
 }
+
 
 }   // namespace crab

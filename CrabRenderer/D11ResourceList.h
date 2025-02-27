@@ -8,13 +8,13 @@ namespace crab
 // Constant Buffer List
 //===================================================
 
-class ConstantBufferList
+class ConstantList
 {
 public:
-    ConstantBufferList()  = default;
-    ~ConstantBufferList() = default;
+    ConstantList()  = default;
+    ~ConstantList() = default;
 
-    ConstantBufferList& Add(
+    ConstantList& Add(
         const Ref<ConstantBufferBase>& in_constantBuffer,
         uint32                         in_slot,
         eShaderFlags                   in_bindFlags);
@@ -37,11 +37,11 @@ private:
 };
 
 template<typename DataType>
-Ref<ConstantBuffer<DataType>> ConstantBufferList::FindBuffer()
+Ref<ConstantBuffer<DataType>> ConstantList::FindBuffer()
 {
     for (const auto& [buffer, slot, bindFlags]: m_constantBuffers)
     {
-        if (buffer->GetItemType() == GetTypeInfo<DataType>())
+        if (buffer->GetItemType() == TypeInfo::Get<DataType>())
             return std::static_pointer_cast<ConstantBuffer<DataType>>(buffer);
     }
     CRAB_DEBUG_BREAK("Cannot find the buffer. Check the buffer type.");
@@ -85,13 +85,13 @@ private:
 
 class SamplerState;
 
-class SamplerStateList
+class SamplerList
 {
 public:
-    SamplerStateList()  = default;
-    ~SamplerStateList() = default;
+    SamplerList()  = default;
+    ~SamplerList() = default;
 
-    SamplerStateList& Add(
+    SamplerList& Add(
         const Ref<SamplerState>& in_sampler,
         uint32                   in_slot,
         eShaderFlags             in_bindFlags);

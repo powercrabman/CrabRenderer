@@ -32,7 +32,7 @@
     <ClInclude Include="GlobalConstants.h">
       <Filter>Rendering\Global Library</Filter>
     </ClInclude>
-    <ClInclude Include="enums.h">
+    <ClInclude Include="Common.h">
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="28. AnimationDemo.h">
@@ -40,6 +40,12 @@
     </ClInclude>
     <ClInclude Include="Tags.h">
       <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelUtil.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderUtil.h">
+      <Filter>Rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +79,12 @@
     </ClCompile>
     <ClCompile Include="28. AnimationDemo.cpp">
       <Filter>Scene %28Demos%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelUtil.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderUtil.cpp">
+      <Filter>Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +130,24 @@
     <Filter Include="Rendering\Shaders\ComputeShader\SPH">
       <UniqueIdentifier>{b2c3d372-f728-4541-9f8a-c7313a4cdfd2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Rendering\Shaders\Skybox">
+      <UniqueIdentifier>{61a2f1a1-0691-44cb-9072-8b083a023487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Shaders\Normal">
+      <UniqueIdentifier>{c5d59952-21ab-4b06-96eb-4f99cd1ae8dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Shaders\PostProcess">
+      <UniqueIdentifier>{583c60a9-83a2-4267-8534-1c70465d7383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Shaders\PBR">
+      <UniqueIdentifier>{5841f785-2a6a-45cc-b12d-cf7f7c8c004d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Shaders\PostEffect">
+      <UniqueIdentifier>{bd83952e-deef-4537-9eef-9d43aa683f0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Shaders\Debug">
+      <UniqueIdentifier>{aa0d0dd3-d8f6-4973-a7c9-85c7322abadb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -129,15 +159,6 @@
     <None Include="sample.hlsli">
       <Filter>Base</Filter>
     </None>
-    <None Include="Shaders\DrawNormalCommon.hlsli">
-      <Filter>Rendering\Shaders</Filter>
-    </None>
-    <None Include="Shaders\PBRCommon.hlsli">
-      <Filter>Rendering\Shaders</Filter>
-    </None>
-    <None Include="Shaders\PostProcessCommon.hlsli">
-      <Filter>Rendering\Shaders</Filter>
-    </None>
     <None Include="ParticleCommon.hlsli">
       <Filter>Rendering\Shaders\ComputeShader</Filter>
     </None>
@@ -147,56 +168,17 @@
     <None Include="SPHCommon.hlsli">
       <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
     </None>
+    <None Include="Shaders\DrawNormalCommon.hlsli">
+      <Filter>Rendering\Shaders\Normal</Filter>
+    </None>
+    <None Include="Shaders\PostProcessCommon.hlsli">
+      <Filter>Rendering\Shaders\PostProcess</Filter>
+    </None>
+    <None Include="Shaders\ShaderCommon.hlsli">
+      <Filter>Rendering\Shaders\PBR</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shaders\DrawNormalGS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\DrawNormalPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\DrawNormalVS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\PBRPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\PBRVS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\PostProcessVS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\SamplingPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\SkyboxPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\SkyboxVS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\BlurDownPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\BlurUpPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\CombinePS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\ToneMapPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\DepthOnlyPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\DepthOnlyVS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\PostEffectPS.hlsl">
-      <Filter>Rendering\Shaders</Filter>
-    </FxCompile>
     <FxCompile Include="ComputeDemoCS.hlsl">
       <Filter>Rendering\Shaders\ComputeShader</Filter>
     </FxCompile>
@@ -262,6 +244,57 @@
     </FxCompile>
     <FxCompile Include="SPHIntegrate.hlsl">
       <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SkyboxVS.hlsl">
+      <Filter>Rendering\Shaders\Skybox</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SkyboxPS.hlsl">
+      <Filter>Rendering\Shaders\Skybox</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\DrawNormalVS.hlsl">
+      <Filter>Rendering\Shaders\Normal</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\DrawNormalPS.hlsl">
+      <Filter>Rendering\Shaders\Normal</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\DrawNormalGS.hlsl">
+      <Filter>Rendering\Shaders\Normal</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\BlurDownPS.hlsl">
+      <Filter>Rendering\Shaders\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\BlurUpPS.hlsl">
+      <Filter>Rendering\Shaders\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PostProcessVS.hlsl">
+      <Filter>Rendering\Shaders\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SamplingPS.hlsl">
+      <Filter>Rendering\Shaders\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ToneMapPS.hlsl">
+      <Filter>Rendering\Shaders\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\CombinePS.hlsl">
+      <Filter>Rendering\Shaders\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PBRVS.hlsl">
+      <Filter>Rendering\Shaders\PBR</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PBRPS.hlsl">
+      <Filter>Rendering\Shaders\PBR</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\MaskingVS.hlsl">
+      <Filter>Rendering\Shaders\PostEffect</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\MaskingPS.hlsl">
+      <Filter>Rendering\Shaders\PostEffect</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PostEffectPS.hlsl">
+      <Filter>Rendering\Shaders\PostEffect</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\DebugNormalMappingPS.hlsl">
+      <Filter>Rendering\Shaders\Debug</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

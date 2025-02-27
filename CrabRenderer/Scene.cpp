@@ -27,6 +27,22 @@ crab::Entity Scene::CreateEntity(uint32 in_id)
     }
 }
 
+Entity Scene::CloneEntity(Entity in_src)
+{
+    Entity e         = CreateEntity();
+    e.GetTransform() = in_src.GetTransform();
+
+    auto storage = m_registry.storage();
+
+    for (auto& set: storage | std::views::values)
+    {
+        if (set.contains(in_src) && !set.contains(e))
+            set.push(e, set.value(in_src));
+    }
+
+    return e;
+}
+
 crab::Entity Scene::CreateEntity()
 {
     return _CreateEntity(m_registry.create());
@@ -35,7 +51,7 @@ crab::Entity Scene::CreateEntity()
 Entity Scene::CreateEntity(std::string_view in_tag)
 {
     Entity entity = _CreateEntity(m_registry.create());
-    entity.CreateComponent<TagComponent>(std::string(in_tag));
+    entity.CreateComponent<LabelComponent>(std::string(in_tag));
 
     return entity;
 }
@@ -65,6 +81,5 @@ Entity Scene::FindEntity(const IDComponent& in_id)
         return Entity::s_null;
     }
 }
-
 
 }   // namespace crab

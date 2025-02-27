@@ -95,10 +95,15 @@ Ref<Image2D> Image2D::CreateFromBuffer(ID3D11Buffer* in_buffer, eFormat in_forma
     return image;
 }
 
-Ref<Image2D> Image2D::CreateFromFile(const std::filesystem::path& in_path, bool in_enableMipMap)
+Ref<Image2D> Image2D::CreateFromFile(
+    const std::filesystem::path& in_path,
+    bool                         in_enableMipMap,
+    bool                         in_inverseToneMapping)
 {
     Ref<Image2D> image    = nullptr;
-    auto         loadData = ImageLoader::LoadFromFile(in_path);
+    auto         loadData = in_inverseToneMapping ?
+                                ImageLoader::LoadFromFileWICEx(in_path, DirectX::WIC_FLAGS::WIC_FLAGS_DEFAULT_SRGB) :
+                                ImageLoader::LoadFromFile(in_path);
 
     if (loadData.succeed)
     {
@@ -136,7 +141,8 @@ Ref<Image2D> Image2D::CreateFromFile(const std::filesystem::path& in_path, bool 
 
 Ref<Image2D> Image2D::CreateTextureArrayFromFile(
     const std::vector<std::filesystem::path>& in_paths,
-    bool                                      in_enableMipMap)
+    bool                                      in_enableMipMap,
+    bool                                      in_inverseToneMapping)
 {
     Ref<Image2D> image = nullptr;
 
@@ -148,7 +154,9 @@ Ref<Image2D> Image2D::CreateTextureArrayFromFile(
 
         for (uint32 i = 0; i < in_paths.size(); i++)
         {
-            auto loadData = ImageLoader::LoadFromFile(in_paths[i]);
+            auto loadData = in_inverseToneMapping ?
+                                ImageLoader::LoadFromFileWICEx(in_paths[i], DirectX::WIC_FLAGS::WIC_FLAGS_DEFAULT_SRGB) :
+                                ImageLoader::LoadFromFile(in_paths[i]);
 
             if (loadData.succeed)
             {
@@ -217,11 +225,15 @@ Ref<Image2D> Image2D::CreateTextureArrayFromFile(
 Ref<Image2D> Image2D::CreateTextureArrayFromFile(
     const std::filesystem::path& in_path,
     uint32                       in_arrayMaxCount,
-    bool                         in_enableMipMap)
+    bool                         in_enableMipMap,
+    bool                         in_inverseToneMapping)
 {
     Ref<Image2D> image = nullptr;
 
-    auto           loadData = ImageLoader::LoadFromFile(in_path);
+    auto loadData = in_inverseToneMapping ?
+                        ImageLoader::LoadFromFileWICEx(in_path, DirectX::WIC_FLAGS::WIC_FLAGS_DEFAULT_SRGB) :
+                        ImageLoader::LoadFromFile(in_path);
+
     DirectX::Image srcImage = *loadData.scratchImage.GetImage(0, 0, 0);
 
     uint64 width  = static_cast<uint64>(loadData.metadata.width / static_cast<float>(in_arrayMaxCount));

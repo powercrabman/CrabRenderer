@@ -4,6 +4,8 @@
 
 #include "Mesh.h"
 
+#include <DirectXMesh.h>
+
 namespace crab
 {
 
@@ -28,10 +30,11 @@ GeometryData GeometryFactory::CreateQuad(float width, float height)
         Vec2 { 0.f, 1.f },
     };
 
-    std::fill_n(output.tangents.begin(), 4, Vec3 { 1.f, 0.f, 0.f });
-    std::fill_n(output.normals.begin(), 4, Vec3 { 0.f, 0.f, 1.f });
-
     output.indices  = { 0, 1, 2, 0, 2, 3 };
+
+    output.normals  = GeometryUtil::ComputeNormals(output.indices, output.positions);
+    output.tangents = GeometryUtil::ComputeTangents(output.indices, output.positions, output.normals, output.texCoords);
+
     output.topology = eTopology::TriangleList;
     return output;
 }
@@ -44,6 +47,7 @@ GeometryData GeometryFactory::CreateCircle(float radius, uint32 slices)
     output.texCoords.reserve(slices + 1);
     output.normals.reserve(slices + 1);
     output.tangents.reserve(slices + 1);
+    output.bitangents.reserve(slices + 1);
 
     for (uint32 i = 0; i < slices; ++i)
     {
@@ -57,14 +61,10 @@ GeometryData GeometryFactory::CreateCircle(float radius, uint32 slices)
 
         output.positions.emplace_back(Vec3 { x, y, 0.f });
         output.texCoords.emplace_back(Vec2 { x, y });
-        output.normals.emplace_back(Vec3 { 0.f, 0.f, -1.f });
-        output.tangents.emplace_back(Vec3 { -sin, cos, 0.f });
     }
 
     output.positions.emplace_back(Vec3 { 0.f, 0.f, 0.f });
     output.texCoords.emplace_back(Vec2 { 0.f, 0.f });
-    output.normals.emplace_back(Vec3 { 0.f, 0.f, 1.f });
-    output.tangents.emplace_back(Vec3 { 1.f, 0.f, 0.f });
 
     output.indices.reserve(slices * 3);
     for (uint32 i = 0; i < slices; ++i)
@@ -73,6 +73,9 @@ GeometryData GeometryFactory::CreateCircle(float radius, uint32 slices)
         output.indices.emplace_back(i);
         output.indices.emplace_back((i + 1) % slices);
     }
+
+    output.normals  = GeometryUtil::ComputeNormals(output.indices, output.positions);
+    output.tangents = GeometryUtil::ComputeTangents(output.indices, output.positions, output.normals, output.texCoords);
 
     output.topology = eTopology::TriangleList;
     return output;
@@ -125,116 +128,40 @@ GeometryData GeometryFactory::CreateCube(float width, float height, float depth)
 
     output.texCoords = {
         // front
-        Vec2 { 0.f, 1.f },
-        Vec2 { 1.f, 1.f },
-        Vec2 { 1.f, 0.f },
         Vec2 { 0.f, 0.f },
+        Vec2 { 1.f, 0.f },
+        Vec2 { 1.f, 1.f },
+        Vec2 { 0.f, 1.f },
 
         // right
-        Vec2 { 0.f, 1.f },
-        Vec2 { 1.f, 1.f },
-        Vec2 { 1.f, 0.f },
         Vec2 { 0.f, 0.f },
+        Vec2 { 1.f, 0.f },
+        Vec2 { 1.f, 1.f },
+        Vec2 { 0.f, 1.f },
 
         // top
-        Vec2 { 0.f, 1.f },
-        Vec2 { 1.f, 1.f },
-        Vec2 { 1.f, 0.f },
         Vec2 { 0.f, 0.f },
+        Vec2 { 1.f, 0.f },
+        Vec2 { 1.f, 1.f },
+        Vec2 { 0.f, 1.f },
 
         // back
-        Vec2 { 0.f, 1.f },
-        Vec2 { 1.f, 1.f },
-        Vec2 { 1.f, 0.f },
         Vec2 { 0.f, 0.f },
+        Vec2 { 1.f, 0.f },
+        Vec2 { 1.f, 1.f },
+        Vec2 { 0.f, 1.f },
 
         // left
-        Vec2 { 0.f, 1.f },
-        Vec2 { 1.f, 1.f },
-        Vec2 { 1.f, 0.f },
         Vec2 { 0.f, 0.f },
-
-        // bottom
-        Vec2 { 0.f, 1.f },
-        Vec2 { 1.f, 1.f },
         Vec2 { 1.f, 0.f },
-        Vec2 { 0.f, 0.f }
-    };
-
-    output.normals = {
-        // front
-        Vec3 { 0.f, 0.f, -1.f },
-        Vec3 { 0.f, 0.f, -1.f },
-        Vec3 { 0.f, 0.f, -1.f },
-        Vec3 { 0.f, 0.f, -1.f },
-
-        // right
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-
-        // top
-        Vec3 { 0.f, 1.f, 0.f },
-        Vec3 { 0.f, 1.f, 0.f },
-        Vec3 { 0.f, 1.f, 0.f },
-        Vec3 { 0.f, 1.f, 0.f },
-
-        // back
-        Vec3 { 0.f, 0.f, 1.f },
-        Vec3 { 0.f, 0.f, 1.f },
-        Vec3 { 0.f, 0.f, 1.f },
-        Vec3 { 0.f, 0.f, 1.f },
-
-        // left
-        Vec3 { -1.f, 0.f, 0.f },
-        Vec3 { -1.f, 0.f, 0.f },
-        Vec3 { -1.f, 0.f, 0.f },
-        Vec3 { -1.f, 0.f, 0.f },
+        Vec2 { 1.f, 1.f },
+        Vec2 { 0.f, 1.f },
 
         // bottom
-        Vec3 { 0.f, -1.f, 0.f },
-        Vec3 { 0.f, -1.f, 0.f },
-        Vec3 { 0.f, -1.f, 0.f },
-        Vec3 { 0.f, -1.f, 0.f }
-    };
-
-    output.tangents = {
-        // front
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-
-        // right
-        Vec3 { 0.f, 0.f, 1.f },
-        Vec3 { 0.f, 0.f, 1.f },
-        Vec3 { 0.f, 0.f, 1.f },
-        Vec3 { 0.f, 0.f, 1.f },
-
-        // top
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-
-        // back
-        Vec3 { -1.f, 0.f, 0.f },
-        Vec3 { -1.f, 0.f, 0.f },
-        Vec3 { -1.f, 0.f, 0.f },
-        Vec3 { -1.f, 0.f, 0.f },
-
-        // left
-        Vec3 { 0.f, 0.f, -1.f },
-        Vec3 { 0.f, 0.f, -1.f },
-        Vec3 { 0.f, 0.f, -1.f },
-        Vec3 { 0.f, 0.f, -1.f },
-
-        // bottom
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f },
-        Vec3 { 1.f, 0.f, 0.f }
+        Vec2 { 0.f, 0.f },
+        Vec2 { 1.f, 0.f },
+        Vec2 { 1.f, 1.f },
+        Vec2 { 0.f, 1.f },
     };
 
     // clang-format off
@@ -264,6 +191,9 @@ GeometryData GeometryFactory::CreateCube(float width, float height, float depth)
         20, 22, 23
     };
     // clang-format on
+
+    output.normals  = GeometryUtil::ComputeNormals(output.indices, output.positions);
+    output.tangents = GeometryUtil::ComputeTangents(output.indices, output.positions, output.normals, output.texCoords);
 
     output.topology = eTopology::TriangleList;
     return output;
@@ -304,9 +234,7 @@ GeometryData GeometryFactory::CreateSphere(float radius, uint32 slices, uint32 s
             Vec3 tangent = { -sinTh, 0.f, cosTh };
 
             output.positions.push_back(position);
-            output.normals.push_back(normal);
             output.texCoords.push_back(texCoord);
-            output.tangents.push_back(tangent);
         }
     }
 
@@ -328,6 +256,9 @@ GeometryData GeometryFactory::CreateSphere(float radius, uint32 slices, uint32 s
             output.indices.push_back(first + 1);
         }
     }
+
+    output.normals  = GeometryUtil::ComputeNormals(output.indices, output.positions);
+    output.tangents = GeometryUtil::ComputeTangents(output.indices, output.positions, output.normals, output.texCoords);
 
     output.topology = eTopology::TriangleList;
     return output;
@@ -357,8 +288,6 @@ GeometryData GeometryFactory::CreateGrid(float width, float height, uint32 repea
 
             output.positions.emplace_back(Vec3 { posX, posY, 0.f });
             output.texCoords.emplace_back(Vec2 { u, v });
-            output.normals.emplace_back(Vec3 { 0.f, 0.f, 1.f });
-            output.tangents.emplace_back(Vec3 { 1.f, 0.f, 0.f });
         }
     }
 
@@ -381,8 +310,50 @@ GeometryData GeometryFactory::CreateGrid(float width, float height, uint32 repea
         }
     }
 
+    output.normals  = GeometryUtil::ComputeNormals(output.indices, output.positions);
+    output.tangents = GeometryUtil::ComputeTangents(output.indices, output.positions, output.normals, output.texCoords);
+
     output.topology = eTopology::TriangleList;
     return output;
+}
+
+std::vector<Vec3> GeometryUtil::ComputeNormals(
+    const std::vector<uint32>& in_indices,
+    const std::vector<Vec3>&   in_positions)
+{
+    std::vector<Vec3> normals(in_positions.size(), Vec3::Zero);
+
+    DirectX::ComputeNormals(
+        in_indices.data(),
+        in_indices.size() / 3,
+        in_positions.data(),
+        in_positions.size(),
+        DirectX::CNORM_DEFAULT ,
+        normals.data());
+
+    return normals;
+}
+
+std::vector<Vec3> GeometryUtil::ComputeTangents(
+    const std::vector<uint32>& in_indices,
+    const std::vector<Vec3>&   in_positions,
+    const std::vector<Vec3>&   in_normals,
+    const std::vector<Vec2>&   in_texCoords)
+{
+    std::vector<Vec3> tangents(in_positions.size(), Vec3::Zero);
+    std::vector<Vec3> bitangents(in_positions.size(), Vec3::Zero);   // this is
+
+    DirectX::ComputeTangentFrame(
+        in_indices.data(),
+        in_indices.size() / 3,
+        in_positions.data(),
+        in_normals.data(),
+        in_texCoords.data(),
+        in_positions.size(),
+        tangents.data(),
+        bitangents.data());
+
+    return tangents;
 }
 
 }   // namespace crab

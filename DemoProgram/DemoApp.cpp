@@ -6,6 +6,7 @@
 #include "GlobalShader.h"
 
 #include "28. AnimationDemo.h"
+#include "Test.h"
 
 DemoApp::DemoApp()
 {
@@ -37,9 +38,13 @@ void DemoApp::OnInit()
 
     SceneManager& sm = GetSceneManager();
 
-    sm.CreateScene<AnimationDemo>();
+    //sm.CreateScene<AnimationDemo>();
+    //
+    //sm.ChangeScene<AnimationDemo>();
 
-    sm.ChangeScene<AnimationDemo>();
+    sm.CreateScene<Test>();
+
+    sm.ChangeScene<Test>();
 }
 
 void DemoApp::OnShutdown()

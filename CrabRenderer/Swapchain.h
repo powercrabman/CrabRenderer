@@ -35,7 +35,7 @@ public:
 
     Ref<RenderTarget> GetBackBufferHDR() const;
     Ref<Image2D>      GetBackBufferHDRImage() const;
-    Ref<Image2D>      GetResolvedImage() const;
+    Ref<Image2D>      GetResolvedBackBufferImage() const;
     void              ResolveBackBuffer() const;
 
 private:

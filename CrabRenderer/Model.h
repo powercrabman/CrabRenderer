@@ -9,7 +9,6 @@ struct aiMesh;
 struct aiMaterial;
 struct aiString;
 
-
 namespace crab
 {
 class Mesh;
@@ -23,6 +22,8 @@ struct ModelNode
 {
     Ref<Mesh>     mesh;
     Ref<Material> material;
+
+    std::string name;
 };
 
 class Model
@@ -33,9 +34,9 @@ public:
     static Ref<Model> Create(const std::vector<ModelNode>& in_meshNodes);
 
     const std::vector<ModelNode>& GetNodes() const { return m_nodes; }
+    std::vector<ModelNode>&       GetNodesRef() { return m_nodes; }
 
-    ModelNode GetNode(uint32 in_index) const;
-    void      SetNode(uint32 in_index, const ModelNode& in_node);
+    ModelNode* FindNode(std::string_view in_name);
 
 private:
     std::vector<ModelNode> m_nodes;
@@ -49,6 +50,8 @@ struct ModelLoaderNode
 {
     GeometryData geometryData;
     MaterialData materialData;
+
+    std::string name;
 };
 
 class ModelLoader

@@ -21,6 +21,7 @@ class ImageLoader
 {
 public:
     static ImageLoaderData LoadFromFile(const std::filesystem::path& in_path);
+    static ImageLoaderData LoadFromFileWICEx(const std::filesystem::path& in_path, DirectX::WIC_FLAGS in_flags);
     static ImageLoaderData LoadTextureCubeFromFile(const std::filesystem::path& in_path);
 
     static void GenerateMipmap(ImageLoaderData& inout_data);

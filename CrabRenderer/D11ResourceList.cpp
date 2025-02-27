@@ -12,7 +12,7 @@ namespace crab
 // Constant Buffer State
 //===================================================
 
-ConstantBufferList& ConstantBufferList::Add(
+ConstantList& ConstantList::Add(
     const Ref<ConstantBufferBase>& in_constantBuffer,
     uint32                         in_slot,
     eShaderFlags                   in_bindFlags)
@@ -21,12 +21,12 @@ ConstantBufferList& ConstantBufferList::Add(
     return *this;
 }
 
-void ConstantBufferList::ClearList()
+void ConstantList::ClearList()
 {
     m_constantBuffers.clear();
 }
 
-void ConstantBufferList::Bind() const
+void ConstantList::Bind() const
 {
     for (const auto& [buffer, slot, bindFlags]: m_constantBuffers)
         buffer->Bind(slot, bindFlags);
@@ -57,18 +57,18 @@ void Image2DList::Bind() const
 // Sampler List
 //===================================================
 
-SamplerStateList& SamplerStateList::Add(const Ref<SamplerState>& in_sampler, uint32 in_slot, eShaderFlags in_bindFlags)
+SamplerList& SamplerList::Add(const Ref<SamplerState>& in_sampler, uint32 in_slot, eShaderFlags in_bindFlags)
 {
     m_samplers.emplace_back(in_sampler, in_slot, in_bindFlags);
     return *this;
 }
 
-void SamplerStateList::ClearList()
+void SamplerList::ClearList()
 {
     m_samplers.clear();
 }
 
-void SamplerStateList::Bind() const
+void SamplerList::Bind() const
 {
     for (const auto& [sampler, slot, bindFlags]: m_samplers)
         sampler->Bind(slot, bindFlags);

@@ -26,12 +26,14 @@
     <ClInclude Include="GlobalConstants.h" />
     <ClInclude Include="GUIs.h" />
     <ClInclude Include="ImageFilterFactory.h" />
+    <ClInclude Include="ModelUtil.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="GlobalRenderPass.h" />
     <ClInclude Include="GlobalShader.h" />
+    <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="VertexType.h" />
     <ClInclude Include="Constants.h" />
-    <ClInclude Include="enums.h" />
+    <ClInclude Include="Common.h" />
     <ClInclude Include="Tags.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +44,7 @@
     <ClCompile Include="GlobalConstants.cpp" />
     <ClCompile Include="GUIs.cpp" />
     <ClCompile Include="ImageFilterFactory.cpp" />
+    <ClCompile Include="ModelUtil.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -49,6 +52,7 @@
     <ClCompile Include="GlobalRenderPass.cpp" />
     <ClCompile Include="GlobalShader.cpp" />
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="RenderUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrabRenderer\CrabRenderer.vcxproj">
@@ -75,7 +79,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
-    <None Include="Shaders\PBRCommon.hlsli">
+    <None Include="Shaders\ShaderCommon.hlsli">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
@@ -104,6 +108,12 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\DebugNormalMappingPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="SPHIntegrate.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compute</ShaderType>
@@ -297,13 +307,13 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
-    <FxCompile Include="Shaders\DepthOnlyPS.hlsl">
+    <FxCompile Include="Shaders\MaskingPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\DepthOnlyVS.hlsl">
+    <FxCompile Include="Shaders\MaskingVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

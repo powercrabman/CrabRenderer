@@ -1,6 +1,7 @@
 #pragma once
-
-using DrawInspectorFlags = uint32;
+#include "Components.h"
+#include "D11Enums.h"
+#include "ModelUtil.h"
 
 inline void DrawDemoInspector(
     const std::string_view       in_sceneName,
@@ -122,18 +123,11 @@ inline void DrawVoidContext(Scene* in_scene)
 
             if (!path.empty())
             {
-                ModelLoader loader;
-                loader.Load(path);
+                Entity e  = in_scene->CreateEntity();
+                auto&  mr = e.GetOrCreateComponent<ModelRenderer>();
 
-                CRAB_DEBUG_BREAK("todo..");
-                // Entity e      = in_scene->CreateEntity();
-                // auto&  mr     = e.GetOrCreateComponent<MeshRenderer>();
-                // mr.mesh       = loader.CreateMergedMesh();
-                // mr.transConst = ConstantBuffer<TransformConstant>::Create();
-                //
-                // auto& mat      = e.GetOrCreateComponent<PBRMaterialComponent>();
-                // mat.pbrConst   = ConstantBuffer<PBRMaterialConstant>::Create();
-                // mat.pbrVSConst = ConstantBuffer<PBRVSConstant>::Create();
+                mr.model = CreateModel(path);
+                e.CreateComponent<TAG("PBRPass")>();
             }
         }
 
@@ -146,7 +140,7 @@ class SceneHierarchy
 public:
     void DrawSceneHierarchy(Scene* in_scene)
     {
-        ImGui::SetNextWindowSize(ImVec2 { 300, 600 });
+        ImGui::SetNextWindowSize(ImVec2 { 300, 600 }, ImGuiCond_FirstUseEver);
         ImGui::Begin("Scene Hierarchy", nullptr);
 
         ImGui::Text("Scene: %s", in_scene->GetName());
@@ -171,8 +165,8 @@ public:
 
                     std::string label;
 
-                    if (entity.HasComponent<TagComponent>())
-                        label = entity.GetComponent<TagComponent>().name;
+                    if (entity.HasComponent<LabelComponent>())
+                        label = entity.GetComponent<LabelComponent>().name;
                     else
                         label = fmt::format("Entity {}", entity.GetID().id);
 
@@ -190,94 +184,134 @@ public:
             {
                 ImGui::Text("Entity: %d", m_selectedEntity.GetID().id);
 
-                if (m_selectedEntity.HasComponent<TagComponent>())
-                    ImGui::Text("Tag: %s", m_selectedEntity.GetComponent<TagComponent>().name.c_str());
+                if (m_selectedEntity.HasComponent<LabelComponent>())
+                    ImGui::Text("Tag: %s", m_selectedEntity.GetComponent<LabelComponent>().name.c_str());
 
                 DrawTransformComponentInspector(m_selectedEntity.GetTransform());
 
-                DrawComponent<CameraControlComponent>("Camera Control",
-                                                      [&]()
-                                                      {
-                                                          auto& cmrCont = m_selectedEntity.GetComponent<CameraControlComponent>();
-                                                          ImGui::DragFloat("Move Speed", &cmrCont.moveSpeed, 0.01f);
-                                                          ImGui::DragFloat("Rotate Speed", &cmrCont.rotSpeed, 0.01f);
-                                                      });
+                _DrawComponent<CameraControlComponent>("Camera Control",
+                                                       [&]()
+                                                       {
+                                                           auto& cmrCont = m_selectedEntity.GetComponent<CameraControlComponent>();
+                                                           ImGui::DragFloat("Move Speed", &cmrCont.moveSpeed, 0.01f);
+                                                           ImGui::DragFloat("Rotate Speed", &cmrCont.rotSpeed, 0.01f);
+                                                       });
 
-                DrawComponent<LightComponent>("Light",
-                                              [&]()
-                                              {
-                                                  auto& light = m_selectedEntity.GetComponent<LightComponent>();
-                                                  ImGui::ColorEdit3("Radiance", &light.lightRadiance.x);
-                                                  ImGui::DragFloat("FallOff Start", &light.fallOffStart, 0.01f, 0.f, light.fallOffEnd);
-                                                  ImGui::DragFloat("FallOff End", &light.fallOffEnd, 0.01f, light.fallOffStart);
-                                                  ImGui::DragFloat("Spot Power", &light.spotPower, 0.1f);
-                                                  ImGui::DragFloat("Strength", &light.lightStrength, 0.01f);
-                                                  ImGui::RadioButton("Directional", reinterpret_cast<int*>(&light.type), 1);
-                                                  ImGui::SameLine();
-                                                  ImGui::RadioButton("Point", reinterpret_cast<int*>(&light.type), 2);
-                                                  ImGui::SameLine();
-                                                  ImGui::RadioButton("Spot", reinterpret_cast<int*>(&light.type), 3);
-
-                                                  ImGui::Checkbox("Use Shadow Map", &light.useShadowMap);
-                                              });
-
-                DrawComponent<PBRMaterialComponent>("PBR Material",
-                                                    [&]()
-                                                    {
-                                                        auto& mat = m_selectedEntity.GetComponent<PBRMaterialComponent>();
-                                                        ImGui::ColorEdit3("Albedo", &mat.albedo.x);
-                                                        ImGui::ColorEdit3("Emissive", &mat.emissive.x);
-                                                        ImGui::DragFloat("Metallic", &mat.metallic, 0.01f, 0.f, 1.f);
-                                                        ImGui::DragFloat("Roughness", &mat.roughness, 0.01f, 0.f, 1.f);
-                                                        ImGui::DragFloat("Displacement Scale", &mat.displacementScale, 0.01f);
-
-                                                        _DrawTextureLoadReleaseItem("Albedo Map", mat.albedoMap);
-                                                        ImGui::Separator();
-                                                        _DrawTextureLoadReleaseItem("Normal Map", mat.normalMap);
-                                                        ImGui::Text("Normal map type");
-                                                        ImGui::RadioButton("OpenGL", reinterpret_cast<int*>(&mat.normalMapType), 0);
-                                                        ImGui::SameLine();
-                                                        ImGui::RadioButton("DirectX", reinterpret_cast<int*>(&mat.normalMapType), 1);
-                                                        ImGui::Separator();
-
-                                                        _DrawTextureLoadReleaseItem("AO Map", mat.aoMap);
-                                                        ImGui::Separator();
-                                                        _DrawTextureLoadReleaseItem("Roughness Map", mat.roughnessMap);
-                                                        ImGui::Separator();
-                                                        _DrawTextureLoadReleaseItem("Metallic Map", mat.metallicMap);
-                                                        ImGui::Separator();
-                                                        _DrawTextureLoadReleaseItem("Emissive Map", mat.emissiveMap);
-                                                        ImGui::Separator();
-                                                        _DrawTextureLoadReleaseItem("Displacement Map", mat.displacementMap);
-                                                    });
-
-                DrawComponent<SkyboxRenderer>("Skybox Renderer",
-                                              [&]()
-                                              {
-                                                  auto& skybox = m_selectedEntity.GetComponent<SkyboxRenderer>();
-
-                                                  _DrawSkyboxLoadReleaseItem("Environment", skybox.envCubemap);
-                                                  ImGui::Separator();
-                                                  _DrawSkyboxLoadReleaseItem("Specular", skybox.specCubemap);
-                                                  ImGui::Separator();
-                                                  _DrawSkyboxLoadReleaseItem("Diffuse", skybox.irrCubemap);
-                                                  ImGui::Separator();
-                                                  _DrawTextureLoadReleaseItem("BRDF", skybox.brdfImage);
-                                              });
-
-                DrawComponent<CameraComponent>("Camera Component",
+                _DrawComponent<LightComponent>("Light",
                                                [&]()
                                                {
-                                                   auto& cmr = m_selectedEntity.GetComponent<CameraComponent>();
-                                                   ImGui::Text("Projection Type");
-                                                   ImGui::RadioButton("Orthographic", reinterpret_cast<int*>(&cmr.projectionType), 0);
+                                                   auto& light = m_selectedEntity.GetComponent<LightComponent>();
+                                                   ImGui::ColorEdit3("Radiance", &light.lightRadiance.x);
+                                                   ImGui::DragFloat("FallOff Start", &light.fallOffStart, 0.01f, 0.f, light.fallOffEnd);
+                                                   ImGui::DragFloat("FallOff End", &light.fallOffEnd, 0.01f, light.fallOffStart);
+                                                   ImGui::DragFloat("Spot Power", &light.spotPower, 0.1f);
+                                                   ImGui::DragFloat("Strength", &light.lightStrength, 0.01f);
+                                                   ImGui::RadioButton("Directional", reinterpret_cast<int*>(&light.type), 1);
                                                    ImGui::SameLine();
-                                                   ImGui::RadioButton("Perspective", reinterpret_cast<int*>(&cmr.projectionType), 1);
-                                                   ImGui::DragFloat("Aspect", &cmr.aspect, 0.01f);
-                                                   ImGui::DragFloat("Near Z", &cmr.nearZ, 0.01f, 0.01f, cmr.farZ);
-                                                   ImGui::DragFloat("Far Z", &cmr.farZ, 0.01f, cmr.nearZ, 10000.f);
-                                                   ImGui::DragFloat("FOV", &cmr.fov, 0.01f);
+                                                   ImGui::RadioButton("Point", reinterpret_cast<int*>(&light.type), 2);
+                                                   ImGui::SameLine();
+                                                   ImGui::RadioButton("Spot", reinterpret_cast<int*>(&light.type), 3);
                                                });
+
+                _DrawComponent<SkyboxRenderer>("Skybox Renderer",
+                                               [&]()
+                                               {
+                                                   auto& skybox = m_selectedEntity.GetComponent<SkyboxRenderer>();
+
+                                                   _DrawSkyboxLoadReleaseItem("Environment", skybox.envCubemap);
+                                                   ImGui::Separator();
+                                                   _DrawSkyboxLoadReleaseItem("Specular", skybox.specCubemap);
+                                                   ImGui::Separator();
+                                                   _DrawSkyboxLoadReleaseItem("Diffuse", skybox.irrCubemap);
+                                                   ImGui::Separator();
+                                                   _DrawTextureLoadReleaseItem("BRDF", skybox.brdfImage);
+
+                                                   ImGui::RadioButton("Environment", reinterpret_cast<int*>(&skybox.mappingType), 0);
+                                                   ImGui::SameLine();
+                                                   ImGui::RadioButton("Irradiance", reinterpret_cast<int*>(&skybox.mappingType), 1);
+                                                   ImGui::SameLine();
+                                                   ImGui::RadioButton("Specular", reinterpret_cast<int*>(&skybox.mappingType), 2);
+                                               });
+
+                _DrawComponent<CameraComponent>("Camera Component",
+                                                [&]()
+                                                {
+                                                    auto& cmr = m_selectedEntity.GetComponent<CameraComponent>();
+                                                    ImGui::Text("Projection Type");
+                                                    ImGui::RadioButton("Orthographic", reinterpret_cast<int*>(&cmr.projectionType), 0);
+                                                    ImGui::SameLine();
+                                                    ImGui::RadioButton("Perspective", reinterpret_cast<int*>(&cmr.projectionType), 1);
+                                                    ImGui::DragFloat("Aspect", &cmr.aspect, 0.01f);
+                                                    ImGui::DragFloat("Near Z", &cmr.nearZ, 0.01f, 0.01f, cmr.farZ);
+                                                    ImGui::DragFloat("Far Z", &cmr.farZ, 0.01f, cmr.nearZ, 10000.f);
+                                                    ImGui::DragFloat("FOV", &cmr.fov, 0.01f);
+                                                });
+
+                _DrawComponent<ModelRenderer>("Model Renderer",
+                                              [&]()
+                                              {
+                                                  auto& modelRenderer = m_selectedEntity.GetComponent<ModelRenderer>();
+                                                  auto& model         = modelRenderer.model;
+                                                  if (model)
+                                                  {
+
+                                                      uint32 id = 0;
+                                                      ImGui::Text("Node count: %d", model->GetNodes().size());
+                                                      ImGui::Separator();
+
+                                                      for (auto& node: model->GetNodesRef())
+                                                      {
+                                                          auto& mesh = node.mesh;
+                                                          auto& mat  = node.material;
+
+                                                          ImGui::Text("Node name: %s", node.name.c_str());
+
+                                                          ImGui::PushID(id++);
+
+                                                          ImGui::Text("Mesh");
+                                                          if (mesh)
+                                                              _MeshInspector(mesh);
+                                                          else
+                                                              ImGui::Text("No Mesh");
+
+                                                          ImGui::Separator();
+
+                                                          ImGui::Text("Material");
+
+                                                          if (mat)
+                                                              _MaterialInspector(mat);
+                                                          else
+                                                              ImGui::Text("No Material");
+
+                                                          ImGui::PopID();
+                                                      }
+                                                  }
+                                              });
+
+                _DrawComponent<PlanarMirrorComponent>("Plana Mirror",
+                                                      [&]() {
+                                                          auto& mirror = m_selectedEntity.GetComponent<PlanarMirrorComponent>();
+                                                          if (mirror.mirrorMesh)
+                                                          {
+                                                              ImGui::Text("Mirror Mesh");
+                                                              _MeshInspector(mirror.mirrorMesh);
+                                                          }
+                                                          else
+                                                          {
+                                                              ImGui::Text("No Mirror Mesh");
+                                                          }
+
+                                                          if (mirror.mirrorMaterial)
+                                                          {
+                                                              ImGui::Text("Mirror Material");
+                                                              _MaterialInspector(mirror.mirrorMaterial);
+                                                          }
+                                                          else
+                                                          {
+                                                              ImGui::Text("No Mirror Material");
+                                                          }
+
+                                                      });
             }
             else
             {
@@ -290,8 +324,73 @@ public:
         ImGui::End();
     }
 
+private:
+    void _MeshInspector(Ref<Mesh>& in_mesh)
+    {
+        ImGui::Text("Primitive Topology: %s", ToString(in_mesh->GetTopology()));
+        ImGui::Text("Vertex Count: %d", in_mesh->GetVertexCount());
+        ImGui::Text("Vertex Stride: %d byte", in_mesh->GetVertexStride());
+        ImGui::Text("Index Count: %d", in_mesh->GetIndexCount());
+        ImGui::Text("Index Stride: %d byte", in_mesh->GetIndexStride());
+    }
+
+    void _MaterialInspector(Ref<Material>& in_material)
+    {
+        auto mat = in_material->GetMaterialData();
+        if (ImGui::ColorEdit3("Base Color", reinterpret_cast<float*>(&mat.baseColor)))
+            in_material->SetBaseColor(mat.baseColor);
+        if (ImGui::ColorEdit3("Emissive", reinterpret_cast<float*>(&mat.emissive)))
+            in_material->SetEmissive(mat.emissive);
+        if (ImGui::DragFloat("Metallic", &mat.metallic, 0.01f, 0.f, 1.f))
+            in_material->SetMetallic(mat.metallic);
+        if (ImGui::DragFloat("Roughness", &mat.roughness, 0.01f, 0.f, 1.f))
+            in_material->SetRoughness(mat.roughness);
+        if (ImGui::DragFloat("Displacement Strength", &mat.displacementStrength, 0.01f, 0.f, 1.f))
+            in_material->SetDisplacementStrength(mat.displacementStrength);
+        if (ImGui::ColorEdit3("Diffuse", reinterpret_cast<float*>(&mat.diffuse)))
+            in_material->SetDiffuse(mat.diffuse);
+        if (ImGui::ColorEdit3("Specular", reinterpret_cast<float*>(&mat.specular)))
+            in_material->SetSpecular(mat.specular);
+        if (ImGui::ColorEdit3("Ambient", reinterpret_cast<float*>(&mat.ambient)))
+            in_material->SetAmbient(mat.ambient);
+        if (ImGui::DragFloat("Shininess", &mat.shininess, 0.01f, 0.f, 100.f))
+            in_material->SetSharpness(mat.shininess);
+        if (ImGui::DragFloat("Alpha", &mat.alpha, 0.01f, 0.f, 1.f))
+            in_material->SetAlpha(mat.alpha);
+        ImGui::Separator();
+        if (_DrawTextureLoadReleaseItem("Base Color", mat.baseColorImage, true))
+            in_material->SetBaseColorImage(mat.baseColorImage);
+        ImGui::Separator();
+        if (_DrawTextureLoadReleaseItem("Normal", mat.normalImage))
+            in_material->SetNormalImage(mat.normalImage);
+        if (ImGui::RadioButton("OpenGL", reinterpret_cast<int*>(&mat.normalMapType), 0))
+            in_material->SetNormalMapType(eNormalMapType::OpenGL);
+        ImGui::SameLine();
+        if (ImGui::RadioButton("DirectX", reinterpret_cast<int*>(&mat.normalMapType), 1))
+            in_material->SetNormalMapType(eNormalMapType::DirectX);
+        ImGui::Separator();
+        if (_DrawTextureLoadReleaseItem("Metallic", mat.metallicImage))
+            in_material->SetMetallicImage(mat.metallicImage);
+
+        ImGui::Separator();
+
+        if (_DrawTextureLoadReleaseItem("Roughness", mat.roughnessImage))
+            in_material->SetRoughnessImage(mat.roughnessImage);
+
+        ImGui::Separator();
+
+        if (_DrawTextureLoadReleaseItem("AO", mat.aoImage))
+            in_material->SetAOImage(mat.aoImage);
+        ImGui::Separator();
+        if (_DrawTextureLoadReleaseItem("Emissive", mat.emissiveImage))
+            in_material->SetEmissiveImage(mat.emissiveImage);
+        ImGui::Separator();
+        if (_DrawTextureLoadReleaseItem("Displacement", mat.displacementImage))
+            in_material->SetHeightImage(mat.displacementImage);
+    }
+
     template<typename Ty, typename Func>
-    void DrawComponent(const std::string_view in_label, const Func& in_func)
+    void _DrawComponent(const std::string_view in_label, const Func& in_func)
     {
         if (m_selectedEntity.HasComponent<Ty>())
         {
@@ -302,16 +401,14 @@ public:
         }
     }
 
-private:
     void _DrawSkyboxLoadReleaseItem(const char* in_label, Ref<CubemapImage>& in_tex)
     {
         Ref<Image2D> image = in_tex->GetImage();
 
         ImGui::Text(in_label);
-        if (in_tex)
-            ImGui::Image(reinterpret_cast<ImTextureID>(image->GetSRV()), { 64, 64 });
-        else
+        if (!in_tex)
             ImGui::Text("No Texture");
+
         if (ImGui::Button(fmt::format("Load##{}", in_label).c_str()))
         {
             auto path = GetPathFromFileDialog();
@@ -324,22 +421,34 @@ private:
             in_tex = nullptr;
     }
 
-    void _DrawTextureLoadReleaseItem(const char* in_label, Ref<Image2D>& in_tex)
+    bool _DrawTextureLoadReleaseItem(const char* in_label, Ref<Image2D>& in_tex, bool in_reverseToneMapping = false)
     {
         ImGui::Text(in_label);
+
         if (in_tex)
             ImGui::Image(reinterpret_cast<ImTextureID>(in_tex->GetSRV()), { 64, 64 });
         else
             ImGui::Text("No Texture");
+
         if (ImGui::Button(fmt::format("Load##{}", in_label).c_str()))
         {
             auto path = GetPathFromFileDialog();
 
-            in_tex = Image2D::CreateFromFile(path, true);
+            if (!path.empty())
+                in_tex = Image2D::CreateFromFile(path, true, in_reverseToneMapping);
+
+            return true;
         }
+
         ImGui::SameLine();
+
         if (ImGui::Button(fmt::format("Release##{}", in_label).c_str()))
+        {
             in_tex = nullptr;
+            return true;
+        }
+
+        return false;
     }
 
     Entity m_selectedEntity = Entity::s_null;

@@ -11,10 +11,16 @@ struct IDComponent
 };
 
 // Name
-struct TagComponent
+struct LabelComponent
 {
     std::string name;
 };
+
+// Tag
+template<typename entt::id_type Value>
+using Tag = entt::tag<Value>;
+
+#define TAG(text) Tag<entt::hashed_string::value(text)>
 
 // TransformComponent
 struct TransformComponent

@@ -40,9 +40,6 @@
     <Filter Include="04. Renderer\RenderState">
       <UniqueIdentifier>{cb8a25d2-ba67-4e68-abe4-f229600eaa49}</UniqueIdentifier>
     </Filter>
-    <Filter Include="99. Base\CompileTimeTypeInfo">
-      <UniqueIdentifier>{00915d50-cb15-453d-bf33-66952a6781e0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="06. ECS">
       <UniqueIdentifier>{2979dd23-7ab2-4cee-a2c3-e2ab9a56c81f}</UniqueIdentifier>
     </Filter>
@@ -96,6 +93,9 @@
     </Filter>
     <Filter Include="04. Renderer\Utils\imguizmo">
       <UniqueIdentifier>{26a21180-8dab-4545-afd7-e3fc13d9a04c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Base\CompileTimeAlgorithm">
+      <UniqueIdentifier>{00915d50-cb15-453d-bf33-66952a6781e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +170,6 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>05. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="CTTI.cpp">
-      <Filter>99. Base\CompileTimeTypeInfo</Filter>
     </ClCompile>
     <ClCompile Include="D11Utils.cpp">
       <Filter>04. Renderer\Utils</Filter>
@@ -320,8 +317,8 @@
     <ClInclude Include="LayerStack.h">
       <Filter>01. Application\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="CTTI.h">
-      <Filter>99. Base\CompileTimeTypeInfo</Filter>
+    <ClInclude Include="TypeInfo.h">
+      <Filter>99. Base\CompileTimeAlgorithm</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>05. Scene</Filter>

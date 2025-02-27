@@ -9,7 +9,7 @@
 namespace crab
 {
 
-Ref<RenderPass> RenderPass::Create(const Ref<VertexShader>& in_vertexShader, const Ref<PixelShader>& in_pixelShader, const Ref<GeometryShader>& in_geometryShader, const Ref<HullShader>& in_hullShader, const Ref<DomainShader>& in_domainShader, const Ref<DepthStencilState>& in_depthStencilState, const Ref<RasterizerState>& in_rasterizerState, const Ref<BlendState>& in_blendState, const SamplerStateList& in_commonSampler, const ConstantBufferList& in_commonConstant)
+Ref<RenderPass> RenderPass::Create(const Ref<VertexShader>& in_vertexShader, const Ref<PixelShader>& in_pixelShader, const Ref<GeometryShader>& in_geometryShader, const Ref<HullShader>& in_hullShader, const Ref<DomainShader>& in_domainShader, const Ref<DepthStencilState>& in_depthStencilState, const Ref<RasterizerState>& in_rasterizerState, const Ref<BlendState>& in_blendState, const SamplerList& in_commonSampler, const ConstantList& in_commonConstant)
 {
     auto rp = CreateRef<RenderPass>();
     rp->SetVertexShader(in_vertexShader);
@@ -65,12 +65,12 @@ void RenderPass::SetBlendState(const Ref<BlendState>& in_state)
     m_blendState = in_state;
 }
 
-void RenderPass::SetSamplerStates(const SamplerStateList& in_states)
+void RenderPass::SetSamplerStates(const SamplerList& in_states)
 {
     m_samplerStates = in_states;
 }
 
-void RenderPass::SetConstantBuffers(const ConstantBufferList& in_buffers)
+void RenderPass::SetConstantBuffers(const ConstantList& in_buffers)
 {
     m_constantBuffers = in_buffers;
 }

@@ -23,7 +23,7 @@ public:
     static Ref<VertexShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
                                             const std::string_view       in_entryPoint,
                                             const InputElements&         in_inputElems,
-                                            const ShaderMacros&          in_macros);
+                                            const ShaderMacros&          in_macro = {});
 
     static Ref<VertexShader> CreateFromCSO(const std::filesystem::path& in_shaderPath,
                                            const InputElements&         in_inputElems);
@@ -31,7 +31,7 @@ public:
     static Ref<VertexShader> CreateFromCode(const std::string_view in_shaderCode,
                                             const std::string_view in_entryPoint,
                                             const InputElements&   in_inputElems,
-                                            const ShaderMacros&    in_macros);
+                                            const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -66,13 +66,13 @@ public:
 
     static Ref<PixelShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
                                            const std::string_view       in_entryPoint,
-                                           const ShaderMacros&          in_macro);
+                                           const ShaderMacros&          in_macro = {});
 
     static Ref<PixelShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
 
     static Ref<PixelShader> CreateFromCode(const std::string_view in_shaderCode,
                                            const std::string_view in_entryPoint,
-                                           const ShaderMacros&    in_macro);
+                                           const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -104,13 +104,13 @@ public:
     //===================================================
     static Ref<GeometryShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
                                               const std::string_view       in_entryPoint,
-                                              const ShaderMacros&          in_macro);
+                                              const ShaderMacros&          in_macro = {});
 
     static Ref<GeometryShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
 
     static Ref<GeometryShader> CreateFromCode(const std::string_view in_shaderCode,
                                               const std::string_view in_entryPoint,
-                                              const ShaderMacros&    in_macro);
+                                              const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -141,13 +141,13 @@ public:
     //===================================================
     static Ref<DomainShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
                                             const std::string_view       in_entryPoint,
-                                            const ShaderMacros&          in_macro);
+                                            const ShaderMacros&          in_macro = {});
 
     static Ref<DomainShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
 
     static Ref<DomainShader> CreateFromCode(const std::string_view in_shaderCode,
                                             const std::string_view in_entryPoint,
-                                            const ShaderMacros&    in_macro);
+                                            const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -181,13 +181,13 @@ public:
     //===================================================
     static Ref<HullShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
                                           const std::string_view       in_entryPoint,
-                                          const ShaderMacros&          in_macro);
+                                          const ShaderMacros&          in_macro = {});
 
     static Ref<HullShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
 
     static Ref<HullShader> CreateFromCode(const std::string_view in_shaderCode,
                                           const std::string_view in_entryPoint,
-                                          const ShaderMacros&    in_macro);
+                                          const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -218,13 +218,13 @@ public:
     //===================================================
     static Ref<ComputeShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
                                              const std::string_view       in_entryPoint,
-                                             const ShaderMacros&          in_macro);
+                                             const ShaderMacros&          in_macro = {});
 
     static Ref<ComputeShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
 
     static Ref<ComputeShader> CreateFromCode(const std::string_view in_shaderCode,
                                              const std::string_view in_entryPoint,
-                                             const ShaderMacros&    in_macro);
+                                             const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member

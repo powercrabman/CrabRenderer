@@ -212,8 +212,12 @@ class ConstantBuffer : public ConstantBufferBase
 
 public:
     static Ref<ConstantBuffer<Ty>> Create();
+    static Ref<ConstantBuffer<Ty>> Create(const Ty& in_data);
 
     void WriteToBuffer(const Ty& in_data);
+
+private:
+    Ty in_cpuData = {};
 };
 
 template<typename Ty>
@@ -227,12 +231,25 @@ Ref<ConstantBuffer<Ty>> ConstantBuffer<Ty>::Create()
 }
 
 template<typename Ty>
+Ref<ConstantBuffer<Ty>> ConstantBuffer<Ty>::Create(const Ty& in_data)
+{
+    auto cb = ConstantBuffer<Ty>::Create();
+    cb->WriteToBuffer(in_data);   // this code can be optimized, but it's okay for now
+    return cb;
+}
+
+template<typename Ty>
 void ConstantBuffer<Ty>::WriteToBuffer(const Ty& in_data)
 {
-    ID3D11BufferUtil::WriteToDynamicBuffer(
-        m_buffer.Get(),
-        &in_data,
-        sizeof(Ty));
+    {
+        ID3D11BufferUtil::WriteToDynamicBuffer(
+            m_buffer.Get(),
+            &in_data,
+            sizeof(Ty));
+
+        in_cpuData = in_data;
+    }
+
 }
 
 }   // namespace crab

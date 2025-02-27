@@ -12,20 +12,6 @@
 namespace crab
 {
 
-void PostProcess::Init()
-{
-    // Mesh
-    std::vector<PostProcessVertex> vertices;
-    vertices.push_back({ Vec2 { -1.f, 1.f }, Vec2 { 0.f, 0.f } });
-    vertices.push_back({ Vec2 { 1.f, 1.f }, Vec2 { 1.f, 0.f } });
-    vertices.push_back({ Vec2 { 1.f, -1.f }, Vec2 { 1.f, 1.f } });
-    vertices.push_back({ Vec2 { -1.f, -1.f }, Vec2 { 0.f, 1.f } });
-
-    std::vector<uint32> indices = { 0, 1, 2, 0, 2, 3 };
-    
-    m_mesh = Mesh::Create(vertices, indices, eTopology::TriangleList);
-}
-
 void PostProcess::AddFilter(const Ref<ImageFilter>&   in_filter)
 {
     m_filters.push_back(in_filter);
@@ -41,12 +27,27 @@ void PostProcess::ClearFilterList()
     m_filters.clear();
 }
 
-void PostProcess::Render() const
+void PostProcess::Render()
 {
     // post process common state
     GetCommonState()->DepthStencil_DepthNone()->Bind();
     GetCommonState()->Rasterizer_CullCounterClockwise(true)->Bind();
     GetCommonState()->Blend_Opaque(true)->Bind();
+
+    // lazy create mesh
+    if (!m_mesh)
+    {
+        std::vector<PostProcessVertex> vertices;
+        vertices.reserve(4);
+        vertices.push_back({ Vec2 { -1.f, 1.f }, Vec2 { 0.f, 0.f } });
+        vertices.push_back({ Vec2 { 1.f, 1.f }, Vec2 { 1.f, 0.f } });
+        vertices.push_back({ Vec2 { 1.f, -1.f }, Vec2 { 1.f, 1.f } });
+        vertices.push_back({ Vec2 { -1.f, -1.f }, Vec2 { 0.f, 1.f } });
+
+        std::vector<uint32> indices = { 0, 1, 2, 0, 2, 3 };
+
+        m_mesh = Mesh::Create(vertices, indices, eTopology::TriangleList);
+    }
 
     for (auto& filter: m_filters)
     {

@@ -38,6 +38,7 @@ public:
     Entity CreateEntity();
     Entity CreateEntity(std::string_view in_tag);
     Entity CreateEntity(uint32 in_id);
+    Entity CloneEntity(Entity in_src);
 
     Entity FindEntity(uint32 in_id);
     Entity FindEntity(const IDComponent& in_id);

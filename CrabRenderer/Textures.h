@@ -23,9 +23,21 @@ public:
     static Ref<Image2D> CreateFromBuffer(ID3D11Buffer* in_buffer, eFormat in_format);
 
     // if in_mipMapLevelCount = 0 -> No mipmap
-    static Ref<Image2D> CreateFromFile(const std::filesystem::path& in_path, bool in_enableMipMap = true);
-    static Ref<Image2D> CreateTextureArrayFromFile(const std::vector<std::filesystem::path>& in_paths, bool in_enableMipMap = true);
-    static Ref<Image2D> CreateTextureArrayFromFile(const std::filesystem::path& in_path, uint32 in_arrayMaxCount, bool in_enableMipMap = true);
+    static Ref<Image2D> CreateFromFile(
+        const std::filesystem::path& in_path,
+        bool                         in_enableMipMap       = true,
+        bool                         in_inverseToneMapping = false);
+
+    static Ref<Image2D> CreateTextureArrayFromFile(
+        const std::vector<std::filesystem::path>& in_paths,
+        bool                                      in_enableMipMap       = true,
+        bool                                      in_inverseToneMapping = false);
+
+    static Ref<Image2D> CreateTextureArrayFromFile(
+        const std::filesystem::path& in_path,
+        uint32                       in_arrayMaxCount,
+        bool                         in_enableMipMap       = true,
+        bool                         in_inverseToneMapping = false);
 
     //===================================================
     //                 Member Function

@@ -28,8 +28,8 @@ public:
         const Ref<DepthStencilState>& in_depthStencilState,
         const Ref<RasterizerState>&   in_rasterizerState,
         const Ref<BlendState>&        in_blendState,
-        const SamplerStateList&       in_commonSampler,
-        const ConstantBufferList&     in_commonConstant);
+        const SamplerList&       in_commonSampler,
+        const ConstantList&     in_commonConstant);
 
     void SetVertexShader(const Ref<VertexShader>& in_shader);
     void SetPixelShader(const Ref<PixelShader>& in_shader);
@@ -40,9 +40,9 @@ public:
     void SetDepthStencilState(const Ref<DepthStencilState>& in_state);
     void SetRasterizerState(const Ref<RasterizerState>& in_state);
     void SetBlendState(const Ref<BlendState>& in_state);
-    void SetSamplerStates(const SamplerStateList& in_states);
+    void SetSamplerStates(const SamplerList& in_states);
 
-    void SetConstantBuffers(const ConstantBufferList& in_buffers);
+    void SetConstantBuffers(const ConstantList& in_buffers);
 
     void BeginPass(uint32                      in_stencilRef  = 0,
                    const std::array<float, 4>& in_blendFactor = { 1.f, 1.f, 1.f, 1.f }) const;
@@ -57,9 +57,9 @@ private:
     Ref<DepthStencilState> m_depthStencilState;
     Ref<RasterizerState>   m_rasterizerState;
     Ref<BlendState>        m_blendState;
-    SamplerStateList       m_samplerStates;
+    SamplerList       m_samplerStates;
 
-    ConstantBufferList m_constantBuffers;
+    ConstantList m_constantBuffers;
 };
 
 }   // namespace crab

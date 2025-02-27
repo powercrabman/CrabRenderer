@@ -15,10 +15,14 @@
 namespace crab
 {
 
-Ref<ImageFilter> ImageFilter::Create(uint32                   in_filterWidth,
-                                     uint32                   in_filterHeight,
-                                     const Ref<VertexShader>& in_vertexShader,
-                                     const Ref<PixelShader>&  in_pixelShader)
+Ref<ImageFilter> ImageFilter::Create(
+    uint32                    in_filterWidth,
+    uint32                    in_filterHeight,
+    const Ref<VertexShader>&  in_vertexShader,
+    const Ref<PixelShader>&   in_pixelShader,
+    const Image2DList&        in_inputTextures,
+    const SamplerList&   in_samplerLists,
+    const ConstantList& in_constantBuffers)
 {
     auto             d  = GetRenderer().GetDevice();
     Ref<ImageFilter> pp = CreateRef<ImageFilter>();
@@ -53,9 +57,9 @@ Ref<ImageFilter> ImageFilter::Create(uint32                   in_filterWidth,
     texDesc.MiscFlags               = 0;
 
     CheckD3D11Result(d->CreateTexture2D(&texDesc,
-                                  nullptr,
-                                  texture.GetAddressOf()),
-               "CreateTexture2D Fail.");
+                                        nullptr,
+                                        texture.GetAddressOf()),
+                     "CreateTexture2D Fail.");
 
     Ref<RenderTarget> rt = RenderTarget::Create(texture.Get());
 
@@ -74,6 +78,10 @@ Ref<ImageFilter> ImageFilter::Create(uint32                   in_filterWidth,
     pp->m_vertexShader = in_vertexShader;
     pp->m_pixelShader  = in_pixelShader;
 
+    pp->m_constantBuffers = in_constantBuffers;
+    pp->m_samplerStates   = in_samplerLists;
+    pp->m_inputImages     = in_inputTextures;
+
     return pp;
 }
 
@@ -91,8 +99,6 @@ Ref<ImageFilter> ImageFilter::Clone() const
     filter->m_samplerStates   = m_samplerStates;
     filter->m_constantBuffers = m_constantBuffers;
 
-    filter->m_onBindFunc = m_onBindFunc;
-
     return filter;
 }
 
@@ -103,7 +109,6 @@ Ref<Image2D> ImageFilter::GetOutputTexture() const
 
 void ImageFilter::Bind() const
 {
-
 
     // unbind before render target and shader resource view
     // to avoid resource conflict
@@ -118,9 +123,6 @@ void ImageFilter::Bind() const
     m_constantBuffers.Bind();
     m_samplerStates.Bind();
 
-    if (m_onBindFunc)
-        m_onBindFunc();
-
     GetRenderer().SetGeometryShader(nullptr);
     GetRenderer().SetHullShader(nullptr);
     GetRenderer().SetDomainShader(nullptr);
@@ -132,21 +134,6 @@ void ImageFilter::Bind() const
 void ImageFilter::SetRenderTarget(const Ref<RenderTarget>& in_rt)
 {
     m_renderTarget = in_rt;
-}
-
-void ImageFilter::AddInputImage(const Ref<Image2D>& in_textures, uint32 in_slot)
-{
-    m_inputImages.Add(in_textures, in_slot, eShaderFlags_PixelShader);
-}
-
-void ImageFilter::AddConstantBuffer(const Ref<ConstantBufferBase>& in_buffer, uint32 in_slot)
-{
-    m_constantBuffers.Add(in_buffer, in_slot, eShaderFlags_PixelShader);
-}
-
-void ImageFilter::AddSamplerState(const Ref<SamplerState>& in_samplerState, uint32 in_slot)
-{
-    m_samplerStates.Add(in_samplerState, in_slot, eShaderFlags_PixelShader);
 }
 
 }   // namespace crab

@@ -26,14 +26,12 @@ struct PostProcessVertex
 class PostProcess
 {
 public:
-    void Init();
-
     void AddFilter(const Ref<ImageFilter>& in_filter);
 
     Ref<ImageFilter> GetLastFilter() const;
     void             ClearFilterList();
 
-    void Render() const;
+    void Render();
 
 private:
     Ref<Mesh>                     m_mesh;

@@ -5,14 +5,14 @@
 using namespace crab;
 
 // Base
-#include "Enums.h"
+#include "Common.h"
 
 // Rendering
 #include "Constants.h"
 #include "GlobalConstants.h"
 #include "GlobalShader.h"
 #include "GlobalRenderPass.h"
+#include "RenderUtil.h"
 
 // ECS
 #include "Components.h"
-

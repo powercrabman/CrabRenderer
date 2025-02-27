@@ -1,16 +1,46 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 중간 디렉터리(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\\Inter\Debug\)에 다른 프로젝트(DemoProgram.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
-  pch.cpp
-  unity_C92CR0CA7AWTFDON.cpp
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\GUIs.h(163,36): warning C4244: '인수': 'unsigned __int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  (소스 파일 'Inter/Debug/unity_C92CR0CA7AWTFDON.cpp'을(를) 컴파일하는 중)
+﻿  compilation object save succeeded; see C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DebugNormalMappingPS.cso
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 중간 디렉터리(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\\Inter\Debug\)에 다른 프로젝트(DemoProgram.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
+  unity_PZ5VNE13C2PKNF6D.cpp
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x4618 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(16,16): error C2672: 'crab::Entity::GetOrCreateComponent': 일치하는 오버로드된 함수가 없습니다.
-  (소스 파일 'Inter/Debug/unity_C92CR0CA7AWTFDON.cpp'을(를) 컴파일하는 중)
-      C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\Entity.h(38,9):
-      'Ty &crab::Entity::GetOrCreateComponent(Args ...)'일 수 있습니다.
-          C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(16,16):
-          'Ty &crab::Entity::GetOrCreateComponent(Args ...)': 'Ty'의 템플릿 인수를 추론할 수 없습니다.
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x4619 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(18,5): error C2143: 구문 오류: ';'이(가) '}' 앞에 없습니다.
-  (소스 파일 'Inter/Debug/unity_C92CR0CA7AWTFDON.cpp'을(를) 컴파일하는 중)
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x461a 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
   
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x461c 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x461d 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x461f 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x4621 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x475c 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x475f 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x4760 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(1,1): warning C4828: 파일에 0x4762 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 65001).
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\GUIs.h(157,36): warning C4244: '인수': 'unsigned __int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(24,64): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\28. AnimationDemo.cpp(24,58): warning C4244: '인수': 'float'에서 'crab::uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 'Inter/Debug/unity_PZ5VNE13C2PKNF6D.cpp'을(를) 컴파일하는 중)
+  
+  DemoProgram.vcxproj -> C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe

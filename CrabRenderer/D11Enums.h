@@ -15,21 +15,53 @@ constexpr uint32 CRAB_SKIN_MAX                  = 8;
 
 enum class eTopology
 {
-    None          = D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED,
+    None = D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED,
 
-    PointList     = D3D11_PRIMITIVE_TOPOLOGY_POINTLIST,
+    PointList = D3D11_PRIMITIVE_TOPOLOGY_POINTLIST,
 
-    LineList      = D3D11_PRIMITIVE_TOPOLOGY_LINELIST,
-    LineStrip     = D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP,
+    LineList = D3D11_PRIMITIVE_TOPOLOGY_LINELIST,
+    LineStrip = D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP,
 
-    TriangleList  = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST,
+    TriangleList = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST,
     TriangleStrip = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP,
 
-    PatchList_3   = D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST,
-    PatchList_4   = D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST,
-    PatchList_5   = D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST,
-    PatchList_6   = D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST,
+    PatchList_3 = D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST,
+    PatchList_4 = D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST,
+    PatchList_5 = D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST,
+    PatchList_6 = D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST,
 };
+
+inline const char* ToString(eTopology e)
+{
+    switch (e)
+    {
+        case eTopology::None:
+            return "None";
+        case eTopology::PointList:
+            return "PointList";
+        case eTopology::LineList:
+            return "LineList";
+        case eTopology::LineStrip:
+            return "LineStrip";
+        case eTopology::TriangleList:
+            return "TriangleList";
+        case eTopology::TriangleStrip:
+            return "TriangleStrip";
+        case eTopology::PatchList_3:
+            return "PatchList_3";
+        case eTopology::PatchList_4:
+            return "PatchList_4";
+        case eTopology::PatchList_5:
+            return "PatchList_5";
+        case eTopology::PatchList_6:
+            return "PatchList_6";
+        default:
+            assert(false);
+            return "unknown";
+    }
+}
+
+
 
 //===================================================
 // Error Handling

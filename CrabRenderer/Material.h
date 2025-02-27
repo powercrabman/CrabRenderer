@@ -4,17 +4,24 @@ namespace crab
 {
 class Image2D;
 
+enum class eNormalMapType
+{
+    OpenGL,
+    DirectX
+};
+
 struct MaterialData
 {
     Vec3  baseColor            = Vec3(1.f, 1.f, 1.f);
     Vec3  emissive             = Vec3(0.f, 0.f, 0.f);
-    float metallic             = 0.f;
-    float roughness            = 0.5f;
+    float metallic             = 1.f;
+    float roughness            = 1.f;
     float displacementStrength = 1.f;
     Vec3  diffuse              = Vec3(1.f, 1.f, 1.f);   // Phong
     Vec3  specular             = Vec3(1.f, 1.f, 1.f);   // Phong
     Vec3  ambient              = Vec3(1.f, 1.f, 1.f);   // Phong
     float shininess            = 32.f;                  // Phong
+    float alpha                = 1.f;
 
     Ref<Image2D> baseColorImage    = nullptr;
     Ref<Image2D> normalImage       = nullptr;
@@ -23,6 +30,8 @@ struct MaterialData
     Ref<Image2D> aoImage           = nullptr;
     Ref<Image2D> emissiveImage     = nullptr;
     Ref<Image2D> displacementImage = nullptr;
+
+    eNormalMapType normalMapType = eNormalMapType::OpenGL;
 };
 
 class Material
@@ -41,6 +50,9 @@ public:
     void SetSpecular(const Vec3& in_color) { m_data.specular = in_color; }
     void SetAmbient(const Vec3& in_color) { m_data.ambient = in_color; }
     void SetSharpness(float in_value) { m_data.shininess = in_value; }
+    void SetDisplacementStrength(float in_value) { m_data.displacementStrength = in_value; }
+    void SetAlpha(float in_value) { m_data.alpha = in_value; }
+    void SetNormalMapType(eNormalMapType in_type) { m_data.normalMapType = in_type; }
 
     // image
     void SetBaseColorImage(const Ref<Image2D>& in_image) { m_data.baseColorImage = in_image; }
@@ -61,6 +73,9 @@ public:
     const Vec3&         GetSpecular() const { return m_data.specular; }
     const Vec3&         GetAmbient() const { return m_data.ambient; }
     float               GetSharpness() const { return m_data.shininess; }
+    float               GetDisplacementStrength() const { return m_data.displacementStrength; }
+    float               GetAlpha() const { return m_data.alpha; }
+    eNormalMapType      GetNormalMapType() const { return m_data.normalMapType; }
 
     const Ref<Image2D>& GetBaseColorImage() const { return m_data.baseColorImage; }
     const Ref<Image2D>& GetNormalImage() const { return m_data.normalImage; }
