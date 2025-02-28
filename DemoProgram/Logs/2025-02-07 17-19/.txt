@@ -1,0 +1,25 @@
+[2025-02-08 02:19:37.237] [info] Log initialized
+[2025-02-08 02:19:37.914] [debug] cube map -> 0
+[2025-02-08 02:19:38.473] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:19:38.474] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:19:38.483] [debug] Color: 231, 3, 0, 0
+[2025-02-08 02:19:38.552] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:19:40.837] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:19:40.838] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:19:40.839] [debug] Color: 231, 3, 0, 0
+[2025-02-08 02:19:40.889] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:19:40.985] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:19:40.986] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:19:40.996] [debug] Color: 231, 3, 0, 0
+[2025-02-08 02:19:41.069] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:19:41.132] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:19:41.132] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:19:41.142] [debug] Color: 231, 3, 0, 0
+[2025-02-08 02:19:41.194] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:19:41.404] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:19:41.404] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:19:41.414] [debug] Color: 231, 3, 0, 0
+[2025-02-08 02:19:41.486] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:19:48.097] [debug] Event Occurred. "Move_WindowEvent"
+[2025-02-08 02:20:16.583] [debug] Event Occurred. "Move_WindowEvent"
+[2025-02-08 02:20:17.592] [debug] Event Occurred. "AppClose_CoreEvent"

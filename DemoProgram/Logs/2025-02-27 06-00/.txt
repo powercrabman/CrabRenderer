@@ -1,0 +1,8 @@
+[2025-02-27 15:00:25.289] [info] Log initialized
+[2025-02-27 15:00:25.610] [error] 
+**********
+D11 assert fail: HRESULT: 지정된 파일을 찾을 수 없습니다.
+
+Hint : D3DCompileFromFile Fail.
+**********
+

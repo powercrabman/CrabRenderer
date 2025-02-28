@@ -1,0 +1,6 @@
+[2025-02-18 03:09:48.620] [info] Log initialized
+[2025-02-18 03:09:48.999] [info] Load Image: Resources\PBRDemo\PBRDemoTextureEnvHDR.dds
+[2025-02-18 03:09:49.023] [info] Load Image: Resources\PBRDemo\PBRDemoTextureSpecularHDR.dds
+[2025-02-18 03:09:49.042] [info] Load Image: Resources\PBRDemo\PBRDemoTextureDiffuseHDR.dds
+[2025-02-18 03:09:49.043] [info] Load Image: Resources\PBRDemo\PBRDemoTextureBrdf.dds
+[2025-02-18 03:09:50.734] [debug] Event Occurred. "AppClose_CoreEvent"

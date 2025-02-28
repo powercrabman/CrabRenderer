@@ -1,0 +1,142 @@
+[2025-02-08 22:02:04.043] [info] Log initialized
+[2025-02-08 22:02:04.755] [debug] cube map -> 0
+[2025-02-08 22:02:05.259] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.520] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.554] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.583] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.616] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.648] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.677] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.710] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.740] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.776] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.816] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 22:02:05.829] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 22:02:07.040] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:02:07.040] [debug] No Entity Selected
+[2025-02-08 22:02:07.044] [debug] No Entity Selected
+[2025-02-08 22:02:07.048] [debug] No Entity Selected
+[2025-02-08 22:02:07.052] [debug] No Entity Selected
+[2025-02-08 22:02:07.057] [debug] No Entity Selected
+[2025-02-08 22:02:07.061] [debug] No Entity Selected
+[2025-02-08 22:02:07.065] [debug] No Entity Selected
+[2025-02-08 22:02:07.070] [debug] No Entity Selected
+[2025-02-08 22:02:07.074] [debug] No Entity Selected
+[2025-02-08 22:02:07.077] [debug] No Entity Selected
+[2025-02-08 22:02:07.082] [debug] No Entity Selected
+[2025-02-08 22:02:07.086] [debug] No Entity Selected
+[2025-02-08 22:02:07.090] [debug] No Entity Selected
+[2025-02-08 22:02:07.097] [debug] No Entity Selected
+[2025-02-08 22:02:07.103] [debug] No Entity Selected
+[2025-02-08 22:02:07.105] [debug] No Entity Selected
+[2025-02-08 22:02:07.109] [debug] No Entity Selected
+[2025-02-08 22:02:07.113] [debug] No Entity Selected
+[2025-02-08 22:02:07.119] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:02:07.953] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:02:07.953] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.953] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.957] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.957] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.961] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.961] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.965] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.965] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.969] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.969] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.974] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.974] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.978] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.978] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.982] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.982] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.986] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.986] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.990] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.990] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.994] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.994] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.999] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:07.999] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.003] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.003] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.007] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.007] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.011] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.011] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.015] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.015] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.019] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.020] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.024] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.024] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.028] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.028] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.032] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.032] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.036] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.036] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.040] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.040] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.044] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.044] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.049] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.049] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.053] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.053] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.057] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.057] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.061] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.061] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.065] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.065] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.070] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.070] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.074] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.074] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.078] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.078] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.082] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.082] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.086] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.086] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.090] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.090] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.095] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.095] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.099] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.099] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.103] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.103] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.107] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.107] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.111] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.111] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.115] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.116] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.120] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.120] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.124] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.124] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.128] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.128] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.132] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.132] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.136] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.136] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.141] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.141] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.145] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.145] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.149] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.149] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.153] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.153] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.157] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.157] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.161] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.161] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.166] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.166] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.170] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.170] [debug] Selected Entity ID: 5
+[2025-02-08 22:02:08.174] [debug] Selected

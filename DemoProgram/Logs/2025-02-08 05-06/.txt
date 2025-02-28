@@ -1,0 +1,522 @@
+[2025-02-08 14:06:09.609] [info] Log initialized
+[2025-02-08 14:06:10.182] [debug] cube map -> 0
+[2025-02-08 14:06:10.596] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:10.596] [debug] No Entity Selected
+[2025-02-08 14:06:10.598] [debug] No Entity Selected
+[2025-02-08 14:06:10.603] [debug] No Entity Selected
+[2025-02-08 14:06:10.607] [debug] No Entity Selected
+[2025-02-08 14:06:10.611] [debug] No Entity Selected
+[2025-02-08 14:06:10.615] [debug] No Entity Selected
+[2025-02-08 14:06:10.619] [debug] No Entity Selected
+[2025-02-08 14:06:10.623] [debug] No Entity Selected
+[2025-02-08 14:06:10.628] [debug] No Entity Selected
+[2025-02-08 14:06:10.632] [debug] No Entity Selected
+[2025-02-08 14:06:10.636] [debug] No Entity Selected
+[2025-02-08 14:06:10.640] [debug] No Entity Selected
+[2025-02-08 14:06:10.644] [debug] No Entity Selected
+[2025-02-08 14:06:10.648] [debug] No Entity Selected
+[2025-02-08 14:06:10.653] [debug] No Entity Selected
+[2025-02-08 14:06:10.657] [debug] No Entity Selected
+[2025-02-08 14:06:10.661] [debug] No Entity Selected
+[2025-02-08 14:06:10.665] [debug] No Entity Selected
+[2025-02-08 14:06:10.670] [debug] No Entity Selected
+[2025-02-08 14:06:10.673] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:12.324] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:12.324] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.327] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.331] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.335] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.340] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.344] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.348] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.352] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.356] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.361] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.365] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.369] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.373] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.377] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.381] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.386] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.390] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.394] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.398] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.402] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.406] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.411] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.415] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.419] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.423] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.427] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.432] [debug] Selected Entity ID: 3
+[2025-02-08 14:06:12.436] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:12.979] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.238] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.267] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.300] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.329] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.363] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.392] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.438] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.467] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.496] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.526] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.559] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.588] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.622] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.665] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.698] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.727] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.757] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:13.769] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 14:06:14.358] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:14.358] [debug] No Entity Selected
+[2025-02-08 14:06:14.362] [debug] No Entity Selected
+[2025-02-08 14:06:14.366] [debug] No Entity Selected
+[2025-02-08 14:06:14.370] [debug] No Entity Selected
+[2025-02-08 14:06:14.374] [debug] No Entity Selected
+[2025-02-08 14:06:14.378] [debug] No Entity Selected
+[2025-02-08 14:06:14.382] [debug] No Entity Selected
+[2025-02-08 14:06:14.387] [debug] No Entity Selected
+[2025-02-08 14:06:14.391] [debug] No Entity Selected
+[2025-02-08 14:06:14.396] [debug] No Entity Selected
+[2025-02-08 14:06:14.399] [debug] No Entity Selected
+[2025-02-08 14:06:14.404] [debug] No Entity Selected
+[2025-02-08 14:06:14.408] [debug] No Entity Selected
+[2025-02-08 14:06:14.412] [debug] No Entity Selected
+[2025-02-08 14:06:14.416] [debug] No Entity Selected
+[2025-02-08 14:06:14.420] [debug] No Entity Selected
+[2025-02-08 14:06:14.424] [debug] No Entity Selected
+[2025-02-08 14:06:14.428] [debug] No Entity Selected
+[2025-02-08 14:06:14.433] [debug] No Entity Selected
+[2025-02-08 14:06:14.437] [debug] No Entity Selected
+[2025-02-08 14:06:14.441] [debug] No Entity Selected
+[2025-02-08 14:06:14.445] [debug] No Entity Selected
+[2025-02-08 14:06:14.450] [debug] No Entity Selected
+[2025-02-08 14:06:14.453] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:15.005] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.263] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.293] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.326] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.355] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.388] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.435] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.464] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.497] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.526] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.556] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.589] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.622] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.652] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.698] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.731] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.760] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.794] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.823] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.852] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.885] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.919] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:15.952] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 14:06:16.244] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:16.244] [debug] No Entity Selected
+[2025-02-08 14:06:16.248] [debug] No Entity Selected
+[2025-02-08 14:06:16.253] [debug] No Entity Selected
+[2025-02-08 14:06:16.257] [debug] No Entity Selected
+[2025-02-08 14:06:16.261] [debug] No Entity Selected
+[2025-02-08 14:06:16.265] [debug] No Entity Selected
+[2025-02-08 14:06:16.269] [debug] No Entity Selected
+[2025-02-08 14:06:16.274] [debug] No Entity Selected
+[2025-02-08 14:06:16.278] [debug] No Entity Selected
+[2025-02-08 14:06:16.282] [debug] No Entity Selected
+[2025-02-08 14:06:16.286] [debug] No Entity Selected
+[2025-02-08 14:06:16.290] [debug] No Entity Selected
+[2025-02-08 14:06:16.294] [debug] No Entity Selected
+[2025-02-08 14:06:16.298] [debug] No Entity Selected
+[2025-02-08 14:06:16.303] [debug] No Entity Selected
+[2025-02-08 14:06:16.307] [debug] No Entity Selected
+[2025-02-08 14:06:16.311] [debug] No Entity Selected
+[2025-02-08 14:06:16.315] [debug] No Entity Selected
+[2025-02-08 14:06:16.319] [debug] No Entity Selected
+[2025-02-08 14:06:16.323] [debug] No Entity Selected
+[2025-02-08 14:06:16.328] [debug] No Entity Selected
+[2025-02-08 14:06:16.332] [debug] No Entity Selected
+[2025-02-08 14:06:16.336] [debug] No Entity Selected
+[2025-02-08 14:06:16.340] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:16.512] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:16.776] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:16.805] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:16.839] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:16.868] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:16.897] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:16.930] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:16.960] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:17.005] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:17.039] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:17.068] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:17.101] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:17.131] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:17.164] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:17.189] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 14:06:17.494] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:17.494] [debug] No Entity Selected
+[2025-02-08 14:06:17.498] [debug] No Entity Selected
+[2025-02-08 14:06:17.502] [debug] No Entity Selected
+[2025-02-08 14:06:17.506] [debug] No Entity Selected
+[2025-02-08 14:06:17.510] [debug] No Entity Selected
+[2025-02-08 14:06:17.515] [debug] No Entity Selected
+[2025-02-08 14:06:17.519] [debug] No Entity Selected
+[2025-02-08 14:06:17.523] [debug] No Entity Selected
+[2025-02-08 14:06:17.527] [debug] No Entity Selected
+[2025-02-08 14:06:17.531] [debug] No Entity Selected
+[2025-02-08 14:06:17.536] [debug] No Entity Selected
+[2025-02-08 14:06:17.540] [debug] No Entity Selected
+[2025-02-08 14:06:17.544] [debug] No Entity Selected
+[2025-02-08 14:06:17.548] [debug] No Entity Selected
+[2025-02-08 14:06:17.552] [debug] No Entity Selected
+[2025-02-08 14:06:17.556] [debug] No Entity Selected
+[2025-02-08 14:06:17.561] [debug] No Entity Selected
+[2025-02-08 14:06:17.565] [debug] No Entity Selected
+[2025-02-08 14:06:17.569] [debug] No Entity Selected
+[2025-02-08 14:06:17.573] [debug] No Entity Selected
+[2025-02-08 14:06:17.578] [debug] No Entity Selected
+[2025-02-08 14:06:17.581] [debug] No Entity Selected
+[2025-02-08 14:06:17.586] [debug] No Entity Selected
+[2025-02-08 14:06:17.590] [debug] No Entity Selected
+[2025-02-08 14:06:17.594] [debug] No Entity Selected
+[2025-02-08 14:06:17.598] [debug] No Entity Selected
+[2025-02-08 14:06:17.602] [debug] No Entity Selected
+[2025-02-08 14:06:17.607] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:17.907] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:17.907] [debug] No Entity Selected
+[2025-02-08 14:06:17.911] [debug] No Entity Selected
+[2025-02-08 14:06:17.915] [debug] No Entity Selected
+[2025-02-08 14:06:17.920] [debug] No Entity Selected
+[2025-02-08 14:06:17.924] [debug] No Entity Selected
+[2025-02-08 14:06:17.928] [debug] No Entity Selected
+[2025-02-08 14:06:17.932] [debug] No Entity Selected
+[2025-02-08 14:06:17.936] [debug] No Entity Selected
+[2025-02-08 14:06:17.940] [debug] No Entity Selected
+[2025-02-08 14:06:17.944] [debug] No Entity Selected
+[2025-02-08 14:06:17.949] [debug] No Entity Selected
+[2025-02-08 14:06:17.953] [debug] No Entity Selected
+[2025-02-08 14:06:17.957] [debug] No Entity Selected
+[2025-02-08 14:06:17.961] [debug] No Entity Selected
+[2025-02-08 14:06:17.965] [debug] No Entity Selected
+[2025-02-08 14:06:17.970] [debug] No Entity Selected
+[2025-02-08 14:06:17.974] [debug] No Entity Selected
+[2025-02-08 14:06:17.978] [debug] No Entity Selected
+[2025-02-08 14:06:17.986] [debug] No Entity Selected
+[2025-02-08 14:06:17.989] [debug] No Entity Selected
+[2025-02-08 14:06:17.991] [debug] No Entity Selected
+[2025-02-08 14:06:17.995] [debug] No Entity Selected
+[2025-02-08 14:06:18.000] [debug] No Entity Selected
+[2025-02-08 14:06:18.004] [debug] No Entity Selected
+[2025-02-08 14:06:18.008] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:18.582] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:18.582] [debug] No Entity Selected
+[2025-02-08 14:06:18.586] [debug] No Entity Selected
+[2025-02-08 14:06:18.590] [debug] No Entity Selected
+[2025-02-08 14:06:18.595] [debug] No Entity Selected
+[2025-02-08 14:06:18.599] [debug] No Entity Selected
+[2025-02-08 14:06:18.603] [debug] No Entity Selected
+[2025-02-08 14:06:18.607] [debug] No Entity Selected
+[2025-02-08 14:06:18.611] [debug] No Entity Selected
+[2025-02-08 14:06:18.616] [debug] No Entity Selected
+[2025-02-08 14:06:18.620] [debug] No Entity Selected
+[2025-02-08 14:06:18.624] [debug] No Entity Selected
+[2025-02-08 14:06:18.628] [debug] No Entity Selected
+[2025-02-08 14:06:18.632] [debug] No Entity Selected
+[2025-02-08 14:06:18.636] [debug] No Entity Selected
+[2025-02-08 14:06:18.641] [debug] No Entity Selected
+[2025-02-08 14:06:18.645] [debug] No Entity Selected
+[2025-02-08 14:06:18.649] [debug] No Entity Selected
+[2025-02-08 14:06:18.653] [debug] No Entity Selected
+[2025-02-08 14:06:18.657] [debug] No Entity Selected
+[2025-02-08 14:06:18.661] [debug] No Entity Selected
+[2025-02-08 14:06:18.666] [debug] No Entity Selected
+[2025-02-08 14:06:18.670] [debug] No Entity Selected
+[2025-02-08 14:06:18.674] [debug] No Entity Selected
+[2025-02-08 14:06:18.678] [debug] No Entity Selected
+[2025-02-08 14:06:18.682] [debug] No Entity Selected
+[2025-02-08 14:06:18.686] [debug] No Entity Selected
+[2025-02-08 14:06:18.691] [debug] No Entity Selected
+[2025-02-08 14:06:18.695] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:19.350] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:19.351] [debug] No Entity Selected
+[2025-02-08 14:06:19.354] [debug] No Entity Selected
+[2025-02-08 14:06:19.358] [debug] No Entity Selected
+[2025-02-08 14:06:19.363] [debug] No Entity Selected
+[2025-02-08 14:06:19.367] [debug] No Entity Selected
+[2025-02-08 14:06:19.371] [debug] No Entity Selected
+[2025-02-08 14:06:19.375] [debug] No Entity Selected
+[2025-02-08 14:06:19.379] [debug] No Entity Selected
+[2025-02-08 14:06:19.384] [debug] No Entity Selected
+[2025-02-08 14:06:19.388] [debug] No Entity Selected
+[2025-02-08 14:06:19.392] [debug] No Entity Selected
+[2025-02-08 14:06:19.396] [debug] No Entity Selected
+[2025-02-08 14:06:19.400] [debug] No Entity Selected
+[2025-02-08 14:06:19.407] [debug] No Entity Selected
+[2025-02-08 14:06:19.411] [debug] No Entity Selected
+[2025-02-08 14:06:19.414] [debug] No Entity Selected
+[2025-02-08 14:06:19.418] [debug] No Entity Selected
+[2025-02-08 14:06:19.422] [debug] No Entity Selected
+[2025-02-08 14:06:19.426] [debug] No Entity Selected
+[2025-02-08 14:06:19.431] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:20.314] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:20.314] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.318] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.322] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.326] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.330] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.334] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.339] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.343] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.347] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.351] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.355] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.360] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.364] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.368] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.372] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.376] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.380] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.385] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.389] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.393] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.397] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:20.472] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:20.472] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.476] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.481] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.485] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.489] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.493] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.497] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.501] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.506] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.510] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.514] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.518] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.522] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.527] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.531] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.535] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.539] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.543] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.547] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.552] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.556] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.560] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.564] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.568] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.572] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.577] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.581] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:20.585] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:20.756] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.019] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.048] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.082] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.111] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.140] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.174] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.220] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.249] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.282] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:21.290] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 14:06:21.833] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:21.833] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.837] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.841] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.846] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.850] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.854] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.858] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.862] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.866] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.871] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.875] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.879] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.883] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.887] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.892] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.896] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:21.900] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:22.171] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:22.171] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.175] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.180] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.184] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.188] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.192] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.196] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.200] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.205] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.209] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.213] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.219] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.221] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.225] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.230] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.234] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.238] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.242] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.246] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.251] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.255] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.259] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.263] [debug] Selected Entity ID: 4
+[2025-02-08 14:06:22.267] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:22.447] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:22.447] [debug] No Entity Selected
+[2025-02-08 14:06:22.451] [debug] No Entity Selected
+[2025-02-08 14:06:22.455] [debug] No Entity Selected
+[2025-02-08 14:06:22.459] [debug] No Entity Selected
+[2025-02-08 14:06:22.463] [debug] No Entity Selected
+[2025-02-08 14:06:22.468] [debug] No Entity Selected
+[2025-02-08 14:06:22.472] [debug] No Entity Selected
+[2025-02-08 14:06:22.476] [debug] No Entity Selected
+[2025-02-08 14:06:22.480] [debug] No Entity Selected
+[2025-02-08 14:06:22.484] [debug] No Entity Selected
+[2025-02-08 14:06:22.488] [debug] No Entity Selected
+[2025-02-08 14:06:22.493] [debug] No Entity Selected
+[2025-02-08 14:06:22.497] [debug] No Entity Selected
+[2025-02-08 14:06:22.501] [debug] No Entity Selected
+[2025-02-08 14:06:22.505] [debug] No Entity Selected
+[2025-02-08 14:06:22.510] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:22.636] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:22.636] [debug] No Entity Selected
+[2025-02-08 14:06:22.640] [debug] No Entity Selected
+[2025-02-08 14:06:22.644] [debug] No Entity Selected
+[2025-02-08 14:06:22.648] [debug] No Entity Selected
+[2025-02-08 14:06:22.653] [debug] No Entity Selected
+[2025-02-08 14:06:22.657] [debug] No Entity Selected
+[2025-02-08 14:06:22.661] [debug] No Entity Selected
+[2025-02-08 14:06:22.665] [debug] No Entity Selected
+[2025-02-08 14:06:22.669] [debug] No Entity Selected
+[2025-02-08 14:06:22.674] [debug] No Entity Selected
+[2025-02-08 14:06:22.678] [debug] No Entity Selected
+[2025-02-08 14:06:22.682] [debug] No Entity Selected
+[2025-02-08 14:06:22.686] [debug] No Entity Selected
+[2025-02-08 14:06:22.690] [debug] No Entity Selected
+[2025-02-08 14:06:22.694] [debug] No Entity Selected
+[2025-02-08 14:06:22.699] [debug] No Entity Selected
+[2025-02-08 14:06:22.703] [debug] No Entity Selected
+[2025-02-08 14:06:22.707] [debug] No Entity Selected
+[2025-02-08 14:06:22.711] [debug] No Entity Selected
+[2025-02-08 14:06:22.716] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:23.645] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:23.645] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.649] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.653] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.657] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.662] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.666] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.670] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.674] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.678] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.682] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.687] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.691] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.695] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.699] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.703] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.708] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.712] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.716] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.720] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.724] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.728] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.733] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.737] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.741] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.745] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.749] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.753] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.758] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.762] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.766] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.770] [debug] Selected Entity ID: 5
+[2025-02-08 14:06:23.774] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:24.239] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:24.239] [debug] No Entity Selected
+[2025-02-08 14:06:24.243] [debug] No Entity Selected
+[2025-02-08 14:06:24.247] [debug] No Entity Selected
+[2025-02-08 14:06:24.251] [debug] No Entity Selected
+[2025-02-08 14:06:24.255] [debug] No Entity Selected
+[2025-02-08 14:06:24.259] [debug] No Entity Selected
+[2025-02-08 14:06:24.263] [debug] No Entity Selected
+[2025-02-08 14:06:24.268] [debug] No Entity Selected
+[2025-02-08 14:06:24.272] [debug] No Entity Selected
+[2025-02-08 14:06:24.276] [debug] No Entity Selected
+[2025-02-08 14:06:24.280] [debug] No Entity Selected
+[2025-02-08 14:06:24.284] [debug] No Entity Selected
+[2025-02-08 14:06:24.288] [debug] No Entity Selected
+[2025-02-08 14:06:24.293] [debug] No Entity Selected
+[2025-02-08 14:06:24.297] [debug] No Entity Selected
+[2025-02-08 14:06:24.301] [debug] No Entity Selected
+[2025-02-08 14:06:24.305] [debug] No Entity Selected
+[2025-02-08 14:06:24.309] [debug] No Entity Selected
+[2025-02-08 14:06:24.313] [debug] No Entity Selected
+[2025-02-08 14:06:24.318] [debug] No Entity Selected
+[2025-02-08 14:06:24.322] [debug] No Entity Selected
+[2025-02-08 14:06:24.326] [debug] No Entity Selected
+[2025-02-08 14:06:24.330] [debug] No Entity Selected
+[2025-02-08 14:06:24.334] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:25.520] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:25.520] [debug] No Entity Selected
+[2025-02-08 14:06:25.524] [debug] No Entity Selected
+[2025-02-08 14:06:25.528] [debug] No Entity Selected
+[2025-02-08 14:06:25.532] [debug] No Entity Selected
+[2025-02-08 14:06:25.537] [debug] No Entity Selected
+[2025-02-08 14:06:25.541] [debug] No Entity Selected
+[2025-02-08 14:06:25.545] [debug] No Entity Selected
+[2025-02-08 14:06:25.549] [debug] No Entity Selected
+[2025-02-08 14:06:25.553] [debug] No Entity Selected
+[2025-02-08 14:06:25.557] [debug] No Entity Selected
+[2025-02-08 14:06:25.562] [debug] No Entity Selected
+[2025-02-08 14:06:25.566] [debug] No Entity Selected
+[2025-02-08 14:06:25.570] [debug] No Entity Selected
+[2025-02-08 14:06:25.574] [debug] No Entity Selected
+[2025-02-08 14:06:25.578] [debug] No Entity Selected
+[2025-02-08 14:06:25.583] [debug] No Entity Selected
+[2025-02-08 14:06:25.587] [debug] No Entity Selected
+[2025-02-08 14:06:25.591] [debug] No Entity Selected
+[2025-02-08 14:06:25.595] [debug] No Entity Selected
+[2025-02-08 14:06:25.599] [debug] No Entity Selected
+[2025-02-08 14:06:25.603] [debug] No Entity Selected
+[2025-02-08 14:06:25.608] [debug] No Entity Selected
+[2025-02-08 14:06:25.612] [debug] No Entity Selected
+[2025-02-08 14:06:25.616] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:25.938] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.201] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.234] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.263] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.292] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.326] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.355] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.388] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.434] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 14:06:26.438] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 14:06:26.851] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 14:06:26.851] [debug] No Entity Selected
+[2025-02-08 14:06:26.854] [debug] No Entity Selected
+[2025-02-08 14:06:26.858] [debug] No Entity Selected
+[2025-02-08 14:06:26.862] [debug] No Entity Selected
+[2025-02-08 14:06:26.866] [debug] No Entity Selected
+[2025-02-08 14:06:26.871] [debug] No Entity Selected
+[2025-02-08 14:06:26.875] [debug] No Entity Selected
+[2025-02-08 14:06:26.879] [debug] No Entity Selected
+[2025-02-08 14:06:26.883] [debug] No Entity Selected
+[2025-02-08 14:06:26.887] [debug] No Entity Selected
+[2025-02-08 14:06:26.891] [debug] No Entity Selected
+[2025-02-08 14:06:26.896] [debug] No Entity Selected
+[2025-02-08 14:06:26.900] [debug] No Entity Selected
+[2025-02-08 14:06:26.904] [debug] No Entity Selected
+[2025-02-08 14:06:26.908] [debug] No Entity Selected
+[2025-02-08 14:06:26.912] [debug] No Entity Selected
+[2025-02-08 14:06:26.916] [debug] No Entity Selected
+[2025-02-08 14:06:26.921] [debug] No Entity Selected
+[2025-02-08 14:06:26.925] [debug] No Entity Selected
+[2025-02-08 14:06:26.929] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 14:06:27.969] [debug] Event Occurred. "AppClose_CoreEvent"

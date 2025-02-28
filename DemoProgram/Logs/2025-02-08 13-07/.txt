@@ -1,0 +1,875 @@
+[2025-02-08 22:07:18.260] [info] Log initialized
+[2025-02-08 22:07:18.948] [debug] cube map -> 0
+[2025-02-08 22:07:24.352] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:07:24.352] [debug] No Entity Selected
+[2025-02-08 22:07:24.355] [debug] No Entity Selected
+[2025-02-08 22:07:24.359] [debug] No Entity Selected
+[2025-02-08 22:07:24.363] [debug] No Entity Selected
+[2025-02-08 22:07:24.367] [debug] No Entity Selected
+[2025-02-08 22:07:24.371] [debug] No Entity Selected
+[2025-02-08 22:07:24.375] [debug] No Entity Selected
+[2025-02-08 22:07:24.380] [debug] No Entity Selected
+[2025-02-08 22:07:24.384] [debug] No Entity Selected
+[2025-02-08 22:07:24.388] [debug] No Entity Selected
+[2025-02-08 22:07:24.392] [debug] No Entity Selected
+[2025-02-08 22:07:24.396] [debug] No Entity Selected
+[2025-02-08 22:07:24.400] [debug] No Entity Selected
+[2025-02-08 22:07:24.405] [debug] No Entity Selected
+[2025-02-08 22:07:24.409] [debug] No Entity Selected
+[2025-02-08 22:07:24.413] [debug] No Entity Selected
+[2025-02-08 22:07:24.417] [debug] No Entity Selected
+[2025-02-08 22:07:24.421] [debug] No Entity Selected
+[2025-02-08 22:07:24.426] [debug] No Entity Selected
+[2025-02-08 22:07:24.430] [debug] No Entity Selected
+[2025-02-08 22:07:24.434] [debug] No Entity Selected
+[2025-02-08 22:07:24.438] [debug] No Entity Selected
+[2025-02-08 22:07:24.442] [debug] No Entity Selected
+[2025-02-08 22:07:24.446] [debug] No Entity Selected
+[2025-02-08 22:07:24.451] [debug] No Entity Selected
+[2025-02-08 22:07:24.455] [debug] No Entity Selected
+[2025-02-08 22:07:24.459] [debug] No Entity Selected
+[2025-02-08 22:07:24.463] [debug] No Entity Selected
+[2025-02-08 22:07:24.467] [debug] No Entity Selected
+[2025-02-08 22:07:24.472] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:07:24.856] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:07:24.856] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:24.860] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:39.607] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:50.388] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:07:51.999] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:07:51.999] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.003] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.003] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.007] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.011] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.015] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.019] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.023] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.028] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.032] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.040] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.042] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.045] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.049] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.053] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.057] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.061] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.065] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.069] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.074] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.078] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.082] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.086] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.090] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.095] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.099] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.103] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.107] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.111] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.115] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.120] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.124] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.128] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.132] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.137] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.141] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.145] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.149] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.153] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.157] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.161] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.166] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.170] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.174] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.178] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.182] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.186] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.190] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.195] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.199] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.203] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.207] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.211] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.215] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.220] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.224] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.228] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.232] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.236] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.241] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.241] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.245] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.249] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.253] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.257] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.261] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.266] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.270] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.270] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.274] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.274] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.278] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.282] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.287] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.291] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.291] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.295] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.295] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.299] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.299] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.303] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.304] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.308] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.308] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.312] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.312] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.316] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.316] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.320] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.320] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.324] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.324] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.328] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.329] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.333] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.333] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.337] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.337] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.341] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.341] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.345] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.345] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.349] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.349] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.353] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.353] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.358] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.358] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.362] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.362] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.366] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.366] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.370] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.370] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.374] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.378] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.383] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.387] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.391] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.395] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.399] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.403] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.408] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.412] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.416] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.420] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.424] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.428] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.433] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.437] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.441] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.445] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.449] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.453] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.459] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.462] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.466] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.470] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.474] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.479] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.483] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.487] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.491] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.495] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.499] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.504] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.508] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.512] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.516] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.520] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.525] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.529] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.533] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.537] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.541] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.545] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.549] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.554] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.559] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.562] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.566] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.570] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.575] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.579] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.583] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.587] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.591] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.595] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.600] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.604] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.608] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.608] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.612] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.616] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.620] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.625] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.625] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.629] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.633] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.637] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.642] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.646] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.650] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.654] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.659] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.662] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.666] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.671] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.675] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.679] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.683] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.688] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.688] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.692] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.692] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.696] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.696] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.700] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.700] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.704] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.704] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.708] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.708] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.713] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.713] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.717] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.717] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.721] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.721] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.725] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.725] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.729] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.729] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.733] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.733] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.738] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.738] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.742] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.742] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.746] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.746] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.750] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.750] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.754] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.754] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.758] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.758] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.763] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.763] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.767] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.767] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.771] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.771] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.775] [debug] No Entity Selected
+[2025-02-08 22:07:52.779] [debug] No Entity Selected
+[2025-02-08 22:07:52.784] [debug] No Entity Selected
+[2025-02-08 22:07:52.788] [debug] No Entity Selected
+[2025-02-08 22:07:52.792] [debug] No Entity Selected
+[2025-02-08 22:07:52.796] [debug] No Entity Selected
+[2025-02-08 22:07:52.800] [debug] No Entity Selected
+[2025-02-08 22:07:52.804] [debug] No Entity Selected
+[2025-02-08 22:07:52.808] [debug] No Entity Selected
+[2025-02-08 22:07:52.813] [debug] No Entity Selected
+[2025-02-08 22:07:52.817] [debug] No Entity Selected
+[2025-02-08 22:07:52.821] [debug] No Entity Selected
+[2025-02-08 22:07:52.825] [debug] No Entity Selected
+[2025-02-08 22:07:52.829] [debug] No Entity Selected
+[2025-02-08 22:07:52.833] [debug] No Entity Selected
+[2025-02-08 22:07:52.838] [debug] No Entity Selected
+[2025-02-08 22:07:52.842] [debug] No Entity Selected
+[2025-02-08 22:07:52.846] [debug] No Entity Selected
+[2025-02-08 22:07:52.850] [debug] No Entity Selected
+[2025-02-08 22:07:52.854] [debug] No Entity Selected
+[2025-02-08 22:07:52.858] [debug] No Entity Selected
+[2025-02-08 22:07:52.864] [debug] No Entity Selected
+[2025-02-08 22:07:52.868] [debug] No Entity Selected
+[2025-02-08 22:07:52.871] [debug] No Entity Selected
+[2025-02-08 22:07:52.875] [debug] No Entity Selected
+[2025-02-08 22:07:52.880] [debug] No Entity Selected
+[2025-02-08 22:07:52.884] [debug] No Entity Selected
+[2025-02-08 22:07:52.888] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.888] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.892] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.892] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.896] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.896] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.900] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.900] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.904] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.905] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.909] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.909] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.913] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.917] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.917] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.921] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.921] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.925] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.925] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.929] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.929] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.934] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.934] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.938] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.938] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.942] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.942] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.946] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.946] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.950] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.950] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.955] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.955] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.959] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.959] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.963] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.963] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.967] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.967] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.971] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.971] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.975] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.975] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.980] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.980] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.984] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.984] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.988] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.988] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.992] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.992] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.996] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:52.996] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.001] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.001] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.005] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.005] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.009] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.009] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.013] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.013] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.017] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.017] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.021] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.026] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.026] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.030] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.030] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.034] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.034] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.038] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.038] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.042] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.042] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.046] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.046] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.051] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.051] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.055] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.055] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.059] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.059] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.063] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.063] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.067] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.067] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.071] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.072] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.075] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.076] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.080] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.080] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.084] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.084] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.088] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.088] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.092] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.092] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.096] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.096] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.101] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.101] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.105] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.105] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.110] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.110] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.113] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.113] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.117] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.117] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.122] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.122] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.126] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.126] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.130] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.130] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.134] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.134] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.138] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.138] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.142] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.142] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.147] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.151] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.155] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.155] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.159] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.159] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.163] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.163] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.168] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.168] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.172] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.172] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.176] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.176] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.180] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.180] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.184] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.184] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.188] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.188] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.193] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.193] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.197] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.197] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.201] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.201] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.205] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.205] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.209] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.209] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.213] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.214] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.218] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.218] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.222] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.222] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.226] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.226] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.230] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.230] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.234] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.234] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.238] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.239] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.243] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.243] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.247] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.247] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.251] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.251] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.255] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.255] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.259] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.259] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.263] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.264] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.268] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.268] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.272] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.272] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.276] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.276] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.280] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.280] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.284] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.285] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.288] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.288] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.293] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.293] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.297] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.297] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.301] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.301] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.305] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.305] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.310] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.310] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.314] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.314] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.318] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.318] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.322] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.322] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.326] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.326] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.330] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.330] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.334] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.335] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.339] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.339] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.343] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.343] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.349] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.349] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.351] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.351] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.355] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.355] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.359] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.359] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.364] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.364] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.368] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.368] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.372] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.372] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.376] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.376] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.380] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.380] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.385] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.385] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.389] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.389] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.393] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.393] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.397] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.397] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.401] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.401] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.405] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.405] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.410] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.410] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.414] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.414] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.418] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.418] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.422] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.422] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.426] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.426] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.430] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.430] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.435] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.435] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.439] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.439] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.443] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.443] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.449] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.449] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.451] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.451] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.455] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.455] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.460] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.460] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.464] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.464] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.468] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.468] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.472] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.472] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.476] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.476] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.481] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.481] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.485] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.485] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.489] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.489] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.493] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.493] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.497] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.497] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.501] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.501] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.506] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.506] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.510] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.510] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.522] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.522] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.524] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.525] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.526] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.531] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.531] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.536] [debug] No Entity Selected
+[2025-02-08 22:07:53.541] [debug] No Entity Selected
+[2025-02-08 22:07:53.544] [debug] No Entity Selected
+[2025-02-08 22:07:53.548] [debug] No Entity Selected
+[2025-02-08 22:07:53.552] [debug] No Entity Selected
+[2025-02-08 22:07:53.556] [debug] No Entity Selected
+[2025-02-08 22:07:53.560] [debug] No Entity Selected
+[2025-02-08 22:07:53.564] [debug] No Entity Selected
+[2025-02-08 22:07:53.568] [debug] No Entity Selected
+[2025-02-08 22:07:53.573] [debug] No Entity Selected
+[2025-02-08 22:07:53.577] [debug] No Entity Selected
+[2025-02-08 22:07:53.581] [debug] No Entity Selected
+[2025-02-08 22:07:53.585] [debug] No Entity Selected
+[2025-02-08 22:07:53.589] [debug] No Entity Selected
+[2025-02-08 22:07:53.593] [debug] No Entity Selected
+[2025-02-08 22:07:53.598] [debug] No Entity Selected
+[2025-02-08 22:07:53.602] [debug] No Entity Selected
+[2025-02-08 22:07:53.606] [debug] No Entity Selected
+[2025-02-08 22:07:53.610] [debug] No Entity Selected
+[2025-02-08 22:07:53.614] [debug] No Entity Selected
+[2025-02-08 22:07:53.619] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.619] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.623] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.623] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.627] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.627] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.631] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.631] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.635] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.635] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.639] [debug] No Entity Selected
+[2025-02-08 22:07:53.644] [debug] No Entity Selected
+[2025-02-08 22:07:53.648] [debug] No Entity Selected
+[2025-02-08 22:07:53.652] [debug] No Entity Selected
+[2025-02-08 22:07:53.656] [debug] No Entity Selected
+[2025-02-08 22:07:53.660] [debug] No Entity Selected
+[2025-02-08 22:07:53.664] [debug] No Entity Selected
+[2025-02-08 22:07:53.669] [debug] No Entity Selected
+[2025-02-08 22:07:53.673] [debug] No Entity Selected
+[2025-02-08 22:07:53.677] [debug] No Entity Selected
+[2025-02-08 22:07:53.681] [debug] No Entity Selected
+[2025-02-08 22:07:53.685] [debug] No Entity Selected
+[2025-02-08 22:07:53.689] [debug] No Entity Selected
+[2025-02-08 22:07:53.694] [debug] No Entity Selected
+[2025-02-08 22:07:53.698] [debug] No Entity Selected
+[2025-02-08 22:07:53.702] [debug] No Entity Selected
+[2025-02-08 22:07:53.706] [debug] No Entity Selected
+[2025-02-08 22:07:53.710] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.710] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.715] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.715] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.719] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.719] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.723] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.723] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.727] [debug] No Entity Selected
+[2025-02-08 22:07:53.731] [debug] No Entity Selected
+[2025-02-08 22:07:53.735] [debug] No Entity Selected
+[2025-02-08 22:07:53.740] [debug] No Entity Selected
+[2025-02-08 22:07:53.744] [debug] No Entity Selected
+[2025-02-08 22:07:53.748] [debug] No Entity Selected
+[2025-02-08 22:07:53.752] [debug] No Entity Selected
+[2025-02-08 22:07:53.756] [debug] No Entity Selected
+[2025-02-08 22:07:53.761] [debug] No Entity Selected
+[2025-02-08 22:07:53.767] [debug] No Entity Selected
+[2025-02-08 22:07:53.769] [debug] No Entity Selected
+[2025-02-08 22:07:53.773] [debug] No Entity Selected
+[2025-02-08 22:07:53.777] [debug] No Entity Selected
+[2025-02-08 22:07:53.781] [debug] No Entity Selected
+[2025-02-08 22:07:53.786] [debug] No Entity Selected
+[2025-02-08 22:07:53.790] [debug] No Entity Selected
+[2025-02-08 22:07:53.794] [debug] No Entity Selected
+[2025-02-08 22:07:53.798] [debug] No Entity Selected
+[2025-02-08 22:07:53.802] [debug] No Entity Selected
+[2025-02-08 22:07:53.807] [debug] No Entity Selected
+[2025-02-08 22:07:53.811] [debug] No Entity Selected
+[2025-02-08 22:07:53.815] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.815] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.819] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.819] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.823] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.823] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.827] [debug] No Entity Selected
+[2025-02-08 22:07:53.831] [debug] No Entity Selected
+[2025-02-08 22:07:53.837] [debug] No Entity Selected
+[2025-02-08 22:07:53.842] [debug] No Entity Selected
+[2025-02-08 22:07:53.845] [debug] No Entity Selected
+[2025-02-08 22:07:53.848] [debug] No Entity Selected
+[2025-02-08 22:07:53.853] [debug] No Entity Selected
+[2025-02-08 22:07:53.857] [debug] No Entity Selected
+[2025-02-08 22:07:53.861] [debug] No Entity Selected
+[2025-02-08 22:07:53.865] [debug] No Entity Selected
+[2025-02-08 22:07:53.869] [debug] No Entity Selected
+[2025-02-08 22:07:53.873] [debug] No Entity Selected
+[2025-02-08 22:07:53.878] [debug] No Entity Selected
+[2025-02-08 22:07:53.882] [debug] No Entity Selected
+[2025-02-08 22:07:53.886] [debug] No Entity Selected
+[2025-02-08 22:07:53.890] [debug] No Entity Selected
+[2025-02-08 22:07:53.894] [debug] No Entity Selected
+[2025-02-08 22:07:53.899] [debug] No Entity Selected
+[2025-02-08 22:07:53.903] [debug] No Entity Selected
+[2025-02-08 22:07:53.907] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.907] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.911] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.911] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.915] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.915] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.919] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.919] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.923] [debug] No Entity Selected
+[2025-02-08 22:07:53.928] [debug] No Entity Selected
+[2025-02-08 22:07:53.932] [debug] No Entity Selected
+[2025-02-08 22:07:53.936] [debug] No Entity Selected
+[2025-02-08 22:07:53.940] [debug] No Entity Selected
+[2025-02-08 22:07:53.944] [debug] No Entity Selected
+[2025-02-08 22:07:53.949] [debug] No Entity Selected
+[2025-02-08 22:07:53.953] [debug] No Entity Selected
+[2025-02-08 22:07:53.957] [debug] No Entity Selected
+[2025-02-08 22:07:53.961] [debug] No Entity Selected
+[2025-02-08 22:07:53.965] [debug] No Entity Selected
+[2025-02-08 22:07:53.969] [debug] No Entity Selected
+[2025-02-08 22:07:53.974] [debug] No Entity Selected
+[2025-02-08 22:07:53.978] [debug] No Entity Selected
+[2025-02-08 22:07:53.982] [debug] No Entity Selected
+[2025-02-08 22:07:53.986] [debug] No Entity Selected
+[2025-02-08 22:07:53.990] [debug] No Entity Selected
+[2025-02-08 22:07:53.995] [debug] No Entity Selected
+[2025-02-08 22:07:53.999] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:53.999] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.004] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.004] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.009] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.009] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.012] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.012] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.015] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.015] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.020] [debug] No Entity Selected
+[2025-02-08 22:07:54.024] [debug] No Entity Selected
+[2025-02-08 22:07:54.028] [debug] No Entity Selected
+[2025-02-08 22:07:54.032] [debug] No Entity Selected
+[2025-02-08 22:07:54.036] [debug] No Entity Selected
+[2025-02-08 22:07:54.041] [debug] No Entity Selected
+[2025-02-08 22:07:54.045] [debug] No Entity Selected
+[2025-02-08 22:07:54.049] [debug] No Entity Selected
+[2025-02-08 22:07:54.053] [debug] No Entity Selected
+[2025-02-08 22:07:54.057] [debug] No Entity Selected
+[2025-02-08 22:07:54.061] [debug] No Entity Selected
+[2025-02-08 22:07:54.065] [debug] No Entity Selected
+[2025-02-08 22:07:54.070] [debug] No Entity Selected
+[2025-02-08 22:07:54.074] [debug] No Entity Selected
+[2025-02-08 22:07:54.078] [debug] No Entity Selected
+[2025-02-08 22:07:54.082] [debug] No Entity Selected
+[2025-02-08 22:07:54.086] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.086] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.091] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.091] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.095] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.095] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.099] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.099] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.104] [debug] No Entity Selected
+[2025-02-08 22:07:54.107] [debug] No Entity Selected
+[2025-02-08 22:07:54.162] [debug] No Entity Selected
+[2025-02-08 22:07:54.166] [debug] No Entity Selected
+[2025-02-08 22:07:54.170] [debug] No Entity Selected
+[2025-02-08 22:07:54.174] [debug] No Entity Selected
+[2025-02-08 22:07:54.178] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.178] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.187] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.187] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.190] [debug] No Entity Selected
+[2025-02-08 22:07:54.196] [debug] No Entity Selected
+[2025-02-08 22:07:54.198] [debug] No Entity Selected
+[2025-02-08 22:07:54.202] [debug] No Entity Selected
+[2025-02-08 22:07:54.207] [debug] No Entity Selected
+[2025-02-08 22:07:54.211] [debug] No Entity Selected
+[2025-02-08 22:07:54.215] [debug] No Entity Selected
+[2025-02-08 22:07:54.219] [debug] No Entity Selected
+[2025-02-08 22:07:54.223] [debug] No Entity Selected
+[2025-02-08 22:07:54.227] [debug] No Entity Selected
+[2025-02-08 22:07:54.232] [debug] No Entity Selected
+[2025-02-08 22:07:54.236] [debug] No Entity Selected
+[2025-02-08 22:07:54.240] [debug] No Entity Selected
+[2025-02-08 22:07:54.244] [debug] No Entity Selected
+[2025-02-08 22:07:54.248] [debug] No Entity Selected
+[2025-02-08 22:07:54.252] [debug] No Entity Selected
+[2025-02-08 22:07:54.257] [debug] No Entity Selected
+[2025-02-08 22:07:54.261] [debug] No Entity Selected
+[2025-02-08 22:07:54.265] [debug] No Entity Selected
+[2025-02-08 22:07:54.269] [debug] No Entity Selected
+[2025-02-08 22:07:54.273] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.274] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.278] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.278] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.282] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.282] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.286] [debug] No Entity Selected
+[2025-02-08 22:07:54.290] [debug] No Entity Selected
+[2025-02-08 22:07:54.294] [debug] No Entity Selected
+[2025-02-08 22:07:54.298] [debug] No Entity Selected
+[2025-02-08 22:07:54.319] [debug] No Entity Selected
+[2025-02-08 22:07:54.323] [debug] No Entity Selected
+[2025-02-08 22:07:54.328] [debug] No Entity Selected
+[2025-02-08 22:07:54.332] [debug] No Entity Selected
+[2025-02-08 22:07:54.336] [debug] No Entity Selected
+[2025-02-08 22:07:54.340] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.340] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.347] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.347] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.349] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.349] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.353] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.353] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.357] [debug] No Entity Selected
+[2025-02-08 22:07:54.361] [debug] No Entity Selected
+[2025-02-08 22:07:54.365] [debug] No Entity Selected
+[2025-02-08 22:07:54.369] [debug] No Entity Selected
+[2025-02-08 22:07:54.374] [debug] No Entity Selected
+[2025-02-08 22:07:54.378] [debug] No Entity Selected
+[2025-02-08 22:07:54.382] [debug] No Entity Selected
+[2025-02-08 22:07:54.415] [debug] No Entity Selected
+[2025-02-08 22:07:54.419] [debug] No Entity Selected
+[2025-02-08 22:07:54.424] [debug] No Entity Selected
+[2025-02-08 22:07:54.428] [debug] No Entity Selected
+[2025-02-08 22:07:54.432] [debug] No Entity Selected
+[2025-02-08 22:07:54.436] [debug] No Entity Selected
+[2025-02-08 22:07:54.440] [debug] No Entity Selected
+[2025-02-08 22:07:54.445] [debug] No Entity Selected
+[2025-02-08 22:07:54.449] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.449] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.453] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.453] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.457] [debug] No Entity Selected
+[2025-02-08 22:07:54.461] [debug] No Entity Selected
+[2025-02-08 22:07:54.465] [debug] No Entity Selected
+[2025-02-08 22:07:54.470] [debug] No Entity Selected
+[2025-02-08 22:07:54.474] [debug] No Entity Selected
+[2025-02-08 22:07:54.478] [debug] No Entity Selected
+[2025-02-08 22:07:54.482] [debug] No Entity Selected
+[2025-02-08 22:07:54.486] [debug] No Entity Selected
+[2025-02-08 22:07:54.494] [debug] No Entity Selected
+[2025-02-08 22:07:54.497] [debug] No Entity Selected
+[2025-02-08 22:07:54.499] [debug] No Entity Selected
+[2025-02-08 22:07:54.503] [debug] No Entity Selected
+[2025-02-08 22:07:54.507] [debug] No Entity Selected
+[2025-02-08 22:07:54.511] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.511] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.515] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.515] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.520] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.520] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.524] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.524] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.528] [debug] No Entity Selected
+[2025-02-08 22:07:54.532] [debug] No Entity Selected
+[2025-02-08 22:07:54.536] [debug] No Entity Selected
+[2025-02-08 22:07:54.541] [debug] No Entity Selected
+[2025-02-08 22:07:54.545] [debug] No Entity Selected
+[2025-02-08 22:07:54.550] [debug] No Entity Selected
+[2025-02-08 22:07:54.555] [debug] No Entity Selected
+[2025-02-08 22:07:54.557] [debug] No Entity Selected
+[2025-02-08 22:07:54.561] [debug] No Entity Selected
+[2025-02-08 22:07:54.567] [debug] No Entity Selected
+[2025-02-08 22:07:54.572] [debug] No Entity Selected
+[2025-02-08 22:07:54.574] [debug] No Entity Selected
+[2025-02-08 22:07:54.578] [debug] No Entity Selected
+[2025-02-08 22:07:54.583] [debug] No Entity Selected
+[2025-02-08 22:07:54.589] [debug] No Entity Selected
+[2025-02-08 22:07:54.591] [debug] No Entity Selected
+[2025-02-08 22:07:54.595] [debug] No Entity Selected
+[2025-02-08 22:07:54.600] [debug] Selected Entity ID: 5
+[2025-02-08 22:07:54.600

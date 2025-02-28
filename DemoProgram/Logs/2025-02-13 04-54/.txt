@@ -1,0 +1,25 @@
+[2025-02-13 13:54:37.552] [info] Log initialized
+[2025-02-13 13:54:37.935] [info] Load Image: Resources/PBRDemo\PBRDemoTextureEnvHDR.dds
+[2025-02-13 13:54:37.962] [info] Load Image: Resources/PBRDemo\PBRDemoTextureDiffuseHDR.dds
+[2025-02-13 13:54:37.963] [info] Load Image: Resources/PBRDemo\PBRDemoTextureSpecularHDR.dds
+[2025-02-13 13:54:37.983] [info] Load Image: Resources/PBRDemo\steelplate1_normal-dx.png
+[2025-02-13 13:54:38.097] [info] Load Image: Resources/PBRDemo\steelplate1_albedo.png
+[2025-02-13 13:54:38.224] [info] Load Image: Resources/PBRDemo\steelplate1_metallic.png
+[2025-02-13 13:54:38.240] [info] Load Image: Resources/PBRDemo\steelplate1_roughness.png
+[2025-02-13 13:54:38.273] [info] Load Image: Resources/PBRDemo\steelplate1_ao.png
+[2025-02-13 13:54:38.313] [info] Load Image: Resources/PBRDemo\steelplate1_height.png
+[2025-02-13 13:54:39.391] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-13 13:54:40.522] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-13 13:54:41.206] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-13 13:54:41.306] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-13 13:54:41.540] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-13 13:54:41.656] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-13 13:54:42.873] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-13 13:54:42.956] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-13 13:54:44.224] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-13 13:54:44.339] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-13 13:54:44.723] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-13 13:54:44.823] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-13 13:54:45.506] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-13 13:54:47.323] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-13 13:54:49.626] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -1,0 +1,73 @@
+[2025-02-08 22:05:25.901] [info] Log initialized
+[2025-02-08 22:05:26.599] [debug] cube map -> 0
+[2025-02-08 22:05:27.204] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:05:27.204] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.207] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.211] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.215] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.219] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.223] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.227] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.232] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.236] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.240] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.244] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.249] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.253] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.257] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.261] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.265] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.269] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.274] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.278] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.282] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.286] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.290] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.294] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.299] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.303] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.307] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.311] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.315] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.320] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.324] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.328] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.332] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.336] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.340] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.345] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.349] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.353] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.357] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.361] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.365] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.370] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.374] [debug] Selected Entity ID: 5
+[2025-02-08 22:05:27.378] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:05:42.303] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:05:42.303] [debug] No Entity Selected
+[2025-02-08 22:05:42.307] [debug] No Entity Selected
+[2025-02-08 22:05:42.311] [debug] No Entity Selected
+[2025-02-08 22:05:42.315] [debug] No Entity Selected
+[2025-02-08 22:05:42.319] [debug] No Entity Selected
+[2025-02-08 22:05:42.323] [debug] No Entity Selected
+[2025-02-08 22:05:42.327] [debug] No Entity Selected
+[2025-02-08 22:05:42.332] [debug] No Entity Selected
+[2025-02-08 22:05:42.336] [debug] No Entity Selected
+[2025-02-08 22:05:42.340] [debug] No Entity Selected
+[2025-02-08 22:05:42.344] [debug] No Entity Selected
+[2025-02-08 22:05:42.348] [debug] No Entity Selected
+[2025-02-08 22:05:42.352] [debug] No Entity Selected
+[2025-02-08 22:05:42.357] [debug] No Entity Selected
+[2025-02-08 22:05:42.361] [debug] No Entity Selected
+[2025-02-08 22:05:42.365] [debug] No Entity Selected
+[2025-02-08 22:05:42.369] [debug] No Entity Selected
+[2025-02-08 22:05:42.373] [debug] No Entity Selected
+[2025-02-08 22:05:42.378] [debug] No Entity Selected
+[2025-02-08 22:05:42.382] [debug] No Entity Selected
+[2025-02-08 22:05:42.386] [debug] No Entity Selected
+[2025-02-08 22:05:42.390] [debug] No Entity Selected
+[2025-02-08 22:05:42.394] [debug] No Entity Selected
+[2025-02-08 22:05:42.398] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:05:42.929] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-0

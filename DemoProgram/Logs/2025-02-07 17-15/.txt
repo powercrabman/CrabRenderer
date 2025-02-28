@@ -1,0 +1,208 @@
+[2025-02-08 02:15:59.652] [info] Log initialized
+[2025-02-08 02:16:00.308] [debug] cube map -> 0
+[2025-02-08 02:16:02.122] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:02.122] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:02.131] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:02.184] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:02.280] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:02.280] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:02.290] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:02.377] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:02.570] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:02.587] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:02.674] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:02.740] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:02.808] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:02.900] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:02.953] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:02.954] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:02.964] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:03.016] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:07.436] [debug] Event Occurred. "Move_WindowEvent"
+[2025-02-08 02:16:07.770] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:07.770] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:07.781] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:07.850] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:08.317] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:08.317] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:08.328] [debug] Color: 2, 0, 0, 0
+[2025-02-08 02:16:08.413] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:08.713] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:08.963] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:09.013] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:09.042] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:09.076] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:09.105] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:09.138] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:09.167] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:09.180] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:10.415] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:10.416] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:10.426] [debug] Color: 4, 0, 0, 0
+[2025-02-08 02:16:10.494] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:11.713] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:11.713] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:11.724] [debug] Color: 5, 0, 0, 0
+[2025-02-08 02:16:11.792] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:12.676] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:12.676] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:12.686] [debug] Color: 3, 0, 0, 0
+[2025-02-08 02:16:12.771] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:13.248] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:13.316] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:13.517] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:13.771] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:13.804] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:13.834] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:13.879] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:13.913] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:13.941] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:13.975] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.004] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.033] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.066] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.112] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.145] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.174] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.207] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.237] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.274] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.299] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.328] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.373] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.408] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.441] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.472] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.499] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:14.507] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:14.903] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:14.903] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:14.913] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:14.948] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:15.654] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:15.655] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:15.665] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:15.734] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:15.860] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.113] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.147] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.180] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.210] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.243] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.272] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.320] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.349] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.378] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:16.399] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:16.633] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:16.633] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:16.643] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:16.678] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:17.145] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:17.145] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:17.155] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:17.225] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:17.400] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:17.400] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:17.410] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:17.450] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:17.546] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:17.547] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:17.556] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:17.609] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:17.688] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:17.688] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:17.698] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:17.767] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:17.851] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:17.851] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:17.861] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:17.930] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:18.310] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.572] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.605] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.635] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.663] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.697] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.727] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.777] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.806] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.835] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.865] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.899] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.928] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:18.957] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.003] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.036] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.065] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.098] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.129] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.162] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.190] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.220] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.265] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.299] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.329] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.362] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.391] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.424] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.454] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.482] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.535] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.563] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.596] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.625] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.655] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.688] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.717] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:19.750] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:20.204] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:20.205] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:20.215] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:20.284] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:20.493] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:20.493] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:20.503] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:20.589] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:20.860] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:20.860] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:20.870] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:20.926] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:21.022] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:21.023] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:21.033] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:21.085] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:21.152] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:21.153] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:21.163] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:21.244] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:21.353] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.610] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.639] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.672] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.701] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.730] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.779] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.809] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.842] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.875] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.904] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-08 02:16:21.934] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-08 02:16:22.159] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:22.159] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:22.170] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:22.225] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:22.304] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:22.305] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:22.314] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:22.384] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:22.446] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:22.446] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:22.456] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:22.525] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:22.592] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 02:16:22.593] [info] Snapshot captured: 1920x1080
+[2025-02-08 02:16:22.603] [debug] Color: 0, 0, 0, 0
+[2025-02-08 02:16:22.654] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 02:16:23.841] [debug] Event Occurred. "Move_WindowEvent"
+[2025-02-08 02:16:24.578] [debug] Event Occurred. "AppClose_CoreEvent"

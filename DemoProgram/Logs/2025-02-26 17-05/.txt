@@ -1,0 +1,26 @@
+[2025-02-27 02:05:19.505] [info] Log initialized
+[2025-02-27 02:05:20.250] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-02-27 02:05:20.259] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-02-27 02:05:20.321] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-02-27 02:05:20.327] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-02-27 02:05:20.371] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-02-27 02:05:20.373] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxEnvHDR.dds
+[2025-02-27 02:05:20.413] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxDiffuseHDR.dds
+[2025-02-27 02:05:20.418] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxSpecularHDR.dds
+[2025-02-27 02:05:21.690] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-02-27 02:05:21.788] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-02-27 02:05:21.866] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-02-27 02:05:21.992] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-02-27 02:05:23.244] [info] Load Image: Resources\AnimationDemo\Leather\Leather037_2K-JPG_Roughness.jpg
+[2025-02-27 02:05:23.282] [info] Load Image: Resources\AnimationDemo\Leather\Leather037_2K-JPG_NormalGL.jpg
+[2025-02-27 02:05:24.413] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_Metalness.jpg
+[2025-02-27 02:05:24.434] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_NormalGL.jpg
+[2025-02-27 02:05:24.510] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_Roughness.jpg
+[2025-02-27 02:05:25.634] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-27 02:05:25.716] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-27 02:05:26.299] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-27 02:05:26.382] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-27 02:05:26.566] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-27 02:05:26.666] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-27 02:05:27.782] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-27 02:05:27.782] [debug] Event Occurred. "AppClose_CoreEvent"

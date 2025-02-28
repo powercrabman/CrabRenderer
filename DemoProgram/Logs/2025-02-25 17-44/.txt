@@ -1,0 +1,26 @@
+[2025-02-26 02:44:52.880] [info] Log initialized
+[2025-02-26 02:44:53.618] [info] Load Image: Resources\AnimationDemo\skyboxBrdf.dds
+[2025-02-26 02:44:53.620] [info] Load Image: Resources\AnimationDemo\skyboxEnvHDR.dds
+[2025-02-26 02:44:53.672] [info] Load Image: Resources\AnimationDemo\skyboxDiffuseHDR.dds
+[2025-02-26 02:44:53.679] [info] Load Image: Resources\AnimationDemo\skyboxSpecularHDR.dds
+[2025-02-26 02:44:54.418] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.699] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.712] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.732] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.763] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.796] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.831] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.875] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.908] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.937] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:54.966] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.000] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.030] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.062] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.091] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.141] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.171] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.201] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.212] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-26 02:44:55.682] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 02:44:55.682] [debug] Event Occurred. "AppClose_CoreEvent"

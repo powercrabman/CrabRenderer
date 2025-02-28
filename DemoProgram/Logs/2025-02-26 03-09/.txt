@@ -1,0 +1,26 @@
+[2025-02-26 12:09:16.281] [info] Log initialized
+[2025-02-26 12:09:16.903] [info] Load Image: Resources\AnimationDemo\skyboxBrdf.dds
+[2025-02-26 12:09:16.905] [info] Load Image: Resources\AnimationDemo\skyboxEnvHDR.dds
+[2025-02-26 12:09:16.934] [info] Load Image: Resources\AnimationDemo\skyboxDiffuseHDR.dds
+[2025-02-26 12:09:16.937] [info] Load Image: Resources\AnimationDemo\skyboxSpecularHDR.dds
+[2025-02-26 12:09:18.509] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:09:18.624] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:09:19.194] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:09:19.194] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:09:19.710] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:09:19.710] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:10:29.844] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:10:29.961] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:10:31.183] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:10:31.283] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:10:31.547] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:10:31.680] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:11:04.689] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:11:04.785] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:11:05.175] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:11:05.256] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:11:05.821] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:11:05.921] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:11:06.288] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 12:11:06.439] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 12:11:29.575] [debug] Event Occurred. "AppClose_CoreEvent"

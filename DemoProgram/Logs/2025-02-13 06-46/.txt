@@ -1,0 +1,13 @@
+[2025-02-13 15:46:20.069] [info] Log initialized
+[2025-02-13 15:46:20.363] [info] Load Image: Resources/PBRDemo\PBRDemoTextureEnvHDR.dds
+[2025-02-13 15:46:20.392] [info] Load Image: Resources/PBRDemo\PBRDemoTextureDiffuseHDR.dds
+[2025-02-13 15:46:20.394] [info] Load Image: Resources/PBRDemo\PBRDemoTextureSpecularHDR.dds
+[2025-02-13 15:46:20.412] [info] Load Image: Resources/PBRDemo\PBRDemoTextureSpecularHDR.dds
+[2025-02-13 15:46:20.430] [info] Load Image: Resources/PBRDemo\steelplate1_normal-dx.png
+[2025-02-13 15:46:20.547] [info] Load Image: Resources/PBRDemo\steelplate1_albedo.png
+[2025-02-13 15:46:20.660] [info] Load Image: Resources/PBRDemo\steelplate1_metallic.png
+[2025-02-13 15:46:20.674] [info] Load Image: Resources/PBRDemo\steelplate1_roughness.png
+[2025-02-13 15:46:20.706] [info] Load Image: Resources/PBRDemo\steelplate1_ao.png
+[2025-02-13 15:46:20.748] [info] Load Image: Resources/PBRDemo\steelplate1_height.png
+[2025-02-13 15:46:22.578] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-13 15:46:22.578] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -1,0 +1,309 @@
+[2025-02-07 15:01:51.662] [info] Log initialized
+[2025-02-07 15:01:53.353] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.354] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.369] [debug] Mouse Delta: -72, -227
+[2025-02-07 15:01:53.385] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.401] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.418] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.435] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.449] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.466] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.483] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.499] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.518] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.533] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.550] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.566] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.584] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.600] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.617] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.617] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.634] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.650] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.651] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.667] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.684] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.684] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.700] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.717] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.717] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.734] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.751] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.751] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.767] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.767] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.784] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.801] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.801] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.817] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.834] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.835] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.851] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.867] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.868] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.884] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.901] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.918] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.918] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.934] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.951] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.951] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.967] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:53.985] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:53.985] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.001] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.019] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.019] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.034] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.034] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.051] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.068] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.068] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.084] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.101] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.101] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.118] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.136] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.136] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.151] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.168] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.168] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.185] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.202] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.202] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.218] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.235] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.251] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.252] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.268] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.286] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.286] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.302] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.302] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.319] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.336] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.336] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.352] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.368] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.369] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.385] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.402] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.402] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.419] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.435] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.435] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.452] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.469] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.469] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.485] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.502] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.502] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.519] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.536] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.536] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.552] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.569] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:54.569] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:54.586] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-07 15:01:56.880] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:56.880] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:56.897] [debug] Mouse Delta: -58, -303
+[2025-02-07 15:01:56.914] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:56.930] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:56.947] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:56.964] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:56.982] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:56.999] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.015] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.032] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.049] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.065] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.082] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.099] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.116] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.132] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.132] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.149] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.166] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.166] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.182] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.199] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.199] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.216] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.233] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.233] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.249] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.266] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.266] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.283] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.300] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.300] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.316] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.333] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.333] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.350] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.367] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.367] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.383] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.400] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.400] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.416] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.433] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.434] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.450] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.450] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.466] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.483] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.500] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.500] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.516] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.535] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.535] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.550] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.567] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.567] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.583] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.601] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.601] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.617] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.634] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.634] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.650] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.667] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.667] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.684] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.701] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.701] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.717] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.734] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.734] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.751] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.751] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.767] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.784] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.785] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.801] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.818] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.818] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.834] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.851] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.851] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.868] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.884] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.884] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.901] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.917] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.935] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.935] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.951] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.970] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.970] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:57.985] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:57.985] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.002] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.020] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.020] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.035] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.052] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.052] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.068] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.086] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.086] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.101] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.118] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.119] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.135] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.152] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.153] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.168] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.186] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.186] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.203] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.218] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.219] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.236] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.253] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.269] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.269] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.285] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.285] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.302] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.319] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.319] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.336] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.352] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.352] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.369] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.386] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.386] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.404] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.419] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.419] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.436] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.452] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.452] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.469] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.487] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.487] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.505] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.520] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.520] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.536] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.553] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.553] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.569] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.586] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.586] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.605] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.620] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.620] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.638] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.654] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.654] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.669] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.686] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.686] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.703] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.723] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.723] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.737] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.737] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.755] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.770] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.770] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.786] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.803] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.803] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.822] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.837] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.837] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.854] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.870] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.888] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.888] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.903] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.923] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.923] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.937] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.955] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.955] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.970] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:58.992] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:58.993] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.003] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:59.003] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.023] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.038] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:59.038] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.054] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.076] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:59.076] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.087] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.104] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:59.104] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.121] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.137] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.155] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-07 15:01:59.155] [debug] Mouse Delta: 0, 0
+[2025-02-07 15:01:59.171] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-07 15:02:00.114] [debug] Event Occurred. "AppClose_CoreEvent"

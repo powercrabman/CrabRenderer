@@ -1,0 +1,11 @@
+[2025-02-26 01:19:22.517] [info] Log initialized
+[2025-02-26 01:19:23.193] [info] Load Image: Resources\AnimationDemo\skyboxBrdf.dds
+[2025-02-26 01:19:23.197] [info] Load Image: Resources\AnimationDemo\skyboxEnvHDR.dds
+[2025-02-26 01:19:23.223] [info] Load Image: Resources\AnimationDemo\skyboxDiffuseHDR.dds
+[2025-02-26 01:19:23.226] [info] Load Image: Resources\AnimationDemo\skyboxSpecularHDR.dds
+[2025-02-26 01:19:24.119] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 01:19:24.534] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 01:19:25.673] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-26 01:19:26.199] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-26 01:19:27.097] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 01:19:27.097] [debug] Event Occurred. "AppClose_CoreEvent"

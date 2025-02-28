@@ -1,0 +1,11 @@
+[2025-02-17 08:26:36.102] [info] Log initialized
+[2025-02-17 08:26:36.670] [info] Load Image: Resources\PBRDemo\PBRDemoTextureEnvHDR.dds
+[2025-02-17 08:26:36.709] [info] Load Image: Resources\PBRDemo\PBRDemoTextureSpecularHDR.dds
+[2025-02-17 08:26:36.739] [info] Load Image: Resources\PBRDemo\PBRDemoTextureDiffuseHDR.dds
+[2025-02-17 08:26:36.750] [info] Load Image: Resources\PBRDemo\PBRDemoTextureBrdf.dds
+[2025-02-17 08:26:37.575] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 08:26:37.608] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 08:26:37.797] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-17 08:26:37.861] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-17 08:26:38.292] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 08:26:38.293] [debug] Event Occurred. "AppClose_CoreEvent"

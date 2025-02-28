@@ -1,0 +1,4 @@
+[2025-02-22 14:43:58.036] [info] Log initialized
+[2025-02-22 14:43:58.645] [info] Load Image: Resources\flare0.dds
+[2025-02-22 14:44:02.032] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-22 14:44:02.032] [debug] Event Occurred. "AppClose_CoreEvent"

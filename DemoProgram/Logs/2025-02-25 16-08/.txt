@@ -1,0 +1,7 @@
+[2025-02-26 01:08:16.403] [info] Log initialized
+[2025-02-26 01:08:17.152] [info] Load Image: Resources\AnimationDemo\skyboxBrdf.dds
+[2025-02-26 01:08:17.159] [info] Load Image: Resources\AnimationDemo\skyboxEnvHDR.dds
+[2025-02-26 01:08:17.224] [info] Load Image: Resources\AnimationDemo\skyboxDiffuseHDR.dds
+[2025-02-26 01:08:17.229] [info] Load Image: Resources\AnimationDemo\skyboxSpecularHDR.dds
+[2025-02-26 01:08:19.314] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-26 01:08:19.314] [debug] Event Occurred. "AppClose_CoreEvent"

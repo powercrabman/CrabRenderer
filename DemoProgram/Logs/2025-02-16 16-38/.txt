@@ -1,0 +1,26 @@
+[2025-02-17 01:38:40.148] [info] Log initialized
+[2025-02-17 01:38:40.613] [info] Load Image: Resources\PBRDemo\PBRDemoTextureEnvHDR.dds
+[2025-02-17 01:38:40.646] [info] Load Image: Resources\PBRDemo\PBRDemoTextureSpecularHDR.dds
+[2025-02-17 01:38:40.668] [info] Load Image: Resources\PBRDemo\PBRDemoTextureDiffuseHDR.dds
+[2025-02-17 01:38:50.122] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.381] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.385] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.515] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.771] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.800] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.850] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.880] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.908] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.942] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:50.975] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:51.004] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:51.034] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:51.058] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-17 01:38:51.258] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-17 01:38:52.004] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:52.205] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:52.296] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-17 01:38:52.338] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-17 01:38:52.419] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-02-17 01:38:52.587] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 01:38:52.587] [debug] Event Occurred. "AppClose_CoreEvent"

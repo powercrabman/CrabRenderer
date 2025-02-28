@@ -1,0 +1,4 @@
+[2025-02-23 13:34:38.572] [info] Log initialized
+[2025-02-23 13:34:42.771] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-23 13:34:42.771] [debug] Event Occurred. "AppClose_CoreEvent"
+[2025-02-23 13:34:42.845] [debug] Event Occurred. "KeyUp_IOEvent"

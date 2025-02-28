@@ -1,0 +1,360 @@
+[2025-02-08 22:12:32.767] [info] Log initialized
+[2025-02-08 22:12:33.434] [debug] cube map -> 0
+[2025-02-08 22:12:34.215] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:12:34.215] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.217] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.221] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.225] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.230] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.234] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.238] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.242] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.246] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.250] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.255] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.259] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.263] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.267] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.271] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.275] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.280] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.284] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.288] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.292] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.296] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.301] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.305] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.309] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.313] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.320] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.323] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.326] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.330] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.334] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.338] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.342] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.347] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.351] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.355] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.359] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.364] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.367] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.372] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.376] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.380] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.384] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.388] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.392] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.397] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.401] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.406] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.409] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.414] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.418] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.422] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.426] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.430] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.434] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.439] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.443] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.447] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.451] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.455] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.459] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.463] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.467] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.472] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.476] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.480] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:34.484] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:12:34.886] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:12:34.886] [debug] No Entity Selected
+[2025-02-08 22:12:34.890] [debug] No Entity Selected
+[2025-02-08 22:12:34.894] [debug] No Entity Selected
+[2025-02-08 22:12:34.898] [debug] No Entity Selected
+[2025-02-08 22:12:34.902] [debug] No Entity Selected
+[2025-02-08 22:12:34.906] [debug] No Entity Selected
+[2025-02-08 22:12:34.911] [debug] No Entity Selected
+[2025-02-08 22:12:34.915] [debug] No Entity Selected
+[2025-02-08 22:12:34.919] [debug] No Entity Selected
+[2025-02-08 22:12:34.923] [debug] No Entity Selected
+[2025-02-08 22:12:34.927] [debug] No Entity Selected
+[2025-02-08 22:12:34.931] [debug] No Entity Selected
+[2025-02-08 22:12:34.936] [debug] No Entity Selected
+[2025-02-08 22:12:34.940] [debug] No Entity Selected
+[2025-02-08 22:12:34.944] [debug] No Entity Selected
+[2025-02-08 22:12:34.948] [debug] No Entity Selected
+[2025-02-08 22:12:34.952] [debug] No Entity Selected
+[2025-02-08 22:12:34.957] [debug] No Entity Selected
+[2025-02-08 22:12:34.961] [debug] No Entity Selected
+[2025-02-08 22:12:34.965] [debug] No Entity Selected
+[2025-02-08 22:12:34.969] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:12:35.224] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:12:35.224] [debug] No Entity Selected
+[2025-02-08 22:12:35.228] [debug] No Entity Selected
+[2025-02-08 22:12:35.232] [debug] No Entity Selected
+[2025-02-08 22:12:35.236] [debug] No Entity Selected
+[2025-02-08 22:12:35.240] [debug] No Entity Selected
+[2025-02-08 22:12:35.244] [debug] No Entity Selected
+[2025-02-08 22:12:35.249] [debug] No Entity Selected
+[2025-02-08 22:12:35.253] [debug] No Entity Selected
+[2025-02-08 22:12:35.257] [debug] No Entity Selected
+[2025-02-08 22:12:35.261] [debug] No Entity Selected
+[2025-02-08 22:12:35.265] [debug] No Entity Selected
+[2025-02-08 22:12:35.269] [debug] No Entity Selected
+[2025-02-08 22:12:35.274] [debug] No Entity Selected
+[2025-02-08 22:12:35.278] [debug] No Entity Selected
+[2025-02-08 22:12:35.282] [debug] No Entity Selected
+[2025-02-08 22:12:35.286] [debug] No Entity Selected
+[2025-02-08 22:12:35.290] [debug] No Entity Selected
+[2025-02-08 22:12:35.295] [debug] No Entity Selected
+[2025-02-08 22:12:35.299] [debug] No Entity Selected
+[2025-02-08 22:12:35.304] [debug] No Entity Selected
+[2025-02-08 22:12:35.307] [debug] No Entity Selected
+[2025-02-08 22:12:35.311] [debug] No Entity Selected
+[2025-02-08 22:12:35.315] [debug] No Entity Selected
+[2025-02-08 22:12:35.320] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:12:35.798] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-08 22:12:35.799] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.804] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.806] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.810] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.815] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.818] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.823] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.827] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.831] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.831] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.831] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.831] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.835] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.835] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.835] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.835] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.839] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.843] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.848] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.848] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.848] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.848] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.852] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.852] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.852] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.853] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.856] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.856] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.856] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.856] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.860] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.860] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.860] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.860] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.864] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.864] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.864] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.864] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.869] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.869] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.869] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.869] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.873] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.873] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.873] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.873] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.877] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.877] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.877] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.877] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.881] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.881] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.881] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.881] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.885] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.885] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.885] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.885] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.889] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.889] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.889] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.889] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.894] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.894] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.894] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.894] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.898] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.898] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.898] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.898] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.902] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.902] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.902] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.902] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.907] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.907] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.907] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.907] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.913] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.913] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.913] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.913] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.915] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.915] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.915] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.915] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.919] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.919] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.919] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.919] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.924] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.924] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.924] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.924] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.930] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.930] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.930] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.930] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.932] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.936] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.936] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.936] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.936] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.940] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.940] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.940] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.940] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.944] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.944] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.944] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.944] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.948] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.948] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.948] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.948] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.953] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.953] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.953] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.953] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.956] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.961] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.961] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.961] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.961] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.965] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.965] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.965] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.965] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.969] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.969] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.969] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.969] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.973] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.973] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.973] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.973] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.977] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.977] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.977] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.978] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.982] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.982] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.982] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.982] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.986] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.986] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.986] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.986] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.991] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.991] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.991] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.991] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.996] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.996] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.996] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.996] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.999] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:35.999] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:35.999] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:35.999] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.003] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.003] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.003] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.003] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.007] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.007] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.007] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.007] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.011] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.011] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.011] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.011] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.015] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.015] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.015] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.015] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.019] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.019] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.019] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.019] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.024] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.024] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.024] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.024] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.028] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.028] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.028] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.028] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.032] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.032] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.032] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.032] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.036] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.036] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.036] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.036] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.041] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.041] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.041] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.041] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.046] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.047] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.047] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.047] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.049] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.049] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.049] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.049] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.053] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.053] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.053] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.053] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.058] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.058] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.058] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.058] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.063] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.063] [debug] curX: %d, cutY: %d
+[2025-02-08 22:12:36.063] [debug] preX: %d, preY: %d
+[2025-02-08 22:12:36.063] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.066] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.069] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.074] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.078] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.082] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.086] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.090] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.095] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.099] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.103] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.107] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.111] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.115] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.120] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.124] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.128] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.132] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.136] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.140] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.145] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.149] [debug] Selected Entity ID: 5
+[2025-02-08 22:12:36.153] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-08 22:12:42.492] [debug] Event Occurred. "AppClose_CoreEvent"

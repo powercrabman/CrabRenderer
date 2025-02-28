@@ -1,0 +1,11 @@
+[2025-02-07 13:56:38.601] [info] Log initialized
+[2025-02-07 13:57:57.542] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:57.557] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:57.573] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:57.590] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:57.625] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:57.640] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:57.941] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:57.957] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:57.974] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-07 13:57:59.133] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -1,0 +1,24 @@
+[2025-02-27 15:09:31.194] [info] Log initialized
+[2025-02-27 15:09:31.858] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-02-27 15:09:31.861] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-02-27 15:09:31.925] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-02-27 15:09:31.937] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-02-27 15:09:32.009] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-02-27 15:09:32.038] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxEnvHDR.dds
+[2025-02-27 15:09:32.087] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxDiffuseHDR.dds
+[2025-02-27 15:09:32.091] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxSpecularHDR.dds
+[2025-02-27 15:09:33.206] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-02-27 15:09:33.302] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-02-27 15:09:33.358] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-02-27 15:09:33.464] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-02-27 15:09:36.616] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-27 15:09:36.814] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-27 15:09:39.982] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-27 15:09:41.081] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-27 15:09:42.198] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-27 15:09:42.314] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-27 15:09:42.565] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-27 15:09:42.664] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-27 15:09:43.231] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-27 15:09:45.798] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-27 15:09:48.531] [debug] Event Occurred. "AppClose_CoreEvent"

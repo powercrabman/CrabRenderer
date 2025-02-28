@@ -1,0 +1,5 @@
+[2025-02-24 23:47:03.220] [info] Log initialized
+[2025-02-24 23:47:05.168] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-24 23:47:06.741] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-24 23:47:12.460] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-24 23:47:12.460] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -1,0 +1,13 @@
+[2025-02-22 12:06:40.673] [info] Log initialized
+[2025-02-22 12:06:41.255] [info] Load Image: Resources\flare0.dds
+[2025-02-22 12:06:44.097] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-22 12:06:45.028] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-22 12:06:45.783] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-22 12:06:45.909] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-22 12:06:46.351] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-22 12:06:46.510] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-22 12:06:46.797] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-22 12:06:47.649] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-22 12:06:47.791] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-22 12:06:48.897] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-22 12:06:49.872] [debug] Event Occurred. "AppClose_CoreEvent"

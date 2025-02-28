@@ -1,0 +1,10 @@
+[2025-02-20 02:24:59.455] [info] Log initialized
+[2025-02-20 02:25:00.075] [info] Load Image: Resources\PBRDemo\PBRDemoTextureEnvHDR.dds
+[2025-02-20 02:25:00.101] [info] Load Image: Resources\PBRDemo\PBRDemoTextureSpecularHDR.dds
+[2025-02-20 02:25:00.120] [info] Load Image: Resources\PBRDemo\PBRDemoTextureDiffuseHDR.dds
+[2025-02-20 02:25:00.122] [info] Load Image: Resources\PBRDemo\PBRDemoTextureBrdf.dds
+[2025-02-20 02:25:00.251] [info] Load Image: Resources\status\textures\marble_bust_01_diff_2k.jpg
+[2025-02-20 02:25:00.298] [info] Load Image: Resources\status\textures\marble_bust_01_rough_2k.jpg
+[2025-02-20 02:25:00.310] [info] Load Image: Resources\status\marble_bust_01_nor_gl_2k.exr
+[2025-02-20 02:26:50.511] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-20 02:26:50.511] [debug] Event Occurred. "AppClose_CoreEvent"

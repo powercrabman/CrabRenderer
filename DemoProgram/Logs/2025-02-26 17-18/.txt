@@ -1,0 +1,21 @@
+[2025-02-27 02:18:20.615] [info] Log initialized
+[2025-02-27 02:18:21.241] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-02-27 02:18:21.244] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-02-27 02:18:21.278] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-02-27 02:18:21.281] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-02-27 02:18:21.312] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-02-27 02:18:21.314] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxEnvHDR.dds
+[2025-02-27 02:18:21.353] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxDiffuseHDR.dds
+[2025-02-27 02:18:21.358] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxSpecularHDR.dds
+[2025-02-27 02:18:22.580] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-02-27 02:18:22.683] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-02-27 02:18:22.748] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-02-27 02:18:22.860] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-02-27 02:18:24.030] [info] Load Image: Resources\AnimationDemo\Leather\Leather037_2K-JPG_Roughness.jpg
+[2025-02-27 02:18:24.065] [info] Load Image: Resources\AnimationDemo\Leather\Leather037_2K-JPG_NormalGL.jpg
+[2025-02-27 02:18:25.170] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_Metalness.jpg
+[2025-02-27 02:18:25.193] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_NormalGL.jpg
+[2025-02-27 02:18:25.268] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_Roughness.jpg
+[2025-02-27 02:18:27.094] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-27 02:18:27.094] [debug] Event Occurred. "AppClose_CoreEvent"
+[2025-02-27 02:18:27.110] [debug] Event Occurred. "KeyUp_IOEvent"

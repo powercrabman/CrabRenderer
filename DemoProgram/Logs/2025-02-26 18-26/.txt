@@ -1,0 +1,20 @@
+[2025-02-27 03:26:55.214] [info] Log initialized
+[2025-02-27 03:26:56.033] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-02-27 03:26:56.039] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-02-27 03:26:56.078] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-02-27 03:26:56.082] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-02-27 03:26:56.118] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-02-27 03:26:56.120] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxEnvHDR.dds
+[2025-02-27 03:26:56.183] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxDiffuseHDR.dds
+[2025-02-27 03:26:56.189] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxSpecularHDR.dds
+[2025-02-27 03:26:57.419] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-02-27 03:26:57.526] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-02-27 03:26:57.603] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-02-27 03:26:57.729] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-02-27 03:26:59.079] [info] Load Image: Resources\AnimationDemo\Leather\Leather037_2K-JPG_Roughness.jpg
+[2025-02-27 03:26:59.118] [info] Load Image: Resources\AnimationDemo\Leather\Leather037_2K-JPG_NormalGL.jpg
+[2025-02-27 03:27:00.231] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_Metalness.jpg
+[2025-02-27 03:27:00.254] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_NormalGL.jpg
+[2025-02-27 03:27:00.345] [info] Load Image: Resources\AnimationDemo\MetalBall\Metal049A_2K-JPG_Roughness.jpg
+[2025-02-27 03:27:05.158] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-27 03:27:05.158] [debug] Event Occurred. "AppClose_CoreEvent"

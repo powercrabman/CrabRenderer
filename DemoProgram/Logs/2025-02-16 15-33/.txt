@@ -1,0 +1,17 @@
+[2025-02-17 00:33:53.287] [info] Log initialized
+[2025-02-17 00:33:53.654] [info] Load Image: Resources\PBRDemo\PBRDemoTextureEnvHDR.dds
+[2025-02-17 00:33:53.681] [info] Load Image: Resources\PBRDemo\PBRDemoTextureSpecularHDR.dds
+[2025-02-17 00:33:53.702] [info] Load Image: Resources\PBRDemo\PBRDemoTextureDiffuseHDR.dds
+[2025-02-17 00:33:53.703] [info] Load Image: Resources\PBRDemo\PBRDemoTextureBrdf.dds
+[2025-02-17 00:33:54.543] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-17 00:33:54.636] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-17 00:33:55.133] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-17 00:33:55.150] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-17 00:33:55.166] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-17 00:33:55.183] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-17 00:33:55.200] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-17 00:33:55.229] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-02-17 00:33:55.933] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-02-17 00:33:56.029] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-02-17 00:34:02.400] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-17 00:34:02.400] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -1,0 +1,2 @@
+texassemble cube -w 2048 -h 2048 -o outp
+ut.dds px.png nx.png py.png ny.png pz.png nz.png -y -if CUBIC_DITHER -f BGRA
