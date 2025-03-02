@@ -2,8 +2,8 @@
 
 #include "Snapshot.h"
 
-#include "RenderTarget.h"
 #include "D11Renderer.h"
+#include "RenderTarget.h"
 #include "Textures.h"
 
 namespace crab
@@ -38,10 +38,10 @@ void Snapshot::Capture(const Ref<RenderTarget>& in_rt)
     m_format                         = desc.Format;
 
     CheckD3D11Result(dx->CreateTexture2D(
-                   &captureDesc,
-                   nullptr,
-                   m_texture.GetAddressOf()),
-               "CreateTexture2D Fail.");
+                         &captureDesc,
+                         nullptr,
+                         m_texture.GetAddressOf()),
+                     "CreateTexture2D Fail.");
 
     ctx->CopyResource(m_texture.Get(), tex.Get());
     m_width  = desc.Width;
@@ -68,11 +68,11 @@ void Snapshot::Save(const std::filesystem::path& in_path)
     D3D11_TEXTURE2D_DESC desc = {};
     m_texture->GetDesc(&desc);
     CheckD3D11Result(image.Initialize2D(m_format,
-                                  desc.Width,
-                                  desc.Height,
-                                  1,
-                                  1),
-               "Initialize2D Fail.");
+                                        desc.Width,
+                                        desc.Height,
+                                        1,
+                                        1),
+                     "Initialize2D Fail.");
 
     uint8_t* dest       = image.GetPixels();
     uint8_t* src        = (uint8_t*)mapped.pData;
@@ -110,16 +110,16 @@ void Snapshot::Save(const std::filesystem::path& in_path)
     }
 
     CheckD3D11Result(DirectX::SaveToWICFile(image.GetImages(),
-                                      image.GetImageCount(),
-                                      DirectX::WIC_FLAGS_NONE,
-                                      DirectX::GetWICCodec(codec),
-                                      in_path.c_str()),
-               "SaveToWICFile Fail.");
+                                            image.GetImageCount(),
+                                            DirectX::WIC_FLAGS_NONE,
+                                            DirectX::GetWICCodec(codec),
+                                            in_path.c_str()),
+                     "SaveToWICFile Fail.");
 
     Log::Info("Snapshot saved: {0}", in_path.string());
 }
 
-Vec4 Snapshot::GetPixelColorFloat(int in_x, int in_y)
+Vec4 Snapshot::GetPixelColorFloat(const Int2& in_pos) const
 {
     if (m_texture == nullptr)
     {
@@ -127,7 +127,7 @@ Vec4 Snapshot::GetPixelColorFloat(int in_x, int in_y)
         return Vec4::Zero;
     }
 
-    if (in_x < 0 || in_y < 0)
+    if (in_pos.x < 0 || in_pos.y < 0)
     {
         CRAB_DEBUG_BREAK("Invalid x, y.");
         return Vec4::Zero;
@@ -137,16 +137,16 @@ Vec4 Snapshot::GetPixelColorFloat(int in_x, int in_y)
 
     D3D11_MAPPED_SUBRESOURCE mapped = {};
     CheckD3D11Result(ctx->Map(m_texture.Get(),
-                        0,
-                        D3D11_MAP_READ,
-                        0,
-                        &mapped),
-               "Map Fail.");
+                              0,
+                              D3D11_MAP_READ,
+                              0,
+                              &mapped),
+                     "Map Fail.");
 
-    uint8_t* src      = (uint8_t*)mapped.pData;
+    uint8_t* src      = static_cast<uint8_t*>(mapped.pData);
     size_t   rowPitch = mapped.RowPitch;
 
-    uint8_t* pixel = src + in_y * rowPitch + in_x * 4;
+    uint8_t* pixel = src + in_pos.y * rowPitch + in_pos.x * 4;
 
     Vec4 color;
     color.x = pixel[0] / 255.f;
@@ -159,30 +159,30 @@ Vec4 Snapshot::GetPixelColorFloat(int in_x, int in_y)
     return color;
 }
 
-crab::Vec4Int Snapshot::GetPixelColorUInt(int in_x, int in_y)
+Int4 Snapshot::GetPixelColorUInt(const Int2& in_pos) const
 {
     if (m_texture == nullptr)
     {
         CRAB_DEBUG_BREAK("Texture is nullptr.");
-        return Vec4Int { 0, 0, 0, 0 };
+        return Int4 { 0, 0, 0, 0 };
     }
-    if (in_x < 0 || in_y < 0)
+    if (in_pos.x < 0 || in_pos.y < 0)
     {
         CRAB_DEBUG_BREAK("Invalid x, y.");
-        return Vec4Int { 0, 0, 0, 0 };
+        return Int4 { 0, 0, 0, 0 };
     }
     auto                     ctx    = GetRenderer().GetContext();
     D3D11_MAPPED_SUBRESOURCE mapped = {};
     CheckD3D11Result(ctx->Map(m_texture.Get(),
-                        0,
-                        D3D11_MAP_READ,
-                        0,
-                        &mapped),
-               "Map Fail.");
-    uint8_t* src      = (uint8_t*)mapped.pData;
+                              0,
+                              D3D11_MAP_READ,
+                              0,
+                              &mapped),
+                     "Map Fail.");
+    uint8_t* src      = static_cast<uint8_t*>(mapped.pData);
     size_t   rowPitch = mapped.RowPitch;
-    uint8_t* pixel    = src + in_y * rowPitch + in_x * 4;
-    Vec4Int color;
+    uint8_t* pixel    = src + in_pos.y * rowPitch + in_pos.x * 4;
+    Int4     color;
     color.x = pixel[0];
     color.y = pixel[1];
     color.z = pixel[2];

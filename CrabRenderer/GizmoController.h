@@ -46,10 +46,10 @@ public:
         Vec3&             inout_scale)
     {
         ImGuizmo::SetRect(
-            static_cast<float>(in_viewRect.left),
-            static_cast<float>(in_viewRect.top),
-            static_cast<float>(in_viewRect.Width()),
-            static_cast<float>(in_viewRect.Height()));
+            static_cast<float>(in_viewRect.position.x),
+            static_cast<float>(in_viewRect.position.y),
+            static_cast<float>(in_viewRect.size.x),
+            static_cast<float>(in_viewRect.size.y));
 
         ImGuizmo::SetDrawlist();
         ImGuizmo::SetOrthographic(in_projType == eProjectionType::Orthographic);
@@ -57,11 +57,11 @@ public:
         Mat4 world = Mat4::CreateScale(inout_scale) * Mat4::CreateFromQuaternion(inout_rotation) * Mat4::CreateTranslation(inout_position);
 
         if (ImGuizmo::Manipulate(
-            reinterpret_cast<const float*>(&in_view),
-            reinterpret_cast<const float*>(&in_proj),
-            static_cast<ImGuizmo::OPERATION>(in_mode),
-            static_cast<ImGuizmo::MODE>(eGizmoSpace::World),
-            reinterpret_cast<float*>(&world)))
+                reinterpret_cast<const float*>(&in_view),
+                reinterpret_cast<const float*>(&in_proj),
+                static_cast<ImGuizmo::OPERATION>(in_mode),
+                static_cast<ImGuizmo::MODE>(eGizmoSpace::World),
+                reinterpret_cast<float*>(&world)))
         {
             world.Decompose(inout_scale, inout_rotation, inout_position);
         }
@@ -89,7 +89,6 @@ public:
         const Vec3& in_gridRot,
         const Vec3& in_gridScale,
         const float in_girdSize);
-
 };
 
 }   // namespace crab

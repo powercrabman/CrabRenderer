@@ -27,30 +27,19 @@
 #pragma comment(lib, "DirectXTK.lib")
 #pragma comment(lib, "DirectXTex.lib")
 
-// - SDL
-#if defined(_DEBUG)
-#    pragma comment(lib, "SDL2d.lib")
-#    pragma comment(lib, "SDL2maind.lib")
-#else
-#    pragma comment(lib, "SDL2.lib")
-#    pragma comment(lib, "SDL2main.lib")
-#endif
-
 // - imgui
 #include <imgui.h>
-#include <imgui_impl_dx11.h>
-#include <imgui_impl_sdl2.h>
 #include <imgui_internal.h>
 #include <imgui_stdlib.h>
-
-// - magic_enum
-#include <magic_enum/magic_enum.hpp>
 
 // - fmt
 #include <fmt/core.h>
 
 // - entt
 #include <entt/entt.hpp>
+
+// - magic_enum
+#include <magic_enum/magic_enum.hpp>
 
 // - Base
 #include "TypeInfo.h"
@@ -68,4 +57,3 @@
 
 // - Application
 #include "Application.h"
-#include "EntryPoint.h"

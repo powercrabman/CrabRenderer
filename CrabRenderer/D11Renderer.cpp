@@ -2,12 +2,12 @@
 
 #include "AppWindow.h"
 #include "D11Renderer.h"
-#include "ImguiVendor.h"
+#include "ImguiGlue.h"
 
+#include "CommonState.h"
 #include "CrabEvent.h"
 #include "DepthBuffer.h"
 #include "EventDispatcher.h"
-#include "CommonState.h"
 #include "RenderTarget.h"
 #include "Swapchain.h"
 
@@ -20,7 +20,10 @@ D11Renderer::D11Renderer()
 
 D11Renderer::~D11Renderer() = default;
 
-void D11Renderer::Init(const RendererSetting& in_setting)
+void D11Renderer::Init(
+    const RendererSetting& in_setting,
+    const Int2&            in_screenSize,
+    HWND                   in_hWnd)
 {
     // - Device & Device Context & Swap Chain
     D3D_FEATURE_LEVEL featureLevels[] = {
@@ -39,28 +42,28 @@ void D11Renderer::Init(const RendererSetting& in_setting)
     // - Create Device
 
     CheckD3D11Result(D3D11CreateDevice(nullptr,
-                                     D3D_DRIVER_TYPE_HARDWARE,
-                                     NULL,
-                                     createDeviceFlags,
-                                     featureLevels,
-                                     ARRAYSIZE(featureLevels),
-                                     D3D11_SDK_VERSION,
-                                     m_device.GetAddressOf(),
-                                     &m_featureLevel,
-                                     m_deviceContext.GetAddressOf()),
-                   "D3D11CreateDevice Fail.");
+                                       D3D_DRIVER_TYPE_HARDWARE,
+                                       NULL,
+                                       createDeviceFlags,
+                                       featureLevels,
+                                       ARRAYSIZE(featureLevels),
+                                       D3D11_SDK_VERSION,
+                                       m_device.GetAddressOf(),
+                                       &m_featureLevel,
+                                       m_deviceContext.GetAddressOf()),
+                     "D3D11CreateDevice Fail.");
 
     // - Swap Chain
-    m_swapChain = Swapchain::Create(in_setting.swapChainSetting);
+    m_swapChain = Swapchain::Create(
+        in_setting.swapChainSetting,
+        in_screenSize,
+        in_hWnd);
 
 #ifdef _DEBUG
     // - debug
     CheckD3D11Result(m_device->QueryInterface(IID_PPV_ARGS(m_debug.GetAddressOf())), "QueryInterface Fail.");
     CheckD3D11Result(m_debug->QueryInterface(IID_PPV_ARGS(m_infoQueue.GetAddressOf())), "QueryInterface Fail.");
 #endif
-
-    // imgui
-    ImguiVendor::Init();
 
     // Render State Storage
     m_renderStateStorage = CreateScope<CommonState>();
@@ -69,7 +72,6 @@ void D11Renderer::Init(const RendererSetting& in_setting)
 
 void D11Renderer::Shutdown()
 {
-    ImguiVendor::Shutdown();
 }
 
 void D11Renderer::OnEvent(CrabEvent& in_event) const
@@ -79,7 +81,7 @@ void D11Renderer::OnEvent(CrabEvent& in_event) const
     HANDLE_EVENT(Resize_WindowEvent,
                  [&](const Resize_WindowEvent& e)
                  {
-                     m_swapChain->OnResize(e.width, e.height);
+                     m_swapChain->OnResize(e.size);
                  });
 }
 
@@ -342,22 +344,12 @@ void D11Renderer::BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_nul
     }
 }
 
-void D11Renderer::ClearBackBufferMS(const Color& in_color)
+void D11Renderer::ClearBackBufferMS(const Color& in_color) const
 {
     GetBackBufferMS()->Clear(in_color);
 }
 
-void D11Renderer::BeginGUI()
-{
-    ImguiVendor::BeginRender();
-}
-
-void D11Renderer::EndGUI()
-{
-    ImguiVendor::EndRender();
-}
-
-void D11Renderer::Present()
+void D11Renderer::Present() const
 {
     m_swapChain->Present();
 }
@@ -367,14 +359,14 @@ Ref<RenderTarget> D11Renderer::GetBackBufferMS() const
     return m_swapChain->GetBackBufferHDR();
 }
 
-ComPtr<ID3D11Device> D11Renderer::GetDevice() const
+ID3D11Device* D11Renderer::GetDevice() const
 {
-    return m_device;
+    return m_device.Get();
 }
 
-ComPtr<ID3D11DeviceContext> D11Renderer::GetContext() const
+ID3D11DeviceContext* D11Renderer::GetContext() const
 {
-    return m_deviceContext;
+    return m_deviceContext.Get();
 }
 
 CommonState* D11Renderer::GetRenderStateStorage() const

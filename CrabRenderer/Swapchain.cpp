@@ -11,18 +11,18 @@
 namespace crab
 {
 
-Ref<Swapchain> Swapchain::Create(const SwapChainSetting& in_setting)
+Ref<Swapchain> Swapchain::Create(
+    const SwapChainSetting& in_setting,
+    const Int2&             in_screenSize,
+    HWND                    in_hWnd)
 {
     auto           d         = GetRenderer().GetDevice();
-    Ref<Swapchain> swapchain = CreateRef<Swapchain>();
-    AppWindow&     window    = GetApplication().GetAppWindow();
-
-    auto [width, height] = window.GetWindowSize();
+    Ref<Swapchain> swapChain = CreateRef<Swapchain>();
 
     // - Swap Chain
     DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
-    swapChainDesc.Width                 = width;
-    swapChainDesc.Height                = height;
+    swapChainDesc.Width                 = in_screenSize.x;
+    swapChainDesc.Height                = in_screenSize.y;
     swapChainDesc.Format                = static_cast<DXGI_FORMAT>(in_setting.swapChainFormat);
     swapChainDesc.Stereo                = FALSE;
     swapChainDesc.SampleDesc.Count      = 1;   // Not use MSAA
@@ -33,33 +33,42 @@ Ref<Swapchain> Swapchain::Create(const SwapChainSetting& in_setting)
     swapChainDesc.SwapEffect            = DXGI_SWAP_EFFECT_FLIP_DISCARD;
     swapChainDesc.AlphaMode             = DXGI_ALPHA_MODE_UNSPECIFIED;
     swapChainDesc.Flags                 = 0;
-    swapchain->m_vsync                  = in_setting.enableVSync;
-    swapchain->m_backBufferFormat       = in_setting.swapChainFormat;
-    swapchain->m_depthBufferFormat      = in_setting.depthBufferFormat;
-    swapchain->m_enableHDRRendering     = in_setting.enableHDRRendering;
-    swapchain->m_enableMSAA             = in_setting.enableMSAA;
+    swapChain->m_vsync                  = in_setting.enableVSync;
+    swapChain->m_backBufferFormat       = in_setting.swapChainFormat;
+    swapChain->m_depthBufferFormat      = in_setting.depthBufferFormat;
+    swapChain->m_enableHDRRendering     = in_setting.enableHDRRendering;
+    swapChain->m_enableMSAA             = in_setting.enableMSAA;
 
     ComPtr<IDXGIDevice2> dxgiDevice;
-    CheckD3D11Result(d->QueryInterface(__uuidof(IDXGIDevice2), (void**)dxgiDevice.GetAddressOf()), "QueryInterface Fail.");
+    CheckD3D11Result(d->QueryInterface(
+                         __uuidof(IDXGIDevice2),
+                         reinterpret_cast<void**>(dxgiDevice.GetAddressOf())),
+                     "QueryInterface Fail.");
 
     ComPtr<IDXGIAdapter> dxgiAdapter;
-    CheckD3D11Result(dxgiDevice->GetParent(__uuidof(IDXGIAdapter), (void**)dxgiAdapter.GetAddressOf()), "GetParent Fail.");
+    CheckD3D11Result(dxgiDevice->GetParent(
+                         __uuidof(IDXGIAdapter),
+                         reinterpret_cast<void**>(dxgiAdapter.GetAddressOf())),
+                     "GetParent Fail.");
 
     ComPtr<IDXGIFactory2> dxgiFactory;
-    CheckD3D11Result(dxgiAdapter->GetParent(__uuidof(IDXGIFactory2), (void**)dxgiFactory.GetAddressOf()), "GetParent Fail.");
+    CheckD3D11Result(dxgiAdapter->GetParent(
+                         __uuidof(IDXGIFactory2),
+                         reinterpret_cast<void**>(dxgiFactory.GetAddressOf())),
+                     "GetParent Fail.");
 
     CheckD3D11Result(dxgiFactory->CreateSwapChainForHwnd(
-                         d.Get(),
-                         (HWND)window.GetNativeWindowHandle(),
+                         d,
+                         in_hWnd,
                          &swapChainDesc,
                          nullptr,
                          nullptr,
-                         swapchain->m_swapChain.GetAddressOf()),
-                     "CreateSwapChainForHwnd Fail.");
+                         swapChain->m_swapChain.GetAddressOf()),
+                     "CreateSwapChainForHWnd Fail.");
 
-    swapchain->_CreateResources(width, height);
+    swapChain->_CreateResources(in_screenSize);
 
-    return swapchain;
+    return swapChain;
 }
 
 void Swapchain::Present() const
@@ -68,7 +77,7 @@ void Swapchain::Present() const
     m_swapChain->Present1(m_vsync ? 1 : 0, 0, &presentParameters);
 }
 
-void Swapchain::OnResize(uint32 in_width, uint32 in_height)
+void Swapchain::OnResize(Int2 in_size)
 {
     m_backBuffer.reset();
     m_backBufferHDR.reset();
@@ -76,7 +85,7 @@ void Swapchain::OnResize(uint32 in_width, uint32 in_height)
     m_depthOnlyBuffer.reset();
 
     CheckD3D11Result(m_swapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0), "ResizeBuffers Fail.");
-    _CreateResources(in_width, in_height);
+    _CreateResources(in_size);
 }
 
 void Swapchain::EnableMSAA(bool in_enable)
@@ -109,8 +118,7 @@ void Swapchain::EnableMSAA(bool in_enable)
         m_MSAAQuality     = 0;
     }
 
-    auto [width, height] = GetAppWindow().GetWindowSize();
-    _CreateResources(width, height);
+    _CreateResources(GetAppWindow().GetWindowSize());
 }
 
 Viewport Swapchain::GetViewport() const
@@ -199,14 +207,14 @@ void Swapchain::ResolveBackBuffer() const
     }
 }
 
-void Swapchain::_CreateResources(uint32 in_width, uint32 in_height)
+void Swapchain::_CreateResources(const Int2& in_size)
 {
     auto d = GetRenderer().GetDevice();
 
     // viewport
     Viewport vp = {};
-    vp.width    = static_cast<float>(in_width);
-    vp.height   = static_cast<float>(in_height);
+    vp.width    = static_cast<float>(in_size.x);
+    vp.height   = static_cast<float>(in_size.y);
     vp.minDepth = 0.f;
     vp.maxDepth = 1.f;
     vp.x        = 0.f;
@@ -223,32 +231,32 @@ void Swapchain::_CreateResources(uint32 in_width, uint32 in_height)
     m_backBuffer = RenderTarget::Create(backBufferTexture.Get());
 
     // HDR Resources
-    _CreateHDRRenderTarget(in_width, in_height);
+    _CreateHDRRenderTarget(in_size);
 
     // Depth stencil
     m_depthBuffer = DepthBuffer::Create(
-        in_width,
-        in_height,
+        in_size.x,
+        in_size.y,
         m_depthBufferFormat,
         m_MSAASampleCount,
         m_MSAAQuality);
 
     m_depthOnlyBuffer = DepthBuffer::CreateWithImage2D(
-        in_width,
-        in_height,
+        in_size.x,
+        in_size.y,
         eFormat::Depth_Float32,
         m_MSAASampleCount,
         m_MSAAQuality,
         eFormat::Float32);
 }
 
-void Swapchain::_CreateHDRRenderTarget(uint32 in_width, uint32 in_height)
+void Swapchain::_CreateHDRRenderTarget(const Int2& in_size)
 {
     auto d = GetRenderer().GetDevice();
 
     m_backBufferHDRImage = ID3D11Texture2DUtil::CreateTexture2D(
-        in_width,
-        in_height,
+        in_size.x,
+        in_size.y,
         eFormat::Float16x4,
         D3D11_USAGE_DEFAULT,
         D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE,
@@ -259,8 +267,8 @@ void Swapchain::_CreateHDRRenderTarget(uint32 in_width, uint32 in_height)
     m_backBufferHDR = RenderTarget::Create(m_backBufferHDRImage.Get());
 
     m_resolvedBackBufferImage = ID3D11Texture2DUtil::CreateTexture2D(
-        in_width,
-        in_height,
+        in_size.x,
+        in_size.y,
         eFormat::Float16x4,
         D3D11_USAGE_DEFAULT,
         D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE,

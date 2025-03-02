@@ -4,6 +4,7 @@
 #include "AppWindow.h"
 #include "CrabEvent.h"
 #include "FileSystem.h"
+#include "EntryPoint.h"
 
 // - IO
 #include "Input.h"

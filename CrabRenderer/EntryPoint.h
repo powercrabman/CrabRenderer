@@ -1,12 +1,25 @@
 #pragma once
 
-#define CRAB_ENTRY_POINT(AppClass)                                             \
-    int main(int argc, char* argv[])                                           \
-    {                                                                          \
-        crab::Application::s_instance            = CreateScope<AppClass>();    \
-        crab::Application&               app     = crab::GetApplication();     \
-        crab::ApplicationSetting         setting = app.ConfigureApplication(); \
-        crab::ApplicationCommandLineArgs args    = { argc, argv };             \
-        app._Init(setting, args);                                              \
-        return app._Run();                                                     \
-    }
+#include "Application.h"
+
+int main(int argc, char** argv)
+{
+    using namespace crab;
+    Log::Init();
+
+    // Create Command Line Args
+    CommandLineArgs commandLineArgs;
+    commandLineArgs.args.reserve(argc);
+
+    for (int i = 0; i < argc; ++i)
+        commandLineArgs.args.push_back(argv[i]);
+
+    // Create Application
+    Application::s_instance = Scope<Application>(::CreateCrabApplication(commandLineArgs));
+
+    Application& app = GetApplication();
+    app.OnInit();
+    const int output = app._Run();
+    Log::Shutdown();
+    return output;
+}

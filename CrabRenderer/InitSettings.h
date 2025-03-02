@@ -9,16 +9,13 @@ namespace crab
 
 struct AppWindowSetting
 {
-    std::string windowTitle  = "Crab Renderer";
-    uint32      windowWidth  = 1280;
-    uint32      windowHeight = 720;
-    uint32      windowPosX   = CENTER_ALIGNMENT;
-    uint32      windowPosY   = CENTER_ALIGNMENT;
+    std::string windowTitle = "Crab Renderer";
+    Int2        windowSize  = { 1280, 720 };
+    Int2        windowPos   = { CENTER_ALIGNMENT, CENTER_ALIGNMENT };
 
-    enum : uint32
-    {
-        CENTER_ALIGNMENT = CRAB_UINT32_MAX
-    };
+    // clang-format off
+    enum : int32 { CENTER_ALIGNMENT = CRAB_INT32_MAX };
+    // clang-format on
 };
 
 //===================================================
@@ -34,17 +31,6 @@ enum class eLogLevel
     Error,
     Critical,
     Off
-};
-
-struct LogSetting
-{
-    eLogLevel             logLevel     = eLogLevel::Trace;
-    std::string           logPattern   = "[%Y-%m-%d %H:%M:%S.%e] [%l] %v";
-    std::filesystem::path logDirectory = std::filesystem::current_path() / "Logs";
-
-    // - Adv Settings
-    uint64 threadPoolSize = 8192;   // Thread pool size for async logging
-    uint32 threadCount    = 1;      // Thread count for async logging
 };
 
 //===================================================
@@ -65,7 +51,7 @@ struct SwapChainSetting
     bool enableHDRRendering = false;
 
     // MSAA
-    bool  enableMSAA      = false;
+    bool enableMSAA = false;
 };
 
 struct RendererSetting
@@ -86,9 +72,6 @@ struct ApplicationSetting
 
     // - Window
     AppWindowSetting windowSetting = {};
-
-    // - Log
-    LogSetting logSetting = {};
 
     // - Renderer
     RendererSetting rendererSetting = {};

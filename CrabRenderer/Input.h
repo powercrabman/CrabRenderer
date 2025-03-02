@@ -48,29 +48,6 @@ enum class eMouse
 
 // clang-format on
 
-struct CrabIO
-{
-    // - Keyboard
-    std::array<bool, eKey_Count> isKeyDown;
-    std::array<bool, eKey_Count> prevKeyDown;
-
-    // - Mouse
-    std::array<bool, 3> isMouseDown;
-    std::array<bool, 3> prevMouseDown;
-
-    int32 mouseDeltaScrollX = 0;
-    int32 mouseDeltaScrollY = 0;
-
-    int32 mousePosX     = 0;
-    int32 mousePosY     = 0;
-
-    int32 prevMousePosX = 0;
-    int32 prevMousePosY = 0;
-
-    int32 relativeMouseDeltaX = 0;
-    int32 relativeMouseDeltaY = 0;
-};
-
 //===================================================
 // Input (Core)
 //===================================================
@@ -81,7 +58,6 @@ class Input
 {
 public:
     // - Core
-    static void Init();
     static void Update();
 
     // - Keyboard
@@ -102,42 +78,19 @@ public:
     static bool IsMouseReleased(eMouse in_mouse);
     static bool IsMouseAway(eMouse in_mouse);   // IsMouseUp, but not IsMouseReleased
 
-    static auto GetMousePos();
-    static auto GetPrevMousePos();
-    static auto GetMouseDeltaPos();
-    static auto GetMouseRelativeDeltaPos();
-    static void SetMousePos(uint32 in_x, uint32 in_y);
+    static Vec2 GetMousePos();
+    static Vec2 GetPrevMousePos();
+    static Vec2 GetMouseDeltaPos();
+    static Vec2 GetMouseRelativeDeltaPos();
+    static void SetMousePos(const Vec2& in_screenPos);
     static void SetMousePosToCenter();
 
     // - Event
-    static void OnEvent(CrabEvent& in_event);
+    static void OnEvent(const CrabEvent& in_event);
 
 private:
-    static Scope<CrabIO> m_io;
+    struct Impl;
+    static Scope<Impl> m_impl;
 };
-
-inline auto Input::GetMousePos()
-{
-    return std::make_pair(m_io->mousePosX, m_io->mousePosY);
-}
-
-inline auto Input::GetMouseDeltaPos()
-{
-    int dx, dy;
-    dx = m_io->mousePosX - m_io->prevMousePosX;
-    dy = m_io->mousePosY - m_io->prevMousePosY;
-    return std::make_pair(dx, dy);
-}
-
-inline auto Input::GetPrevMousePos()
-{
-    return std::make_pair(m_io->prevMousePosX, m_io->prevMousePosY);
-}
-
-inline auto Input::GetMouseRelativeDeltaPos()
-{
-    return std::make_pair(m_io->relativeMouseDeltaX, m_io->relativeMouseDeltaY);
-}
-
 
 }   // namespace crab

@@ -9,10 +9,11 @@
 namespace crab
 {
 
-void Log::Init(const LogSetting& in_setting)
+void Log::Init()
 {
     // - Create log directory
-    std::filesystem::create_directories(in_setting.logDirectory);
+    std::filesystem::path logDirectory = std::filesystem::current_path() / "Logs";
+    std::filesystem::create_directories(logDirectory);
 
     // - Create console sink
     auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
@@ -20,7 +21,7 @@ void Log::Init(const LogSetting& in_setting)
     // - Create file sink
     const auto            now         = std::chrono::system_clock::now();
     const auto            timestamp   = std::format("{:%Y-%m-%d %H-%M}", now);
-    std::filesystem::path logFilePath = in_setting.logDirectory / timestamp / ".txt";
+    std::filesystem::path logFilePath = logDirectory / timestamp / ".txt";
     auto                  fileSink    = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFilePath.string(), true);
 
     // - Sinks
@@ -41,8 +42,8 @@ void Log::Init(const LogSetting& in_setting)
     spdlog::set_default_logger(logger);
 
     // - Setting
-    spdlog::set_pattern(in_setting.logPattern);
-    spdlog::set_level(static_cast<spdlog::level::level_enum>(in_setting.logLevel));
+    spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v");
+    spdlog::set_level(static_cast<spdlog::level::level_enum>(eLogLevel::Trace));
 
     // - Done
     spdlog::info("Log initialized");

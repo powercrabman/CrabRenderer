@@ -3,7 +3,6 @@
 namespace crab
 {
 
-
 class RenderTarget;
 
 class Snapshot
@@ -17,8 +16,8 @@ public:
     // you should contain filename and extension
     void Save(const std::filesystem::path& in_path);
 
-    Vec4     GetPixelColorFloat(int in_x, int in_y);
-    Vec4Int GetPixelColorUInt(int in_x, int in_y);
+    Vec4 GetPixelColorFloat(const Int2& in_pos) const;
+    Int4 GetPixelColorUInt(const Int2& in_pos) const;
 
 private:
     ComPtr<ID3D11Texture2D> m_texture;

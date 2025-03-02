@@ -28,11 +28,8 @@ public:
     ~D11Renderer();
 
     // - Core
-    void Init(const RendererSetting& in_setting);
+    void Init(const RendererSetting& in_setting, const Int2& in_screenSize, HWND in_hWnd);
     void Shutdown();
-
-    void BeginGUI();
-    void EndGUI();
 
     void OnEvent(CrabEvent& in_event) const;
 
@@ -74,7 +71,7 @@ public:
     Ref<RenderTarget> GetBackBuffer();
 
     void              BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_null);
-    void              ClearBackBufferMS(const Color& in_color);
+    void              ClearBackBufferMS(const Color& in_color) const;
     Ref<RenderTarget> GetBackBufferMS() const;
 
     void ClearDepthBuffer(bool  in_clearDepth,
@@ -91,13 +88,13 @@ public:
     Ref<DepthBuffer> GetDepthOnlyBuffer() const;
 
     // - Swap Chain
-    void              Present();
+    void              Present() const;
     Ref<Swapchain>    GetSwapChain() const;
     Ref<RenderTarget> GetBackBuffer() const;
 
     // - Getter (Native)
-    ComPtr<ID3D11Device>        GetDevice() const;
-    ComPtr<ID3D11DeviceContext> GetContext() const;
+    ID3D11Device*        GetDevice() const;
+    ID3D11DeviceContext* GetContext() const;
 
     CommonState* GetRenderStateStorage() const;
 

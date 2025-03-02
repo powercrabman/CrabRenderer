@@ -123,9 +123,6 @@
     <ClCompile Include="Input.cpp">
       <Filter>03. IO</Filter>
     </ClCompile>
-    <ClCompile Include="EntryPoint.cpp">
-      <Filter>01. Application</Filter>
-    </ClCompile>
     <ClCompile Include="CrabEvent.cpp">
       <Filter>01. Application\Event</Filter>
     </ClCompile>
@@ -165,7 +162,7 @@
     <ClCompile Include="CrabMath.cpp">
       <Filter>99. Base\Math</Filter>
     </ClCompile>
-    <ClCompile Include="ImguiVendor.cpp">
+    <ClCompile Include="ImguiGlue.cpp">
       <Filter>04. Renderer\Gui</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
@@ -329,7 +326,7 @@
     <ClInclude Include="CrabMath.h">
       <Filter>99. Base\Math</Filter>
     </ClInclude>
-    <ClInclude Include="ImguiVendor.h">
+    <ClInclude Include="ImguiGlue.h">
       <Filter>04. Renderer\Gui</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">

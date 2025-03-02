@@ -35,7 +35,7 @@ public:
     void OnRender(TimeStamp& in_ts) const;
     void OnRenderGUI(TimeStamp& in_ts) const;
 
-    void OnEvent(CrabEvent& in_event) const;
+    void OnEvent(CrabEvent& in_event);
 
     Scene*                               GetCurrentScene() const { return m_currentScene; }
     const std::vector<std::string_view>& GetSceneNames() const { return m_sceneNames; }

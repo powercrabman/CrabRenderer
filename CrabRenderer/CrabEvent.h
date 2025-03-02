@@ -32,7 +32,7 @@ enum class eEventType
     if (dispatcher.Dispatch<EventStruct>(func)) \
     return
 
-#define IMPLEMENT_EVENT(EventStruct)                                       \
+#define EVENT_IMPL(EventStruct)                                            \
     inline static const eEventType s_staticType = eEventType::EventStruct; \
     inline static const char*      s_staticName = #EventStruct
 
@@ -53,55 +53,52 @@ struct CrabEvent
 
 struct AppClose_CoreEvent
 {
-    IMPLEMENT_EVENT(AppClose_CoreEvent);
+    EVENT_IMPL(AppClose_CoreEvent);
 };
 
 struct Move_WindowEvent
 {
-    IMPLEMENT_EVENT(Move_WindowEvent);
+    EVENT_IMPL(Move_WindowEvent);
 
-    uint32 x;
-    uint32 y;
+    Int2 position;
 };
 
 struct Resize_WindowEvent
 {
-    IMPLEMENT_EVENT(Resize_WindowEvent);
+    EVENT_IMPL(Resize_WindowEvent);
 
-    uint32 width;
-    uint32 height;
+    Int2 size;
 };
 struct KeyDown_IOEvent
 {
-    IMPLEMENT_EVENT(KeyDown_IOEvent);
+    EVENT_IMPL(KeyDown_IOEvent);
 
     uint32 key;
 };
 
 struct KeyUp_IOEvent
 {
-    IMPLEMENT_EVENT(KeyUp_IOEvent);
+    EVENT_IMPL(KeyUp_IOEvent);
 
     uint32 key;
 };
 
 struct MouseScroll_IOEvent
 {
-    IMPLEMENT_EVENT(MouseScroll_IOEvent);
+    EVENT_IMPL(MouseScroll_IOEvent);
 
-    int32 dx;
-    int32 dy;
+    Vec2 deltaScroll;
 };
 
 struct MouseDown_IOEvent
 {
-    IMPLEMENT_EVENT(MouseDown_IOEvent);
+    EVENT_IMPL(MouseDown_IOEvent);
     int32 button;
 };
 
 struct MouseUp_IOEvent
 {
-    IMPLEMENT_EVENT(MouseUp_IOEvent);
+    EVENT_IMPL(MouseUp_IOEvent);
     int32 button;
 };
 

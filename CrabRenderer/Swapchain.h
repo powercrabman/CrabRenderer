@@ -12,10 +12,10 @@ class DepthBuffer;
 class Swapchain
 {
 public:
-    static Ref<Swapchain> Create(const SwapChainSetting& in_setting);
+    static Ref<Swapchain> Create(const SwapChainSetting& in_setting, const Int2& in_screenSize, HWND in_hWnd);
 
     void Present() const;
-    void OnResize(uint32 in_width, uint32 in_height);
+    void OnResize(Int2 in_size);
 
     void EnableVSynchronize(bool in_enable) { m_vsync = in_enable; }
     void EnableMSAA(bool in_enable);
@@ -39,8 +39,8 @@ public:
     void              ResolveBackBuffer() const;
 
 private:
-    void _CreateResources(uint32 in_width, uint32 in_height);
-    void _CreateHDRRenderTarget(uint32 in_width, uint32 in_height);
+    void _CreateResources(const Int2& in_size);
+    void _CreateHDRRenderTarget(const Int2& in_size);
 
     ComPtr<IDXGISwapChain1> m_swapChain;
 

@@ -40,7 +40,7 @@
     <ClInclude Include="Buffers.h" />
     <ClInclude Include="DepthBuffer.h" />
     <ClInclude Include="D11Enums.h" />
-    <ClInclude Include="ImguiVendor.h" />
+    <ClInclude Include="ImguiGlue.h" />
     <ClInclude Include="InputElements.h" />
     <ClInclude Include="GeometryFactory.h" />
     <ClInclude Include="Model.h" />
@@ -98,7 +98,7 @@
     <ClCompile Include="Buffers.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
     <ClCompile Include="D11Enums.cpp" />
-    <ClCompile Include="ImguiVendor.cpp" />
+    <ClCompile Include="ImguiGlue.cpp" />
     <ClCompile Include="InputElements.cpp" />
     <ClCompile Include="GeometryFactory.cpp" />
     <ClCompile Include="Model.cpp" />
@@ -114,7 +114,6 @@
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="D11Utils.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="EventDispatcher.cpp" />
     <ClCompile Include="ILayer.cpp" />
     <ClCompile Include="InitSetting.cpp" />
@@ -195,10 +194,12 @@
     <IntDir>$(SolutionDir)\Inter\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)\Bin\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
+    <IncludePath>$(SolutionDir)Vendor\</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\Bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\Inter\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)Vendor\</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

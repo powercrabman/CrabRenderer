@@ -2,14 +2,18 @@
 
 #include "Mesh.h"
 #include "Model.h"
-#include "RenderStates.h"
-#include "Textures.h"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 
 #include <DirectXMesh.h>
 #include <DirectXMesh.inl>
+
+#ifdef _DEBUG
+#    pragma comment(lib, "assimp\\assimp-vc143-mtd.lib")
+#else
+#    pragma comment(lib, "assimp\\assimp-vc143-mt.lib")
+#endif
 
 namespace crab
 {
@@ -258,7 +262,6 @@ void ModelLoader::_ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene)
     m_modelNodes.emplace_back(modelData);
 }
 
-
 Ref<Model> Model::Create(const std::vector<ModelNode>& in_meshNodes)
 {
     Ref<Model> model = CreateRef<Model>();
@@ -273,8 +276,6 @@ ModelNode* Model::FindNode(std::string_view in_name)
                                    [&](const ModelNode& node)
                                    { return node.name == in_name; });
 
-
-
     if (it != m_nodes.end())
     {
         return &*it;
@@ -285,6 +286,5 @@ ModelNode* Model::FindNode(std::string_view in_name)
         return nullptr;
     }
 }
-
 
 }   // namespace crab

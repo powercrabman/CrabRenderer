@@ -1,18 +1,22 @@
 #pragma once
+#include "CrabEvent.h"
 #include "Timer.h"
-#include <SDL2/SDL_main.h>
+
+int main(int argc, char** argv);
 
 namespace crab
 {
 
 struct CrabEvent;
 class AppWindow;
-class ILayer;
 
-struct ApplicationCommandLineArgs
+//===================================================
+// Command Line Arguments
+//===================================================
+
+struct CommandLineArgs
 {
-    int    argc;
-    char** argv;
+    std::vector<std::string> args;
 };
 
 //===================================================
@@ -21,14 +25,15 @@ struct ApplicationCommandLineArgs
 
 class Application
 {
-    friend int ::main(int argc, char* argv[]);
+    friend int ::main(int argc, char** argv);
 
 public:
-    Application();
     virtual ~Application();
 
+    void Quit();
+
     // - Getter
-    AppWindow&          GetAppWindow();
+    AppWindow&          GetAppWindow() const;
     static Application& GetInstance();
     std::string_view    GetApplicationName() const;
     const TimeStamp&    GetTimeStamp() const;
@@ -37,33 +42,26 @@ public:
     template<typename Ty>
     void DispatchEvent(Ty& in_event);
 
-    // - Helper
-    void Quit();
+    template<typename Ty>
+    void DispatchEventLater(Ty& in_event);
 
-    // - Virtual
-    virtual ApplicationSetting ConfigureApplication() = 0;
-    virtual void               OnInit()               = 0;   // in the derived class
-    virtual void               OnShutdown()           = 0;   // in the derived class
+protected:
+    Application(const ApplicationSetting& in_setting);
 
 private:
-    // - Core
-    void _Init(const ApplicationSetting&         in_setting,
-               const ApplicationCommandLineArgs& in_args);
+    virtual void OnInit()     = 0;   // in the derived class
+    virtual void OnShutdown() = 0;   // in the derived class
+
     int  _Run();
-
-    // - Command Line
-    std::vector<std::string> _SplitComandLineArgs(const ApplicationCommandLineArgs& in_args);
-    void                     _TranslateCommandLineArgs(const std::vector<std::string>& in_args);
-
-    // - Event
     void _OnEvent(CrabEvent& in_event);
 
-private:
     std::string      m_applicationName;
     Scope<AppWindow> m_appWindow;
     TimeStamp        m_timeStamp;
 
     bool m_isRunning;
+
+    std::vector<CrabEvent> m_eventQueue;
 
     // - Singleton
     static Scope<Application> s_instance;
@@ -86,10 +84,11 @@ inline AppWindow& GetAppWindow()
 template<typename Ty>
 void crab::Application::DispatchEvent(Ty& in_event)
 {
-    static_assert((uint32)Ty::s_staticType > 0, "Event Type is not implemented.");
+    static_assert(
+        static_cast<uint32>(Ty::s_staticType) > 0,
+        "Event Type is not implemented.");
 
     // - Debug
-    Log::Debug(R"(Event Occurred. "{0}")", Ty::s_staticName);
 
     // - Create Event
     CrabEvent e;
@@ -100,11 +99,26 @@ void crab::Application::DispatchEvent(Ty& in_event)
     _OnEvent(e);
 }
 
-// Legacy Code (maybe use)
-//
-// void PushLayer(Scope<ILayer>&& in_layer);
-// void PopLayer(const TypeInfo& in_layer);
-//
-// LayerStack       m_layerStack; (unused)
+template<typename Ty>
+void Application::DispatchEventLater(Ty& in_event)
+{
+    static_assert(
+        static_cast<uint32>(Ty::s_staticType) > 0,
+        "Event Type is not implemented.");
+
+    CrabEvent e;
+    e.eventData = &in_event;
+    e.type      = Ty::s_staticType;
+
+    m_eventQueue.emplace_back(e);
+}
 
 }   // namespace crab
+
+//===================================================
+// Create Application
+// -------------------------
+// This function should be implemented in the client
+//===================================================
+
+extern crab::Application* CreateCrabApplication(const crab::CommandLineArgs& in_commandLineArgs);

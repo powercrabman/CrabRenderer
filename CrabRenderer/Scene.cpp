@@ -82,4 +82,9 @@ Entity Scene::FindEntity(const IDComponent& in_id)
     }
 }
 
+void Scene::ClearRegistry()
+{
+    m_registry.clear();
+}
+
 }   // namespace crab

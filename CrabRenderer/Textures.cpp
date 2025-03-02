@@ -117,7 +117,7 @@ Ref<Image2D> Image2D::CreateFromFile(
 
         if (CheckD3D11Result(
                 DirectX::CreateShaderResourceView(
-                    GetRenderer().GetDevice().Get(),
+                    GetRenderer().GetDevice(),
                     loadData.scratchImage.GetImages(),
                     loadData.scratchImage.GetImageCount(),
                     loadData.metadata,
@@ -204,7 +204,7 @@ Ref<Image2D> Image2D::CreateTextureArrayFromFile(
 
         if (CheckD3D11Result(
                 DirectX::CreateShaderResourceView(
-                    GetRenderer().GetDevice().Get(),
+                    GetRenderer().GetDevice(),
                     images.data(),
                     static_cast<uint32>(images.size()),
                     metadata,
@@ -293,7 +293,7 @@ Ref<Image2D> Image2D::CreateTextureArrayFromFile(
 
     if (CheckD3D11Result(
             DirectX::CreateShaderResourceView(
-                GetRenderer().GetDevice().Get(),
+                GetRenderer().GetDevice(),
                 dstImages.data(),
                 static_cast<uint32>(dstImages.size()),
                 metadata,

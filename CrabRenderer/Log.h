@@ -8,7 +8,7 @@ class Log
 {
 public:
     // - Base
-    static void Init(const LogSetting& in_setting);
+    static void Init();
     static void Shutdown();
 
     // - Setting

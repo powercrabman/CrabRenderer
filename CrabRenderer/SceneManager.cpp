@@ -3,6 +3,7 @@
 #include "SceneManager.h"
 
 #include "CrabComponents.h"
+#include "EventDispatcher.h"
 #include "Scene.h"
 
 #include "Script.h"
@@ -119,11 +120,24 @@ void SceneManager::OnRenderGUI(TimeStamp& in_ts) const
     }
 }
 
-void SceneManager::OnEvent(CrabEvent& in_event) const
+void SceneManager::OnEvent(CrabEvent& in_event)
 {
     if (m_currentScene)
     {
         m_currentScene->OnEvent(in_event);
+
+        EventDispatcher dispatcher(in_event);
+
+        HANDLE_EVENT(AppClose_CoreEvent,
+                     [&](const AppClose_CoreEvent& e)
+                     {
+                         for (auto& scene: m_scenes | std::views::values)
+                         {
+                             scene->OnExit();
+                             scene->ClearRegistry();
+                             scene.reset();
+                         }
+                     });
     }
 }
 

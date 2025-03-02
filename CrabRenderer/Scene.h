@@ -45,6 +45,7 @@ public:
 
     template<class... Types, class... Exclude>
     auto GetView(entt::exclude_t<Exclude...> exclude = entt::exclude_t {});
+    void ClearRegistry();
 
 protected:
     Scene() = default;
