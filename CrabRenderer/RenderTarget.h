@@ -3,7 +3,7 @@
 namespace crab
 {
 
-class Image2D;
+class Texture2D;
 class DepthBuffer;
 
 //===================================================
@@ -26,16 +26,16 @@ public:
     void Bind() const;
     void Bind(const Ref<DepthBuffer>& in_depthBuffer) const;
 
-    void Clear(const Color& in_color) const;
+    void Clear(const Color4& in_color) const;
 
     ID3D11RenderTargetView* Get() const { return m_renderTargetView.Get(); }
     eFormat                 GetFormat() const { return m_format; }
-    Ref<Image2D>            GetImage() const { return m_image; }
+    Ref<Texture2D>            GetImage() const { return m_image; }
 
 private:
     ComPtr<ID3D11RenderTargetView> m_renderTargetView;
 
-    Ref<Image2D> m_image;
+    Ref<Texture2D> m_image;
     eFormat      m_format = eFormat::Unknown;
 };
 

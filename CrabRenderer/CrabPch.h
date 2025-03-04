@@ -47,7 +47,7 @@
 #include "CrabMacro.h"
 #include "CrabMath.h"
 #include "CrabTypes.h"
-#include "D11Enums.h"
+
 #include "InitSettings.h"
 #include "Log.h"
 #include "ErrorHandler.h"

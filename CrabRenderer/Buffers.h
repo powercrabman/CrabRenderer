@@ -89,7 +89,7 @@ private:
 //===================================================
 // Unordered Access View
 //===================================================
-class Image2D;
+class Texture2D;
 
 class UnorderedAccessView
 {
@@ -102,11 +102,11 @@ public:
     void BindImage(uint32 in_slot, eShaderFlags in_bindFlags) const;
 
     ID3D11UnorderedAccessView* GetUAV() const { return m_uav.Get(); }
-    Ref<Image2D>               GetImage2D() const { return m_image2D; }
+    Ref<Texture2D>               GetImage2D() const { return m_image2D; }
 
 private:
     ComPtr<ID3D11UnorderedAccessView> m_uav;
-    Ref<Image2D>                      m_image2D;
+    Ref<Texture2D>                      m_image2D;
 };
 
 //===================================================
@@ -241,6 +241,7 @@ Ref<ConstantBuffer<Ty>> ConstantBuffer<Ty>::Create(const Ty& in_data)
 template<typename Ty>
 void ConstantBuffer<Ty>::WriteToBuffer(const Ty& in_data)
 {
+    if (std::memcmp(&in_cpuData, &in_data, sizeof(Ty)))
     {
         ID3D11BufferUtil::WriteToDynamicBuffer(
             m_buffer.Get(),

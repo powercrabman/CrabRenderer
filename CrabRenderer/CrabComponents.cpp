@@ -97,16 +97,14 @@ void TransformComponent::SetRotateRoll(float in_degree)
     rotate     = Quat::CreateFromYawPitchRoll(euler.y, euler.x, euler.z);
 }
 
-Mat4 CameraComponent::GetView(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll) const
+Mat4 CameraComponent::GetView(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll)
 {
-    Mat4 rMat = Mat4::CreateFromYawPitchRoll(in_pitchYawRoll.y, in_pitchYawRoll.x, in_pitchYawRoll.z);
-    return DirectX::XMMatrixLookToLH(in_eyePosition, rMat.Backward(), rMat.Up());
+    return CreateView(in_eyePosition, in_pitchYawRoll);
 }
 
-Mat4 CameraComponent::GetView(const Vec3& in_eyePosition, const Quat& in_quaternion) const
+Mat4 CameraComponent::GetView(const Vec3& in_eyePosition, const Quat& in_quaternion)
 {
-    Mat4 rMat = Mat4::CreateFromQuaternion(in_quaternion);
-    return DirectX::XMMatrixLookToLH(in_eyePosition, rMat.Backward(), rMat.Up());
+    return CreateView(in_eyePosition, in_quaternion);
 }
 
 Mat4 CameraComponent::GetProj() const
@@ -114,10 +112,11 @@ Mat4 CameraComponent::GetProj() const
     switch (projectionType)
     {
         case eProjectionType::Orthographic:
-            return DirectX::XMMatrixOrthographicLH(aspect, 1, nearZ, farZ);
+            return CreateOrthographic(width, height, nearZ, farZ);
         case eProjectionType::Perspective:
-            return DirectX::XMMatrixPerspectiveFovLH(fov, aspect, nearZ, farZ);
+            return CreatePerspective(fov, aspect, nearZ, farZ);
     }
+    CRAB_DEBUG_BREAK("Invalid Projection Type.");
     return Mat4::Identity;
 }
 

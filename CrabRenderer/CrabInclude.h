@@ -39,3 +39,4 @@
 #include "RayCast.h"
 #include "RenderPass.h"
 #include "GeometryFactory.h"
+#include "DepthMap.h"

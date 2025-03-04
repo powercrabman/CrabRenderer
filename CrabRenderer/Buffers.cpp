@@ -90,13 +90,13 @@ Ref<UnorderedAccessView> UnorderedAccessView::Create(ID3D11Buffer* in_buffer)
 {
     auto uav       = CreateRef<UnorderedAccessView>();
     uav->m_uav     = ID3D11UnorderedAccessViewUtil::CreateUAV(in_buffer);
-    uav->m_image2D = Image2D::CreateFromBuffer(in_buffer);
+    uav->m_image2D = Texture2D::CreateFromBuffer(in_buffer);
     return uav;
 }
 
 void UnorderedAccessView::BindUAV(uint32 in_slot) const
 {
-    // todo: need conflict handle with Image2D
+    // todo: need conflict handle with Texture2D
     GetRenderer().SetUnorderedAccessView(m_uav.Get(), in_slot);
 }
 

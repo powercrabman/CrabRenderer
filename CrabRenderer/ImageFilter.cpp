@@ -20,7 +20,7 @@ Ref<ImageFilter> ImageFilter::Create(
     uint32                    in_filterHeight,
     const Ref<VertexShader>&  in_vertexShader,
     const Ref<PixelShader>&   in_pixelShader,
-    const Image2DList&        in_inputTextures,
+    const TextureList&        in_inputTextures,
     const SamplerList&   in_samplerLists,
     const ConstantList& in_constantBuffers)
 {
@@ -102,7 +102,7 @@ Ref<ImageFilter> ImageFilter::Clone() const
     return filter;
 }
 
-Ref<Image2D> ImageFilter::GetOutputTexture() const
+Ref<Texture2D> ImageFilter::GetOutputTexture() const
 {
     return m_renderTarget->GetImage();
 }

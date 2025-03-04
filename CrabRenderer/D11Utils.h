@@ -1,8 +1,58 @@
 ﻿#pragma once
+#include "CrabEnums.h"
 #include "D11Renderer.h"
 
 namespace crab
 {
+
+//===================================================
+// Utils
+//===================================================
+
+inline uint32 GetFormatSize(eFormat in_format)
+{
+    switch (in_format)
+    {
+        case eFormat::Float32:
+        case eFormat::Float32_Typeless:
+            return 4;
+
+        case eFormat::Float32x2:
+            return 4 * 2;
+        case eFormat::Float32x3:
+            return 4 * 3;
+        case eFormat::Float32x4:
+            return 4 * 4;
+
+        case eFormat::Float16:
+            return 2;
+        case eFormat::Float16x2:
+            return 2 * 2;
+        case eFormat::Float16x4:
+            return 2 * 4;
+
+        case eFormat::UNorm8:
+            return 1;
+        case eFormat::UNorm8x2:
+            return 1 * 2;
+        case eFormat::UNorm8x4:
+            return 1 * 4;
+
+        case eFormat::Depth_UNorm16:
+            return 2;
+
+        case eFormat::Depth_UNorm24_Stencil_UInt8:
+        case eFormat::Depth_Float32:
+            return 4;
+
+        case eFormat::Depth_Float32_Stencil_UInt8:
+            return 4 * 2;
+
+        default:
+            CRAB_DEBUG_BREAK("Unknown Format.");
+            return 0;
+    }
+}
 
 //===================================================
 // Shader
@@ -11,6 +61,20 @@ namespace crab
 class ShaderMacros
 {
 public:
+    struct Macro
+    {
+        std::string name;
+        std::string value;
+    };
+
+    ShaderMacros()                    = default;
+    ShaderMacros(const ShaderMacros&) = default;
+    ShaderMacros(ShaderMacros&&)      = default;
+    ShaderMacros(const std::initializer_list<Macro>& in_macros)
+        : m_macros(in_macros)
+    {
+    }
+
     void ClearList()
     {
         m_macros.clear();
@@ -22,10 +86,10 @@ public:
         return *this;
     }
 
-    const D3D_SHADER_MACRO* Get() const
+    std::vector<D3D_SHADER_MACRO> Get() const
     {
         if (m_macros.empty())
-            return nullptr;
+            return {};
 
         std::vector<D3D_SHADER_MACRO> output;
         output.reserve(m_macros.size() + 1);
@@ -35,16 +99,10 @@ public:
 
         output.push_back({ nullptr, nullptr });
 
-        return output.data();
+        return output;
     }
 
 private:
-    struct Macro
-    {
-        std::string name;
-        std::string value;
-    };
-
     std::vector<Macro> m_macros;
 };
 
@@ -70,7 +128,8 @@ struct ID3D11Texture2DUtil
         uint32          in_MSAASampleCount   = 1,
         uint32          in_MSAASampleQuality = 0,
         uint32          in_numberOfMipmap    = 1,
-        uint32          in_textureArraySize  = 1);
+        uint32          in_textureArraySize  = 1,
+        bool            in_isCubeMap         = false);
 
     static ComPtr<ID3D11Texture2D> CreateTexture2D(
         uint32          in_width,
@@ -82,7 +141,8 @@ struct ID3D11Texture2DUtil
         uint32          in_MSAASampleCount   = 1,
         uint32          in_MSAASampleQuality = 0,
         uint32          in_numberOfMipmap    = 1,
-        uint32          in_textureArraySize  = 1);
+        uint32          in_textureArraySize  = 1,
+        bool            in_isCubeMap         = false);
 
     static ComPtr<ID3D11Texture2D> CreateStagingTexture2D(
         uint32  in_width,
@@ -111,6 +171,9 @@ struct ID3D11Texture2DUtil
         uint32     in_MSAASampleQuality = 0,
         uint32     in_numberOfMipmap    = 1,
         uint32     in_textureArraySize  = 1);
+
+    static ComPtr<ID3D11Texture2D> CreateTexture2DArray(
+        const std::vector<ID3D11Texture2D*>& in_textures);
 
     //===================================================
     // Read & Write
@@ -264,6 +327,10 @@ struct ShaderUtil
 struct ID3D11ShaderResourceViewUtil
 {
     static ComPtr<ID3D11ShaderResourceView> CreateTexture2DSRV(
+        ID3D11Texture2D* in_texture,
+        eFormat          in_format = eFormat::Unknown);
+
+    static ComPtr<ID3D11ShaderResourceView> CreateTextureCubeSRV(
         ID3D11Texture2D* in_texture,
         eFormat          in_format = eFormat::Unknown);
 

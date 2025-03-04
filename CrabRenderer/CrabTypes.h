@@ -31,7 +31,8 @@ using BoundingShpere = DirectX::BoundingSphere;
 using Ray            = DirectX::SimpleMath::Ray;
 using Plane          = DirectX::SimpleMath::Plane;
 
-using Color    = DirectX::SimpleMath::Color;
+using Color4   = DirectX::SimpleMath::Vector4;
+using Color3   = DirectX::SimpleMath::Vector3;
 using Viewport = DirectX::SimpleMath::Viewport;
 using Bool     = int32;   // for constant texture
 

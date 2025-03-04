@@ -53,7 +53,7 @@ ImageLoaderData ImageLoader::LoadFromFile(const std::filesystem::path& in_path)
     return loadData;
 }
 
-ImageLoaderData ImageLoader::LoadFromFileWICEx(
+ImageLoaderData ImageLoader::LoadFromFileEx(
     const std::filesystem::path& in_path,
     DirectX::WIC_FLAGS           in_flags)
 {

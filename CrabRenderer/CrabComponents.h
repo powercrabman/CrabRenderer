@@ -57,18 +57,24 @@ enum class eProjectionType
 
 struct CameraComponent
 {
-    Mat4 GetView(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll) const;
-    Mat4 GetView(const Vec3& in_eyePosition, const Quat& in_quaternion) const;
-    Mat4 GetProj() const;
+    static Mat4 GetView(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll);
+    static Mat4 GetView(const Vec3& in_eyePosition, const Quat& in_quaternion);
+    Mat4        GetProj() const;
 
     Mat4 GetViewProj(const Vec3& in_eyePosition, const Quat& in_quaternion) const;
     Mat4 GetViewProj(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll) const;
 
     eProjectionType projectionType = eProjectionType::Perspective;
-    float           aspect         = 1.f;   // in perspective
     float           nearZ          = 0.1f;
     float           farZ           = 100.0f;
     float           fov            = DirectX::XMConvertToRadians(45.f);
+
+    // perspective
+    float aspect = 1.f;
+
+    // orthographic
+    float width  = 1.f;
+    float height = 1.f;
 };
 
 class Script;

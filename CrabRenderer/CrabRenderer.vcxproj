@@ -22,6 +22,8 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="AppWindow.h" />
     <ClInclude Include="D11ResourceList.h" />
+    <ClInclude Include="DepthMap.h" />
+    <ClInclude Include="Draw2D.h" />
     <ClInclude Include="ErrorHandler.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="GizmoController.h" />
@@ -39,7 +41,6 @@
     <ClInclude Include="CrabTypes.h" />
     <ClInclude Include="Buffers.h" />
     <ClInclude Include="DepthBuffer.h" />
-    <ClInclude Include="D11Enums.h" />
     <ClInclude Include="ImguiGlue.h" />
     <ClInclude Include="InputElements.h" />
     <ClInclude Include="GeometryFactory.h" />
@@ -74,11 +75,15 @@
     <ClInclude Include="CrabVertex.h" />
     <ClInclude Include="CrabColors.h" />
     <ClInclude Include="tinyfiledialogs.h" />
+    <ClInclude Include="Frustum.h" />
+    <ClInclude Include="CrabEnums.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="AppWindow.cpp" />
     <ClCompile Include="D11ResourceList.cpp" />
+    <ClCompile Include="DepthMap.cpp" />
+    <ClCompile Include="Draw2D.cpp" />
     <ClCompile Include="ErrorHandler.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="GizmoController.cpp" />
@@ -97,7 +102,6 @@
     <ClCompile Include="CrabTypes.cpp" />
     <ClCompile Include="Buffers.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
-    <ClCompile Include="D11Enums.cpp" />
     <ClCompile Include="ImguiGlue.cpp" />
     <ClCompile Include="InputElements.cpp" />
     <ClCompile Include="GeometryFactory.cpp" />

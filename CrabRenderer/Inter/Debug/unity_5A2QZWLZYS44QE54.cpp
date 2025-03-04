@@ -9,6 +9,12 @@
 #include "C:\Users\ajw01\Desktop\CrabRenderer\CrabRenderer\D11ResourceList.cpp"
 
 
+#include "C:\Users\ajw01\Desktop\CrabRenderer\CrabRenderer\DepthMap.cpp"
+
+
+#include "C:\Users\ajw01\Desktop\CrabRenderer\CrabRenderer\Draw2D.cpp"
+
+
 #include "C:\Users\ajw01\Desktop\CrabRenderer\CrabRenderer\ErrorHandler.cpp"
 
 
@@ -49,9 +55,6 @@
 
 
 #include "C:\Users\ajw01\Desktop\CrabRenderer\CrabRenderer\DepthBuffer.cpp"
-
-
-#include "C:\Users\ajw01\Desktop\CrabRenderer\CrabRenderer\D11Enums.cpp"
 
 
 #include "C:\Users\ajw01\Desktop\CrabRenderer\CrabRenderer\ImguiGlue.cpp"

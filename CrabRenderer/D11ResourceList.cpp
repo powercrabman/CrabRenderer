@@ -33,21 +33,24 @@ void ConstantList::Bind() const
 }
 
 //===================================================
-// Image2D List
+// Texture2D List
 //===================================================
 
-Image2DList& Image2DList::Add(const Ref<Image2D>& in_image, uint32 in_slot, eShaderFlags in_bindFlags)
+TextureList& TextureList::Add(
+    const Ref<Texture>& in_texture,
+    uint32              in_slot,
+    eShaderFlags        in_bindFlags)
 {
-    m_images.emplace_back(in_image, in_slot, in_bindFlags);
+    m_images.emplace_back(in_texture, in_slot, in_bindFlags);
     return *this;
 }
 
-void Image2DList::ClearList()
+void TextureList::ClearList()
 {
     m_images.clear();
 }
 
-void Image2DList::Bind() const
+void TextureList::Bind() const
 {
     for (const auto& [image, slot, bindFlags]: m_images)
         image->Bind(slot, bindFlags);
@@ -57,7 +60,10 @@ void Image2DList::Bind() const
 // Sampler List
 //===================================================
 
-SamplerList& SamplerList::Add(const Ref<SamplerState>& in_sampler, uint32 in_slot, eShaderFlags in_bindFlags)
+SamplerList& SamplerList::Add(
+    const Ref<SamplerState>& in_sampler, 
+    uint32 in_slot, 
+    eShaderFlags in_bindFlags)
 {
     m_samplers.emplace_back(in_sampler, in_slot, in_bindFlags);
     return *this;

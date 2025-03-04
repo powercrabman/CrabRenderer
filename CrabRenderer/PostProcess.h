@@ -5,7 +5,7 @@
 namespace crab
 {
 
-class Image2D;
+class Texture2D;
 class Mesh;
 class ImageFilter;
 

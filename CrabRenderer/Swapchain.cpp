@@ -82,7 +82,6 @@ void Swapchain::OnResize(Int2 in_size)
     m_backBuffer.reset();
     m_backBufferHDR.reset();
     m_depthBuffer.reset();
-    m_depthOnlyBuffer.reset();
 
     CheckD3D11Result(m_swapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0), "ResizeBuffers Fail.");
     _CreateResources(in_size);
@@ -121,24 +120,9 @@ void Swapchain::EnableMSAA(bool in_enable)
     _CreateResources(GetAppWindow().GetWindowSize());
 }
 
-Viewport Swapchain::GetViewport() const
-{
-    return m_viewport;
-}
-
 Ref<DepthBuffer> Swapchain::GetDepthBuffer() const
 {
     return m_depthBuffer;
-}
-
-Ref<DepthBuffer> Swapchain::GetDepthOnlyBuffer() const
-{
-    return m_depthOnlyBuffer;
-}
-
-Ref<Image2D> Swapchain::GetDepthOnlyBufferImage() const
-{
-    return m_depthOnlyBuffer->GetImage();
 }
 
 Ref<RenderTarget> Swapchain::GetBackBuffer() const
@@ -146,7 +130,7 @@ Ref<RenderTarget> Swapchain::GetBackBuffer() const
     return m_backBuffer;
 }
 
-Ref<Image2D> Swapchain::GetBackBufferImage() const
+Ref<Texture2D> Swapchain::GetBackBufferImage() const
 {
     return m_backBuffer->GetImage();
 }
@@ -164,7 +148,7 @@ Ref<RenderTarget> Swapchain::GetBackBufferHDR() const
     }
 }
 
-Ref<Image2D> Swapchain::GetBackBufferHDRImage() const
+Ref<Texture2D> Swapchain::GetBackBufferHDRImage() const
 {
     if (m_enableHDRRendering)
     {
@@ -177,7 +161,7 @@ Ref<Image2D> Swapchain::GetBackBufferHDRImage() const
     }
 }
 
-Ref<Image2D> Swapchain::GetResolvedBackBufferImage() const
+Ref<Texture2D> Swapchain::GetResolvedBackBufferImage() const
 {
     if (m_enableHDRRendering)
     {
@@ -211,16 +195,6 @@ void Swapchain::_CreateResources(const Int2& in_size)
 {
     auto d = GetRenderer().GetDevice();
 
-    // viewport
-    Viewport vp = {};
-    vp.width    = static_cast<float>(in_size.x);
-    vp.height   = static_cast<float>(in_size.y);
-    vp.minDepth = 0.f;
-    vp.maxDepth = 1.f;
-    vp.x        = 0.f;
-    vp.y        = 0.f;
-    m_viewport  = vp;
-
     // SwapChain back buffer
     ComPtr<ID3D11Texture2D> backBufferTexture = nullptr;
     CheckD3D11Result(m_swapChain->GetBuffer(0,
@@ -240,14 +214,6 @@ void Swapchain::_CreateResources(const Int2& in_size)
         m_depthBufferFormat,
         m_MSAASampleCount,
         m_MSAAQuality);
-
-    m_depthOnlyBuffer = DepthBuffer::CreateWithImage2D(
-        in_size.x,
-        in_size.y,
-        eFormat::Depth_Float32,
-        m_MSAASampleCount,
-        m_MSAAQuality,
-        eFormat::Float32);
 }
 
 void Swapchain::_CreateHDRRenderTarget(const Int2& in_size)

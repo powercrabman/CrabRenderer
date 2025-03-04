@@ -1,17 +1,46 @@
 #pragma once
 
+
 namespace crab
 {
-constexpr uint32 TEXTURE_SLOT_MAX               = 64;
-constexpr uint32 SAMPLER_SLOT_MAX               = 64;
-constexpr uint32 CONSTANT_BUFFER_SLOT_MAX       = 64;
-constexpr uint32 UAV_SLOT_MAX                   = D3D11_PS_CS_UAV_REGISTER_COUNT;
-constexpr int32  MSAA_MAX_QUALITY               = -1;
-constexpr uint32 CRAB_SKIN_MAX                  = 8;
 
 //===================================================
-// Enums
+// Rendering
 //===================================================
+
+constexpr uint32 MAX_LIGHTS = 4;
+constexpr uint32 SHADOW_SLOT_OFFSET = 20;
+constexpr uint32 BASIC_SHADOW_SLOT  = SHADOW_SLOT_OFFSET;
+constexpr uint32 CASCADE_SHADOW_SLOT = BASIC_SHADOW_SLOT + MAX_LIGHTS;
+constexpr uint32 OMNI_SHADOW_SLOT    = CASCADE_SHADOW_SLOT + MAX_LIGHTS;
+
+enum class eLightType
+{
+    None        = 0,
+    Directional = 1,
+    Point       = 2,
+    Spot        = 3,
+};
+
+enum class eShadowPCFKernel
+{
+    None = 0,
+    Sample3x3,
+    Sample5x5,
+    Sample7x7,
+    Sample9x9
+};
+
+//===================================================
+// DirectX 11
+//===================================================
+
+constexpr uint32 TEXTURE_SLOT_MAX         = 64;
+constexpr uint32 SAMPLER_SLOT_MAX         = 64;
+constexpr uint32 CONSTANT_BUFFER_SLOT_MAX = 64;
+constexpr uint32 UAV_SLOT_MAX             = D3D11_PS_CS_UAV_REGISTER_COUNT;
+constexpr int32  MSAA_MAX_QUALITY         = -1;
+constexpr uint32 CRAB_SKIN_MAX            = 8;
 
 enum class eTopology
 {
@@ -19,10 +48,10 @@ enum class eTopology
 
     PointList = D3D11_PRIMITIVE_TOPOLOGY_POINTLIST,
 
-    LineList = D3D11_PRIMITIVE_TOPOLOGY_LINELIST,
+    LineList  = D3D11_PRIMITIVE_TOPOLOGY_LINELIST,
     LineStrip = D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP,
 
-    TriangleList = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST,
+    TriangleList  = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST,
     TriangleStrip = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP,
 
     PatchList_3 = D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST,
@@ -30,59 +59,6 @@ enum class eTopology
     PatchList_5 = D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST,
     PatchList_6 = D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST,
 };
-
-inline const char* ToString(eTopology e)
-{
-    switch (e)
-    {
-        case eTopology::None:
-            return "None";
-        case eTopology::PointList:
-            return "PointList";
-        case eTopology::LineList:
-            return "LineList";
-        case eTopology::LineStrip:
-            return "LineStrip";
-        case eTopology::TriangleList:
-            return "TriangleList";
-        case eTopology::TriangleStrip:
-            return "TriangleStrip";
-        case eTopology::PatchList_3:
-            return "PatchList_3";
-        case eTopology::PatchList_4:
-            return "PatchList_4";
-        case eTopology::PatchList_5:
-            return "PatchList_5";
-        case eTopology::PatchList_6:
-            return "PatchList_6";
-        default:
-            assert(false);
-            return "unknown";
-    }
-}
-
-
-
-//===================================================
-// Error Handling
-//===================================================
-
-inline std::string TranslateHRESULT(HRESULT hr)
-{
-    char* errorMsg = nullptr;
-
-    FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-                   nullptr,
-                   hr,
-                   MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-                   reinterpret_cast<LPSTR>(&errorMsg),
-                   0,
-                   nullptr);
-
-    std::string message = (errorMsg) ? errorMsg : "Unknown error";
-    LocalFree(errorMsg);
-    return message;
-}
 
 //===================================================
 // Shader Flags
@@ -145,8 +121,10 @@ enum class eFormat
     Depth_UNorm16               = DXGI_FORMAT_D16_UNORM,
     Depth_UNorm24_Stencil_UInt8 = DXGI_FORMAT_D24_UNORM_S8_UINT,
     Depth_Float32               = DXGI_FORMAT_D32_FLOAT,
-    Depth_Float32_Stencil_UInt8 = DXGI_FORMAT_D32_FLOAT_S8X24_UINT
+    Depth_Float32_Stencil_UInt8 = DXGI_FORMAT_D32_FLOAT_S8X24_UINT,
 };
+
+static_assert(magic_enum::enum_count<eFormat>() == 16, "eFormat is not updated.");
 
 using eBindFlags = uint32;
 

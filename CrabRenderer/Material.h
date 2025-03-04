@@ -2,7 +2,7 @@
 
 namespace crab
 {
-class Image2D;
+class Texture2D;
 
 enum class eNormalMapType
 {
@@ -23,13 +23,13 @@ struct MaterialData
     float shininess            = 32.f;                  // Phong
     float alpha                = 1.f;
 
-    Ref<Image2D> baseColorImage    = nullptr;
-    Ref<Image2D> normalImage       = nullptr;
-    Ref<Image2D> metallicImage     = nullptr;
-    Ref<Image2D> roughnessImage    = nullptr;
-    Ref<Image2D> aoImage           = nullptr;
-    Ref<Image2D> emissiveImage     = nullptr;
-    Ref<Image2D> displacementImage = nullptr;
+    Ref<Texture2D> baseColorImage    = nullptr;
+    Ref<Texture2D> normalImage       = nullptr;
+    Ref<Texture2D> metallicImage     = nullptr;
+    Ref<Texture2D> roughnessImage    = nullptr;
+    Ref<Texture2D> aoImage           = nullptr;
+    Ref<Texture2D> emissiveImage     = nullptr;
+    Ref<Texture2D> displacementImage = nullptr;
 
     eNormalMapType normalMapType = eNormalMapType::OpenGL;
 };
@@ -39,7 +39,7 @@ class Material
     D11_RESOURCE_CTOR(Material);
 
 public:
-    static Ref<Material> Create(const MaterialData& in_materialData);
+    static Ref<Material> Create(const MaterialData& in_materialData = {});
 
     // color
     void SetBaseColor(const Vec3& in_color) { m_data.baseColor = in_color; }
@@ -55,13 +55,13 @@ public:
     void SetNormalMapType(eNormalMapType in_type) { m_data.normalMapType = in_type; }
 
     // image
-    void SetBaseColorImage(const Ref<Image2D>& in_image) { m_data.baseColorImage = in_image; }
-    void SetNormalImage(const Ref<Image2D>& in_image) { m_data.normalImage = in_image; }
-    void SetMetallicImage(const Ref<Image2D>& in_image) { m_data.metallicImage = in_image; }
-    void SetRoughnessImage(const Ref<Image2D>& in_image) { m_data.roughnessImage = in_image; }
-    void SetAOImage(const Ref<Image2D>& in_image) { m_data.aoImage = in_image; }
-    void SetEmissiveImage(const Ref<Image2D>& in_image) { m_data.emissiveImage = in_image; }
-    void SetHeightImage(const Ref<Image2D>& in_image) { m_data.displacementImage = in_image; }
+    void SetBaseColorImage(const Ref<Texture2D>& in_image) { m_data.baseColorImage = in_image; }
+    void SetNormalImage(const Ref<Texture2D>& in_image) { m_data.normalImage = in_image; }
+    void SetMetallicImage(const Ref<Texture2D>& in_image) { m_data.metallicImage = in_image; }
+    void SetRoughnessImage(const Ref<Texture2D>& in_image) { m_data.roughnessImage = in_image; }
+    void SetAOImage(const Ref<Texture2D>& in_image) { m_data.aoImage = in_image; }
+    void SetEmissiveImage(const Ref<Texture2D>& in_image) { m_data.emissiveImage = in_image; }
+    void SetHeightImage(const Ref<Texture2D>& in_image) { m_data.displacementImage = in_image; }
 
     // getter
     const MaterialData& GetMaterialData() const { return m_data; }
@@ -77,13 +77,13 @@ public:
     float               GetAlpha() const { return m_data.alpha; }
     eNormalMapType      GetNormalMapType() const { return m_data.normalMapType; }
 
-    const Ref<Image2D>& GetBaseColorImage() const { return m_data.baseColorImage; }
-    const Ref<Image2D>& GetNormalImage() const { return m_data.normalImage; }
-    const Ref<Image2D>& GetMetallicImage() const { return m_data.metallicImage; }
-    const Ref<Image2D>& GetRoughnessImage() const { return m_data.roughnessImage; }
-    const Ref<Image2D>& GetAOImage() const { return m_data.aoImage; }
-    const Ref<Image2D>& GetEmissiveImage() const { return m_data.emissiveImage; }
-    const Ref<Image2D>& GetHeightImage() const { return m_data.displacementImage; }
+    const Ref<Texture2D>& GetBaseColorImage() const { return m_data.baseColorImage; }
+    const Ref<Texture2D>& GetNormalImage() const { return m_data.normalImage; }
+    const Ref<Texture2D>& GetMetallicImage() const { return m_data.metallicImage; }
+    const Ref<Texture2D>& GetRoughnessImage() const { return m_data.roughnessImage; }
+    const Ref<Texture2D>& GetAOImage() const { return m_data.aoImage; }
+    const Ref<Texture2D>& GetEmissiveImage() const { return m_data.emissiveImage; }
+    const Ref<Texture2D>& GetHeightImage() const { return m_data.displacementImage; }
 
 private:
     MaterialData m_data;

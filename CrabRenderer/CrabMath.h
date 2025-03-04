@@ -1,4 +1,5 @@
 #pragma once
+#include "Frustum.h"
 
 namespace crab
 {
@@ -115,6 +116,16 @@ struct Int2
     {
     }
 
+    bool operator==(const Int2& in_rhs) const
+    {
+        return x == in_rhs.x && y == in_rhs.y;
+    }
+
+    bool operator!=(const Int2& in_rhs) const
+    {
+        return !(*this == in_rhs);
+    }
+
     Int2 operator+(const Int2& in_rhs) const
     {
         return { x + in_rhs.x, y + in_rhs.y };
@@ -217,5 +228,122 @@ struct Rect
     Int2 position;
     Int2 size;
 };
+
+//===================================================
+// Matrix Helper ( Left-handed )
+//===================================================
+
+inline Mat4 CreateViewFromLookVector(
+    const Vec3& in_eyePos,
+    const Vec3& in_look,
+    const Vec3& in_up = Vec3::Up)
+{
+    return DirectX::XMMatrixLookToLH(
+        in_eyePos,
+        in_look,
+        in_up);
+}
+
+inline Mat4 CreateView(
+    const Vec3& in_eyePos,
+    const Quat& in_quaternion,
+    const Vec3& in_up = Vec3::Up)
+{
+    Mat4 rMat = Mat4::CreateFromQuaternion(in_quaternion);
+    return CreateViewFromLookVector(
+        in_eyePos,
+        rMat.Backward(),
+        in_up);
+}
+
+inline Mat4 CreateView(
+    const Vec3& in_eyePos,
+    const Vec3& in_pitchYawRoll,
+    const Vec3& in_up = Vec3::Up)
+{
+    Mat4 rMat = Mat4::CreateFromYawPitchRoll(
+        in_pitchYawRoll.y,
+        in_pitchYawRoll.x,
+        in_pitchYawRoll.z);
+
+    return CreateViewFromLookVector(
+        in_eyePos,
+        rMat.Backward(),
+        in_up);
+}
+
+inline Mat4 CreatePerspective(
+    float in_fov,
+    float in_aspect,
+    float in_near,
+    float in_far)
+{
+    return DirectX::XMMatrixPerspectiveFovLH(
+        in_fov,
+        in_aspect,
+        in_near,
+        in_far);
+}
+
+inline Mat4 CreateOrthographicAspect(
+    float in_aspect,
+    float in_height,
+    float in_near,
+    float in_far)
+{
+    return DirectX::XMMatrixOrthographicLH(
+        in_height * in_aspect,
+        in_height,
+        in_near,
+        in_far);
+}
+
+inline Mat4 CreateOrthographic(
+    float in_width,
+    float in_height,
+    float in_near,
+    float in_far)
+{
+    return DirectX::XMMatrixOrthographicLH(
+        in_width,
+        in_height,
+        in_near,
+        in_far);
+}
+
+inline Mat4 CreateViewOrthoProjMatrixForCSM(
+    const Frustum& in_frustum,
+    const Mat4&    in_view)
+{
+    Frustum frustumInView = in_frustum * in_view;
+
+    // create bounding box
+    float minX, maxX, minY, maxY, minZ, maxZ;
+    for (uint32 i = 0; i < 8; i++)
+    {
+        Vec3 p = frustumInView.points[i];
+        minX   = std::min(minX, p.x);
+        maxX   = std::max(maxX, p.x);
+        minY   = std::min(minY, p.y);
+        maxY   = std::max(maxY, p.y);
+        minZ   = std::min(minZ, p.z);
+        maxZ   = std::max(maxZ, p.z);
+    }
+
+    constexpr float multZ = 10.f;
+
+    if (minZ > 0)
+        minZ /= multZ;
+    else
+        minZ *= multZ;
+
+    if (maxZ > 0)
+        maxZ /= multZ;
+    else
+        maxZ *= multZ;
+
+    // create orthographic matrix
+    return in_view * DirectX::XMMatrixOrthographicOffCenterLH(minX, maxX, minY, maxY, minZ, maxZ);
+}
 
 }   // namespace crab

@@ -9,7 +9,7 @@ class VertexShader;
 class PixelShader;
 class VertexBuffer;
 class IndexBuffer;
-class Image2D;
+class Texture2D;
 class RasterizerState;
 class DepthStencilState;
 class BlendState;
@@ -64,14 +64,16 @@ public:
     void ReleaseRenderTargets() const;
 
     void SetViewport(const Viewport& in_viewport);
+    void SetViewport(uint32 x, uint32 y, uint32 width, uint32 height, uint32 minDepth = 0, uint32 maxDepth = 1);
+    void BindOnlyDepthStencilView(ID3D11DepthStencilView* in_depthBuffer) const;
 
     // back texture helper
-    void              BindBackBuffer(const Ref<DepthBuffer>& in_depthBuffer_or_null);
-    void              ClearBackBuffer(const Color& in_color) const;
+    void              BindBackBuffer(const Ref<DepthBuffer>& in_depthBuffer_or_null) const;
+    void              ClearBackBuffer(const Color4& in_color) const;
     Ref<RenderTarget> GetBackBuffer();
 
-    void              BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_null);
-    void              ClearBackBufferMS(const Color& in_color) const;
+    void              BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_null) const;
+    void              ClearBackBufferMS(const Color4& in_color) const;
     Ref<RenderTarget> GetBackBufferMS() const;
 
     void ClearDepthBuffer(bool  in_clearDepth,
@@ -79,13 +81,7 @@ public:
                           bool  in_clearStencil,
                           int32 in_clearStencilFactor) const;
 
-    void ClearDepthOnlyBuffer(bool  in_clearDepth,
-                              float in_clearDepthFactor,
-                              bool  in_clearStencil,
-                              int32 in_clearStencilFactor) const;
-
     Ref<DepthBuffer> GetDepthBuffer() const;
-    Ref<DepthBuffer> GetDepthOnlyBuffer() const;
 
     // - Swap Chain
     void              Present() const;

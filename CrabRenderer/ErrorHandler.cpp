@@ -2,8 +2,27 @@
 
 #include "ErrorHandler.h"
 
+#include "D11Utils.h"
+
 namespace crab
 {
+
+std::string TranslateHRESULT(HRESULT hr)
+{
+    char* errorMsg = nullptr;
+
+    FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+                   nullptr,
+                   hr,
+                   MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+                   reinterpret_cast<LPSTR>(&errorMsg),
+                   0,
+                   nullptr);
+
+    std::string message = (errorMsg) ? errorMsg : "Unknown error";
+    LocalFree(errorMsg);
+    return message;
+}
 
 bool CheckD3D11Result(HRESULT hr, std::string_view in_hintIfFailed)
 {

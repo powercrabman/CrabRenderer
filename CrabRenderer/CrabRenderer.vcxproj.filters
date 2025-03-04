@@ -28,18 +28,6 @@
     <Filter Include="04. Renderer">
       <UniqueIdentifier>{0b98f8b0-b56d-43d7-b414-d8fb65b7c763}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\Buffers">
-      <UniqueIdentifier>{9adff1a8-578b-443b-aab5-ff8fcafc7f7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Renderer\Shader">
-      <UniqueIdentifier>{1693f430-0417-4015-8807-3c532313062a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Renderer\Texture">
-      <UniqueIdentifier>{b2a082e9-c170-42b9-b5aa-199fb4927c4e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Renderer\RenderState">
-      <UniqueIdentifier>{cb8a25d2-ba67-4e68-abe4-f229600eaa49}</UniqueIdentifier>
-    </Filter>
     <Filter Include="06. ECS">
       <UniqueIdentifier>{2979dd23-7ab2-4cee-a2c3-e2ab9a56c81f}</UniqueIdentifier>
     </Filter>
@@ -49,14 +37,8 @@
     <Filter Include="04. Renderer\Gui">
       <UniqueIdentifier>{3000170c-f646-44b0-b75f-1e2240264708}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\Device">
-      <UniqueIdentifier>{8076fccc-2742-4c80-bb16-ad3ae0df9354}</UniqueIdentifier>
-    </Filter>
     <Filter Include="05. Scene">
       <UniqueIdentifier>{25b4b0e8-bbb5-465a-88f4-155042499901}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Renderer\FrameBuffer">
-      <UniqueIdentifier>{0e5e81c3-151f-44ff-9e46-ca437f5e188f}</UniqueIdentifier>
     </Filter>
     <Filter Include="07. Assets">
       <UniqueIdentifier>{f8bb8dee-f16e-4420-8551-9aa2a5b2d715}</UniqueIdentifier>
@@ -79,14 +61,8 @@
     <Filter Include="02. AppWindow\Third party">
       <UniqueIdentifier>{1b4aed6a-91a0-4742-b600-b8b0803609b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\RenderPass">
-      <UniqueIdentifier>{122212a8-7316-458f-b4e0-9d842786739a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04. Renderer\Mesh/Material">
       <UniqueIdentifier>{8f476673-fe22-429f-a800-0a19e7f0ee92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Renderer\todo ... Particle System">
-      <UniqueIdentifier>{fd1628e6-a510-4661-8989-a698f37d99b6}</UniqueIdentifier>
     </Filter>
     <Filter Include="97. Json">
       <UniqueIdentifier>{ae233562-3673-4ae6-b428-8455ae77b3c8}</UniqueIdentifier>
@@ -96,6 +72,36 @@
     </Filter>
     <Filter Include="99. Base\CompileTimeAlgorithm">
       <UniqueIdentifier>{00915d50-cb15-453d-bf33-66952a6781e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\DirectX">
+      <UniqueIdentifier>{ee38abdd-2847-4abe-97cd-f74da35ea896}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\DirectX\FrameBuffer">
+      <UniqueIdentifier>{0e5e81c3-151f-44ff-9e46-ca437f5e188f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\DirectX\Device">
+      <UniqueIdentifier>{8076fccc-2742-4c80-bb16-ad3ae0df9354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\DirectX\Buffers">
+      <UniqueIdentifier>{9adff1a8-578b-443b-aab5-ff8fcafc7f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\DirectX\RenderState">
+      <UniqueIdentifier>{cb8a25d2-ba67-4e68-abe4-f229600eaa49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\DirectX\Shader">
+      <UniqueIdentifier>{1693f430-0417-4015-8807-3c532313062a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\DirectX\Texture">
+      <UniqueIdentifier>{b2a082e9-c170-42b9-b5aa-199fb4927c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\DirectX\RenderPass">
+      <UniqueIdentifier>{122212a8-7316-458f-b4e0-9d842786739a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Draw2D">
+      <UniqueIdentifier>{38b36db8-09aa-4024-bb2e-9d555b174152}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Light&amp;Shadow">
+      <UniqueIdentifier>{52092a0d-3053-4a7b-9357-1746739b57c5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -133,22 +139,22 @@
       <Filter>99. Base</Filter>
     </ClCompile>
     <ClCompile Include="Buffers.cpp">
-      <Filter>04. Renderer\Buffers</Filter>
+      <Filter>04. Renderer\DirectX\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="InputElements.cpp">
-      <Filter>04. Renderer\Shader</Filter>
+      <Filter>04. Renderer\DirectX\Shader</Filter>
     </ClCompile>
     <ClCompile Include="Textures.cpp">
-      <Filter>04. Renderer\Texture</Filter>
+      <Filter>04. Renderer\DirectX\Texture</Filter>
     </ClCompile>
     <ClCompile Include="RenderStates.cpp">
-      <Filter>04. Renderer\RenderState</Filter>
+      <Filter>04. Renderer\DirectX\RenderState</Filter>
     </ClCompile>
     <ClCompile Include="D11Renderer.cpp">
-      <Filter>04. Renderer\Device</Filter>
+      <Filter>04. Renderer\DirectX\Device</Filter>
     </ClCompile>
     <ClCompile Include="Shaders.cpp">
-      <Filter>04. Renderer\Shader</Filter>
+      <Filter>04. Renderer\DirectX\Shader</Filter>
     </ClCompile>
     <ClCompile Include="LayerStack.cpp">
       <Filter>01. Application\Layer</Filter>
@@ -184,7 +190,7 @@
       <Filter>04. Renderer\PostProcess</Filter>
     </ClCompile>
     <ClCompile Include="Swapchain.cpp">
-      <Filter>04. Renderer\Device</Filter>
+      <Filter>04. Renderer\DirectX\Device</Filter>
     </ClCompile>
     <ClCompile Include="Snapshot.cpp">
       <Filter>04. Renderer\Utils\Snapshot</Filter>
@@ -196,22 +202,19 @@
       <Filter>04. Renderer\PostProcess</Filter>
     </ClCompile>
     <ClCompile Include="DepthBuffer.cpp">
-      <Filter>04. Renderer\FrameBuffer</Filter>
+      <Filter>04. Renderer\DirectX\FrameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="RenderTarget.cpp">
-      <Filter>04. Renderer\FrameBuffer</Filter>
-    </ClCompile>
-    <ClCompile Include="D11Enums.cpp">
-      <Filter>04. Renderer\Utils</Filter>
+      <Filter>04. Renderer\DirectX\FrameBuffer</Filter>
     </ClCompile>
     <ClCompile Include="GeometryFactory.cpp">
       <Filter>04. Renderer\Mesh/Material</Filter>
     </ClCompile>
     <ClCompile Include="CommonState.cpp">
-      <Filter>04. Renderer\RenderState</Filter>
+      <Filter>04. Renderer\DirectX\RenderState</Filter>
     </ClCompile>
     <ClCompile Include="RenderPass.cpp">
-      <Filter>04. Renderer\RenderPass</Filter>
+      <Filter>04. Renderer\DirectX\RenderPass</Filter>
     </ClCompile>
     <ClCompile Include="RayCast.cpp">
       <Filter>04. Renderer\Utils\Raycast</Filter>
@@ -232,7 +235,7 @@
       <Filter>99. Base</Filter>
     </ClCompile>
     <ClCompile Include="ImageLoader.cpp">
-      <Filter>04. Renderer\Texture</Filter>
+      <Filter>04. Renderer\DirectX\Texture</Filter>
     </ClCompile>
     <ClCompile Include="ErrorHandler.cpp">
       <Filter>99. Base</Filter>
@@ -245,6 +248,12 @@
     </ClCompile>
     <ClCompile Include="GizmoController.cpp">
       <Filter>04. Renderer\Utils\imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw2D.cpp">
+      <Filter>04. Renderer\Draw2D</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthMap.cpp">
+      <Filter>04. Renderer\Light&amp;Shadow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -294,22 +303,22 @@
       <Filter>99. Base\DataStructure</Filter>
     </ClInclude>
     <ClInclude Include="Buffers.h">
-      <Filter>04. Renderer\Buffers</Filter>
+      <Filter>04. Renderer\DirectX\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="InputElements.h">
-      <Filter>04. Renderer\Shader</Filter>
+      <Filter>04. Renderer\DirectX\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Textures.h">
-      <Filter>04. Renderer\Texture</Filter>
+      <Filter>04. Renderer\DirectX\Texture</Filter>
     </ClInclude>
     <ClInclude Include="RenderStates.h">
-      <Filter>04. Renderer\RenderState</Filter>
+      <Filter>04. Renderer\DirectX\RenderState</Filter>
     </ClInclude>
     <ClInclude Include="D11Renderer.h">
-      <Filter>04. Renderer\Device</Filter>
+      <Filter>04. Renderer\DirectX\Device</Filter>
     </ClInclude>
     <ClInclude Include="Shaders.h">
-      <Filter>04. Renderer\Shader</Filter>
+      <Filter>04. Renderer\DirectX\Shader</Filter>
     </ClInclude>
     <ClInclude Include="LayerStack.h">
       <Filter>01. Application\Layer</Filter>
@@ -354,7 +363,7 @@
       <Filter>04. Renderer\PostProcess</Filter>
     </ClInclude>
     <ClInclude Include="Swapchain.h">
-      <Filter>04. Renderer\Device</Filter>
+      <Filter>04. Renderer\DirectX\Device</Filter>
     </ClInclude>
     <ClInclude Include="Snapshot.h">
       <Filter>04. Renderer\Utils\Snapshot</Filter>
@@ -366,22 +375,19 @@
       <Filter>04. Renderer\PostProcess</Filter>
     </ClInclude>
     <ClInclude Include="DepthBuffer.h">
-      <Filter>04. Renderer\FrameBuffer</Filter>
+      <Filter>04. Renderer\DirectX\FrameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="RenderTarget.h">
-      <Filter>04. Renderer\FrameBuffer</Filter>
-    </ClInclude>
-    <ClInclude Include="D11Enums.h">
-      <Filter>04. Renderer\Utils</Filter>
+      <Filter>04. Renderer\DirectX\FrameBuffer</Filter>
     </ClInclude>
     <ClInclude Include="GeometryFactory.h">
       <Filter>04. Renderer\Mesh/Material</Filter>
     </ClInclude>
     <ClInclude Include="CommonState.h">
-      <Filter>04. Renderer\RenderState</Filter>
+      <Filter>04. Renderer\DirectX\RenderState</Filter>
     </ClInclude>
     <ClInclude Include="RenderPass.h">
-      <Filter>04. Renderer\RenderPass</Filter>
+      <Filter>04. Renderer\DirectX\RenderPass</Filter>
     </ClInclude>
     <ClInclude Include="RayCast.h">
       <Filter>04. Renderer\Utils\Raycast</Filter>
@@ -399,7 +405,7 @@
       <Filter>02. AppWindow</Filter>
     </ClInclude>
     <ClInclude Include="ImageLoader.h">
-      <Filter>04. Renderer\Texture</Filter>
+      <Filter>04. Renderer\DirectX\Texture</Filter>
     </ClInclude>
     <ClInclude Include="ErrorHandler.h">
       <Filter>99. Base</Filter>
@@ -412,6 +418,18 @@
     </ClInclude>
     <ClInclude Include="GizmoController.h">
       <Filter>04. Renderer\Utils\imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw2D.h">
+      <Filter>04. Renderer\Draw2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Frustum.h">
+      <Filter>99. Base\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabEnums.h">
+      <Filter>99. Base</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthMap.h">
+      <Filter>04. Renderer\Light&amp;Shadow</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -28,8 +28,8 @@ public:
         const Ref<DepthStencilState>& in_depthStencilState,
         const Ref<RasterizerState>&   in_rasterizerState,
         const Ref<BlendState>&        in_blendState,
-        const SamplerList&       in_commonSampler,
-        const ConstantList&     in_commonConstant);
+        const SamplerList&            in_commonSampler,
+        const ConstantList&           in_commonConstant);
 
     void SetVertexShader(const Ref<VertexShader>& in_shader);
     void SetPixelShader(const Ref<PixelShader>& in_shader);
@@ -57,7 +57,7 @@ private:
     Ref<DepthStencilState> m_depthStencilState;
     Ref<RasterizerState>   m_rasterizerState;
     Ref<BlendState>        m_blendState;
-    SamplerList       m_samplerStates;
+    SamplerList            m_samplerStates;
 
     ConstantList m_constantBuffers;
 };

@@ -12,7 +12,7 @@ class GeometryShader;
 class SamplerState;
 class RenderTarget;
 class Mesh;
-class Image2D;
+class Texture2D;
 class ConstantBufferBase;
 class SamplerState;
 
@@ -25,7 +25,7 @@ public:
                                    uint32                    in_filterHeight,
                                    const Ref<VertexShader>&  in_vertexShader,
                                    const Ref<PixelShader>&   in_pixelShader,
-                                   const Image2DList&        in_inputTextures,
+                                   const TextureList&        in_inputTextures,
                                    const SamplerList&   in_samplerLists,
                                    const ConstantList& in_constantBuffers);
 
@@ -38,7 +38,7 @@ public:
 
     // Getter
     auto         GetResolution() const;
-    Ref<Image2D> GetOutputTexture() const;
+    Ref<Texture2D> GetOutputTexture() const;
 
 private:
     Ref<RenderTarget> m_renderTarget;
@@ -47,7 +47,7 @@ private:
     Ref<VertexShader> m_vertexShader;
     Ref<PixelShader>  m_pixelShader;
 
-    Image2DList        m_inputImages;
+    TextureList        m_inputImages;
     SamplerList   m_samplerStates;
     ConstantList m_constantBuffers;
 };

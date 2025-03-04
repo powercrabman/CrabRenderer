@@ -49,19 +49,19 @@ Ref<ConstantBuffer<DataType>> ConstantList::FindBuffer()
 }
 
 //===================================================
-// Image2D List
+// Texture2D List
 //===================================================
 
-class Image2D;
+class Texture;
 
-class Image2DList
+class TextureList
 {
 public:
-    Image2DList()  = default;
-    ~Image2DList() = default;
+    TextureList()  = default;
+    ~TextureList() = default;
 
-    Image2DList& Add(
-        const Ref<Image2D>& in_image,
+    TextureList& Add(
+        const Ref<Texture>& in_texture,
         uint32              in_slot,
         eShaderFlags        in_bindFlags);
 
@@ -72,9 +72,9 @@ public:
 private:
     struct Node
     {
-        Ref<Image2D> image;
-        uint32       slot;
-        eShaderFlags bindFlags;
+        Ref<Texture>   image;
+        uint32         slot;
+        eShaderFlags   bindFlags;
     };
     std::vector<Node> m_images = {};
 };

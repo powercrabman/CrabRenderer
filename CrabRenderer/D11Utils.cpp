@@ -19,7 +19,8 @@ ComPtr<ID3D11Texture2D> ID3D11Texture2DUtil::CreateTexture2D(
     uint32          in_MSAASampleCount,
     uint32          in_MSAASampleQuality,
     uint32          in_numberOfMipmap,
-    uint32          in_textureArraySize)
+    uint32          in_textureArraySize,
+    bool            in_isCubemap)
 {
     ComPtr<ID3D11Texture2D> texture;
     D3D11_TEXTURE2D_DESC    desc = {};
@@ -33,7 +34,7 @@ ComPtr<ID3D11Texture2D> ID3D11Texture2DUtil::CreateTexture2D(
     desc.Usage                   = in_usage;
     desc.BindFlags               = in_bindFlags;
     desc.CPUAccessFlags          = in_cpuAccessFlags;
-    desc.MiscFlags               = 0;
+    desc.MiscFlags               = in_isCubemap ? D3D11_RESOURCE_MISC_TEXTURECUBE : 0;
 
     D3D11_SUBRESOURCE_DATA initData = {};
     initData.pSysMem                = in_initData;
@@ -48,7 +49,18 @@ ComPtr<ID3D11Texture2D> ID3D11Texture2DUtil::CreateTexture2D(
     return texture;
 }
 
-ComPtr<ID3D11Texture2D> ID3D11Texture2DUtil::CreateTexture2D(uint32 in_width, uint32 in_height, eFormat in_format, D3D11_USAGE in_usage, eBindFlags in_bindFlags, eCPUAccessFlags in_cpuAccessFlags, uint32 in_MSAASampleCount /*= 1*/, uint32 in_MSAASampleQuality /*= 0*/, uint32 in_numberOfMipmap /*= 1*/, uint32 in_textureArraySize /*= 1*/)
+ComPtr<ID3D11Texture2D> ID3D11Texture2DUtil::CreateTexture2D(
+    uint32          in_width,
+    uint32          in_height,
+    eFormat         in_format,
+    D3D11_USAGE     in_usage,
+    eBindFlags      in_bindFlags,
+    eCPUAccessFlags in_cpuAccessFlags,
+    uint32          in_MSAASampleCount /*= 1*/,
+    uint32          in_MSAASampleQuality /*= 0*/,
+    uint32          in_numberOfMipmap /*= 1*/,
+    uint32          in_textureArraySize /*= 1*/,
+    bool            in_isCubemap)
 {
     ComPtr<ID3D11Texture2D> texture;
     D3D11_TEXTURE2D_DESC    desc = {};
@@ -62,7 +74,7 @@ ComPtr<ID3D11Texture2D> ID3D11Texture2DUtil::CreateTexture2D(uint32 in_width, ui
     desc.Usage                   = in_usage;
     desc.BindFlags               = in_bindFlags;
     desc.CPUAccessFlags          = in_cpuAccessFlags;
-    desc.MiscFlags               = 0;
+    desc.MiscFlags               = in_isCubemap ? D3D11_RESOURCE_MISC_TEXTURECUBE : 0;
 
     CheckD3D11Result(GetRenderer().GetDevice()->CreateTexture2D(&desc,
                                                                 nullptr,
@@ -125,6 +137,44 @@ crab::ComPtr<ID3D11Texture2D> ID3D11Texture2DUtil::CreateDynamicTexture2D(uint32
         in_MSAASampleQuality,
         in_numberOfMipmap,
         in_textureArraySize);
+}
+
+ComPtr<ID3D11Texture2D> ID3D11Texture2DUtil::CreateTexture2DArray(const std::vector<ID3D11Texture2D*>& in_textures)
+{
+    D3D11_TEXTURE2D_DESC desc;
+    in_textures[0]->GetDesc(&desc);
+
+    D3D11_TEXTURE2D_DESC descArray = desc;
+    descArray.ArraySize            = static_cast<uint32>(in_textures.size());
+    descArray.MiscFlags            = 0;
+
+    ComPtr<ID3D11Texture2D> textureArray;
+    CheckD3D11Result(
+        GetRenderer().GetDevice()->CreateTexture2D(&descArray, nullptr, &textureArray),
+        "CreateTexture2DArray Fail.");
+
+    for (size_t i = 0; i < in_textures.size(); ++i)
+    {
+        D3D11_TEXTURE2D_DESC texDesc;
+        in_textures[i]->GetDesc(&texDesc);
+
+        for (UINT mipLevel = 0; mipLevel < texDesc.MipLevels; ++mipLevel)
+        {
+            D3D11_BOX srcBox = { 0, 0, 0, texDesc.Width >> mipLevel, texDesc.Height >> mipLevel, 1 };
+
+            GetRenderer().GetContext()->CopySubresourceRegion(
+                textureArray.Get(),
+                D3D11CalcSubresource(mipLevel, static_cast<uint32>(i), texDesc.MipLevels),
+                0,
+                0,
+                0,
+                in_textures[i],
+                mipLevel,
+                &srcBox);
+        }
+    }
+
+    return textureArray;
 }
 
 void ID3D11Texture2DUtil::WriteToDefaultTexture(ID3D11Texture2D* in_defaultTexture, void* in_srcData, uint32 in_pixelStride, uint32 in_width)
@@ -541,10 +591,13 @@ ComPtr<ID3DBlob> ShaderUtil::LoadShaderCode(
     ComPtr<ID3DBlob> shaderBlob;
     ComPtr<ID3DBlob> errorBlob;
 
+    std::vector<D3D_SHADER_MACRO> macros  = in_shaderMacros.Get();
+    const D3D_SHADER_MACRO*       pMacros = macros.empty() ? nullptr : macros.data();
+
     CheckD3D11Result(D3DCompile(in_shaderCode.data(),
                                 in_shaderCode.size(),
                                 nullptr,
-                                in_shaderMacros.Get(),
+                                pMacros,
                                 D3D_COMPILE_STANDARD_FILE_INCLUDE,
                                 in_entryPoint.data(),
                                 in_shaderModel.data(),
@@ -583,8 +636,11 @@ ComPtr<ID3DBlob> ShaderUtil::LoadShaderFile(
 
     if (extension == ".hlsl")
     {
+        std::vector<D3D_SHADER_MACRO> macros  = in_shaderMacros.Get();
+        const D3D_SHADER_MACRO*       pMacros = macros.empty() ? nullptr : macros.data();
+
         CheckD3D11Result(D3DCompileFromFile(in_shaderPath.c_str(),
-                                            in_shaderMacros.Get(),
+                                            pMacros,
                                             D3D_COMPILE_STANDARD_FILE_INCLUDE,
                                             in_entryPoint.data(),
                                             in_shaderModel.data(),
@@ -628,16 +684,101 @@ ComPtr<ID3D11ShaderResourceView> ID3D11ShaderResourceViewUtil::CreateTexture2DSR
     D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
     srvDesc.Format                          = format;
 
-    if (texDesc.SampleDesc.Count > 1)
+    D3D11_RESOURCE_DIMENSION resDim;
+    in_texture->GetType(&resDim);
+
+    switch (resDim)
     {
-        srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2DMS;
+        case D3D11_RESOURCE_DIMENSION_TEXTURE1D:
+        {
+            if (texDesc.ArraySize > 1)
+            {
+                srvDesc.ViewDimension             = D3D11_SRV_DIMENSION_TEXTURE1D;
+                srvDesc.Texture1D.MostDetailedMip = 0;
+                srvDesc.Texture1D.MipLevels       = texDesc.MipLevels;
+            }
+            else
+            {
+                srvDesc.ViewDimension                  = D3D11_SRV_DIMENSION_TEXTURE1DARRAY;
+                srvDesc.Texture1DArray.MostDetailedMip = 0;
+                srvDesc.Texture1DArray.MipLevels       = texDesc.MipLevels;
+            }
+        }
+        break;
+
+        case D3D11_RESOURCE_DIMENSION_TEXTURE2D:
+        {
+            if (texDesc.SampleDesc.Count > 1)
+            {
+                if (texDesc.ArraySize > 1)
+                {
+                    srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2DMSARRAY;
+                }
+                else
+                {
+                    srvDesc.ViewDimension                    = D3D11_SRV_DIMENSION_TEXTURE2DMS;
+                    srvDesc.Texture2DMSArray.FirstArraySlice = 0;
+                    srvDesc.Texture2DMSArray.ArraySize       = texDesc.ArraySize;
+                }
+            }
+            else
+            {
+                if (texDesc.ArraySize > 1)
+                {
+                    srvDesc.ViewDimension                  = D3D11_SRV_DIMENSION_TEXTURE2DARRAY;
+                    srvDesc.Texture2DArray.MostDetailedMip = 0;
+                    srvDesc.Texture2DArray.MipLevels       = texDesc.MipLevels;
+                    srvDesc.Texture2DArray.FirstArraySlice = 0;
+                    srvDesc.Texture2DArray.ArraySize       = texDesc.ArraySize;
+                }
+                else
+                {
+                    srvDesc.ViewDimension             = D3D11_SRV_DIMENSION_TEXTURE2D;
+                    srvDesc.Texture2D.MostDetailedMip = 0;
+                    srvDesc.Texture2D.MipLevels       = texDesc.MipLevels;
+                }
+            }
+        }
+        break;
+
+        case D3D11_RESOURCE_DIMENSION_TEXTURE3D:
+        {
+            srvDesc.ViewDimension             = D3D11_SRV_DIMENSION_TEXTURE3D;
+            srvDesc.Texture1D.MostDetailedMip = 0;
+            srvDesc.Texture1D.MipLevels       = texDesc.MipLevels;
+        }
+        break;
+
+        default:
+            CRAB_DEBUG_BREAK("Unknown Resource Dimension.");
+            break;
     }
-    else
-    {
-        srvDesc.ViewDimension             = D3D11_SRV_DIMENSION_TEXTURE2D;
-        srvDesc.Texture2D.MostDetailedMip = 0;
-        srvDesc.Texture2D.MipLevels       = texDesc.MipLevels;
-    }
+
+    CheckD3D11Result(dx->CreateShaderResourceView(
+                         in_texture,
+                         &srvDesc,
+                         srv.GetAddressOf()),
+                     "CreateShaderResourceView Fail.");
+
+    return srv;
+}
+
+ComPtr<ID3D11ShaderResourceView> ID3D11ShaderResourceViewUtil::CreateTextureCubeSRV(ID3D11Texture2D* in_texture, eFormat in_format)
+{
+    auto dx = GetRenderer().GetDevice();
+
+    ComPtr<ID3D11ShaderResourceView> srv;
+
+    D3D11_TEXTURE2D_DESC texDesc;
+    in_texture->GetDesc(&texDesc);
+    DXGI_FORMAT format = in_format == eFormat::Unknown ? texDesc.Format : static_cast<DXGI_FORMAT>(in_format);
+
+    D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+    srvDesc.Format                          = format;
+
+    srvDesc.ViewDimension               = D3D11_SRV_DIMENSION_TEXTURECUBE;
+    srvDesc.TextureCube.MostDetailedMip = 0;
+    srvDesc.TextureCube.MipLevels       = texDesc.MipLevels;
 
     CheckD3D11Result(dx->CreateShaderResourceView(
                          in_texture,
@@ -684,10 +825,32 @@ ComPtr<ID3D11DepthStencilView> ID3D11DepthStencilViewUtil::CreateDepthStencilVie
     D3D11_DEPTH_STENCIL_VIEW_DESC desc = {};
     desc.Format                        = in_format == eFormat::Unknown ? texDesc.Format : static_cast<DXGI_FORMAT>(in_format);
 
-    if (texDesc.SampleDesc.Count > 1)
-        desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
+    if (texDesc.ArraySize > 1)
+    {
+        if (texDesc.SampleDesc.Count > 1)
+        {
+            desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMSARRAY;
+        }
+        else
+        {
+            desc.ViewDimension                  = D3D11_DSV_DIMENSION_TEXTURE2DARRAY;
+            desc.Texture2DArray.MipSlice        = 0;
+            desc.Texture2DArray.FirstArraySlice = 0;
+            desc.Texture2DArray.ArraySize       = texDesc.ArraySize;
+        }
+    }
     else
-        desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+    {
+        if (texDesc.SampleDesc.Count > 1)
+        {
+            desc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2DMS;
+        }
+        else
+        {
+            desc.ViewDimension      = D3D11_DSV_DIMENSION_TEXTURE2D;
+            desc.Texture2D.MipSlice = 0;
+        }
+    }
 
     CheckD3D11Result(GetRenderer().GetDevice()->CreateDepthStencilView(
                          in_texture,

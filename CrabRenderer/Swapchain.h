@@ -5,7 +5,7 @@
 namespace crab
 {
 
-class Image2D;
+class Texture2D;
 class RenderTarget;
 class DepthBuffer;
 
@@ -24,18 +24,14 @@ public:
     bool IsMSAA() const { return m_enableMSAA; }
     bool IsHDR() const { return m_enableHDRRendering; }
 
-    Viewport GetViewport() const;
-
     Ref<DepthBuffer> GetDepthBuffer() const;
-    Ref<DepthBuffer> GetDepthOnlyBuffer() const;
-    Ref<Image2D>     GetDepthOnlyBufferImage() const;
 
     Ref<RenderTarget> GetBackBuffer() const;
-    Ref<Image2D>      GetBackBufferImage() const;
+    Ref<Texture2D>      GetBackBufferImage() const;
 
     Ref<RenderTarget> GetBackBufferHDR() const;
-    Ref<Image2D>      GetBackBufferHDRImage() const;
-    Ref<Image2D>      GetResolvedBackBufferImage() const;
+    Ref<Texture2D>      GetBackBufferHDRImage() const;
+    Ref<Texture2D>      GetResolvedBackBufferImage() const;
     void              ResolveBackBuffer() const;
 
 private:
@@ -45,7 +41,6 @@ private:
     ComPtr<IDXGISwapChain1> m_swapChain;
 
     Ref<RenderTarget> m_backBuffer;   // No MSAA
-    Viewport          m_viewport;
 
     // Main backBuffer
     eFormat m_backBufferFormat = {};
@@ -59,7 +54,6 @@ private:
 
     // Depth buffer
     Ref<DepthBuffer> m_depthBuffer;   // back buffer dsv
-    Ref<DepthBuffer> m_depthOnlyBuffer;
     eFormat          m_depthBufferFormat = {};
 
     // MSAA

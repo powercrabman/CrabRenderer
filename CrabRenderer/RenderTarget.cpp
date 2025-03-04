@@ -28,7 +28,7 @@ Ref<RenderTarget> RenderTarget::Create(ID3D11Texture2D* in_texture)
                                                           rt->m_renderTargetView.GetAddressOf()),
         "CreateRenderTargetView Fail.");
 
-    rt->m_image  = Image2D::CreateFromTexture(in_texture);
+    rt->m_image  = Texture2D::CreateFromTexture(in_texture);
     rt->m_format = static_cast<eFormat>(texDesc.Format);
 
     return rt;
@@ -66,7 +66,7 @@ void RenderTarget::Bind(const Ref<DepthBuffer>& in_depthBuffer) const
     GetRenderer().SetRenderTarget(m_renderTargetView.Get(), in_depthBuffer->Get());
 }
 
-void RenderTarget::Clear(const Color& in_color) const
+void RenderTarget::Clear(const Color4& in_color) const
 {
     GetRenderer().GetContext()->ClearRenderTargetView(m_renderTargetView.Get(), (FLOAT*)&in_color);
 }

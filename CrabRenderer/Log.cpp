@@ -21,7 +21,7 @@ void Log::Init()
     // - Create file sink
     const auto            now         = std::chrono::system_clock::now();
     const auto            timestamp   = std::format("{:%Y-%m-%d %H-%M}", now);
-    std::filesystem::path logFilePath = logDirectory / timestamp / ".txt";
+    std::filesystem::path logFilePath = logDirectory / std::string(timestamp + ".txt");
     auto                  fileSink    = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFilePath.string(), true);
 
     // - Sinks

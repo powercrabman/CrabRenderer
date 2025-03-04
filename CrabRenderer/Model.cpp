@@ -2,6 +2,7 @@
 
 #include "Mesh.h"
 #include "Model.h"
+
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
@@ -9,11 +10,6 @@
 #include <DirectXMesh.h>
 #include <DirectXMesh.inl>
 
-#ifdef _DEBUG
-#    pragma comment(lib, "assimp\\assimp-vc143-mtd.lib")
-#else
-#    pragma comment(lib, "assimp\\assimp-vc143-mt.lib")
-#endif
 
 namespace crab
 {
@@ -41,7 +37,10 @@ bool ModelLoader::Load(const std::filesystem::path& in_modelPath)
     m_meshFilePath = in_modelPath;
     m_modelNodes.clear();
 
-    _ProcessNode(pScene->mRootNode, pScene);
+    if (pScene->mNumMeshes > 1)
+        _ProcessNode(pScene->mRootNode, pScene);
+    else
+        _ProcessMesh(pScene->mMeshes[0], pScene);
 
     return true;
 }
@@ -50,7 +49,8 @@ void ModelLoader::_ProcessNode(aiNode* in_node, const aiScene* in_scene)
 {
     for (UINT i = 0; i < in_node->mNumMeshes; i++)
     {
-        aiMesh* mesh = in_scene->mMeshes[in_node->mMeshes[i]];
+        uint32  idx  = in_node->mMeshes[i];
+        aiMesh* mesh = in_scene->mMeshes[idx];
         _ProcessMesh(mesh, in_scene);
     }
 

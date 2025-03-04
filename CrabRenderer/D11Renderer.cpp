@@ -282,16 +282,27 @@ void D11Renderer::SetViewport(const Viewport& in_viewport)
     }
 }
 
-void D11Renderer::BindBackBuffer(const Ref<DepthBuffer>& in_depthBuffer_or_null)
+void D11Renderer::SetViewport(uint32 x, uint32 y, uint32 width, uint32 height, uint32 minDepth, uint32 maxDepth)
+{
+    Viewport vp = {};
+    vp.x        = static_cast<float>(x);
+    vp.y        = static_cast<float>(y);
+    vp.width    = static_cast<float>(width);
+    vp.height   = static_cast<float>(height);
+    vp.minDepth = static_cast<float>(minDepth);
+    vp.maxDepth = static_cast<float>(maxDepth);
+    SetViewport(vp);
+}
+
+void D11Renderer::BindBackBuffer(const Ref<DepthBuffer>& in_depthBuffer_or_null) const
 {
     auto rtv = m_swapChain->GetBackBuffer();
-    SetViewport(m_swapChain->GetViewport());
 
     SetRenderTarget(rtv->Get(),
                     in_depthBuffer_or_null ? in_depthBuffer_or_null->Get() : nullptr);
 }
 
-void D11Renderer::ClearBackBuffer(const Color& in_color) const
+void D11Renderer::ClearBackBuffer(const Color4& in_color) const
 {
     m_swapChain->GetBackBuffer()->Clear(in_color);
 }
@@ -310,33 +321,16 @@ void D11Renderer::ClearDepthBuffer(
             in_clearStencilFactor);
 }
 
-void D11Renderer::ClearDepthOnlyBuffer(
-    bool  in_clearDepth,
-    float in_clearDepthFactor,
-    bool  in_clearStencil,
-    int32 in_clearStencilFactor) const
-{
-    if (auto buffer = GetDepthOnlyBuffer())
-        buffer->Clear(in_clearDepth, in_clearDepthFactor, in_clearStencil, in_clearStencilFactor);
-}
-
 Ref<DepthBuffer> D11Renderer::GetDepthBuffer() const
 {
     return m_swapChain->GetDepthBuffer();
 }
 
-Ref<DepthBuffer> D11Renderer::GetDepthOnlyBuffer() const
-{
-    return m_swapChain->GetDepthOnlyBuffer();
-}
-
-void D11Renderer::BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_null)
+void D11Renderer::BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_null) const
 {
     if (auto rtv = GetBackBufferMS())
     {
-        SetViewport(m_swapChain->GetViewport());
-        SetRenderTarget(rtv->Get(),
-                        in_depthBuffer_or_null ? in_depthBuffer_or_null->Get() : nullptr);
+        SetRenderTarget(rtv->Get(), in_depthBuffer_or_null ? in_depthBuffer_or_null->Get() : nullptr);
     }
     else
     {
@@ -344,7 +338,7 @@ void D11Renderer::BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_nul
     }
 }
 
-void D11Renderer::ClearBackBufferMS(const Color& in_color) const
+void D11Renderer::ClearBackBufferMS(const Color4& in_color) const
 {
     GetBackBufferMS()->Clear(in_color);
 }
@@ -357,6 +351,11 @@ void D11Renderer::Present() const
 Ref<RenderTarget> D11Renderer::GetBackBufferMS() const
 {
     return m_swapChain->GetBackBufferHDR();
+}
+
+void D11Renderer::BindOnlyDepthStencilView(ID3D11DepthStencilView* in_depthBuffer) const
+{
+    m_deviceContext->OMSetRenderTargets(0, nullptr, in_depthBuffer);
 }
 
 ID3D11Device* D11Renderer::GetDevice() const
