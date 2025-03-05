@@ -8,11 +8,11 @@ struct ModelRenderer
 
 struct SkyboxRenderer
 {
-    Ref<Mesh>         mesh;
-    Ref<CubemapImage> envCubemap;
-    Ref<CubemapImage> irrCubemap;
-    Ref<CubemapImage> specCubemap;
-    Ref<Image2D>      brdfImage;
+    Ref<Mesh>        mesh;
+    Ref<TextureCube> envCubemap;
+    Ref<TextureCube> irrCubemap;
+    Ref<TextureCube> specCubemap;
+    Ref<Texture2D>   brdfImage;
 
     enum eMappingType
     {
@@ -26,14 +26,22 @@ struct SkyboxRenderer
 
 struct LightComponent
 {
-    Vec3 lightRadiance = Vec3::One;
+    // About Light
+    Color3 lightRadiance = color3::WHITE;
 
-    float fallOffStart  = 5.f;
-    float fallOffEnd    = 100.f;
-    float spotPower     = 1.f;
-    float lightStrength = 1.f;
+    float fallOffStart   = 5.f;
+    float fallOffEnd     = 100.f;
+    float lightStrength  = 1.f;
+    float innerConeAngle = 15.f * DEG2RAD;
+    float outerConeAngle = 30.f * DEG2RAD;
 
-    eLightType type = eLightType::None;
+    eLightType lightType = eLightType::None;
+
+    // About Shadow
+    Ref<DepthMap>    shadowMap;
+    float            shadowBias       = 0.001f;
+    uint32           shadowKernelSize = 5;
+    bool             useShadow        = false;
 };
 
 struct CameraControlComponent
@@ -46,10 +54,4 @@ struct PlanarMirrorComponent
 {
     Ref<Mesh>     mirrorMesh;   // this is a plane (quad)
     Ref<Material> mirrorMaterial;
-};
-
-struct ShadowMapComponent
-{
-    Ref<DepthBuffer>  shadowDepthBuffer;
-    Ref<SamplerState> shadowSampler;
 };

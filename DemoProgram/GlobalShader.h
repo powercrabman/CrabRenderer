@@ -13,6 +13,8 @@ public:
     [[nodiscard]] Ref<VertexShader> PBRVertexShader() const { return m_PBRVS; }
     [[nodiscard]] Ref<VertexShader> PostProcessVertexShader() const { return m_postProcessVS; }
     [[nodiscard]] Ref<VertexShader> MaskingVertexShader() const { return m_maskingVS; }
+    [[nodiscard]] Ref<VertexShader> BasicShadowCasterVertexShader() const { return m_basicShadowCasterVS; }
+    [[nodiscard]] Ref<VertexShader> CascadeOmniShadowCasterVertexShader() const { return m_casOmniShadowCasterVS; }
 
     // Pixel Shader
     [[nodiscard]] Ref<PixelShader> BlurDownPixelShader() const { return m_blurDownPS; }
@@ -26,10 +28,14 @@ public:
     [[nodiscard]] Ref<PixelShader> MaskingPixelShader() const { return m_maskingPixelShader; }
     [[nodiscard]] Ref<PixelShader> PostEffectPixelShader() const { return m_postEffectPS; }
     [[nodiscard]] Ref<PixelShader> DebugNormalMapPixelShader() const { return m_debugNormalMapPS; }
+    [[nodiscard]] Ref<PixelShader> DepthVisualizePixelShader() const { return m_depthVisualizePS; }
+    [[nodiscard]] Ref<PixelShader> CommonShadowCasterPixelShader() const { return m_commonShadowCasterPS; }
 
     // Geometry Shader
     [[nodiscard]] Ref<GeometryShader> DrawNormalGeometryShader() const { return m_drawNormalGS; }
+    [[nodiscard]] Ref<GeometryShader> CascadeShadowCasterGeometryShader() const { return m_cascadeShadowCasterGS; }
 
+    [[nodiscard]] Ref<GeometryShader> OmniShadowCasterGeometryShader() const { return m_omniShadowCasterGS; }
 private:
     // Vertex shader
     Ref<VertexShader> m_drawNormalVS;
@@ -37,6 +43,8 @@ private:
     Ref<VertexShader> m_PBRVS;
     Ref<VertexShader> m_postProcessVS;
     Ref<VertexShader> m_maskingVS;
+    Ref<VertexShader> m_basicShadowCasterVS;
+    Ref<VertexShader> m_casOmniShadowCasterVS;
 
     // Pixel shader
     Ref<PixelShader> m_blurDownPS;
@@ -50,9 +58,13 @@ private:
     Ref<PixelShader> m_maskingPixelShader;
     Ref<PixelShader> m_postEffectPS;
     Ref<PixelShader> m_debugNormalMapPS;
+    Ref<PixelShader> m_depthVisualizePS;
+    Ref<PixelShader> m_commonShadowCasterPS;
 
     // Geometry shader
     Ref<GeometryShader> m_drawNormalGS;
+    Ref<GeometryShader> m_cascadeShadowCasterGS;
+    Ref<GeometryShader> m_omniShadowCasterGS;
 
     // Domain shader
 

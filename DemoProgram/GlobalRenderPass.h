@@ -10,18 +10,18 @@ public:
     void Init();
 
     void BeginDrawNormalPass() const;
-
     void BeginPBRPass(uint32 in_stencilRef) const;
     void BeginPBRWireframePass(uint32 in_stencilRef) const;
     void BeginPBRReflectPass(uint32 in_stencilRef) const;
     void BeginPBRReflectWireframePass(uint32 in_stencilRef) const;
-
     void BeginSkyboxPass(uint32 in_stencilRef) const;
     void BeginSkyboxReflectPass(uint32 in_stencilRef) const;
-
     void BeginDepthOnlyPass() const;
-
     void BeginMirrorMaskingPass(uint32 in_stencilRef) const;
+    void BeginDepthVisualizePass() const;
+    void BeginBasicShadowCasterPass() const;
+    void BeginCascadeShadowCasterPass() const;
+    void BeginOmniShadowCasterPass() const;
 
     [[nodiscard]] Ref<RenderPass> GetDrawNormalPass() { return m_drawNormalPass; }
     [[nodiscard]] Ref<RenderPass> GetPBRPass() { return m_pbrPass; }
@@ -32,6 +32,10 @@ public:
     [[nodiscard]] Ref<RenderPass> GetSkyboxMirrorPass() { return m_skyboxReflectPass; }
     [[nodiscard]] Ref<RenderPass> GetDepthOnlyState() { return m_depthOnlyPass; }
     [[nodiscard]] Ref<RenderPass> GetMirrorMaskingPass() { return m_mirrorMaskingPass; }
+    [[nodiscard]] Ref<RenderPass> GetDepthVisualizePass() { return m_depthVisualizePass; }
+    [[nodiscard]] Ref<RenderPass> GetBasicShadowCasterPass() { return m_basicShadowCasterPass; }
+    [[nodiscard]] Ref<RenderPass> GetCascadeShadowCasterPass() { return m_cascadeShadowCasterPass; }
+    [[nodiscard]] Ref<RenderPass> GetOmniShadowCasterPass() { return m_omniShadowCasterPass; }
 
 private:
     GlobalRenderPass() = default;
@@ -49,6 +53,11 @@ private:
     Ref<RenderPass> m_depthOnlyPass;
 
     Ref<RenderPass> m_mirrorMaskingPass;
+    Ref<RenderPass> m_depthVisualizePass;
+
+    Ref<RenderPass> m_basicShadowCasterPass;
+    Ref<RenderPass> m_cascadeShadowCasterPass;
+    Ref<RenderPass> m_omniShadowCasterPass;
 };
 
 inline GlobalRenderPass& GetGlobalRenderPass()

@@ -11,4 +11,10 @@ public:
             in_geo.indices,
             eTopology::TriangleList);
     }
+
+    static void DrawFullScreenQuad();
+
+private:
+    struct Impl;
+    static Scope<Impl> m_impl;
 };

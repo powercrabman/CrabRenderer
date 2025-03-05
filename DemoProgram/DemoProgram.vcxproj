@@ -66,6 +66,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
+    <None Include="DepthVisualizeCommon.hlsli">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="ShadowShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
     <None Include="SPHCommon.hlsli">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -106,6 +114,10 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="DepthVisualizePS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
@@ -509,14 +521,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Lib\$(Configuration)\;$(SolutionDir)Bin\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir);$(SolutionDir)Vendor\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Lib\$(Configuration)\;$(SolutionDir)Bin\$(Configuration)\;$(SolutionDir)Vendor\;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)Bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Inter\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Lib\$(Configuration)\;$(SolutionDir)Bin\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir);$(SolutionDir)Vendor\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Lib\$(Configuration)\;$(SolutionDir)Bin\$(Configuration)\;$(SolutionDir)Vendor\;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)Bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)Inter\$(Configuration)\</IntDir>
   </PropertyGroup>

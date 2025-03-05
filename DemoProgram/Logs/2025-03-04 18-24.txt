@@ -1,0 +1,26 @@
+[2025-03-05 03:24:39.125] [info] Log initialized
+[2025-03-05 03:24:39.125] [trace] C:\Users\ajw01\Desktop\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-05 03:24:39.898] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-05 03:24:40.254] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-03-05 03:24:41.325] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-03-05 03:24:41.445] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-03-05 03:24:41.532] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-03-05 03:24:41.670] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-03-05 03:24:41.833] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-05 03:24:42.696] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-05 03:24:42.794] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-05 03:24:43.128] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-05 03:24:43.228] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-05 03:24:43.612] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-05 03:24:43.711] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-05 03:24:44.361] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-05 03:24:44.445] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-05 03:24:44.628] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-05 03:24:44.728] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-05 03:24:45.278] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-05 03:24:45.862] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-05 03:24:46.029] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-05 03:24:47.761] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-05 03:24:50.345] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-05 03:24:50.745] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-05 03:27:17.030] [debug] Event Occurred. "AppClose_CoreEvent"

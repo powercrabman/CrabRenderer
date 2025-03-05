@@ -21,7 +21,10 @@ public:
     void OnEvent(CrabEvent& in_event) override;
 
 private:
-    void _DrawSkybox();
+    void _DrawSkybox(bool in_bindTexture);
+    void _DrawBasic(bool in_bindTexture);
+    void _DrawMirror(bool in_bindTexture);
+
     void _DrawPBRMesh(const TransformComponent& t, const Ref<Mesh>& mesh, const Ref<Material>& mat);
 
     PostProcess m_postProcess;
@@ -34,6 +37,10 @@ private:
     bool  m_wireframeMode            = false;
     bool  m_renderNormalMode         = false;
     float m_normalStrength           = 0.2f;
+    float m_depthVisualizeFactor     = 0.1f;
+    bool  m_renderDepthVisualizeMode = false;
+
+    Ref<DepthMap> m_depthMap;
 
     enum class eSkyboxType
     {

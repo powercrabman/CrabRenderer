@@ -152,10 +152,10 @@ void GlobalRenderPass::Init()
 
     // Depth Only
     {
-        ConstantList cb;
-        cb
+        ConstantList consts;
+        consts
             .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexShader)
-            .Add(GetGlobalConstants().GetCameraConstant(), 1, eShaderFlags_VertexShader);
+            .Add(constant.GetCameraConstant(), 1, eShaderFlags_VertexShader);
 
         m_depthOnlyPass = RenderPass::Create(
             shader.MaskingVertexShader(),
@@ -167,7 +167,7 @@ void GlobalRenderPass::Init()
             state->Rasterizer_CullCounterClockwise(true),
             state->Blend_Opaque(true),
             {},
-            cb);
+            consts);
     }
 
     // Masking Pass
@@ -184,6 +184,81 @@ void GlobalRenderPass::Init()
             nullptr,
             nullptr,
             state->DepthStencil_DepthTestDrawStencil(),
+            state->Rasterizer_CullCounterClockwise(true),
+            state->Blend_Opaque(true),
+            {},
+            cblist);
+    }
+
+    // Depth Visualize
+    {
+        SamplerList samplers;
+        samplers.Add(state->Sampler_LinearWrap(), 0, eShaderFlags_PixelShader);
+
+        ConstantList cblist;
+        cblist.Add(GetGlobalConstants().GetDepthVisualizeConstant(), 0, eShaderFlags_PixelShader);
+
+        m_depthVisualizePass = RenderPass::Create(
+            shader.PostProcessVertexShader(),
+            shader.DepthVisualizePixelShader(),
+            nullptr,
+            nullptr,
+            nullptr,
+            state->DepthStencil_DepthTest(),
+            state->Rasterizer_CullCounterClockwise(true),
+            state->Blend_Opaque(true),
+            samplers,
+            cblist);
+    }
+
+    // Shadow Caster
+    {
+        ConstantList cblist;
+        cblist
+            .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexShader)
+            .Add(constant.GetBasicShadowConstant(), 1, eShaderFlags_GeometryShader);
+
+        m_basicShadowCasterPass = RenderPass::Create(
+            shader.BasicShadowCasterVertexShader(),
+            shader.CommonShadowCasterPixelShader(),
+            nullptr,
+            nullptr,
+            nullptr,
+            state->DepthStencil_DepthTest(),
+            state->Rasterizer_CullCounterClockwise(true),
+            state->Blend_Opaque(true),
+            {},
+            cblist);
+
+        cblist.ClearList();
+        cblist
+            .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexShader)
+            .Add(constant.GetCascadeShadowConstant(), 1, eShaderFlags_GeometryShader);
+
+        m_cascadeShadowCasterPass = RenderPass::Create(
+            shader.CascadeOmniShadowCasterVertexShader(),
+            shader.CommonShadowCasterPixelShader(),
+            shader.CascadeShadowCasterGeometryShader(),
+            nullptr,
+            nullptr,
+            state->DepthStencil_DepthTest(),
+            state->Rasterizer_CullCounterClockwise(true),
+            state->Blend_Opaque(true),
+            {},
+            cblist);
+
+        cblist.ClearList();
+        cblist
+            .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexShader)
+            .Add(constant.GetOmniShadowConstant(), 1, eShaderFlags_GeometryShader);
+
+        m_omniShadowCasterPass = RenderPass::Create(
+            shader.CascadeOmniShadowCasterVertexShader(),
+            shader.CommonShadowCasterPixelShader(),
+            shader.OmniShadowCasterGeometryShader(),
+            nullptr,
+            nullptr,
+            state->DepthStencil_DepthTest(),
             state->Rasterizer_CullCounterClockwise(true),
             state->Blend_Opaque(true),
             {},
@@ -234,4 +309,24 @@ void GlobalRenderPass::BeginDepthOnlyPass() const
 void GlobalRenderPass::BeginMirrorMaskingPass(uint32 in_stencilRef) const
 {
     m_mirrorMaskingPass->BeginPass(in_stencilRef);
+}
+
+void GlobalRenderPass::BeginDepthVisualizePass() const
+{
+    m_depthVisualizePass->BeginPass();
+}
+
+void GlobalRenderPass::BeginBasicShadowCasterPass() const
+{
+    m_basicShadowCasterPass->BeginPass();
+}
+
+void GlobalRenderPass::BeginCascadeShadowCasterPass() const
+{
+    m_cascadeShadowCasterPass->BeginPass();
+}
+
+void GlobalRenderPass::BeginOmniShadowCasterPass() const
+{
+    m_omniShadowCasterPass->BeginPass();
 }

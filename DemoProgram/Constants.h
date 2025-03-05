@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CrabTypes.h"
+#include "Common.h"
 
 cbuffer CameraConstant
 {
@@ -30,10 +30,15 @@ struct LightAttribute
     Vec3  lightRadiance;
     float fallOffStart;
     // --------------------------
-    float      fallOffEnd;
-    float      spotPower;
-    float      lightStrength;
+    float fallOffEnd;
+    float lightStrength;
+    float innerConeAngle;
+    float outerConeAngle;
+    // --------------------------
     eLightType lightType;
+    bool       useShadow;
+    float      shadowBias;
+    uint32     shadowKernelSize;
 };
 
 cbuffer LightTransformConstant
@@ -55,6 +60,14 @@ cbuffer TransformConstant
 cbuffer SkyboxPSConstant
 {
     int textureCubeType;
+};
+
+cbuffer DepthVisualizeConstant
+{
+    Mat4 invViewProj;
+    // --------------------------
+    Vec3  cameraPos;
+    float visualFactor;
 };
 
 using eMaterialTextureUsingFlags = uint32;
@@ -127,4 +140,19 @@ cbuffer PostEffectConstant
     //--------------------------------------
     float fogFallOffStart = 10.f;
     float fogFallOffEnd   = 50.f;
+};
+
+cbuffer BasicShadowConstant
+{
+    Mat4 shadowViewProj;
+};
+
+cbuffer CascadeShadowConstant
+{
+    Mat4 shadowViewProj[4];
+};
+
+cbuffer OmniShadowConstant
+{
+    Mat4 shadowViewProj[6];
 };

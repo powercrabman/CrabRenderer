@@ -42,25 +42,20 @@ cbuffer CameraConstant : register(b1)
 // Light Constant
 //===================================================
 
-static const int MAX_LIGHTS = 3;
+static const int MAX_LIGHTS = 4;
 
 #define LIGHT_NONE 0
 #define LIGHT_DIRECTIONAL 1
 #define LIGHT_POINT 2
 #define LIGHT_SPOT 3
 
-#define LIGHT_SHADOW_MAPPING BIT(8)
-
-bool IsShadowMapping(uint in_lightType)
-{
-    return (in_lightType & LIGHT_SHADOW_MAPPING);
-}
-
-bool MatchLightType(uint in_lightType, uint in_lightTypeBit)
-{
-    uint lightType = in_lightType & 0xFF;
-    return (lightType & in_lightTypeBit);
-}
+#define SHADOW_NONE 0
+#define SHADOW_BASIC 1
+#define SHADOW_PCF4 2
+#define SHADOW_PCF8 3
+#define SHADOW_PCF16 4
+#define SHADOW_PCF32 5
+#define SHADOW_PCF64 6
 
 struct LightTransform
 {
@@ -79,9 +74,14 @@ struct LightAttribute
     float fallOffStart;
     // --------------------------
     float fallOffEnd;
-    float spotPower;
     float lightStrength;
+    float innerConeAngle;
+    float outerConeAngle;
+    // --------------------------
     uint lightType; // if 0, light is disabled
+    uint useShadow;
+    float shadowBias;
+    uint shadowKernelSize;
 };
 
 cbuffer LightTransformConstant : register(b2)

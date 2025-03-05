@@ -8,7 +8,11 @@ Texture2D g_aoTex : register(t2);
 Texture2D g_metallicTex : register(t3);
 Texture2D g_roughnessTex : register(t4);
 Texture2D g_emissiveTex : register(t5);
-Texture2D g_shadowMapTex[MAX_LIGHTS] : register(t20);
+
+// Shadow Map
+Texture2D g_basicShadowMap[MAX_LIGHTS] : register(t20); // 20 ~ 23
+Texture2DArray g_cascadeShadowMap[MAX_LIGHTS] : register(t24); // 24 ~ 27
+TextureCube g_omniShadowMap[MAX_LIGHTS] : register(t28); // 28 ~ 31
 
 float3 SchlickFresnel(float3 F0, float NdotH)
 {
@@ -128,6 +132,7 @@ float3 DirectBRDF(float3 lightVec, float3 pixelToEye, float3 posWorld, float3 no
 
 void ComputeLight(
     float3 in_posW,
+    float3 in_normal,
     LightAttribute in_lightAtt,
     LightTransform in_lightTrans,
     uint in_index,
@@ -139,56 +144,79 @@ void ComputeLight(
     radiance = float3(0.f, 0.f, 0.f);
 
     // Compute Light
-    L = MatchLightType(in_lightAtt.lightType, LIGHT_DIRECTIONAL)
+    L = in_lightAtt.lightType == LIGHT_DIRECTIONAL
         ? -in_lightTrans.lightDirection
         : normalize(in_lightTrans.lightPosition - in_posW);
 
     float dist = distance(in_lightTrans.lightPosition, in_posW);
 
-    float attenuation = MatchLightType(in_lightAtt.lightType, LIGHT_DIRECTIONAL)
-                      ? ComputeAttenuation(dist, in_lightAtt.fallOffStart, in_lightAtt.fallOffEnd)
-                      : 1.f;
+    float attenuation = in_lightAtt.lightType == LIGHT_DIRECTIONAL
+                      ? 1.f
+                      : ComputeAttenuation(dist, in_lightAtt.fallOffStart, in_lightAtt.fallOffEnd);
 
-    float spotFactor = MatchLightType(in_lightAtt.lightType, LIGHT_SPOT)
-                     ? pow(max(0, dot(normalize(in_lightTrans.lightDirection), -L)), in_lightAtt.spotPower)
+    // https://learn.microsoft.com/en-us/windows/uwp/graphics-concepts/light-types
+    float spotAngleCos = dot(-L, normalize(in_lightTrans.lightDirection));
+    float cosInnerCone = cos(in_lightAtt.innerConeAngle * 0.5f);
+    float cosOuterCone = cos(in_lightAtt.outerConeAngle * 0.5f);
+    float spotFactor = in_lightAtt.lightType == LIGHT_SPOT
+                     ? (spotAngleCos - cosOuterCone) / (cosInnerCone - cosOuterCone)
                      : 1.0;
 
     radiance = in_lightAtt.lightRadiance * in_lightAtt.lightStrength
              * attenuation * spotFactor;
 
-    radiance = MatchLightType(in_lightAtt.lightType, LIGHT_NONE)
+    radiance = in_lightAtt.lightType == LIGHT_NONE
              ? float3(0.f, 0.f, 0.f) : radiance;
 
-    // Compute Shadow (Now, only support for Directional Light)
+    // Compute Shadow
     shadowFactor = 1.f;
-
-    float4 lightScreen = mul(float4(in_posW, 1.0), in_lightTrans.lightViewProj);
-    lightScreen.xyz /= lightScreen.w;
-
-    float2 lightTexCoord;
-    lightTexCoord.x = 0.5 * lightScreen.x + 0.5;
-    lightTexCoord.y = -0.5 * lightScreen.y + 0.5;
-
-    uint width, height;
-    g_shadowMapTex[in_index].GetDimensions(width, height);
-    float dx = 5.0 / width;
-    float dy = 5.0 / height;
     float percentLit = 0.0;
 
-    [unroll]
-    for (int j = 0; j < 64; j++)
+    if (in_lightAtt.lightType == LIGHT_POINT)
     {
-        float2 offset = g_diskSamples64[j];
-        offset.x *= dx;
-        offset.y *= dy;
-        percentLit += g_shadowMapTex[in_index].SampleCmpLevelZero(g_shadowSampler, lightTexCoord + offset, lightScreen.z - 0.001f).r;
+        float nearestZ = g_omniShadowMap[in_index].Sample(g_clampSampler, L).r;
+
+        if (nearestZ < dist - 0.0001)
+        {
+            shadowFactor = 0.0;
+        }
+        else
+        {
+            shadowFactor = 1.f;
+        }
+    }
+    else
+    {
+        float4 lightScreen = mul(float4(in_posW, 1.0), in_lightTrans.lightViewProj);
+        lightScreen.xyz /= lightScreen.w;
+    
+        float2 lightTexCoord;
+        lightTexCoord.x = 0.5 * lightScreen.x + 0.5;
+        lightTexCoord.y = -0.5 * lightScreen.y + 0.5;
+
+        uint width, height;
+        g_basicShadowMap[in_index].GetDimensions(width, height);
+        float dx = in_lightAtt.shadowKernelSize / float(width);
+        float dy = in_lightAtt.shadowKernelSize / float(height);
+
+        float shadowBias = lerp(0.0005, 0.00001, dot(in_normal, -L));
+
+        [unroll]
+        for (int j = 0; j < 64; j++)
+        {
+            float2 offset = g_diskSamples64[j];
+            offset.x *= dx;
+            offset.y *= dy;
+            percentLit += g_basicShadowMap[in_index].SampleCmpLevelZero(g_shadowSampler,
+                                                               lightTexCoord + offset,
+                                                               lightScreen.z - shadowBias).r;
+        }
     }
 
     shadowFactor = percentLit / 64.f;
-
-    shadowFactor = MatchLightType(in_lightAtt.lightType, LIGHT_NONE)
-                 ? 1.f
-                 : shadowFactor;
+    shadowFactor = in_lightAtt.useShadow
+              ? shadowFactor
+              : 1.f;
 }
 
 float4 main(PS_Input input) : SV_TARGET
@@ -226,13 +254,13 @@ float4 main(PS_Input input) : SV_TARGET
         float3 L;
         float3 radiance;
         float shadowFactor;
-        ComputeLight(input.posW, g_lightAttribute[i], g_lightTransform[i], i, L, radiance, shadowFactor);
+        ComputeLight(input.posW, N, g_lightAttribute[i], g_lightTransform[i], i, L, radiance, shadowFactor);
 
         directLighting += DirectBRDF(L, E, input.posW, N, albedo, metallic, roughness) * radiance * shadowFactor;
-
     }
 
-    float4 color = float4(ambientLighting + directLighting + emission, g_alpha);
+   // float4 color = float4(ambientLighting + directLighting + emission, g_alpha);
+    float4 color = float4(directLighting, g_alpha);
     color = clamp(color, 0.0, 1000.0);
     
     return color;

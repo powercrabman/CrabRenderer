@@ -6,30 +6,14 @@
 #include "GlobalShader.h"
 
 #include "28. AnimationDemo.h"
-#include "Test.h"
 
-DemoApp::DemoApp()
+DemoApp::DemoApp(const ApplicationSetting& in_setting)
+    : Application(in_setting)
 {
 }
 
 DemoApp::~DemoApp()
 {
-}
-
-ApplicationSetting DemoApp::ConfigureApplication()
-{
-    ApplicationSetting setting = {};
-    setting.applicationName    = "Demo App";
-
-    setting.windowSetting.windowTitle  = "Demo App";
-    setting.windowSetting.windowWidth  = 1920;
-    setting.windowSetting.windowHeight = 1080;
-
-    setting.rendererSetting.swapChainSetting.enableVSync        = true;
-    setting.rendererSetting.swapChainSetting.enableHDRRendering = true;
-    setting.rendererSetting.swapChainSetting.enableMSAA         = true;
-
-    return setting;
 }
 
 void DemoApp::OnInit()
@@ -38,13 +22,8 @@ void DemoApp::OnInit()
 
     SceneManager& sm = GetSceneManager();
 
-    //sm.CreateScene<AnimationDemo>();
-    //
-    //sm.ChangeScene<AnimationDemo>();
-
-    sm.CreateScene<Test>();
-
-    sm.ChangeScene<Test>();
+    sm.CreateScene<AnimationDemo>();
+    sm.ChangeScene<AnimationDemo>();
 }
 
 void DemoApp::OnShutdown()

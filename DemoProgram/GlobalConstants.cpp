@@ -14,6 +14,11 @@ void GlobalConstants::Init()
 
     m_lightAttributeConstant = ConstantBuffer<LightAttributeConstant>::Create();
     m_lightTransformConstant = ConstantBuffer<LightTransformConstant>::Create();
+    m_depthVisualizeConstant = ConstantBuffer<DepthVisualizeConstant>::Create();
+
+    m_basicShadowConstant   = ConstantBuffer<BasicShadowConstant>::Create();
+    m_cascadeShadowConstant = ConstantBuffer<CascadeShadowConstant>::Create();
+    m_omniShadowConstant    = ConstantBuffer<OmniShadowConstant>::Create();
 }
 
 void GlobalConstants::UpdateTransform(const TransformConstant& in_data) const
@@ -66,4 +71,24 @@ void GlobalConstants::UpdateLightAttribute(const LightAttributeConstant& in_data
 void GlobalConstants::UpdateLightTransform(const LightTransformConstant& in_data) const
 {
     m_lightTransformConstant->WriteToBuffer(in_data);
+}
+
+void GlobalConstants::UpdateDepthVisualize(const DepthVisualizeConstant& in_data) const
+{
+    m_depthVisualizeConstant->WriteToBuffer(in_data);
+}
+
+void GlobalConstants::UpdateBasicShadow(const BasicShadowConstant& in_data) const
+{
+    return m_basicShadowConstant->WriteToBuffer(in_data);
+}
+
+void GlobalConstants::UpdateCascadeShadow(const CascadeShadowConstant& in_data) const
+{
+    return m_cascadeShadowConstant->WriteToBuffer(in_data);
+}
+
+void GlobalConstants::UpdateOmniShadow(const OmniShadowConstant& in_data) const
+{
+    return m_omniShadowConstant->WriteToBuffer(in_data);
 }

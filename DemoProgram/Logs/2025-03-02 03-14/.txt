@@ -1,0 +1,21 @@
+[2025-03-02 12:14:24.656] [info] Log initialized
+[2025-03-02 12:14:24.656] [trace] C:\Users\ajw01\Desktop\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-02 12:14:25.174] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-02 12:14:25.176] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-02 12:14:25.220] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-02 12:14:25.224] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-02 12:14:25.253] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-03-02 12:14:25.254] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxEnvHDR.dds
+[2025-03-02 12:14:25.284] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxDiffuseHDR.dds
+[2025-03-02 12:14:25.287] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxSpecularHDR.dds
+[2025-03-02 12:14:26.217] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-03-02 12:14:26.325] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-03-02 12:14:26.397] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-03-02 12:14:26.528] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-03-02 12:14:26.682] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-02 12:14:26.708] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-02 12:14:26.708] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-02 12:14:27.404] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-02 12:14:27.521] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-02 12:14:27.638] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-02 12:14:27.638] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -1,6 +1,6 @@
 #pragma once
 #include "Components.h"
-#include "D11Enums.h"
+
 #include "ModelUtil.h"
 
 inline void DrawDemoInspector(
@@ -197,21 +197,21 @@ public:
                                                            ImGui::DragFloat("Rotate Speed", &cmrCont.rotSpeed, 0.01f);
                                                        });
 
-                _DrawComponent<LightComponent>("Light",
-                                               [&]()
-                                               {
-                                                   auto& light = m_selectedEntity.GetComponent<LightComponent>();
-                                                   ImGui::ColorEdit3("Radiance", &light.lightRadiance.x);
-                                                   ImGui::DragFloat("FallOff Start", &light.fallOffStart, 0.01f, 0.f, light.fallOffEnd);
-                                                   ImGui::DragFloat("FallOff End", &light.fallOffEnd, 0.01f, light.fallOffStart);
-                                                   ImGui::DragFloat("Spot Power", &light.spotPower, 0.1f);
-                                                   ImGui::DragFloat("Strength", &light.lightStrength, 0.01f);
-                                                   ImGui::RadioButton("Directional", reinterpret_cast<int*>(&light.type), 1);
-                                                   ImGui::SameLine();
-                                                   ImGui::RadioButton("Point", reinterpret_cast<int*>(&light.type), 2);
-                                                   ImGui::SameLine();
-                                                   ImGui::RadioButton("Spot", reinterpret_cast<int*>(&light.type), 3);
-                                               });
+                // _DrawComponent<LightComponent>("Light",
+                //                                [&]()
+                //                                {
+                //                                    auto& light = m_selectedEntity.GetComponent<LightComponent>();
+                //                                    ImGui::ColorEdit3("Radiance", &light.lightRadiance.x);
+                //                                    ImGui::DragFloat("FallOff Start", &light.fallOffStart, 0.01f, 0.f, light.fallOffEnd);
+                //                                    ImGui::DragFloat("FallOff End", &light.fallOffEnd, 0.01f, light.fallOffStart);
+                //                                    ImGui::DragFloat("Spot Power", &light.spotPower, 0.1f);
+                //                                    ImGui::DragFloat("Strength", &light.lightStrength, 0.01f);
+                //                                    ImGui::RadioButton("Directional", reinterpret_cast<int*>(&light.type), 1);
+                //                                    ImGui::SameLine();
+                //                                    ImGui::RadioButton("Point", reinterpret_cast<int*>(&light.type), 2);
+                //                                    ImGui::SameLine();
+                //                                    ImGui::RadioButton("Spot", reinterpret_cast<int*>(&light.type), 3);
+                //                                });
 
                 _DrawComponent<SkyboxRenderer>("Skybox Renderer",
                                                [&]()
@@ -241,10 +241,29 @@ public:
                                                     ImGui::RadioButton("Orthographic", reinterpret_cast<int*>(&cmr.projectionType), 0);
                                                     ImGui::SameLine();
                                                     ImGui::RadioButton("Perspective", reinterpret_cast<int*>(&cmr.projectionType), 1);
-                                                    ImGui::DragFloat("Aspect", &cmr.aspect, 0.01f);
                                                     ImGui::DragFloat("Near Z", &cmr.nearZ, 0.01f, 0.01f, cmr.farZ);
                                                     ImGui::DragFloat("Far Z", &cmr.farZ, 0.01f, cmr.nearZ, 10000.f);
                                                     ImGui::DragFloat("FOV", &cmr.fov, 0.01f);
+
+                                                    if (cmr.projectionType == eProjectionType::Orthographic)
+                                                    {
+                                                        static bool s_fitScreenRatio = true;
+
+                                                        ImGui::Checkbox("Fit Screen Ratio", &s_fitScreenRatio);
+
+                                                        ImGui::BeginDisabled(s_fitScreenRatio);
+                                                        ImGui::DragFloat("Width", &cmr.width, 0.01f, 0.01f);
+                                                        ImGui::EndDisabled();
+
+                                                        ImGui::DragFloat("Height", &cmr.height, 0.01f, 0.01f);
+
+                                                        if (s_fitScreenRatio)
+                                                            cmr.width   = cmr.height * GetAppWindow().GetAspect();
+                                                    }
+                                                    else
+                                                    {
+                                                        ImGui::DragFloat("Aspect", &cmr.aspect, 0.01f);
+                                                    }
                                                 });
 
                 _DrawComponent<ModelRenderer>("Model Renderer",
@@ -289,7 +308,8 @@ public:
                                               });
 
                 _DrawComponent<PlanarMirrorComponent>("Plana Mirror",
-                                                      [&]() {
+                                                      [&]()
+                                                      {
                                                           auto& mirror = m_selectedEntity.GetComponent<PlanarMirrorComponent>();
                                                           if (mirror.mirrorMesh)
                                                           {
@@ -310,7 +330,6 @@ public:
                                                           {
                                                               ImGui::Text("No Mirror Material");
                                                           }
-
                                                       });
             }
             else
@@ -327,7 +346,7 @@ public:
 private:
     void _MeshInspector(Ref<Mesh>& in_mesh)
     {
-        ImGui::Text("Primitive Topology: %s", ToString(in_mesh->GetTopology()));
+        ImGui::Text("Primitive Topology: %s", magic_enum::enum_name(in_mesh->GetTopology()));
         ImGui::Text("Vertex Count: %d", in_mesh->GetVertexCount());
         ImGui::Text("Vertex Stride: %d byte", in_mesh->GetVertexStride());
         ImGui::Text("Index Count: %d", in_mesh->GetIndexCount());
@@ -401,10 +420,8 @@ private:
         }
     }
 
-    void _DrawSkyboxLoadReleaseItem(const char* in_label, Ref<CubemapImage>& in_tex)
+    void _DrawSkyboxLoadReleaseItem(const char* in_label, Ref<TextureCube>& in_tex)
     {
-        Ref<Image2D> image = in_tex->GetImage();
-
         ImGui::Text(in_label);
         if (!in_tex)
             ImGui::Text("No Texture");
@@ -414,14 +431,14 @@ private:
             auto path = GetPathFromFileDialog();
 
             if (!path.empty())
-                in_tex = CubemapImage::Create(path);
+                in_tex = TextureCube::CreateFromFile(path);
         }
         ImGui::SameLine();
         if (ImGui::Button(fmt::format("Release##{}", in_label).c_str()))
             in_tex = nullptr;
     }
 
-    bool _DrawTextureLoadReleaseItem(const char* in_label, Ref<Image2D>& in_tex, bool in_reverseToneMapping = false)
+    bool _DrawTextureLoadReleaseItem(const char* in_label, Ref<Texture2D>& in_tex, bool in_reverseToneMapping = false)
     {
         ImGui::Text(in_label);
 
@@ -435,7 +452,7 @@ private:
             auto path = GetPathFromFileDialog();
 
             if (!path.empty())
-                in_tex = Image2D::CreateFromFile(path, true, in_reverseToneMapping);
+                in_tex = Texture2D::CreateFromFile(path, true, in_reverseToneMapping);
 
             return true;
         }

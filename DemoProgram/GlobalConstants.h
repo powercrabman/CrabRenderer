@@ -16,6 +16,10 @@ public:
     void UpdateMaterial(const MaterialConstant& in_data) const;
     void UpdateLightAttribute(const LightAttributeConstant& in_data) const;
     void UpdateLightTransform(const LightTransformConstant& in_data) const;
+    void UpdateDepthVisualize(const DepthVisualizeConstant& in_data) const;
+    void UpdateBasicShadow(const BasicShadowConstant& in_data) const;
+    void UpdateCascadeShadow(const CascadeShadowConstant& in_data) const;
+    void UpdateOmniShadow(const OmniShadowConstant& in_data) const;
 
     auto GetTransformConstant() const { return m_transformConstant; }
     auto GetCameraConstant() const { return m_cameraConstant; }
@@ -26,7 +30,10 @@ public:
     auto GetMaterialConstant() const { return m_materialConstant; }
     auto GetLightAttributeConstant() const { return m_lightAttributeConstant; }
     auto GetLightTransformConstant() const { return m_lightTransformConstant; }
-
+    auto GetDepthVisualizeConstant() const { return m_depthVisualizeConstant; }
+    auto GetBasicShadowConstant() const { return m_basicShadowConstant; }
+    auto GetCascadeShadowConstant() const { return m_cascadeShadowConstant; }
+    auto GetOmniShadowConstant() const { return m_omniShadowConstant; }
     
 private:
     Ref<ConstantBuffer<TransformConstant>> m_transformConstant = nullptr;
@@ -42,6 +49,12 @@ private:
 
     Ref<ConstantBuffer<LightAttributeConstant>> m_lightAttributeConstant = {};
     Ref<ConstantBuffer<LightTransformConstant>> m_lightTransformConstant = {};
+
+    Ref<ConstantBuffer<DepthVisualizeConstant>> m_depthVisualizeConstant = nullptr;
+
+    Ref<ConstantBuffer<BasicShadowConstant>> m_basicShadowConstant = nullptr;
+    Ref<ConstantBuffer<CascadeShadowConstant>> m_cascadeShadowConstant = nullptr;
+    Ref<ConstantBuffer<OmniShadowConstant>>    m_omniShadowConstant    = nullptr;
 };
 
 inline GlobalConstants& GetGlobalConstants()

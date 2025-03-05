@@ -1,0 +1,24 @@
+[2025-03-02 16:26:56.442] [info] Log initialized
+[2025-03-02 16:26:56.442] [trace] C:\Users\ajw01\Desktop\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-02 16:26:56.926] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-02 16:26:56.930] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-02 16:26:57.089] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-02 16:26:57.096] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-02 16:26:57.141] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-03-02 16:26:57.144] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxEnvHDR.dds
+[2025-03-02 16:26:57.256] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxDiffuseHDR.dds
+[2025-03-02 16:26:57.263] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxSpecularHDR.dds
+[2025-03-02 16:26:58.225] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-03-02 16:26:58.346] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-03-02 16:26:58.425] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-03-02 16:26:58.551] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-03-02 16:26:58.709] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-02 16:27:00.955] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-02 16:27:01.055] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-02 16:27:01.589] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-02 16:27:01.688] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-02 16:27:02.005] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-02 16:27:02.121] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-02 16:27:07.455] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-02 16:27:07.762] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-02 16:30:56.841] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -30,10 +30,10 @@ void AnimationDemo::Init()
 
         std::filesystem::path skyboxPath = "Resources\\AnimationDemo\\DaySkybox";
 
-        sr.brdfImage   = Image2D::CreateFromFile(skyboxPath / "skyboxBrdf.dds", false);
-        sr.envCubemap  = CubemapImage::Create(skyboxPath / "skyboxEnvHDR.dds");
-        sr.irrCubemap  = CubemapImage::Create(skyboxPath / "skyboxDiffuseHDR.dds");
-        sr.specCubemap = CubemapImage::Create(skyboxPath / "skyboxSpecularHDR.dds");
+        sr.brdfImage   = Texture2D::CreateFromFile(skyboxPath / "skyboxBrdf.dds", false);
+        sr.envCubemap  = TextureCube::CreateFromFile(skyboxPath / "skyboxEnvHDR.dds");
+        sr.irrCubemap  = TextureCube::CreateFromFile(skyboxPath / "skyboxDiffuseHDR.dds");
+        sr.specCubemap = TextureCube::CreateFromFile(skyboxPath / "skyboxSpecularHDR.dds");
 
         e.CreateComponent<TAG("SkyboxGroup")>();
 
@@ -49,10 +49,10 @@ void AnimationDemo::Init()
 
         std::filesystem::path skyboxPath = "Resources\\AnimationDemo\\NightSkybox";
 
-        sr.brdfImage   = Image2D::CreateFromFile(skyboxPath / "SkyboxBrdf.dds", false);
-        sr.envCubemap  = CubemapImage::Create(skyboxPath / "SkyboxEnvHDR.dds");
-        sr.irrCubemap  = CubemapImage::Create(skyboxPath / "SkyboxDiffuseHDR.dds");
-        sr.specCubemap = CubemapImage::Create(skyboxPath / "SkyboxSpecularHDR.dds");
+        sr.brdfImage   = Texture2D::CreateFromFile(skyboxPath / "SkyboxBrdf.dds", false);
+        sr.envCubemap  = TextureCube::CreateFromFile(skyboxPath / "SkyboxEnvHDR.dds");
+        sr.irrCubemap  = TextureCube::CreateFromFile(skyboxPath / "SkyboxDiffuseHDR.dds");
+        sr.specCubemap = TextureCube::CreateFromFile(skyboxPath / "SkyboxSpecularHDR.dds");
 
         m_skyboxNightEntity = e;
     }
@@ -95,16 +95,16 @@ void AnimationDemo::Init()
         }
 
         MaterialData matData = {};
-        matData.baseColor    = color::WHITE.ToVector3();
+        matData.baseColor    = color3::WHITE;
         matData.metallic     = 1.f;
         matData.roughness    = 1.f;
 
         std::filesystem::path floorPath = "Resources\\AnimationDemo\\floor";
-        matData.baseColorImage          = Image2D::CreateFromFile(floorPath / "angled-tiled-floor_albedo.png", true, true);
-        matData.aoImage                 = Image2D::CreateFromFile(floorPath / "angled-tiled-floor_ao.png");
-        matData.metallicImage           = Image2D::CreateFromFile(floorPath / "angled-tiled-floor_metallic.png");
-        matData.normalImage             = Image2D::CreateFromFile(floorPath / "angled-tiled-floor_normal-dx.png");
-        matData.roughnessImage          = Image2D::CreateFromFile(floorPath / "angled-tiled-floor_roughness.png");
+        matData.baseColorImage          = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_albedo.png", true, true);
+        matData.aoImage                 = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_ao.png");
+        matData.metallicImage           = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_metallic.png");
+        matData.normalImage             = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_normal-dx.png");
+        matData.roughnessImage          = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_roughness.png");
         matData.normalMapType           = eNormalMapType::DirectX;
         matData.alpha                   = 0.8f;
 
@@ -132,12 +132,12 @@ void AnimationDemo::Init()
         matData.metallic     = 0.f;
         matData.roughness    = 1.f;
         matData.baseColor    = Vec3 { 0.9f, 0.2f, 0.2f };
-      //
-      //  std::filesystem::path cubePath = "Resources\\AnimationDemo\\Leather";
-      //  matData.baseColorImage         = Image2D::CreateFromFile(cubePath / "Leather037_2K-JPG_Color.jpg", true, true);
-      //  matData.roughnessImage         = Image2D::CreateFromFile(cubePath / "Leather037_2K-JPG_Roughness.jpg");
-      //  matData.normalImage            = Image2D::CreateFromFile(cubePath / "Leather037_2K-JPG_NormalGL.jpg");
-      //
+        //
+        //  std::filesystem::path cubePath = "Resources\\AnimationDemo\\Leather";
+        //  matData.baseColorImage         = Texture2D::CreateFromFile(cubePath / "Leather037_2K-JPG_Color.jpg", true, true);
+        //  matData.roughnessImage         = Texture2D::CreateFromFile(cubePath / "Leather037_2K-JPG_Roughness.jpg");
+        //  matData.normalImage            = Texture2D::CreateFromFile(cubePath / "Leather037_2K-JPG_NormalGL.jpg");
+        //
         model.model = Model::Create({ { RenderUtil::CreateMesh(geo), Material::Create(matData) } });
 
         auto& t    = e.GetTransform();
@@ -156,13 +156,13 @@ void AnimationDemo::Init()
         matData.baseColor    = Vec3 { 0.06f, 0.06f, 0.06f };
         matData.metallic     = 1.f;
         matData.roughness    = 0.f;
-       //
-       //std::filesystem::path spherePath = "Resources\\AnimationDemo\\MetalBall";
-       //matData.baseColorImage           = Image2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Color.jpg", true, true);
-       //matData.metallicImage            = Image2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Metalness.jpg");
-       //matData.normalImage              = Image2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_NormalGL.jpg");
-       //matData.roughnessImage           = Image2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Roughness.jpg");
-       //
+        //
+        // std::filesystem::path spherePath = "Resources\\AnimationDemo\\MetalBall";
+        // matData.baseColorImage           = Texture2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Color.jpg", true, true);
+        // matData.metallicImage            = Texture2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Metalness.jpg");
+        // matData.normalImage              = Texture2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_NormalGL.jpg");
+        // matData.roughnessImage           = Texture2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Roughness.jpg");
+        //
         model.model = Model::Create({ { RenderUtil::CreateMesh(geo), Material::Create(matData) } });
 
         auto& t    = e.GetTransform();
@@ -171,49 +171,62 @@ void AnimationDemo::Init()
         e.CreateComponent<TAG("PBRGroup")>();
     }
 
-   // // model
-   // {
-   //     auto  e   = CreateEntity("Model");
-   //     auto& msh = e.GetOrCreateComponent<ModelRenderer>();
-   //
-   //     msh.model = CreateModel(R"(Resources\AnimationDemo\Model\source\Kokona.obj)");
-   //
-   //     auto& t    = e.GetTransform();
-   //     t.position = Vec3 { 2.f, 0.f, 3.f };
-   //     t.scale    = Vec3 { 3.f, 3.f, 3.f };
-   //
-   //     e.CreateComponent<TAG("PBRGroup")>();
-   //
-   //     std::filesystem::path path  = R"(Resources\AnimationDemo\Model\textures)";
-   //     auto&                 model = msh.model;
-   //
-   //     auto LoadFunc = [](Ref<Model>& model, const std::filesystem::path& path, std::string_view in_string)
-   //     {
-   //         auto* node = model->FindNode(in_string);
-   //         node->material->SetBaseColorImage(Image2D::CreateFromFile(path / (std::string(in_string) + ".png"), true, true));
-   //         node->material->SetMetallic(0.f);
-   //     };
-   //
-   //     LoadFunc(model, path, "Eyes");
-   //     LoadFunc(model, path, "HALO");
-   //     LoadFunc(model, path, "Hair");
-   //     LoadFunc(model, path, "Head");
-   //     LoadFunc(model, path, "Hoodie");
-   //     LoadFunc(model, path, "Shoes");
-   //     LoadFunc(model, path, "Cloth");
-   //     LoadFunc(model, path, "Panties");
-   //     LoadFunc(model, path, "Skin");
-   //     LoadFunc(model, path, "exp");
-   // }
+    // model
+    //{
+    //    auto  e   = CreateEntity("Model");
+    //    auto& msh = e.GetOrCreateComponent<ModelRenderer>();
+    //
+    //    msh.model = CreateModel(R"(Resources\AnimationDemo\Model\source\Kokona.obj)");
+    //
+    //    auto& t    = e.GetTransform();
+    //    t.position = Vec3 { 2.f, 0.f, 3.f };
+    //    t.scale    = Vec3 { 3.f, 3.f, 3.f };
+    //
+    //    e.CreateComponent<TAG("PBRGroup")>();
+    //
+    //    std::filesystem::path path  = R"(Resources\AnimationDemo\Model\textures)";
+    //    auto&                 model = msh.model;
+    //
+    //    auto LoadFunc = [](Ref<Model>& model, const std::filesystem::path& path, std::string_view in_string)
+    //    {
+    //        auto* node = model->FindNode(in_string);
+    //        node->material->SetBaseColorImage(Texture2D::CreateFromFile(path / (std::string(in_string) + ".png"), true, true));
+    //        node->material->SetMetallic(0.f);
+    //    };
+    //
+    //    LoadFunc(model, path, "Eyes");
+    //    LoadFunc(model, path, "HALO");
+    //    LoadFunc(model, path, "Hair");
+    //    LoadFunc(model, path, "Head");
+    //    LoadFunc(model, path, "Hoodie");
+    //    LoadFunc(model, path, "Shoes");
+    //    LoadFunc(model, path, "Cloth");
+    //    LoadFunc(model, path, "Panties");
+    //    LoadFunc(model, path, "Skin");
+    //    LoadFunc(model, path, "exp");
+    //}
 
-    // Light (point
+    // Light (Directional Light)
     {
-        
+        auto e = CreateEntity("Light");
+
+        auto& lc         = e.GetOrCreateComponent<LightComponent>();
+        lc.fallOffEnd    = 100.f;
+        lc.fallOffStart  = 5.f;
+        lc.lightRadiance = color3::WHITE;
+        lc.lightStrength = 1.f;
+        lc.lightType     = eLightType::Point;
+
+        lc.shadowMap = DepthMap::CreateDepthMapCube(1024, 1024);
+        lc.useShadow = true;
+
+        e.GetTransform().position = Vec3 { 0.f, 5.f, 0.f };
     }
 
     // Resources
     {
         m_sceneHierarchy = CreateScope<SceneHierarchy>();
+        m_depthMap       = DepthMap::Create(1024, 1024);
     }
 }
 
@@ -231,10 +244,10 @@ void AnimationDemo::OnUpdate(TimeStamp& in_ts)
         GetApplication().Quit();
 }
 
-void AnimationDemo::_DrawSkybox()
+void AnimationDemo::_DrawSkybox(bool in_bindTexture)
 {
     // this is common skybox
-    auto DrawCall = [](SkyboxRenderer& s, TransformComponent& t)
+    auto DrawCall = [](SkyboxRenderer& s, TransformComponent& t, bool in_bineTexture)
     {
         SkyboxPSConstant c = {};
         c.textureCubeType  = s.mappingType;
@@ -245,17 +258,20 @@ void AnimationDemo::_DrawSkybox()
         tc.worldInvTranspose = tc.world.Invert().Transpose();
         GetGlobalConstants().UpdateTransform(tc);
 
-        if (s.envCubemap)
-            s.envCubemap->Bind(10, eShaderFlags_PixelShader);
+        if (in_bineTexture)
+        {
+            if (s.envCubemap)
+                s.envCubemap->Bind(10, eShaderFlags_PixelShader);
 
-        if (s.irrCubemap)
-            s.irrCubemap->Bind(11, eShaderFlags_PixelShader);
+            if (s.irrCubemap)
+                s.irrCubemap->Bind(11, eShaderFlags_PixelShader);
 
-        if (s.specCubemap)
-            s.specCubemap->Bind(12, eShaderFlags_PixelShader);
+            if (s.specCubemap)
+                s.specCubemap->Bind(12, eShaderFlags_PixelShader);
 
-        if (s.brdfImage)
-            s.brdfImage->Bind(13, eShaderFlags_PixelShader);
+            if (s.brdfImage)
+                s.brdfImage->Bind(13, eShaderFlags_PixelShader);
+        }
 
         s.mesh->Draw();
     };
@@ -263,13 +279,41 @@ void AnimationDemo::_DrawSkybox()
     if (m_skyboxType == eSkyboxType::Day)
     {
         DrawCall(m_skyboxDayEntity.GetComponent<SkyboxRenderer>(),
-                 m_skyboxDayEntity.GetTransform());
+                 m_skyboxDayEntity.GetTransform(),
+                 in_bindTexture);
     }
     else
     {
         DrawCall(m_skyboxNightEntity.GetComponent<SkyboxRenderer>(),
-                 m_skyboxNightEntity.GetTransform());
+                 m_skyboxNightEntity.GetTransform(),
+                 in_bindTexture);
     }
+}
+
+void AnimationDemo::_DrawBasic(bool in_bindTexture)
+{
+    GetView<TransformComponent, ModelRenderer, TAG("PBRGroup")>().each(
+        [&](const TransformComponent& t, const ModelRenderer& m)
+        {
+            for (const auto& node: m.model->GetNodes())
+            {
+                _DrawPBRMesh(t, node.mesh, in_bindTexture ? node.material : nullptr);
+            }
+        });
+}
+
+void AnimationDemo::_DrawMirror(bool in_bindTexture)
+{
+    GetView<TransformComponent, PlanarMirrorComponent, TAG("MirrorGroup")>().each(
+        [&](const TransformComponent& t, const PlanarMirrorComponent& m)
+        {
+            TransformConstant tc = {};
+            tc.world             = t.GetWorld();
+            tc.worldInvTranspose = tc.world.Invert().Transpose();
+            GetGlobalConstants().UpdateTransform(tc);
+
+            _DrawPBRMesh(t, m.mirrorMesh, in_bindTexture ? m.mirrorMaterial : nullptr);
+        });
 }
 
 void AnimationDemo::_DrawPBRMesh(
@@ -356,54 +400,185 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
     auto& r = GetRenderer();
 
     //===================================================
-    // Begin Render
+    // Depth Only Path
     //===================================================
 
+    m_depthMap->BindDepthBuffer();
+    m_depthMap->Clear(1.f);
+    GetGlobalRenderPass().BeginDepthOnlyPass();
     {
-        r.BindBackBufferMS(r.GetDepthBuffer());
-        r.ClearDepthBuffer(true, 1.f, true, 0);
-        r.ClearBackBufferMS(color::BLACK);
+        CameraComponent& cmr = m_cameraEntity.GetComponent<CameraComponent>();
 
-        auto&          cmr = m_cameraEntity.GetComponent<CameraComponent>();
-        CameraConstant cc  = {};
-        cc.eyePosition     = m_cameraEntity.GetTransform().position;
-        cc.viewProj        = cmr.GetViewProj(cc.eyePosition, m_cameraEntity.GetTransform().rotate);
-        cc.viewProjInv     = cc.viewProj.Invert();
+        CameraConstant cc;
+        cc.eyePosition = m_cameraEntity.GetTransform().position;
+        cc.viewProj    = cmr.GetViewProj(cc.eyePosition, m_cameraEntity.GetTransform().rotate);
+        cc.viewProjInv = cc.viewProj.Invert();
+
+        auto [width, height] = m_depthMap->GetResolution();
+
+        Viewport vp = {};
+        vp.x = vp.y = 0;
+        vp.width    = width;
+        vp.height   = height;
+        r.SetViewport(vp);
 
         GetGlobalConstants().UpdateCamera(cc);
     }
 
-    //===================================================
-    // Draw Skybox
-    //===================================================
-
-    GetGlobalRenderPass().BeginSkyboxPass(0);
-    {
-        _DrawSkybox();
-    }
+    _DrawSkybox(false);
+    _DrawBasic(false);
+    _DrawMirror(false);
 
     //===================================================
-    // Draw PBR (this is main pass)
+    // Pass Light
     //===================================================
 
-    if (m_wireframeMode)
     {
-        GetGlobalRenderPass().BeginPBRWireframePass(0);
-    }
-    else
-    {
-        GetGlobalRenderPass().BeginPBRPass(0);
-    }
+        uint32 index = 0;
 
-    {
-        GetView<TransformComponent, ModelRenderer, TAG("PBRGroup")>().each(
-            [&](const TransformComponent& t, const ModelRenderer& m)
+        LightTransformConstant ltc = {};
+        ZeroMemory(&ltc, sizeof(ltc));
+
+        LightAttributeConstant lac = {};
+        ZeroMemory(&lac, sizeof(lac));
+
+        GetView<TransformComponent, LightComponent>().each(
+            [&](const TransformComponent& t, const LightComponent& l)
             {
-                for (const auto& node: m.model->GetNodes())
+                // Lighting
+                LightTransform lt = {};
+                lt.lightDirection = t.Forward();
+                lt.lightPosition  = t.position;
+
+                LightAttribute la = {};
+                la.fallOffEnd     = l.fallOffEnd;
+                la.fallOffStart   = l.fallOffStart;
+                la.lightType      = l.lightType;
+                la.lightRadiance  = l.lightRadiance;
+                la.lightStrength  = l.lightStrength;
+                la.innerConeAngle = l.innerConeAngle;
+                la.outerConeAngle = l.outerConeAngle;
+
+                // Shadow
+                if (l.useShadow)
                 {
-                    _DrawPBRMesh(t, node.mesh, node.material);
+                    la.useShadow        = true;
+                    la.shadowBias       = l.shadowBias;
+                    la.shadowKernelSize = l.shadowKernelSize;
+                    lt.lightViewProj    = CreateView(t.position, t.rotate);
+
+                    auto& shadowMap = l.shadowMap;
+
+                    switch (l.lightType)
+                    {
+                        case eLightType::Directional:
+                        {
+                            lt.lightViewProj *= CreateOrthographic(
+                                10.f * GetAppWindow().GetAspect(),
+                                10.f,
+                                0.1f,
+                                100.f);
+
+                            lt.lightPosition = m_cameraEntity.GetTransform().position - lt.lightDirection * 100.f;
+                        }
+                        break;
+
+                        case eLightType::Spot:
+                        {
+                            lt.lightViewProj *= CreatePerspective(
+                                l.outerConeAngle,
+                                GetAppWindow().GetAspect(),
+                                0.1f,
+                                l.fallOffEnd);
+                        }
+                        break;
+
+                        case eLightType::Point:
+                        {
+                            r.SetShaderResourceView(nullptr, OMNI_SHADOW_SLOT + index, eShaderFlags_PixelShader);
+                            shadowMap->BindDepthBuffer();
+                            shadowMap->Clear(1.f);
+
+                            GetGlobalRenderPass().BeginOmniShadowCasterPass();
+
+                            OmniShadowConstant osc  = {};
+                            Mat4               proj = CreatePerspective(90.f * DEG2RAD, 1.f, 0.1f, l.fallOffEnd);
+                            osc.shadowViewProj[0]   = CreateViewFromLookVector(t.position, Vec3 { 1.f, 0.f, 0.f }) * proj;
+                            osc.shadowViewProj[1]   = CreateViewFromLookVector(t.position, Vec3 { -1.f, 0.f, 0.f }) * proj;
+                            osc.shadowViewProj[2]   = CreateViewFromLookVector(t.position, Vec3 { 0.f, 1.f, 0.f }) * proj;
+                            osc.shadowViewProj[3]   = CreateViewFromLookVector(t.position, Vec3 { 0.f, -1.f, 0.f }) * proj;
+                            osc.shadowViewProj[4]   = CreateViewFromLookVector(t.position, Vec3 { 0.f, 0.f, 1.f }) * proj;
+                            osc.shadowViewProj[5]   = CreateViewFromLookVector(t.position, Vec3 { 0.f, 0.f, -1.f }) * proj;
+
+                            GetGlobalConstants().UpdateOmniShadow(osc);
+
+                            auto [width, height] = shadowMap->GetResolution();
+                            r.SetViewport(0, 0, width, height);
+
+                            _DrawBasic(false);
+                            _DrawMirror(false);
+
+                            r.BindOnlyDepthStencilView(nullptr);
+                            shadowMap->BindDepthMapTexture(OMNI_SHADOW_SLOT + index, eShaderFlags_PixelShader);
+                        }
+                        break;
+
+                        default:
+                        {
+                            CRAB_DEBUG_BREAK_V(
+                                "Not support light type. {0}",
+                                magic_enum::enum_name(l.lightType));
+                        }
+                        break;
+                    };
                 }
+
+                ltc.lightTransform[index] = lt;
+                lac.lightAttribute[index] = la;
+
+                ++index;
             });
+
+        GetGlobalConstants().UpdateLightTransform(ltc);
+        GetGlobalConstants().UpdateLightAttribute(lac);
+    }
+
+    //===================================================
+    // Basic Pass
+    //===================================================
+
+    // pre render
+    {
+        auto [width, height] = GetAppWindow().GetWindowSize();
+
+        r.BindBackBufferMS(r.GetDepthBuffer());
+        r.ClearDepthBuffer(true, 1.f, true, 0);
+        r.ClearBackBufferMS(color4::BLACK);
+        r.SetViewport(0, 0, width, height);
+
+        // update camera
+        auto&          cmr = m_cameraEntity.GetComponent<CameraComponent>();
+        CameraConstant cc;
+        cc.eyePosition = m_cameraEntity.GetTransform().position;
+        cc.viewProj    = cmr.GetViewProj(cc.eyePosition, m_cameraEntity.GetTransform().rotate);
+        cc.viewProjInv = cc.viewProj.Invert();
+
+        GetGlobalConstants().UpdateCamera(cc);
+    }
+
+    // main path
+    {
+        // Skybox
+        GetGlobalRenderPass().BeginSkyboxPass(0);
+        _DrawSkybox(true);
+
+        // PBR
+        if (m_wireframeMode)
+            GetGlobalRenderPass().BeginPBRWireframePass(0);
+        else
+            GetGlobalRenderPass().BeginPBRPass(0);
+
+        _DrawBasic(true);
     }
 
     //===================================================
@@ -424,28 +599,12 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
     }
 
     //===================================================
-    // Draw Mirror and Reflection
-    // ----------------------------------------
-    // 1. Masking Pass
-    // 2. Clear Depth Buffer
-    // 3. Draw Reflection Pass
-    // 4. Draw Mirror Mesh Pass
+    // Mirror Pass
     //===================================================
 
     // 1. Masking Pass
     GetGlobalRenderPass().BeginMirrorMaskingPass(1);
-    {
-        GetView<TransformComponent, PlanarMirrorComponent, TAG("MirrorGroup")>().each(
-            [&](const TransformComponent& t, const PlanarMirrorComponent& m)
-            {
-                TransformConstant tc = {};
-                tc.world             = t.GetWorld();
-                tc.worldInvTranspose = tc.world.Invert().Transpose();
-                GetGlobalConstants().UpdateTransform(tc);
-
-                m.mirrorMesh->Draw();
-            });
-    }
+    _DrawMirror(false);
 
     // 2. Clear Depth Buffer
     r.ClearDepthBuffer(true, 1.f, false, 0);
@@ -470,36 +629,32 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
             GetGlobalConstants().UpdateReflectCamera(cc);
 
             GetGlobalRenderPass().BeginSkyboxReflectPass(1);
-            {
-                _DrawSkybox();
-            }
+            _DrawSkybox(true);
 
             GetGlobalRenderPass().BeginPBRReflectPass(1);
-            {
-                GetView<TransformComponent, ModelRenderer, TAG("PBRGroup")>().each(
-                    [&](const TransformComponent& t, const ModelRenderer& m)
-                    {
-                        for (const auto& node: m.model->GetNodes())
-                        {
-                            _DrawPBRMesh(t, node.mesh, node.material);
-                        }
-                    });
-            }
+            _DrawBasic(true);
         });
 
     // 4. Draw Mirror Mesh Pass
     GetGlobalRenderPass().BeginPBRPass(1);
-    {
-        GetView<TransformComponent, PlanarMirrorComponent, TAG("MirrorGroup")>().each(
-            [&](const TransformComponent& t, const PlanarMirrorComponent& m)
-            {
-                TransformConstant tc = {};
-                tc.world             = t.GetWorld();
-                tc.worldInvTranspose = tc.world.Invert().Transpose();
-                GetGlobalConstants().UpdateTransform(tc);
+    _DrawMirror(true);
 
-                _DrawPBRMesh(t, m.mirrorMesh, m.mirrorMaterial);
-            });
+    //===================================================
+    // Depth Visualize (Debug)
+    //===================================================
+    if (m_renderDepthVisualizeMode)
+    {
+        GetGlobalRenderPass().BeginDepthVisualizePass();
+
+        DepthVisualizeConstant dvc = {};
+        dvc.visualFactor           = m_depthVisualizeFactor;
+        dvc.cameraPos              = m_cameraEntity.GetTransform().position;
+        dvc.invViewProj            = m_cameraEntity.GetComponent<CameraComponent>().GetViewProj(dvc.cameraPos, m_cameraEntity.GetTransform().rotate).Invert();
+
+        GetGlobalConstants().UpdateDepthVisualize(dvc);
+
+        m_depthMap->BindDepthMapTexture(0, eShaderFlags_PixelShader);
+        RenderUtil::DrawFullScreenQuad();
     }
 }
 
@@ -560,6 +715,9 @@ void AnimationDemo::OnRenderGUI(TimeStamp& in_ts)
 
                           if (ImGui::SliderFloat("Normal Strength", &m_normalStrength, 0.f, 3.f))
                               GetGlobalConstants().UpdateDrawNormalFactor({ m_normalStrength });
+
+                          ImGui::Checkbox("Render Depth Visualize Mode", &m_renderDepthVisualizeMode);
+                          ImGui::DragFloat("Depth Visualize Factor", &m_depthVisualizeFactor, 0.01f, 0.01f, 1.f);
 
                           ImGui::RadioButton("Day", reinterpret_cast<int*>(&m_skyboxType), static_cast<int>(eSkyboxType::Day));
                           ImGui::RadioButton("Night", reinterpret_cast<int*>(&m_skyboxType), static_cast<int>(eSkyboxType::Night));

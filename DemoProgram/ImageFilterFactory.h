@@ -9,14 +9,14 @@ public:
         uint32                                 in_filterWidth,
         uint32                                 in_filterHeight,
         const Ref<SamplerState>&               in_sampler,
-        const Ref<Image2D>&                    in_inputImage,
+        const Ref<Texture2D>&                    in_inputImage,
         const BlurDownConstant&                in_initData,
         Ref<ConstantBuffer<BlurDownConstant>>* out_constants)
     {
         SamplerList samplers;
         samplers.Add(in_sampler, 0, eShaderFlags_PixelShader);
 
-        Image2DList images;
+        TextureList images;
         images.Add(in_inputImage, 0, eShaderFlags_PixelShader);
 
         auto         constant = ConstantBuffer<BlurDownConstant>::Create(in_initData);
@@ -40,14 +40,14 @@ public:
         uint32                               in_filterWidth,
         uint32                               in_filterHeight,
         const Ref<SamplerState>&             in_sampler,
-        const Ref<Image2D>&                  in_inputImage,
+        const Ref<Texture2D>&                  in_inputImage,
         const BlurUpConstant&                in_initData,
         Ref<ConstantBuffer<BlurUpConstant>>* out_constants)
     {
         SamplerList sampler;
         sampler.Add(in_sampler, 0, eShaderFlags_PixelShader);
 
-        Image2DList images;
+        TextureList images;
         images.Add(in_inputImage, 0, eShaderFlags_PixelShader);
 
         auto         constant = ConstantBuffer<BlurUpConstant>::Create(in_initData);
@@ -71,12 +71,12 @@ public:
         uint32                   in_filterWidth,
         uint32                   in_filterHeight,
         const Ref<SamplerState>& in_sampler,
-        const Ref<Image2D>&      in_inputImage)
+        const Ref<Texture2D>&      in_inputImage)
     {
         SamplerList sampler;
         sampler.Add(in_sampler, 0, eShaderFlags_PixelShader);
 
-        Image2DList images;
+        TextureList images;
         images.Add(in_inputImage, 0, eShaderFlags_PixelShader);
 
         return ImageFilter::Create(
@@ -93,14 +93,14 @@ public:
         uint32                                  in_filterWidth,
         uint32                                  in_filterHeight,
         const Ref<SamplerState>&                in_sampler,
-        const Ref<Image2D>&                     in_inputImage,
+        const Ref<Texture2D>&                     in_inputImage,
         const ToneMapConstant&                in_initData,
         Ref<ConstantBuffer<ToneMapConstant>>* out_constants)
     {
         SamplerList sampler;
         sampler.Add(in_sampler, 0, eShaderFlags_PixelShader);
 
-        Image2DList images;
+        TextureList images;
         images.Add(in_inputImage, 0, eShaderFlags_PixelShader);
 
         auto         constant = ConstantBuffer<ToneMapConstant>::Create(in_initData);
@@ -124,15 +124,15 @@ public:
         uint32                                  in_filterWidth,
         uint32                                  in_filterHeight,
         const Ref<SamplerState>&                in_sampler,
-        const Ref<Image2D>&                     in_inputSrcImage,
-        const Ref<Image2D>&                     in_inputDestImage,
+        const Ref<Texture2D>&                     in_inputSrcImage,
+        const Ref<Texture2D>&                     in_inputDestImage,
         const CombineConstant&                in_initData,
         Ref<ConstantBuffer<CombineConstant>>* out_constants)
     {
         SamplerList sampler;
         sampler.Add(in_sampler, 0, eShaderFlags_PixelShader);
 
-        Image2DList images;
+        TextureList images;
         images.Add(in_inputSrcImage, 0, eShaderFlags_PixelShader);
         images.Add(in_inputDestImage, 1, eShaderFlags_PixelShader);
 
@@ -157,14 +157,14 @@ public:
         uint32                                   in_filterWidth,
         uint32                                   in_filterHeight,
         const Ref<SamplerState>&                 in_sampler,
-        const Ref<Image2D>&                      in_inputImage,
+        const Ref<Texture2D>&                      in_inputImage,
         const PostEffectConstant&                in_initData,
         Ref<ConstantBuffer<PostEffectConstant>>* out_constants)
     {
         SamplerList sampler;
         sampler.Add(in_sampler, 0, eShaderFlags_PixelShader);
 
-        Image2DList images;
+        TextureList images;
         images.Add(in_inputImage, 0, eShaderFlags_PixelShader);
 
         auto         constant = ConstantBuffer<PostEffectConstant>::Create(in_initData);

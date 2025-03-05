@@ -148,6 +148,15 @@
     <Filter Include="Rendering\Shaders\Debug">
       <UniqueIdentifier>{aa0d0dd3-d8f6-4973-a7c9-85c7322abadb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Rendering\Shaders\DepthVisualize">
+      <UniqueIdentifier>{b1442bec-46d3-4e81-b6c3-2c2b90fdf7a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Shaders\Billboard">
+      <UniqueIdentifier>{6b28d5f7-f2fe-478b-839a-531ff1789460}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Shaders\Shadow">
+      <UniqueIdentifier>{ae0074a1-897b-490e-a347-7bfd9be545b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format">
@@ -176,6 +185,12 @@
     </None>
     <None Include="Shaders\ShaderCommon.hlsli">
       <Filter>Rendering\Shaders\PBR</Filter>
+    </None>
+    <None Include="DepthVisualizeCommon.hlsli">
+      <Filter>Rendering\Shaders\DepthVisualize</Filter>
+    </None>
+    <None Include="ShadowShader.hlsl">
+      <Filter>Rendering\Shaders\Shadow</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +310,9 @@
     </FxCompile>
     <FxCompile Include="Shaders\DebugNormalMappingPS.hlsl">
       <Filter>Rendering\Shaders\Debug</Filter>
+    </FxCompile>
+    <FxCompile Include="DepthVisualizePS.hlsl">
+      <Filter>Rendering\Shaders\DepthVisualize</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
