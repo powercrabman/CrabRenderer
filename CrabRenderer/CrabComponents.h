@@ -59,10 +59,15 @@ struct CameraComponent
 {
     static Mat4 GetView(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll);
     static Mat4 GetView(const Vec3& in_eyePosition, const Quat& in_quaternion);
+    static Mat4 GetView(const TransformComponent& in_trans);
     Mat4        GetProj() const;
 
     Mat4 GetViewProj(const Vec3& in_eyePosition, const Quat& in_quaternion) const;
     Mat4 GetViewProj(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll) const;
+    Mat4 GetViewProj(const TransformComponent& in_trans) const;
+
+    Frustum GetFrustum(const Vec3& in_eyePosition, const Quat& in_quaternion) const;
+    Frustum GetFrustum(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll) const;
 
     eProjectionType projectionType = eProjectionType::Perspective;
     float           nearZ          = 0.1f;

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Common.h"
-
 cbuffer CameraConstant
 {
     Mat4 viewProj;
@@ -9,46 +7,9 @@ cbuffer CameraConstant
     Vec3 eyePosition;
 };
 
-cbuffer DrawNormalFactor
+cbuffer DrawNormalConstant
 {
     float normalStrength;
-};
-
-struct LightTransform
-{
-    Mat4 lightViewProj;
-    // --------------------------
-    Vec3  lightPosition;
-    float pad1;
-    // --------------------------
-    Vec3  lightDirection;
-    float pad2;
-};
-
-struct LightAttribute
-{
-    Vec3  lightRadiance;
-    float fallOffStart;
-    // --------------------------
-    float fallOffEnd;
-    float lightStrength;
-    float innerConeAngle;
-    float outerConeAngle;
-    // --------------------------
-    eLightType lightType;
-    bool       useShadow;
-    float      shadowBias;
-    uint32     shadowKernelSize;
-};
-
-cbuffer LightTransformConstant
-{
-    LightTransform lightTransform[MAX_LIGHTS];
-};
-
-cbuffer LightAttributeConstant
-{
-    LightAttribute lightAttribute[MAX_LIGHTS];
 };
 
 cbuffer TransformConstant
@@ -57,9 +18,51 @@ cbuffer TransformConstant
     Mat4 worldInvTranspose;
 };
 
-cbuffer SkyboxPSConstant
+cbuffer SkyboxConstant
 {
     int textureCubeType;
+};
+
+//===================================================
+// Light & Shadow
+//===================================================
+
+struct Light
+{
+    Mat4 lightViewProj;   // for spot light
+    // --------------------------
+    Vec3       lightPosition;
+    eLightType lightType;
+    // --------------------------
+    Vec3 lightDirection;
+    bool useShadow;
+    // --------------------------
+    Vec3  lightRadiance;
+    float fallOffStart;
+    // --------------------------
+    float fallOffEnd;
+    float lightStrength;
+    float innerConeAngle;   // spotlight
+    float outerConeAngle;   // spotlight
+    // --------------------------
+    uint32 shadowKernelSize;
+    Vec3   pad;
+};
+
+cbuffer LightConstant
+{
+    Light light[MAX_LIGHTS];
+};
+
+cbuffer CascadeShadowConstant
+{
+    Mat4 shadowViewProj[CASCADE_COUNT];
+    Mat4 view;
+    // --------------------------
+    float cascadeRange1;
+    float cascadeRange2;
+    float cascadeRange3;
+    float pad;
 };
 
 cbuffer DepthVisualizeConstant
@@ -69,6 +72,10 @@ cbuffer DepthVisualizeConstant
     Vec3  cameraPos;
     float visualFactor;
 };
+
+//===================================================
+// Material
+//===================================================
 
 using eMaterialTextureUsingFlags = uint32;
 
@@ -142,17 +149,27 @@ cbuffer PostEffectConstant
     float fogFallOffEnd   = 50.f;
 };
 
-cbuffer BasicShadowConstant
+//===================================================
+// Shadow Caster
+//===================================================
+
+cbuffer BasicShadowCasterConstant
 {
-    Mat4 shadowViewProj;
+    Mat4  shadowViewProj;
+    Vec3  lightPosition;
+    float fallOffEnd;
 };
 
-cbuffer CascadeShadowConstant
+cbuffer CascadeShadowCasterConstant
 {
-    Mat4 shadowViewProj[4];
+    Mat4  shadowViewProj[4];
+    Vec3  lightPosition;
+    float fallOffEnd;
 };
 
-cbuffer OmniShadowConstant
+cbuffer OmniShadowCasterConstant
 {
-    Mat4 shadowViewProj[6];
+    Mat4  shadowViewProj[6];
+    Vec3  lightPosition;
+    float fallOffEnd;
 };

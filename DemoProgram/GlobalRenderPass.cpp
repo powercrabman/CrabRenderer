@@ -41,8 +41,8 @@ void GlobalRenderPass::Init()
         constants
             .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexPixelShader)
             .Add(constant.GetCameraConstant(), 1, eShaderFlags_VertexPixelShader)
-            .Add(constant.GetLightTransformConstant(), 2, eShaderFlags_PixelShader)
-            .Add(constant.GetLightAttributeConstant(), 3, eShaderFlags_PixelShader)
+            .Add(constant.GetLightConstant(), 2, eShaderFlags_PixelShader)
+            .Add(constant.GetCascadeShadowConstant(), 3, eShaderFlags_PixelShader)
             .Add(constant.GetMaterialConstant(), 4, eShaderFlags_VertexPixelShader);
 
         // PBR
@@ -76,8 +76,8 @@ void GlobalRenderPass::Init()
         mirrorConstants
             .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexPixelShader)
             .Add(constant.GetReflectCameraConstant(), 1, eShaderFlags_VertexPixelShader)
-            .Add(constant.GetLightTransformConstant(), 2, eShaderFlags_PixelShader)
-            .Add(constant.GetLightAttributeConstant(), 3, eShaderFlags_PixelShader)
+            .Add(constant.GetLightConstant(), 2, eShaderFlags_PixelShader)
+            .Add(constant.GetCascadeShadowConstant(), 3, eShaderFlags_PixelShader)
             .Add(constant.GetMaterialConstant(), 4, eShaderFlags_VertexPixelShader);
 
         m_pbrReflectPass = RenderPass::Create(
@@ -216,11 +216,11 @@ void GlobalRenderPass::Init()
         ConstantList cblist;
         cblist
             .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexShader)
-            .Add(constant.GetBasicShadowConstant(), 1, eShaderFlags_GeometryShader);
+            .Add(constant.GetBasicShadowCasterConstant(), 1, eShaderFlags_VertexShader);
 
         m_basicShadowCasterPass = RenderPass::Create(
             shader.BasicShadowCasterVertexShader(),
-            shader.CommonShadowCasterPixelShader(),
+            shader.BasicShadowCasterPixelShader(),
             nullptr,
             nullptr,
             nullptr,
@@ -233,11 +233,11 @@ void GlobalRenderPass::Init()
         cblist.ClearList();
         cblist
             .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexShader)
-            .Add(constant.GetCascadeShadowConstant(), 1, eShaderFlags_GeometryShader);
+            .Add(constant.GetCascadeShadowConstant(), 1, eShaderFlags_GeometryShader | eShaderFlags_PixelShader);
 
         m_cascadeShadowCasterPass = RenderPass::Create(
             shader.CascadeOmniShadowCasterVertexShader(),
-            shader.CommonShadowCasterPixelShader(),
+            shader.CascadeShadowCasterPixelShader(),
             shader.CascadeShadowCasterGeometryShader(),
             nullptr,
             nullptr,
@@ -250,11 +250,11 @@ void GlobalRenderPass::Init()
         cblist.ClearList();
         cblist
             .Add(constant.GetTransformConstant(), 0, eShaderFlags_VertexShader)
-            .Add(constant.GetOmniShadowConstant(), 1, eShaderFlags_GeometryShader);
+            .Add(constant.GetOmniShadowCasterConstant(), 1, eShaderFlags_GeometryShader | eShaderFlags_PixelShader);
 
         m_omniShadowCasterPass = RenderPass::Create(
             shader.CascadeOmniShadowCasterVertexShader(),
-            shader.CommonShadowCasterPixelShader(),
+            shader.OmniShadowCasterPixelShader(),
             shader.OmniShadowCasterGeometryShader(),
             nullptr,
             nullptr,

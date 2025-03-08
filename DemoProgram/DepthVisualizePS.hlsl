@@ -1,4 +1,13 @@
-#include "DepthVisualizeCommon.hlsli"
+#include "Shaders/PostProcessCommon.hlsli"
+
+cbuffer DepthVisualizeConstant : register(b0)
+{
+    MATRIX invViewProj; // 16
+    // -----------------------------------
+    float3 cameraPos; // 12
+    float visualFactor; // 4
+    // -----------------------------------
+};
 
 Texture2D g_depthTex : register(t0);
 SamplerState g_sampler : register(s0);

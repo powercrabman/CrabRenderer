@@ -1,5 +1,4 @@
 #pragma once
-#include "Frustum.h"
 
 namespace crab
 {
@@ -233,14 +232,14 @@ struct Rect
 // Matrix Helper ( Left-handed )
 //===================================================
 
-inline Mat4 CreateViewFromLookVector(
+inline Mat4 CreateViewFromLookDirection(
     const Vec3& in_eyePos,
-    const Vec3& in_look,
+    const Vec3& in_lookDirection,
     const Vec3& in_up = Vec3::Up)
 {
     return DirectX::XMMatrixLookToLH(
         in_eyePos,
-        in_look,
+        in_lookDirection,
         in_up);
 }
 
@@ -250,7 +249,7 @@ inline Mat4 CreateView(
     const Vec3& in_up = Vec3::Up)
 {
     Mat4 rMat = Mat4::CreateFromQuaternion(in_quaternion);
-    return CreateViewFromLookVector(
+    return CreateViewFromLookDirection(
         in_eyePos,
         rMat.Backward(),
         in_up);
@@ -266,7 +265,7 @@ inline Mat4 CreateView(
         in_pitchYawRoll.x,
         in_pitchYawRoll.z);
 
-    return CreateViewFromLookVector(
+    return CreateViewFromLookDirection(
         in_eyePos,
         rMat.Backward(),
         in_up);
@@ -311,23 +310,25 @@ inline Mat4 CreateOrthographic(
         in_far);
 }
 
-inline Mat4 CreateViewOrthoProjMatrixForCSM(
-    const Frustum& in_frustum,
-    const Mat4&    in_view)
+inline Mat4 CreateOrthographicFitFrustum(const Frustum& in_frustum)
 {
-    Frustum frustumInView = in_frustum * in_view;
+    Vec3 corners[8];
+    in_frustum.GetCorners(corners);
 
     // create bounding box
     float minX, maxX, minY, maxY, minZ, maxZ;
+    minX = minY = minZ = CRAB_FLOAT_MAX;
+    maxX = maxY = maxZ = -CRAB_FLOAT_MAX;
+
     for (uint32 i = 0; i < 8; i++)
     {
-        Vec3 p = frustumInView.points[i];
-        minX   = std::min(minX, p.x);
-        maxX   = std::max(maxX, p.x);
-        minY   = std::min(minY, p.y);
-        maxY   = std::max(maxY, p.y);
-        minZ   = std::min(minZ, p.z);
-        maxZ   = std::max(maxZ, p.z);
+        const Vec3& p = corners[i];
+        minX          = std::min(minX, p.x);
+        maxX          = std::max(maxX, p.x);
+        minY          = std::min(minY, p.y);
+        maxY          = std::max(maxY, p.y);
+        minZ          = std::min(minZ, p.z);
+        maxZ          = std::max(maxZ, p.z);
     }
 
     constexpr float multZ = 10.f;
@@ -343,7 +344,7 @@ inline Mat4 CreateViewOrthoProjMatrixForCSM(
         maxZ *= multZ;
 
     // create orthographic matrix
-    return in_view * DirectX::XMMatrixOrthographicOffCenterLH(minX, maxX, minY, maxY, minZ, maxZ);
+    return DirectX::XMMatrixOrthographicOffCenterLH(minX, maxX, minY, maxY, minZ, maxZ);
 }
 
 }   // namespace crab

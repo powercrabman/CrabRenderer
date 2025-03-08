@@ -27,10 +27,13 @@ AppWindow::~AppWindow()
 
 bool AppWindow::Init(const AppWindowSetting& in_setting)
 {
+    // Set MetaData
+    SDL_SetAppMetadataProperty(SDL_PROP_APP_METADATA_NAME_STRING, in_setting.windowTitle.c_str());
+
     // SDL Init
     if (!SDL_Init(SDL_INIT_VIDEO))
     {
-        CRAB_DEBUG_BREAK("Failed to initialize SDL.");
+        CRAB_DEBUG_BREAK_V("Failed to initialize SDL. {0}", SDL_GetError());
         return false;
     }
 
@@ -43,6 +46,12 @@ bool AppWindow::Init(const AppWindowSetting& in_setting)
         windowSize.x,
         windowSize.y,
         0);
+
+    if (!m_window)
+    {
+        CRAB_DEBUG_BREAK_V("Failed to create window. {0}", SDL_GetError());
+        return false;
+    }
 
     // Center Alignment
     Int2 displaySize = GetDisplaySize();   // 고치기

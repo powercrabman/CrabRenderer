@@ -26,6 +26,7 @@
     <ClInclude Include="Draw2D.h" />
     <ClInclude Include="ErrorHandler.h" />
     <ClInclude Include="FileSystem.h" />
+    <ClInclude Include="Frustum.h" />
     <ClInclude Include="GizmoController.h" />
     <ClInclude Include="JsonSerializer.h" />
     <ClInclude Include="Material.h" />
@@ -75,7 +76,6 @@
     <ClInclude Include="CrabVertex.h" />
     <ClInclude Include="CrabColors.h" />
     <ClInclude Include="tinyfiledialogs.h" />
-    <ClInclude Include="Frustum.h" />
     <ClInclude Include="CrabEnums.h" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +86,7 @@
     <ClCompile Include="Draw2D.cpp" />
     <ClCompile Include="ErrorHandler.cpp" />
     <ClCompile Include="FileSystem.cpp" />
+    <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="GizmoController.cpp" />
     <ClCompile Include="JsonSerializer.cpp" />
     <ClCompile Include="Material.cpp" />

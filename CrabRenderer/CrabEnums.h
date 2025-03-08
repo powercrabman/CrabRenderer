@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace crab
 {
 
@@ -8,11 +7,12 @@ namespace crab
 // Rendering
 //===================================================
 
-constexpr uint32 MAX_LIGHTS = 4;
-constexpr uint32 SHADOW_SLOT_OFFSET = 20;
-constexpr uint32 BASIC_SHADOW_SLOT  = SHADOW_SLOT_OFFSET;
-constexpr uint32 CASCADE_SHADOW_SLOT = BASIC_SHADOW_SLOT + MAX_LIGHTS;
-constexpr uint32 OMNI_SHADOW_SLOT    = CASCADE_SHADOW_SLOT + MAX_LIGHTS;
+constexpr uint32 MAX_LIGHTS          = 4;
+constexpr uint32 CASCADE_COUNT       = 4;
+constexpr uint32 SHADOW_SLOT_OFFSET  = 20;
+constexpr uint32 BASIC_SHADOW_SLOT   = SHADOW_SLOT_OFFSET;
+constexpr uint32 OMNI_SHADOW_SLOT    = BASIC_SHADOW_SLOT + MAX_LIGHTS;
+constexpr uint32 CASCADE_SHADOW_SLOT = OMNI_SHADOW_SLOT + MAX_LIGHTS;
 
 enum class eLightType
 {

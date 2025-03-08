@@ -6,19 +6,19 @@ void GlobalConstants::Init()
 {
     m_cameraConstant       = ConstantBuffer<CameraConstant>::Create();
     m_mirrorCameraConstant = ConstantBuffer<CameraConstant>::Create();
-    m_drawNormalGSConstant = ConstantBuffer<DrawNormalFactor>::Create();
-    m_skyboxPSConstant     = ConstantBuffer<SkyboxPSConstant>::Create();
+    m_drawNormalGSConstant = ConstantBuffer<DrawNormalConstant>::Create();
+    m_skyboxPSConstant     = ConstantBuffer<SkyboxConstant>::Create();
     m_shadowCameraConstant = ConstantBuffer<CameraConstant>::Create();
     m_transformConstant    = ConstantBuffer<TransformConstant>::Create();
     m_materialConstant     = ConstantBuffer<MaterialConstant>::Create();
 
-    m_lightAttributeConstant = ConstantBuffer<LightAttributeConstant>::Create();
-    m_lightTransformConstant = ConstantBuffer<LightTransformConstant>::Create();
+    m_lightConstant          = ConstantBuffer<LightConstant>::Create();
+    m_cascadeShadowConstant  = ConstantBuffer<CascadeShadowConstant>::Create();
     m_depthVisualizeConstant = ConstantBuffer<DepthVisualizeConstant>::Create();
 
-    m_basicShadowConstant   = ConstantBuffer<BasicShadowConstant>::Create();
-    m_cascadeShadowConstant = ConstantBuffer<CascadeShadowConstant>::Create();
-    m_omniShadowConstant    = ConstantBuffer<OmniShadowConstant>::Create();
+    m_basicShaderCasterConstant   = ConstantBuffer<BasicShadowCasterConstant>::Create();
+    m_cascadeShadowCasterConstant = ConstantBuffer<CascadeShadowCasterConstant>::Create();
+    m_omniShadowCasterConstant    = ConstantBuffer<OmniShadowCasterConstant>::Create();
 }
 
 void GlobalConstants::UpdateTransform(const TransformConstant& in_data) const
@@ -39,13 +39,13 @@ void GlobalConstants::UpdateReflectCamera(const CameraConstant& in_data) const
     m_mirrorCameraConstant->WriteToBuffer(in_data);
 }
 
-void GlobalConstants::UpdateDrawNormalFactor(const DrawNormalFactor& in_data) const
+void GlobalConstants::UpdateDrawNormalFactor(const DrawNormalConstant& in_data) const
 {
     CRAB_ASSERT(m_drawNormalGSConstant, "DrawNormalGS constant buffer is not initialized.");
     m_drawNormalGSConstant->WriteToBuffer(in_data);
 }
 
-void GlobalConstants::UpdateSkyboxPS(const SkyboxPSConstant& in_data) const
+void GlobalConstants::UpdateSkyboxPS(const SkyboxConstant& in_data) const
 {
     CRAB_ASSERT(m_skyboxPSConstant, "SkyboxPS constant buffer is not initialized.");
     m_skyboxPSConstant->WriteToBuffer(in_data);
@@ -63,14 +63,11 @@ void GlobalConstants::UpdateMaterial(const MaterialConstant& in_data) const
     m_materialConstant->WriteToBuffer(in_data);
 }
 
-void GlobalConstants::UpdateLightAttribute(const LightAttributeConstant& in_data) const
+void GlobalConstants::UpdateLight(const LightConstant& in_data) const
 {
-    m_lightAttributeConstant->WriteToBuffer(in_data);
-}
-
-void GlobalConstants::UpdateLightTransform(const LightTransformConstant& in_data) const
-{
-    m_lightTransformConstant->WriteToBuffer(in_data);
+    CRAB_ASSERT(m_lightConstant, "Light constant buffer is not initialized.");
+    m_lightConstant->WriteToBuffer(in_data);
+        
 }
 
 void GlobalConstants::UpdateDepthVisualize(const DepthVisualizeConstant& in_data) const
@@ -78,17 +75,23 @@ void GlobalConstants::UpdateDepthVisualize(const DepthVisualizeConstant& in_data
     m_depthVisualizeConstant->WriteToBuffer(in_data);
 }
 
-void GlobalConstants::UpdateBasicShadow(const BasicShadowConstant& in_data) const
+void GlobalConstants::UpdateBasicShadowCaster(const BasicShadowCasterConstant& in_data) const
 {
-    return m_basicShadowConstant->WriteToBuffer(in_data);
+    return m_basicShaderCasterConstant->WriteToBuffer(in_data);
+}
+
+void GlobalConstants::UpdateCascadeShadowCaster(const CascadeShadowCasterConstant& in_data) const
+{
+    return m_cascadeShadowCasterConstant->WriteToBuffer(in_data);
+}
+
+void GlobalConstants::UpdateOmniShadowCaster(const OmniShadowCasterConstant& in_data) const
+{
+    return m_omniShadowCasterConstant->WriteToBuffer(in_data);
 }
 
 void GlobalConstants::UpdateCascadeShadow(const CascadeShadowConstant& in_data) const
 {
-    return m_cascadeShadowConstant->WriteToBuffer(in_data);
-}
-
-void GlobalConstants::UpdateOmniShadow(const OmniShadowConstant& in_data) const
-{
-    return m_omniShadowConstant->WriteToBuffer(in_data);
+    CRAB_ASSERT(m_cascadeShadowConstant, "Cascade shadow constant buffer is not initialized.");
+    m_cascadeShadowConstant->WriteToBuffer(in_data);
 }

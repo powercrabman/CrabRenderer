@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace crab
 {
 
@@ -24,6 +25,7 @@ using Vec3 = DirectX::SimpleMath::Vector3;
 using Vec4 = DirectX::SimpleMath::Vector4;
 using Mat4 = DirectX::SimpleMath::Matrix;
 using Quat = DirectX::SimpleMath::Quaternion;
+using Frustum = DirectX::BoundingFrustum;
 
 using AABB           = DirectX::BoundingBox;
 using OBB            = DirectX::BoundingOrientedBox;

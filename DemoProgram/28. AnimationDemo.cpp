@@ -215,9 +215,9 @@ void AnimationDemo::Init()
         lc.fallOffStart  = 5.f;
         lc.lightRadiance = color3::WHITE;
         lc.lightStrength = 1.f;
-        lc.lightType     = eLightType::Point;
+        lc.lightType     = eLightType::Directional;
 
-        lc.shadowMap = DepthMap::CreateDepthMapCube(1024, 1024);
+        lc.shadowMap = DepthMap::CreateDepthMapArray(1024, 1024, 4);
         lc.useShadow = true;
 
         e.GetTransform().position = Vec3 { 0.f, 5.f, 0.f };
@@ -249,8 +249,8 @@ void AnimationDemo::_DrawSkybox(bool in_bindTexture)
     // this is common skybox
     auto DrawCall = [](SkyboxRenderer& s, TransformComponent& t, bool in_bineTexture)
     {
-        SkyboxPSConstant c = {};
-        c.textureCubeType  = s.mappingType;
+        SkyboxConstant c  = {};
+        c.textureCubeType = s.mappingType;
         GetGlobalConstants().UpdateSkyboxPS(c);
 
         TransformConstant tc = {};
@@ -407,11 +407,12 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
     m_depthMap->Clear(1.f);
     GetGlobalRenderPass().BeginDepthOnlyPass();
     {
-        CameraComponent& cmr = m_cameraEntity.GetComponent<CameraComponent>();
+        CameraComponent&    cmr  = m_cameraEntity.GetComponent<CameraComponent>();
+        TransformComponent& cmrT = m_cameraEntity.GetTransform();
 
         CameraConstant cc;
         cc.eyePosition = m_cameraEntity.GetTransform().position;
-        cc.viewProj    = cmr.GetViewProj(cc.eyePosition, m_cameraEntity.GetTransform().rotate);
+        cc.viewProj    = cmr.GetViewProj(cmrT);
         cc.viewProjInv = cc.viewProj.Invert();
 
         auto [width, height] = m_depthMap->GetResolution();
@@ -436,60 +437,128 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
     {
         uint32 index = 0;
 
-        LightTransformConstant ltc = {};
-        ZeroMemory(&ltc, sizeof(ltc));
-
-        LightAttributeConstant lac = {};
-        ZeroMemory(&lac, sizeof(lac));
-
+        LightConstant lc = {};
         GetView<TransformComponent, LightComponent>().each(
             [&](const TransformComponent& t, const LightComponent& l)
             {
-                // Lighting
-                LightTransform lt = {};
-                lt.lightDirection = t.Forward();
-                lt.lightPosition  = t.position;
-
-                LightAttribute la = {};
-                la.fallOffEnd     = l.fallOffEnd;
-                la.fallOffStart   = l.fallOffStart;
-                la.lightType      = l.lightType;
-                la.lightRadiance  = l.lightRadiance;
-                la.lightStrength  = l.lightStrength;
-                la.innerConeAngle = l.innerConeAngle;
-                la.outerConeAngle = l.outerConeAngle;
+                Light& lt           = lc.light[index];
+                lt.lightPosition    = t.position;
+                lt.lightType        = l.lightType;
+                lt.lightDirection   = t.Forward();
+                lt.useShadow        = l.useShadow;
+                lt.lightRadiance    = l.lightRadiance;
+                lt.fallOffStart     = l.fallOffStart;
+                lt.fallOffEnd       = l.fallOffEnd;
+                lt.lightStrength    = l.lightStrength;
+                lt.innerConeAngle   = l.innerConeAngle;
+                lt.outerConeAngle   = l.outerConeAngle;
+                lt.shadowKernelSize = l.shadowKernelSize;
 
                 // Shadow
                 if (l.useShadow)
                 {
-                    la.useShadow        = true;
-                    la.shadowBias       = l.shadowBias;
-                    la.shadowKernelSize = l.shadowKernelSize;
-                    lt.lightViewProj    = CreateView(t.position, t.rotate);
-
                     auto& shadowMap = l.shadowMap;
 
                     switch (l.lightType)
                     {
                         case eLightType::Directional:
                         {
-                            lt.lightViewProj *= CreateOrthographic(
-                                10.f * GetAppWindow().GetAspect(),
-                                10.f,
-                                0.1f,
-                                100.f);
+                            r.SetShaderResourceView(nullptr, CASCADE_SHADOW_SLOT + index, eShaderFlags_PixelShader);
+                            shadowMap->BindDepthBuffer();
+                            shadowMap->Clear(1.f);
 
-                            lt.lightPosition = m_cameraEntity.GetTransform().position - lt.lightDirection * 100.f;
+                            GetGlobalRenderPass().BeginCascadeShadowCasterPass();
+
+                            constexpr uint32 numCascades = 4;   // temp
+                            constexpr float  nearZ1      = 5.f;
+                            constexpr float  nearZ2      = 25.f;
+                            constexpr float  nearZ3      = 50.f;
+
+                            CameraComponent&    cmr           = m_cameraEntity.GetComponent<CameraComponent>();
+                            TransformComponent& cmrT          = m_cameraEntity.GetTransform();
+                            Mat4                cameraViewMat = cmr.GetViewProj(cmrT.position, cmrT.rotate);
+
+                            Frustum frustums[4];
+                            Frustum::CreateFromMatrix(frustums[0], CreatePerspective(45.f * DEG2RAD, 1.f, 0.1f, nearZ1));
+                            Frustum::CreateFromMatrix(frustums[1], CreatePerspective(45.f * DEG2RAD, 1.f, nearZ1, nearZ2));
+                            Frustum::CreateFromMatrix(frustums[2], CreatePerspective(45.f * DEG2RAD, 1.f, nearZ2, nearZ3));
+                            Frustum::CreateFromMatrix(frustums[3], CreatePerspective(45.f * DEG2RAD, 1.f, nearZ3, 1000.f));
+
+                            for (uint32 i = 0; i < 4; i++)
+                            {
+                                frustums[i].Transform(frustums[i], cameraViewMat);
+
+                                Vec3 corners[8];
+                                frustums[i].GetCorners(corners);
+
+                                Vec3 center = Vec3::Zero;
+                                for (uint32 j = 0; j < 8; j++)
+                                    center += corners[j];
+                                center /= 8.f;
+                                frustums[i].Origin = center;
+                            }
+
+                            CascadeShadowCasterConstant cas = {};
+                            for (uint32 i = 0; i < numCascades; i++)
+                            {
+                                Vec3 center    = frustums[i].Origin;
+                                Mat4 lightView = CreateView(center - lt.lightDirection * 100.f, lt.lightDirection);
+                                frustums[i].Transform(frustums[i], lightView);
+                                cas.shadowViewProj[i] = lightView * CreateOrthographicFitFrustum(frustums[i]);
+                            }
+
+                            cas.lightPosition = t.position;
+                            cas.fallOffEnd    = l.fallOffEnd;
+
+                            GetGlobalConstants().UpdateCascadeShadowCaster(cas);
+
+                            CascadeShadowConstant csc = {};
+                            csc.view                  = cmr.GetView(cmrT);
+                            csc.cascadeRange1         = nearZ1;
+                            csc.cascadeRange2         = nearZ2;
+                            csc.cascadeRange3         = nearZ3;
+                            csc.shadowViewProj[0]     = cas.shadowViewProj[0];
+                            csc.shadowViewProj[1]     = cas.shadowViewProj[1];
+                            csc.shadowViewProj[2]     = cas.shadowViewProj[2];
+                            csc.shadowViewProj[3]     = cas.shadowViewProj[3];
+
+                            GetGlobalConstants().UpdateCascadeShadow(csc);
+
+                            auto [width, height] = shadowMap->GetResolution();
+                            r.SetViewport(0, 0, width, height);
+
+                            _DrawBasic(false);
+                            _DrawMirror(false);
+
+                            r.BindOnlyDepthStencilView(nullptr);
+                            shadowMap->BindDepthMapTexture(CASCADE_SHADOW_SLOT + index, eShaderFlags_PixelShader);
                         }
                         break;
 
                         case eLightType::Spot:
                         {
-                            lt.lightViewProj *= CreatePerspective(
-                                l.outerConeAngle,
-                                GetAppWindow().GetAspect(),
-                                0.1f,
-                                l.fallOffEnd);
+                            r.SetShaderResourceView(nullptr, BASIC_SHADOW_SLOT + index, eShaderFlags_PixelShader);
+                            shadowMap->BindDepthBuffer();
+                            shadowMap->Clear(1.f);
+
+                            GetGlobalRenderPass().BeginBasicShadowCasterPass();
+
+                            BasicShadowCasterConstant bsc = {};
+                            bsc.shadowViewProj            = CreateView(t.position, t.rotate) * CreatePerspective(lt.outerConeAngle, 1.f, 0.1f, l.fallOffEnd);
+                            bsc.lightPosition             = t.position;
+                            bsc.fallOffEnd                = l.fallOffEnd;
+                            lt.lightViewProj              = bsc.shadowViewProj;
+
+                            GetGlobalConstants().UpdateBasicShadowCaster(bsc);
+
+                            auto [width, height] = shadowMap->GetResolution();
+                            r.SetViewport(0, 0, width, height);
+
+                            _DrawBasic(false);
+                            _DrawMirror(false);
+
+                            r.BindOnlyDepthStencilView(nullptr);
+                            shadowMap->BindDepthMapTexture(BASIC_SHADOW_SLOT + index, eShaderFlags_PixelShader);
                         }
                         break;
 
@@ -501,16 +570,18 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
 
                             GetGlobalRenderPass().BeginOmniShadowCasterPass();
 
-                            OmniShadowConstant osc  = {};
-                            Mat4               proj = CreatePerspective(90.f * DEG2RAD, 1.f, 0.1f, l.fallOffEnd);
-                            osc.shadowViewProj[0]   = CreateViewFromLookVector(t.position, Vec3 { 1.f, 0.f, 0.f }) * proj;
-                            osc.shadowViewProj[1]   = CreateViewFromLookVector(t.position, Vec3 { -1.f, 0.f, 0.f }) * proj;
-                            osc.shadowViewProj[2]   = CreateViewFromLookVector(t.position, Vec3 { 0.f, 1.f, 0.f }) * proj;
-                            osc.shadowViewProj[3]   = CreateViewFromLookVector(t.position, Vec3 { 0.f, -1.f, 0.f }) * proj;
-                            osc.shadowViewProj[4]   = CreateViewFromLookVector(t.position, Vec3 { 0.f, 0.f, 1.f }) * proj;
-                            osc.shadowViewProj[5]   = CreateViewFromLookVector(t.position, Vec3 { 0.f, 0.f, -1.f }) * proj;
+                            OmniShadowCasterConstant osc  = {};
+                            Mat4                     proj = CreatePerspective(90.f * DEG2RAD, 1.f, 0.1f, l.fallOffEnd);
+                            osc.shadowViewProj[0]         = CreateViewFromLookDirection(t.position, Vec3 { 1.f, 0.f, 0.f }) * proj;
+                            osc.shadowViewProj[1]         = CreateViewFromLookDirection(t.position, Vec3 { -1.f, 0.f, 0.f }) * proj;
+                            osc.shadowViewProj[2]         = CreateViewFromLookDirection(t.position, Vec3 { 0.f, 1.f, 0.f }, Vec3::Forward) * proj;
+                            osc.shadowViewProj[3]         = CreateViewFromLookDirection(t.position, Vec3 { 0.f, -1.f, 0.f }, Vec3::Backward) * proj;
+                            osc.shadowViewProj[4]         = CreateViewFromLookDirection(t.position, Vec3 { 0.f, 0.f, 1.f }) * proj;
+                            osc.shadowViewProj[5]         = CreateViewFromLookDirection(t.position, Vec3 { 0.f, 0.f, -1.f }) * proj;
+                            osc.lightPosition             = t.position;
+                            osc.fallOffEnd                = l.fallOffEnd;
 
-                            GetGlobalConstants().UpdateOmniShadow(osc);
+                            GetGlobalConstants().UpdateOmniShadowCaster(osc);
 
                             auto [width, height] = shadowMap->GetResolution();
                             r.SetViewport(0, 0, width, height);
@@ -533,14 +604,12 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
                     };
                 }
 
-                ltc.lightTransform[index] = lt;
-                lac.lightAttribute[index] = la;
+                lc.light[index] = lt;
 
                 ++index;
             });
 
-        GetGlobalConstants().UpdateLightTransform(ltc);
-        GetGlobalConstants().UpdateLightAttribute(lac);
+        GetGlobalConstants().UpdateLight(lc);
     }
 
     //===================================================
@@ -560,7 +629,7 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
         auto&          cmr = m_cameraEntity.GetComponent<CameraComponent>();
         CameraConstant cc;
         cc.eyePosition = m_cameraEntity.GetTransform().position;
-        cc.viewProj    = cmr.GetViewProj(cc.eyePosition, m_cameraEntity.GetTransform().rotate);
+        cc.viewProj    = cmr.GetViewProj(m_cameraEntity.GetTransform());
         cc.viewProjInv = cc.viewProj.Invert();
 
         GetGlobalConstants().UpdateCamera(cc);
@@ -623,7 +692,7 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
 
             CameraConstant cc = {};
             cc.eyePosition    = cmrTrans.position;
-            cc.viewProj       = Mat4::CreateReflection(mirrorPlane) * cmr.GetViewProj(cc.eyePosition, cmrTrans.rotate);
+            cc.viewProj       = Mat4::CreateReflection(mirrorPlane) * cmr.GetViewProj(cmrTrans);
             cc.viewProjInv    = Mat4::Identity;   // not used
 
             GetGlobalConstants().UpdateReflectCamera(cc);
@@ -670,7 +739,7 @@ void AnimationDemo::OnPostRender(TimeStamp& in_ts)
 
         auto [width, height] = GetAppWindow().GetWindowSize();
 
-        // »ùÇÃ¸µ ÇÊÅÍ
+        // ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             auto filter = ImageFilterFactory::CreateSampling(
                 width,
@@ -681,7 +750,7 @@ void AnimationDemo::OnPostRender(TimeStamp& in_ts)
             m_postProcess.AddFilter(filter);
         }
 
-        // Åæ ¸ÅÇÎ
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             auto tone = ImageFilterFactory::CreateToneMapping(
                 width,

@@ -9,7 +9,7 @@ cbuffer BlurConstants : register(b0)
 Texture2D g_inputTexture : register(t0);
 SamplerState g_sampler : register(s0);
 
-float4 main(PSInput input) : SV_TARGET
+float4 main(PS_Input input) : SV_TARGET
 {
     float x = dx;
     float y = dy;

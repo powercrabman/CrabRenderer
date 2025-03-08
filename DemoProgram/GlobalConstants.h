@@ -10,16 +10,16 @@ public:
     void UpdateTransform(const TransformConstant& in_data) const;
     void UpdateCamera(const CameraConstant& in_data) const;
     void UpdateReflectCamera(const CameraConstant& in_data) const;
-    void UpdateDrawNormalFactor(const DrawNormalFactor& in_data) const;
-    void UpdateSkyboxPS(const SkyboxPSConstant& in_data) const;
+    void UpdateDrawNormalFactor(const DrawNormalConstant& in_data) const;
+    void UpdateSkyboxPS(const SkyboxConstant& in_data) const;
     void UpdateShaderCamera(const CameraConstant& in_data) const;
     void UpdateMaterial(const MaterialConstant& in_data) const;
-    void UpdateLightAttribute(const LightAttributeConstant& in_data) const;
-    void UpdateLightTransform(const LightTransformConstant& in_data) const;
-    void UpdateDepthVisualize(const DepthVisualizeConstant& in_data) const;
-    void UpdateBasicShadow(const BasicShadowConstant& in_data) const;
+    void UpdateLight(const LightConstant& in_data) const;
     void UpdateCascadeShadow(const CascadeShadowConstant& in_data) const;
-    void UpdateOmniShadow(const OmniShadowConstant& in_data) const;
+    void UpdateDepthVisualize(const DepthVisualizeConstant& in_data) const;
+    void UpdateBasicShadowCaster(const BasicShadowCasterConstant& in_data) const;
+    void UpdateCascadeShadowCaster(const CascadeShadowCasterConstant& in_data) const;
+    void UpdateOmniShadowCaster(const OmniShadowCasterConstant& in_data) const;
 
     auto GetTransformConstant() const { return m_transformConstant; }
     auto GetCameraConstant() const { return m_cameraConstant; }
@@ -28,13 +28,13 @@ public:
     auto GetSkyboxPSConstant() const { return m_skyboxPSConstant; }
     auto GetShadowCameraConstant() const { return m_shadowCameraConstant; }
     auto GetMaterialConstant() const { return m_materialConstant; }
-    auto GetLightAttributeConstant() const { return m_lightAttributeConstant; }
-    auto GetLightTransformConstant() const { return m_lightTransformConstant; }
-    auto GetDepthVisualizeConstant() const { return m_depthVisualizeConstant; }
-    auto GetBasicShadowConstant() const { return m_basicShadowConstant; }
+    auto GetLightConstant() const { return m_lightConstant; }
     auto GetCascadeShadowConstant() const { return m_cascadeShadowConstant; }
-    auto GetOmniShadowConstant() const { return m_omniShadowConstant; }
-    
+    auto GetDepthVisualizeConstant() const { return m_depthVisualizeConstant; }
+    auto GetBasicShadowCasterConstant() const { return m_basicShaderCasterConstant; }
+    auto GetCascadeShadowCasterConstant() const { return m_cascadeShadowCasterConstant; }
+    auto GetOmniShadowCasterConstant() const { return m_omniShadowCasterConstant; }
+
 private:
     Ref<ConstantBuffer<TransformConstant>> m_transformConstant = nullptr;
     Ref<ConstantBuffer<MaterialConstant>>  m_materialConstant  = nullptr;
@@ -43,22 +43,23 @@ private:
     Ref<ConstantBuffer<CameraConstant>> m_mirrorCameraConstant = nullptr;
     Ref<ConstantBuffer<CameraConstant>> m_shadowCameraConstant = nullptr;
 
-    Ref<ConstantBuffer<DrawNormalFactor>> m_drawNormalGSConstant = nullptr;
+    Ref<ConstantBuffer<DrawNormalConstant>> m_drawNormalGSConstant = nullptr;
 
-    Ref<ConstantBuffer<SkyboxPSConstant>> m_skyboxPSConstant = nullptr;
+    Ref<ConstantBuffer<SkyboxConstant>> m_skyboxPSConstant = nullptr;
 
-    Ref<ConstantBuffer<LightAttributeConstant>> m_lightAttributeConstant = {};
-    Ref<ConstantBuffer<LightTransformConstant>> m_lightTransformConstant = {};
+    Ref<ConstantBuffer<LightConstant>>         m_lightConstant         = nullptr;
+    Ref<ConstantBuffer<CascadeShadowConstant>> m_cascadeShadowConstant = nullptr;
 
     Ref<ConstantBuffer<DepthVisualizeConstant>> m_depthVisualizeConstant = nullptr;
 
-    Ref<ConstantBuffer<BasicShadowConstant>> m_basicShadowConstant = nullptr;
-    Ref<ConstantBuffer<CascadeShadowConstant>> m_cascadeShadowConstant = nullptr;
-    Ref<ConstantBuffer<OmniShadowConstant>>    m_omniShadowConstant    = nullptr;
+    Ref<ConstantBuffer<BasicShadowCasterConstant>>   m_basicShaderCasterConstant   = nullptr;
+    Ref<ConstantBuffer<CascadeShadowCasterConstant>> m_cascadeShadowCasterConstant = nullptr;
+    Ref<ConstantBuffer<OmniShadowCasterConstant>>    m_omniShadowCasterConstant    = nullptr;
 };
+
+
 
 inline GlobalConstants& GetGlobalConstants()
 {
     return GlobalConstants::GetInstance();
 }
-

@@ -4,9 +4,6 @@
 #include "../CrabRenderer/CrabInclude.h"
 using namespace crab;
 
-// Base
-#include "Common.h"
-
 // Rendering
 #include "Constants.h"
 #include "GlobalConstants.h"

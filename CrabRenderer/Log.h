@@ -1,6 +1,17 @@
 #pragma once
 #include <spdlog/spdlog.h>
 
+enum class eLogLevel
+{
+    Trace,
+    Debug,
+    Info,
+    Warn,
+    Error,
+    Critical,
+    Off
+};
+
 namespace crab
 {
 

@@ -24,7 +24,7 @@ inline Application* CreateCrabApplication(const CommandLineArgs& in_args)
     setting.applicationName    = "Demo App";
 
     setting.windowSetting.windowTitle = "Demo App";
-    setting.windowSetting.windowSize  = { 1600, 900 };
+    setting.windowSetting.windowSize  = { 1920, 1080 };
 
     setting.rendererSetting.swapChainSetting.enableVSync        = true;
     setting.rendererSetting.swapChainSetting.enableHDRRendering = true;

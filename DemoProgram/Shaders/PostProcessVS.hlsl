@@ -1,8 +1,8 @@
 #include "PostProcessCommon.hlsli"
 
-PSInput main(VSInput input)
+PS_Input main(VS_Input input)
 {
-    PSInput output;
+    PS_Input output;
     output.position = float4(input.position, 0.0f, 1.0f);
     output.texCoord = input.texCoord;
     return output;

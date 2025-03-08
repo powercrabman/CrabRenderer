@@ -29,7 +29,9 @@ public:
     [[nodiscard]] Ref<PixelShader> PostEffectPixelShader() const { return m_postEffectPS; }
     [[nodiscard]] Ref<PixelShader> DebugNormalMapPixelShader() const { return m_debugNormalMapPS; }
     [[nodiscard]] Ref<PixelShader> DepthVisualizePixelShader() const { return m_depthVisualizePS; }
-    [[nodiscard]] Ref<PixelShader> CommonShadowCasterPixelShader() const { return m_commonShadowCasterPS; }
+    [[nodiscard]] Ref<PixelShader> BasicShadowCasterPixelShader() const { return m_basicShadowCasterPS; }
+    [[nodiscard]] Ref<PixelShader> CascadeShadowCasterPixelShader() const { return m_cascadeShadowCasterPS; }
+    [[nodiscard]] Ref<PixelShader> OmniShadowCasterPixelShader() const { return m_omniShadowCasterPS; }
 
     // Geometry Shader
     [[nodiscard]] Ref<GeometryShader> DrawNormalGeometryShader() const { return m_drawNormalGS; }
@@ -59,7 +61,9 @@ private:
     Ref<PixelShader> m_postEffectPS;
     Ref<PixelShader> m_debugNormalMapPS;
     Ref<PixelShader> m_depthVisualizePS;
-    Ref<PixelShader> m_commonShadowCasterPS;
+    Ref<PixelShader> m_basicShadowCasterPS;
+    Ref<PixelShader> m_cascadeShadowCasterPS;
+    Ref<PixelShader> m_omniShadowCasterPS;
 
     // Geometry shader
     Ref<GeometryShader> m_drawNormalGS;

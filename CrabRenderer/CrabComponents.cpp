@@ -107,6 +107,11 @@ Mat4 CameraComponent::GetView(const Vec3& in_eyePosition, const Quat& in_quatern
     return CreateView(in_eyePosition, in_quaternion);
 }
 
+Mat4 CameraComponent::GetView(const TransformComponent& in_trans)
+{
+    return GetView(in_trans.position, in_trans.rotate);
+}
+
 Mat4 CameraComponent::GetProj() const
 {
     switch (projectionType)
@@ -129,4 +134,10 @@ Mat4 CameraComponent::GetViewProj(const Vec3& in_eyePosition, const Vec3& in_pit
 {
     return GetView(in_eyePosition, in_pitchYawRoll) * GetProj();
 }
+
+Mat4 CameraComponent::GetViewProj(const TransformComponent& in_trans) const
+{
+    return GetView(in_trans) * GetProj();
+}
+
 }   // namespace crab
