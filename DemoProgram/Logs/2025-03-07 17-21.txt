@@ -1,0 +1,20 @@
+[2025-03-08 02:21:34.963] [info] Log initialized
+[2025-03-08 02:21:34.963] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-08 02:21:36.202] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-08 02:21:36.280] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-03-08 02:21:37.311] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-03-08 02:21:37.398] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-03-08 02:21:37.453] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-03-08 02:21:37.789] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-03-08 02:21:38.372] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-08 02:21:40.531] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 02:21:40.638] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 02:21:40.801] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 02:21:40.901] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 02:21:41.715] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 02:21:42.258] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 02:23:50.973] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-03-08 02:23:51.007] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-03-08 02:23:51.036] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-03-08 02:23:51.103] [debug] Event Occurred. "MouseScroll_IOEvent"
+[2025-03-08 02:23:55.205] [debug] Event Occurred. "AppClose_CoreEvent"

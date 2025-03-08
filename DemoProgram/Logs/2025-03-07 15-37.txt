@@ -1,0 +1,27 @@
+[2025-03-08 00:37:01.023] [info] Log initialized
+[2025-03-08 00:37:01.024] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-08 00:37:01.868] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-08 00:37:01.919] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-03-08 00:37:03.079] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-03-08 00:37:03.166] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-03-08 00:37:03.226] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-03-08 00:37:03.330] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-03-08 00:37:03.461] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-08 00:37:06.001] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 00:37:06.145] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 00:37:06.512] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 00:37:06.642] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 00:37:07.297] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 00:37:07.376] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 00:37:07.649] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 00:37:07.812] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 00:37:08.516] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 00:37:08.674] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 00:37:09.012] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 00:37:09.141] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 00:37:09.493] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 00:37:09.651] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 00:37:10.119] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-08 00:37:10.127] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-08 00:37:10.932] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-08 00:37:10.935] [debug] Event Occurred. "AppClose_CoreEvent"

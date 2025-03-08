@@ -1,0 +1,35 @@
+[2025-03-08 01:13:45.824] [info] Log initialized
+[2025-03-08 01:13:45.824] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-08 01:13:46.904] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-08 01:13:46.996] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-03-08 01:13:47.988] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-03-08 01:13:48.060] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-03-08 01:13:48.106] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-03-08 01:13:48.193] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-03-08 01:13:48.304] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-08 01:13:49.073] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:49.172] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:49.410] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:49.523] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:50.340] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:50.837] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:51.192] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:52.518] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:52.856] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:53.094] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:53.190] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:53.286] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:53.448] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:53.544] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:53.736] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:53.832] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:54.057] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:54.143] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:54.376] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:54.488] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:54.618] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:54.744] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:55.290] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-08 01:13:56.474] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-08 01:13:57.170] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-08 01:13:57.174] [debug] Event Occurred. "AppClose_CoreEvent"

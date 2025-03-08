@@ -1,0 +1,7 @@
+[2025-03-06 12:17:56.142] [info] Log initialized
+[2025-03-06 12:17:56.142] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-06 12:17:56.147] [error] 
+**********
+Crab assert fail: Failed to initialize SDL.
+**********
+

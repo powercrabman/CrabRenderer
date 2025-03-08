@@ -1,0 +1,11 @@
+[2025-03-08 02:47:21.232] [info] Log initialized
+[2025-03-08 02:47:21.234] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-08 02:47:22.399] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-08 02:47:22.447] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-03-08 02:47:23.442] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-03-08 02:47:23.518] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-03-08 02:47:23.565] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-03-08 02:47:23.653] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-03-08 02:47:23.766] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-08 02:47:24.940] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-08 02:47:24.944] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -1,0 +1,15 @@
+[2025-02-28 00:11:53.328] [info] Log initialized
+[2025-02-28 00:11:53.878] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-02-28 00:11:53.880] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-02-28 00:11:53.902] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-02-28 00:11:53.906] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-02-28 00:11:53.925] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxBrdf.dds
+[2025-02-28 00:11:53.926] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxEnvHDR.dds
+[2025-02-28 00:11:53.943] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxDiffuseHDR.dds
+[2025-02-28 00:11:53.946] [info] Load Image: Resources\AnimationDemo\NightSkybox\SkyboxSpecularHDR.dds
+[2025-02-28 00:11:54.989] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_ao.png
+[2025-02-28 00:11:55.068] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_metallic.png
+[2025-02-28 00:11:55.117] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_normal-dx.png
+[2025-02-28 00:11:55.208] [info] Load Image: Resources\AnimationDemo\floor\angled-tiled-floor_roughness.png
+[2025-02-28 00:11:57.556] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-02-28 00:11:57.556] [debug] Event Occurred. "AppClose_CoreEvent"
