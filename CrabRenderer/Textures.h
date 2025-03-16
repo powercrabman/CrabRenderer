@@ -20,6 +20,9 @@ public:
     uint32                    GetMipMapLevelCount() const { return m_mipMapLevelCount; }
     eTextureType              GetTextureType() const { return m_textureType; }
 
+    template<typename Ty>
+    Ty* GetResource() const;
+
 protected:
     Texture() = default;
 
@@ -33,6 +36,37 @@ protected:
     eFormat      m_format      = eFormat::Unknown;
     eTextureType m_textureType = eTextureType::Unknown;
 };
+
+template<typename Ty>
+Ty* Texture::GetResource() const
+{
+    static_assert(IS_BASE_OF(ID3D11Resource, Ty), "GetResource: Ty must be derived from ID3D11Resource.");
+
+    ComPtr<ID3D11Resource> resource;
+    m_srv->GetResource(resource.GetAddressOf());
+
+    D3D11_RESOURCE_DIMENSION type = {};
+    resource->GetType(&type);
+
+    if constexpr (IS_SAME(Ty, ID3D11Buffer))
+    {
+        if (type == D3D11_RESOURCE_DIMENSION_BUFFER)
+            return reinterpret_cast<Ty*>(resource.Get());
+        CRAB_DEBUG_BREAK("GetResource: Resource Type is not Buffer.");
+    }
+    else if constexpr (IS_SAME(Ty, ID3D11Texture2D))
+    {
+        if (type == D3D11_RESOURCE_DIMENSION_TEXTURE2D)
+            return reinterpret_cast<Ty*>(resource.Get());
+        CRAB_DEBUG_BREAK("GetResource: Resource Type is not Texture2D.");
+    }
+    else
+    {
+        static_assert(false, "GetResource: Unknown Resource Type.");
+    }
+
+    return nullptr;
+}
 
 template<typename T>
 inline Ref<T> CastTexture(const Ref<Texture>& in_texture)

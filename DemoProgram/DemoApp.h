@@ -26,7 +26,7 @@ inline Application* CreateCrabApplication(const CommandLineArgs& in_args)
 
     setting.rendererSetting.swapChainSetting.enableVSync        = true;
     setting.rendererSetting.swapChainSetting.enableHDRRendering = true;
-    setting.rendererSetting.swapChainSetting.enableMSAA         = true;
+    setting.rendererSetting.swapChainSetting.enableMSAA         = false; 
 
     setting.engineDirectory = R"(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer)";
 

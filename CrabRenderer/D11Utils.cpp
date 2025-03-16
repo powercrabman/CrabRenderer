@@ -382,19 +382,21 @@ void ID3D11Texture2DUtil::CopyBetween(
     }
 }
 
-void ID3D11Texture2DUtil::Texture2DMSToTexture2D(
+void ID3D11Texture2DUtil::ResolveTexture2D(
     ID3D11Texture2D* in_MSTexture,
-    ID3D11Texture2D* in_texture,
-    eFormat          in_targetFormat)
+    ID3D11Texture2D* in_dstTexture)
 {
-    if (in_MSTexture && in_texture)
+    if (in_MSTexture && in_dstTexture)
     {
+        D3D11_TEXTURE2D_DESC desc;
+        in_dstTexture->GetDesc(&desc);
+
         auto c = GetRenderer().GetContext();
-        c->ResolveSubresource(in_texture,
+        c->ResolveSubresource(in_dstTexture,
                               0,
                               in_MSTexture,
                               0,
-                              static_cast<DXGI_FORMAT>(in_targetFormat));
+                              desc.Format);
     }
     else
     {

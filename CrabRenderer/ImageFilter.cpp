@@ -101,7 +101,7 @@ Ref<ImageFilter> ImageFilter::Clone() const
 
 Ref<Texture2D> ImageFilter::GetOutputTexture() const
 {
-    return m_renderTarget->GetImage();
+    return m_renderTarget->GetTexture();
 }
 
 void ImageFilter::Bind() const

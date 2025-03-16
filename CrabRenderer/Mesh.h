@@ -30,8 +30,7 @@ public:
     uint32    GetVertexCount() const { return m_vertexBuffer->GetVertexCount(); }
     uint32    GetVertexStride() const { return m_vertexBuffer->GetVertexStride(); }
 
-    void Draw(eTopology in_topology) const;   // if you want to use another topology, use this
-    void Draw() const { Draw(m_topology); }
+    void Draw() const;
 
 private:
     Ref<VertexBuffer> m_vertexBuffer;

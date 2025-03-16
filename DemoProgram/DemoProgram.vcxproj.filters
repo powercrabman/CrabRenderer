@@ -14,11 +14,11 @@
     <ClInclude Include="Components.h">
       <Filter>ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Tags.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
     <ClInclude Include="30. DemoScene.h">
       <Filter>Scene %28Demos%29</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene3DBase.h">
+      <Filter>Scene Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -38,6 +38,9 @@
     <ClCompile Include="30. DemoScene.cpp">
       <Filter>Scene %28Demos%29</Filter>
     </ClCompile>
+    <ClCompile Include="Scene3DBase.cpp">
+      <Filter>Scene Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -52,11 +55,11 @@
     <Filter Include="Script">
       <UniqueIdentifier>{b8fbd514-b597-4d09-ae77-cc363ca3fe55}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Rendering">
-      <UniqueIdentifier>{1833c9fc-4537-47b3-a2be-b7a9bd2e6118}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ECS">
       <UniqueIdentifier>{57574cbb-4aa5-4e6c-a1bb-104d58e08ab7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene Base">
+      <UniqueIdentifier>{51631945-9091-407c-ae99-89c6c0ef9890}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

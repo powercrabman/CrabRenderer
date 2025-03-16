@@ -9,6 +9,8 @@ DemoScene::~DemoScene() = default;
 
 void DemoScene::Init()
 {
+    Super::Init();
+
     auto&       r  = GetRenderer();
     const auto& sc = r.GetSwapChain();
 
@@ -17,8 +19,6 @@ void DemoScene::Init()
     //===================================================
 
     {
-        m_backBufferHDR         = sc->GetBackBufferHDR();
-        m_backBufferDepthBuffer = sc->GetDepthBuffer();
         m_sceneHierarchy        = CreateScope<SceneHierarchy>();
 
         GeometryData skyboxData = GeometryFactory::CreateSphere(500.f, 32, 32);
@@ -54,18 +54,8 @@ void DemoScene::Init()
     }
 
     {
-        Entity e = CreateEntity("Camera");
-        e.CreateComponent<CameraComponent>(
-            CameraComponent {
-                .projectionType = eProjectionType::Perspective,
-                .nearZ          = 0.1f,
-                .farZ           = 1000.0f,
-                .fov            = 45.f * DEG2RAD,
-                .aspect         = GetAppWindow().GetAspect() });
-
-        e.CreateComponent<ScriptComponent>(CreateScope<CameraScript>(e));
-        e.GetTransform().position.z = -5.f;
-        m_camera                    = e;
+        GetCameraEntity().CreateComponent<ScriptComponent>(CreateScope<CameraScript>(GetCameraEntity()));
+        GetCameraTransform().position.z = -5.f;
     }
 
     for (uint32 i = 0; i < 100; i++)
@@ -171,155 +161,27 @@ void DemoScene::Init()
 
 void DemoScene::OnEnter()
 {
+    Super::OnEnter();
 }
 
 void DemoScene::OnExit()
 {
+    Super::OnExit();
 }
 
 void DemoScene::OnUpdate(TimeStamp& in_ts)
 {
-    if (Input::IsKeyPressed(eKey::Escape))
-        GetApplication().Quit();
+    Super::OnUpdate(in_ts);
 }
 
 void DemoScene::OnRender(TimeStamp& in_ts)
 {
-    auto [screenWidth, screenHeight] = GetAppWindow().GetResolution();
-    auto&       r                    = GetRenderer();
-    const auto* pipe                 = GetGlobalPipeline();
-
-    //===================================================
-    // Update LightData
-    //===================================================
-
-    CrabPass::LightShadowPass<"PBR">(this, m_camera);
-
-    //===================================================
-    // Begin Render
-    //===================================================
-
-    {
-        m_backBufferHDR->Bind(m_backBufferDepthBuffer);
-        m_backBufferHDR->Clear(color4::BLACK);
-        m_backBufferDepthBuffer->Clear(true, 1.f, false, 0);
-        r.SetViewport(0, 0, screenWidth, screenHeight);
-
-        // Update Camera
-        auto& cmr = m_camera.GetComponent<CameraComponent>();
-
-        GetGlobalConstants()->UpdateCamera(
-            CameraConstant {
-                .view           = cmr.GetView(m_camera.GetTransform()),
-                .viewProj       = cmr.GetViewProj(m_camera.GetTransform()),
-                .invViewProj    = cmr.GetViewProj(m_camera.GetTransform()).Invert(),
-                .cameraPosition = m_camera.GetTransform().position,
-            });
-    }
-
-    //===================================================
-    // Main Render
-    //===================================================
-
-    CrabPass::SkyboxPass<"Skybox">(this);
-    CrabPass::PBRPass<"PBR">(this, {}, m_wireframeMode ? pipe->GetPBRWireframe() : nullptr);
-
-    if (m_drawNormal)
-    {
-        CrabPass::DrawNormalPass<"PBR">(this);
-    }
-
-    //===================================================
-    // Mirror Reflection
-    //===================================================
-
-    CrabPass::MirrorPass<"Mirror">(
-        this,
-        m_backBufferDepthBuffer,
-        m_camera,
-        1,
-        [&](Scene* in_scene)
-        {
-            CrabPass::SkyboxPass<"Skybox">(this, PipelineBindArgument { 1 }, pipe->GetSkyboxReflection());
-            CrabPass::PBRPass<"PBR">(this, PipelineBindArgument { 1 }, m_wireframeMode ? pipe->GetPBRRefractionWireframe() : pipe->GetPBRReflection());
-            CrabPass::PBRPass<"Mirror">(this, PipelineBindArgument { 1 }, m_wireframeMode ? pipe->GetPBRWireframeOnMask() : pipe->GetPBROnMask());
-        });
+    Super::OnRender(in_ts);
 }
 
 void DemoScene::OnPostRender(TimeStamp& in_ts)
 {
-    if (m_postProcessDirty)
-    {
-        //===================================================
-        // Post Process
-        //===================================================
-
-        {
-            auto [screenWidth, screenHeight] = GetAppWindow().GetResolution();
-            const auto& sc                   = GetRenderer().GetSwapChain();
-
-            m_postProcess.ClearFilterList();
-
-            m_postProcess.AddFilter(
-                ImageFilterFactory::CreateSampling(
-                    screenWidth,
-                    screenHeight,
-                    sc->GetResolvedBackBufferHDRTexture()));
-
-            if (m_useBloom)
-            {
-                constexpr uint32 BLUR_COUNT = 3;
-
-                for (uint32 i = 0; i < BLUR_COUNT; ++i)
-                {
-                    uint32 width  = screenWidth >> (i + 1);
-                    uint32 height = screenHeight >> (i + 1);
-
-                    m_postProcess.AddFilter(
-                        ImageFilterFactory::CreateBlurDown(
-                            width,
-                            height,
-                            m_postProcess.GetLastFilter()->GetOutputTexture()));
-                }
-
-                for (uint32 i = 0; i < BLUR_COUNT; ++i)
-                {
-                    uint32 width  = screenWidth >> (BLUR_COUNT - i);
-                    uint32 height = screenHeight >> (BLUR_COUNT - i);
-
-                    m_postProcess.AddFilter(
-                        ImageFilterFactory::CreateBlurUp(
-                            width,
-                            height,
-                            m_postProcess.GetLastFilter()->GetOutputTexture(),
-                            BlurUpConstant { m_postprocessBlurRadius }));
-                }
-
-                m_postProcess.AddFilter(
-                    ImageFilterFactory::CreateCombine(
-                        screenWidth,
-                        screenHeight,
-                        m_postProcess.GetLastFilter()->GetOutputTexture(),
-                        sc->GetResolvedBackBufferHDRTexture(),
-                        CombineConstant { m_postprocessCombineFactor },
-                        &m_postprocessCombineConst));
-            }
-
-            Ref<ImageFilter> toneMap = ImageFilterFactory::CreateToneMapping(
-                screenWidth,
-                screenHeight,
-                m_postProcess.GetLastFilter()->GetOutputTexture(),
-                ToneMappingConstant { .exposure = 1.f, .gamma = 2.2f });
-
-            toneMap->SetRenderTarget(sc->GetBackBuffer());
-
-            m_postProcess.AddFilter(toneMap);
-        }
-        m_postProcessDirty = false;
-    }
-
-    GetRenderer().GetSwapChain()->ResolveBackBufferHDR();
-    m_postProcess.Render();
+    Super::OnPostRender(in_ts);
 }
 
 void DemoScene::OnRenderGUI(TimeStamp& in_ts)
@@ -329,19 +191,28 @@ void DemoScene::OnRenderGUI(TimeStamp& in_ts)
                       {
                           ImGui::Text("Hello, World!");
 
-                          ImGui::Checkbox("Wireframe Mode", &m_wireframeMode);
-                          ImGui::Checkbox("Draw Normal", &m_drawNormal);
+                          bool wireframeMode = IsWireframeModeEnabled();
+                          bool drawNormal    = IsDrawNormalEnabled();
+                          bool useBloom      = IsPostProcessBloomEnabled();
+                          float combineFactor = GetBloomCombineFactor();
+                          float bloomRadius   = GetBloomBlurRadius();
+
+                          if (ImGui::Checkbox("Wireframe Mode", &wireframeMode))
+                              EnableWireframeMode(wireframeMode);
+
+                          if (ImGui::Checkbox("Draw Normal", &drawNormal))
+                              EnableDrawNormal(drawNormal);
 
                           ImGui::SeparatorText("Post Process Bloom");
 
-                          if (ImGui::Checkbox("Use Bloom", &m_useBloom))
-                              m_postProcessDirty = true;
+                          if (ImGui::Checkbox("Use Bloom", &useBloom))
+                              EnablePostProcessBloom(useBloom);
 
-                          if (ImGui::SliderFloat("Bloom Combine Factor", &m_postprocessCombineFactor, 0.f, 1.f))
-                              m_postprocessCombineConst->WriteToBuffer(CombineConstant { m_postprocessCombineFactor });
+                          if (ImGui::SliderFloat("Bloom Combine Factor", &combineFactor, 0.f, 1.f))
+                              SetBloomCombineFactor(combineFactor);
 
-                          if (ImGui::DragFloat("Bloom Radius", &m_postprocessBlurRadius, 0.0001f, 0.0001f, 1.f))
-                              m_postProcessDirty = true;
+                          if (ImGui::DragFloat("Bloom Radius", &bloomRadius, 0.0001f, 0.0001f, 1.f))
+                              SetBloomBlurRadius(bloomRadius);
 
                           ImGui::Separator();
                           if (ImGui::RadioButton("Day", reinterpret_cast<int*>(&m_skyboxType), 0))

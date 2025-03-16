@@ -23,15 +23,16 @@
     <ClInclude Include="Components.h" />
     <ClInclude Include="DemoApp.h" />
     <ClInclude Include="30. DemoScene.h" />
+    <ClInclude Include="Scene3DBase.h" />
     <ClInclude Include="GUIs.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Tags.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="Components.cpp" />
     <ClCompile Include="DemoApp.cpp" />
     <ClCompile Include="30. DemoScene.cpp" />
+    <ClCompile Include="Scene3DBase.cpp" />
     <ClCompile Include="GUIs.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -26,11 +26,7 @@ public:
     Ref<DepthBuffer> GetDepthBuffer() const;
 
     Ref<RenderTarget> GetBackBuffer() const;
-    Ref<Texture2D>    GetBackBufferTexture() const;
-
     Ref<RenderTarget> GetBackBufferHDR() const;
-    Ref<Texture2D>    GetResolvedBackBufferHDRTexture() const;
-    void              ResolveBackBufferHDR() const;
 
 private:
     void _CreateResources(const Int2& in_size);
@@ -39,17 +35,14 @@ private:
 
     ComPtr<IDXGISwapChain1> m_swapChain;
 
-    Ref<RenderTarget> m_backBuffer;   // No MSAA
+    Ref<RenderTarget> m_backBuffer;
 
     // Main backBuffer
     eFormat m_backBufferFormat = {};
 
     // HDR backBuffer
-    Ref<RenderTarget>       m_backBufferHDR;   // MSAA
-    ComPtr<ID3D11Texture2D> m_backBufferHDRImage;
-    Ref<RenderTarget>       m_resolvedBackBuffer;
-    ComPtr<ID3D11Texture2D> m_resolvedBackBufferImage;
-    bool                    m_enableHDRRendering = false;
+    Ref<RenderTarget> m_backBufferHDR;   // MSAA
+    bool              m_enableHDRRendering = false;
 
     // Depth buffer
     Ref<DepthBuffer> m_depthBuffer;   // back buffer dsv

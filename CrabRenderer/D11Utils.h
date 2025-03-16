@@ -226,10 +226,9 @@ struct ID3D11Texture2DUtil
         uint32           in_dstOffsetX,
         uint32           in_dstOffsetY);
 
-    static void Texture2DMSToTexture2D(
+    static void ResolveTexture2D(
         ID3D11Texture2D* in_MSTexture,
-        ID3D11Texture2D* in_texture,
-        eFormat          in_targetFormat);
+        ID3D11Texture2D* in_dstTexture);
 };
 
 //===================================================

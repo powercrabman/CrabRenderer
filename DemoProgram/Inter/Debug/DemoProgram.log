@@ -1,18 +1,18 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 중간 디렉터리(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\\Inter\Debug\)에 다른 프로젝트(DemoProgram.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
-  unity_GWH6WGZF2OIYYK74.cpp
+  unity_9YRIZHE4D4DU6TB6.cpp
 C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\GUIs.h(140,36): warning C4244: '인수': 'unsigned __int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  (소스 파일 'Inter/Debug/unity_GWH6WGZF2OIYYK74.cpp'을(를) 컴파일하는 중)
+  (소스 파일 'Inter/Debug/unity_9YRIZHE4D4DU6TB6.cpp'을(를) 컴파일하는 중)
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\30. DemoScene.cpp(76,32): warning C4927: 변환이 잘못되었습니다. 사용자 정의 변환이 암시적으로 두 번 이상 적용되었습니다.
-  (소스 파일 'Inter/Debug/unity_GWH6WGZF2OIYYK74.cpp'을(를) 컴파일하는 중)
-      C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\30. DemoScene.cpp(76,32):
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\30. DemoScene.cpp(66,32): warning C4927: 변환이 잘못되었습니다. 사용자 정의 변환이 암시적으로 두 번 이상 적용되었습니다.
+  (소스 파일 'Inter/Debug/unity_9YRIZHE4D4DU6TB6.cpp'을(를) 컴파일하는 중)
+      C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\30. DemoScene.cpp(66,32):
       'DirectX::SimpleMath::Vector3::Vector3(DirectX::FXMVECTOR) noexcept' 생성자를 호출하는 동안
       C:\Users\Ahnjiwoo\Desktop\Projects\vcpkg\installed\x64-windows\include\directxtk\SimpleMath.h(234,13):
       'DirectX::SimpleMath::Vector3::Vector3' 선언을 참조하십시오.
   
-C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\30. DemoScene.cpp(100,34): warning C4927: 변환이 잘못되었습니다. 사용자 정의 변환이 암시적으로 두 번 이상 적용되었습니다.
-  (소스 파일 'Inter/Debug/unity_GWH6WGZF2OIYYK74.cpp'을(를) 컴파일하는 중)
-      C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\30. DemoScene.cpp(100,34):
+C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\30. DemoScene.cpp(90,34): warning C4927: 변환이 잘못되었습니다. 사용자 정의 변환이 암시적으로 두 번 이상 적용되었습니다.
+  (소스 파일 'Inter/Debug/unity_9YRIZHE4D4DU6TB6.cpp'을(를) 컴파일하는 중)
+      C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\30. DemoScene.cpp(90,34):
       'DirectX::SimpleMath::Vector3::Vector3(DirectX::FXMVECTOR) noexcept' 생성자를 호출하는 동안
       C:\Users\Ahnjiwoo\Desktop\Projects\vcpkg\installed\x64-windows\include\directxtk\SimpleMath.h(234,13):
       'DirectX::SimpleMath::Vector3::Vector3' 선언을 참조하십시오.

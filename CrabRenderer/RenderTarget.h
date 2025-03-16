@@ -30,7 +30,7 @@ public:
 
     ID3D11RenderTargetView* Get() const { return m_renderTargetView.Get(); }
     eFormat                 GetFormat() const { return m_format; }
-    Ref<Texture2D>          GetImage() const { return m_image; }
+    Ref<Texture2D>          GetTexture() const { return m_image; }
 
 private:
     ComPtr<ID3D11RenderTargetView> m_renderTargetView;

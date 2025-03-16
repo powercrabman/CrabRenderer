@@ -95,10 +95,10 @@ void Swapchain::_InitMSAA()
 
         uint32 maxQuality = 0;
         if (CheckD3D11Result(GetRenderer().GetDevice()->CheckMultisampleQualityLevels(
-                                  static_cast<DXGI_FORMAT>(eFormat::Float16x4),
+                                 static_cast<DXGI_FORMAT>(eFormat::Float16x4),
                                  m_MSAASampleCount,
-                                  &maxQuality),
-                              "CheckMultisampleQualityLevels Fail."))
+                                 &maxQuality),
+                             "CheckMultisampleQualityLevels Fail."))
         {
             m_MSAAQuality = maxQuality - 1;
         }
@@ -115,11 +115,6 @@ Ref<RenderTarget> Swapchain::GetBackBuffer() const
     return m_backBuffer;
 }
 
-Ref<Texture2D> Swapchain::GetBackBufferTexture() const
-{
-    return m_backBuffer->GetImage();
-}
-
 Ref<RenderTarget> Swapchain::GetBackBufferHDR() const
 {
     if (m_enableHDRRendering)
@@ -130,36 +125,6 @@ Ref<RenderTarget> Swapchain::GetBackBufferHDR() const
     {
         CRAB_DEBUG_BREAK("Not use Float Render Target.");
         return nullptr;
-    }
-}
-
-Ref<Texture2D> Swapchain::GetResolvedBackBufferHDRTexture() const
-{
-    if (m_enableHDRRendering)
-    {
-        return m_resolvedBackBuffer->GetImage();
-    }
-    else
-    {
-        CRAB_DEBUG_BREAK("Not use Float Render Target.");
-        return nullptr;
-    }
-}
-
-void Swapchain::ResolveBackBufferHDR() const
-{
-    if (m_enableHDRRendering)
-    {
-        GetRenderer().GetContext()->ResolveSubresource(
-            m_resolvedBackBufferImage.Get(),
-            0,
-            m_backBufferHDRImage.Get(),
-            0,
-            static_cast<DXGI_FORMAT>(m_resolvedBackBuffer->GetFormat()));
-    }
-    else
-    {
-        CRAB_DEBUG_BREAK("Not use Float Render Target.");
     }
 }
 
@@ -190,9 +155,7 @@ void Swapchain::_CreateResources(const Int2& in_size)
 
 void Swapchain::_CreateHDRRenderTarget(const Int2& in_size)
 {
-    auto d = GetRenderer().GetDevice();
-
-    m_backBufferHDRImage = ID3D11Texture2DUtil::CreateTexture2D(
+    ComPtr<ID3D11Texture2D> texture = ID3D11Texture2DUtil::CreateTexture2D(
         in_size.x,
         in_size.y,
         eFormat::Float16x4,
@@ -203,20 +166,7 @@ void Swapchain::_CreateHDRRenderTarget(const Int2& in_size)
         m_MSAAQuality);
 
     m_backBufferHDR = CreateRef<RenderTarget>();
-    m_backBufferHDR->Init(m_backBufferHDRImage.Get());
-
-    m_resolvedBackBufferImage = ID3D11Texture2DUtil::CreateTexture2D(
-        in_size.x,
-        in_size.y,
-        eFormat::Float16x4,
-        D3D11_USAGE_DEFAULT,
-        D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE,
-        0,
-        1,
-        0);
-
-    m_resolvedBackBuffer = CreateRef<RenderTarget>();
-    m_resolvedBackBuffer->Init(m_resolvedBackBufferImage.Get());
+    m_backBufferHDR->Init(texture.Get());
 }
 
 }   // namespace crab

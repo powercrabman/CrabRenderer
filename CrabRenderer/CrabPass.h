@@ -112,7 +112,7 @@ public:
                         .worldInvTranspose = t.GetWorld().Invert().Transpose() });
 
                 for (const auto& [mesh, _, __]: m.model->GetNodes())
-                    mesh->Draw(eTopology::PointList);
+                    mesh->Draw();
             });
     }
 

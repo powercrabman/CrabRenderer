@@ -18,9 +18,9 @@ void Mesh::Init(const Ref<VertexBuffer>& in_vb,
     m_topology     = in_topology;
 }
 
-void Mesh::Draw(eTopology in_topology) const
+void Mesh::Draw() const
 {
-    GetRenderer().SetTopology(in_topology);
+    GetRenderer().SetTopology(m_topology);
 
     m_vertexBuffer->Bind();
 

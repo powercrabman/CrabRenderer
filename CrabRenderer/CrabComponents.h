@@ -73,8 +73,8 @@ struct CameraComponent
 
     eProjectionType projectionType = eProjectionType::Perspective;
     float           nearZ          = 0.1f;
-    float           farZ           = 100.0f;
-    float           fov            = DirectX::XMConvertToRadians(45.f);
+    float           farZ           = 1000.0f;
+    float           fov            = 45.f * DEG2RAD;
 
     // perspective
     float aspect = 1.f;

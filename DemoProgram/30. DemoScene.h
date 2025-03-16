@@ -1,9 +1,12 @@
 #pragma once
+#include "Scene3DBase.h"
 
 class SceneHierarchy;
 
-class DemoScene : public Scene
+class DemoScene : public Scene3DBase
 {
+    using Super = Scene3DBase;
+
 public:
     ~DemoScene() override;
 
@@ -20,14 +23,7 @@ public:
     void OnEvent(CrabEvent& in_event) override;
 
 private:
-    Ref<RenderTarget> m_backBufferHDR;
-    Ref<DepthBuffer>  m_backBufferDepthBuffer;
-
     Scope<SceneHierarchy> m_sceneHierarchy;
-
-    PostProcess m_postProcess;
-
-    Entity m_camera;
 
     SkyboxRenderer m_daySkybox;
     SkyboxRenderer m_nightSkybox;
@@ -36,15 +32,4 @@ private:
         Day,
         Night,
     } m_skyboxType = eSkyboxType::Night;
-
-    bool m_wireframeMode = false;
-    bool m_drawNormal    = false;
-
-    // Postprocess
-    bool m_postProcessDirty = true;
-    bool m_useBloom         = true;
-
-    Ref<ConstantBuffer<CombineConstant>> m_postprocessCombineConst;
-    float                                m_postprocessCombineFactor = 0.15f;
-    float                                m_postprocessBlurRadius    = 0.01f;
 };
