@@ -11,41 +11,32 @@ namespace crab
 // Vertex Shader
 //===================================================
 
-Ref<VertexShader> VertexShader::CreateFromHLSL(
+void VertexShader::LoadFromHLSL(
     const std::filesystem::path& in_shaderPath,
     const std::string_view       in_entryPoint,
     const InputElements&         in_inputElems,
     const ShaderMacros&          in_macros)
 {
-    auto vs   = CreateRef<VertexShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, in_entryPoint, "vs_5_0", in_macros);
-    vs->_CreateVertexShader(blob, in_inputElems);
-
-    return vs;
+    _CreateVertexShader(blob, in_inputElems);
 }
 
-Ref<VertexShader> VertexShader::CreateFromCSO(
+void VertexShader::LoadFromCSO(
     const std::filesystem::path& in_shaderPath,
     const InputElements&         in_inputElems)
 {
-    auto vs   = CreateRef<VertexShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, "", "");
-    vs->_CreateVertexShader(blob, in_inputElems);
-
-    return vs;
+    _CreateVertexShader(blob, in_inputElems);
 }
 
-Ref<VertexShader> VertexShader::CreateFromCode(
+void VertexShader::InitFromCode(
     const std::string_view in_shaderCode,
     const std::string_view in_entryPoint,
     const InputElements&   in_inputElems,
     const ShaderMacros&    in_macros)
 {
-    auto vs   = CreateRef<VertexShader>();
     auto blob = ShaderUtil::LoadShaderCode(in_shaderCode, in_entryPoint, "vs_5_0", in_macros);
-    vs->_CreateVertexShader(blob, in_inputElems);
-
-    return vs;
+    _CreateVertexShader(blob, in_inputElems);
 }
 
 void VertexShader::Bind() const
@@ -81,42 +72,32 @@ void VertexShader::_CreateVertexShader(
 // Pixel Shader
 //===================================================
 
-Ref<PixelShader> PixelShader::CreateFromHLSL(
+void PixelShader::LoadFromHLSL(
     const std::filesystem::path& in_shaderPath,
     const std::string_view       in_entryPoint,
     const ShaderMacros&          in_macro)
 {
-    auto ps   = CreateRef<PixelShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, in_entryPoint, "ps_5_0", in_macro);
-    ps->_CreatePixelShader(blob);
-
-    return ps;
+    _CreatePixelShader(blob);
 }
 
-Ref<PixelShader> PixelShader::CreateFromCSO(const std::filesystem::path& in_shaderPath)
+void PixelShader::LoadFromCSO(const std::filesystem::path& in_shaderPath)
 {
-    auto ps   = CreateRef<PixelShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, "", "");
-    ps->_CreatePixelShader(blob);
-
-    return ps;
+    _CreatePixelShader(blob);
 }
 
-Ref<PixelShader> PixelShader::CreateFromCode(
+void PixelShader::InitFromCode(
     const std::string_view in_shaderCode,
     const std::string_view in_entryPoint,
     const ShaderMacros&    in_macro)
 {
-    auto ps   = CreateRef<PixelShader>();
     auto blob = ShaderUtil::LoadShaderCode(in_shaderCode, in_entryPoint, "ps_5_0", in_macro);
-    ps->_CreatePixelShader(blob);
-
-    return ps;
+    _CreatePixelShader(blob);
 }
 
 void PixelShader::Bind() const
 {
-
     GetRenderer().SetPixelShader(m_pixelShader.Get());
 }
 
@@ -136,42 +117,32 @@ void PixelShader::_CreatePixelShader(const ComPtr<ID3DBlob>& in_blob)
 // Geometry Shader
 //===================================================
 
-Ref<GeometryShader> GeometryShader::CreateFromHLSL(
+void GeometryShader::LoadFromHLSL(
     const std::filesystem::path& in_shaderPath,
     const std::string_view       in_entryPoint,
     const ShaderMacros&          in_macro)
 {
-    auto gs   = CreateRef<GeometryShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, in_entryPoint, "gs_5_0", in_macro);
-    gs->_CreateGeometryShader(blob);
-
-    return gs;
+    _CreateGeometryShader(blob);
 }
 
-Ref<GeometryShader> GeometryShader::CreateFromCSO(const std::filesystem::path& in_shaderPath)
+void GeometryShader::LoadFromCSO(const std::filesystem::path& in_shaderPath)
 {
-    auto gs   = CreateRef<GeometryShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, "", "");
-    gs->_CreateGeometryShader(blob);
-
-    return gs;
+    _CreateGeometryShader(blob);
 }
 
-Ref<GeometryShader> GeometryShader::CreateFromCode(
+void GeometryShader::InitFromCode(
     const std::string_view in_shaderCode,
     const std::string_view in_entryPoint,
     const ShaderMacros&    in_macro)
 {
-    auto gs   = CreateRef<GeometryShader>();
     auto blob = ShaderUtil::LoadShaderCode(in_shaderCode, in_entryPoint, "gs_5_0", in_macro);
-    gs->_CreateGeometryShader(blob);
-
-    return gs;
+    _CreateGeometryShader(blob);
 }
 
 void GeometryShader::Bind() const
 {
-
     GetRenderer().SetGeometryShader(m_geometryShader.Get());
 }
 
@@ -191,37 +162,28 @@ void GeometryShader::_CreateGeometryShader(const ComPtr<ID3DBlob>& in_blob)
 // Demain Shader
 //===================================================
 
-Ref<DomainShader> DomainShader::CreateFromHLSL(
+void DomainShader::LoadFromHLSL(
     const std::filesystem::path& in_shaderPath,
     const std::string_view       in_entryPoint,
     const ShaderMacros&          in_macro)
 {
-    auto gs   = CreateRef<DomainShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, in_entryPoint, "ds_5_0", in_macro);
-    gs->_CreateDomainShader(blob);
-
-    return gs;
+    _CreateDomainShader(blob);
 }
 
-Ref<DomainShader> DomainShader::CreateFromCSO(const std::filesystem::path& in_shaderPath)
+void DomainShader::LoadFromCSO(const std::filesystem::path& in_shaderPath)
 {
-    auto gs   = CreateRef<DomainShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, "", "ds_5_0");
-    gs->_CreateDomainShader(blob);
-
-    return gs;
+    _CreateDomainShader(blob);
 }
 
-Ref<DomainShader> DomainShader::CreateFromCode(
+void DomainShader::InitFromCode(
     const std::string_view in_shaderCode,
     const std::string_view in_entryPoint,
     const ShaderMacros&    in_macro)
 {
-    auto gs   = CreateRef<DomainShader>();
     auto blob = ShaderUtil::LoadShaderCode(in_shaderCode, in_entryPoint, "ds_5_0", in_macro);
-    gs->_CreateDomainShader(blob);
-
-    return gs;
+    _CreateDomainShader(blob);
 }
 
 void DomainShader::Bind() const
@@ -246,42 +208,32 @@ void DomainShader::_CreateDomainShader(const ComPtr<ID3DBlob>& in_blob)
 // Demain Shader
 //===================================================
 
-Ref<HullShader> HullShader::CreateFromHLSL(
+void HullShader::LoadFromHLSL(
     const std::filesystem::path& in_shaderPath,
     const std::string_view       in_entryPoint,
     const ShaderMacros&          in_macro)
 {
-    auto gs   = CreateRef<HullShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, in_entryPoint, "ds_5_0", in_macro);
-    gs->_CreateHullShader(blob);
-
-    return gs;
+    _CreateHullShader(blob);
 }
 
-Ref<HullShader> HullShader::CreateFromCSO(const std::filesystem::path& in_shaderPath)
+void HullShader::LoadFromCSO(const std::filesystem::path& in_shaderPath)
 {
-    auto gs   = CreateRef<HullShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, "", "");
-    gs->_CreateHullShader(blob);
-
-    return gs;
+    _CreateHullShader(blob);
 }
 
-Ref<HullShader> HullShader::CreateFromCode(
+void HullShader::InitFromCode(
     const std::string_view in_shaderCode,
     const std::string_view in_entryPoint,
     const ShaderMacros&    in_macro)
 {
-    auto gs   = CreateRef<HullShader>();
     auto blob = ShaderUtil::LoadShaderCode(in_shaderCode, in_entryPoint, "ds_5_0", in_macro);
-    gs->_CreateHullShader(blob);
-
-    return gs;
+    _CreateHullShader(blob);
 }
 
 void HullShader::Bind() const
 {
-
     GetRenderer().SetHullShader(m_hullShader.Get());
 }
 
@@ -301,37 +253,28 @@ void HullShader::_CreateHullShader(const ComPtr<ID3DBlob>& in_blob)
 // Compute Shader
 //===================================================
 
-Ref<ComputeShader> ComputeShader::CreateFromHLSL(
+void ComputeShader::LoadFromHLSL(
     const std::filesystem::path& in_shaderPath,
     const std::string_view       in_entryPoint,
     const ShaderMacros&          in_macro)
 {
-    auto gs   = CreateRef<ComputeShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, in_entryPoint, "cs_5_0", in_macro);
-    gs->_CreateComputeShader(blob);
-
-    return gs;
+    _CreateComputeShader(blob);
 }
 
-Ref<ComputeShader> ComputeShader::CreateFromCSO(const std::filesystem::path& in_shaderPath)
+void ComputeShader::LoadFromCSO(const std::filesystem::path& in_shaderPath)
 {
-    auto gs   = CreateRef<ComputeShader>();
     auto blob = ShaderUtil::LoadShaderFile(in_shaderPath, "", "");
-    gs->_CreateComputeShader(blob);
-
-    return gs;
+    _CreateComputeShader(blob);
 }
 
-Ref<ComputeShader> ComputeShader::CreateFromCode(
+void ComputeShader::InitFromCode(
     const std::string_view in_shaderCode,
     const std::string_view in_entryPoint,
     const ShaderMacros&    in_macro)
 {
-    auto gs   = CreateRef<ComputeShader>();
     auto blob = ShaderUtil::LoadShaderCode(in_shaderCode, in_entryPoint, "cs_5_0");
-    gs->_CreateComputeShader(blob);
-
-    return gs;
+    _CreateComputeShader(blob);
 }
 
 void ComputeShader::Dispatch(uint32 in_x, uint32 in_y, uint32 in_z) const

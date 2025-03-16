@@ -13,14 +13,7 @@
 namespace crab
 {
 
-Ref<Texture2D> Texture2D::CreateFromTexture(ID3D11Texture2D* in_texture)
-{
-    return CreateFromTexture(in_texture, eFormat::Unknown);
-}
-
-Ref<Texture2D> Texture2D::CreateFromTexture(
-    ID3D11Texture2D* in_texture,
-    eFormat          in_format)
+void Texture2D::Init(ID3D11Texture2D* in_texture, eFormat in_format)
 {
     D3D11_TEXTURE2D_DESC texDesc;
     in_texture->GetDesc(&texDesc);
@@ -42,23 +35,15 @@ Ref<Texture2D> Texture2D::CreateFromTexture(
         srvDesc.Texture2D.MipLevels       = texDesc.MipLevels;
     }
 
-    auto image                = CreateRef<Texture2D>();
-    image->m_srv              = ID3D11ShaderResourceViewUtil::CreateTexture2DSRV(in_texture, in_format);
-    image->m_width            = texDesc.Width;
-    image->m_height           = texDesc.Height;
-    image->m_mipMapLevelCount = texDesc.MipLevels;
-    image->m_format           = in_format;
-    image->m_textureType      = eTextureType::Texture2D;
-
-    return image;
+    m_srv              = ID3D11ShaderResourceViewUtil::CreateTexture2DSRV(in_texture, in_format);
+    m_width            = texDesc.Width;
+    m_height           = texDesc.Height;
+    m_format           = in_format;
+    m_mipMapLevelCount = texDesc.MipLevels;
+    m_textureType      = eTextureType::Texture2D;
 }
 
-Ref<Texture2D> Texture2D::CreateFromBuffer(ID3D11Buffer* in_buffer)
-{
-    return CreateFromBuffer(in_buffer, eFormat::Unknown);
-}
-
-Ref<Texture2D> Texture2D::CreateFromBuffer(ID3D11Buffer* in_buffer, eFormat in_format)
+void Texture2D::Init(ID3D11Buffer* in_buffer, eFormat in_format)
 {
     D3D11_BUFFER_DESC bufferDesc = {};
     in_buffer->GetDesc(&bufferDesc);
@@ -70,43 +55,37 @@ Ref<Texture2D> Texture2D::CreateFromBuffer(ID3D11Buffer* in_buffer, eFormat in_f
     srvDesc.BufferEx.NumElements            = bufferDesc.ByteWidth / bufferDesc.StructureByteStride;
     srvDesc.BufferEx.Flags                  = 0;
 
-    ComPtr<ID3D11ShaderResourceView> srv;
     CheckD3D11Result(
         GetRenderer().GetDevice()->CreateShaderResourceView(
             in_buffer,
             &srvDesc,
-            srv.GetAddressOf()),
+            m_srv.GetAddressOf()),
         "CreateShaderResourceView Fail.");
 
-    auto image                = CreateRef<Texture2D>();
-    image->m_srv              = srv;
-    image->m_width            = srvDesc.BufferEx.NumElements;
-    image->m_height           = 1;
-    image->m_format           = in_format;
-    image->m_mipMapLevelCount = 1;
-    image->m_textureType      = eTextureType::Texture2D;
-
-    return image;
+    m_width            = srvDesc.BufferEx.NumElements;
+    m_height           = 1;
+    m_format           = in_format;
+    m_mipMapLevelCount = 1;
+    m_textureType      = eTextureType::Texture2D;
 }
 
-Ref<Texture2D> Texture2D::CreateFromFile(
+void Texture2D::LoadFromFile(
     const std::filesystem::path& in_path,
-    bool                         in_enableMipMap,
+    bool                         in_generateMips,
     bool                         in_inverseToneMapping)
 {
-    Ref<Texture2D> image    = nullptr;
-    auto           loadData = in_inverseToneMapping ?
-                                  ImageLoader::LoadFromFileEx(in_path, DirectX::WIC_FLAGS::WIC_FLAGS_DEFAULT_SRGB) :
-                                  ImageLoader::LoadFromFile(in_path);
+    auto loadData = in_inverseToneMapping ?
+                        ImageLoader::LoadFromFileEx(in_path, DirectX::WIC_FLAGS::WIC_FLAGS_DEFAULT_SRGB) :
+                        ImageLoader::LoadFromFile(in_path);
 
     if (loadData.succeed)
     {
         ComPtr<ID3D11ShaderResourceView> srv;
 
-        loadData.metadata.mipLevels = in_enableMipMap ? loadData.metadata.mipLevels : 1;
+        loadData.metadata.mipLevels = in_generateMips ? loadData.metadata.mipLevels : 1;
 
         // generate mipmap
-        if (in_enableMipMap && loadData.metadata.mipLevels == 1)
+        if (in_generateMips && loadData.metadata.mipLevels == 1)
             ImageLoader::GenerateMipmap(loadData);
 
         if (CheckD3D11Result(
@@ -117,38 +96,34 @@ Ref<Texture2D> Texture2D::CreateFromFile(
                     loadData.metadata,
                     srv.GetAddressOf())))
         {
-            image                     = CreateRef<Texture2D>();
-            image->m_srv              = srv;
-            image->m_width            = static_cast<uint32>(loadData.metadata.width);
-            image->m_height           = static_cast<uint32>(loadData.metadata.height);
-            image->m_format           = static_cast<eFormat>(loadData.metadata.format);
-            image->m_mipMapLevelCount = static_cast<uint32>(loadData.metadata.mipLevels);
-            image->m_textureType      = eTextureType::Texture2D;
+            m_srv              = srv;
+            m_width            = static_cast<uint32>(loadData.metadata.width);
+            m_height           = static_cast<uint32>(loadData.metadata.height);
+            m_format           = static_cast<eFormat>(loadData.metadata.format);
+            m_mipMapLevelCount = static_cast<uint32>(loadData.metadata.mipLevels);
+            m_textureType      = eTextureType::Texture2D;
         }
     }
     else
     {
         CRAB_DEBUG_BREAK("Load Texture Fail.");
     }
-
-    return image;
 }
 
-Ref<TextureCube> TextureCube::CreateFromFile(
+void TextureCube::LoadFromFile(
     const std::filesystem::path& in_path,
-    bool                         in_enableMipMap)
+    bool                         in_generateMips)
 {
-    Ref<TextureCube> image    = nullptr;
-    auto             loadData = ImageLoader::LoadTextureCubeFromFile(in_path);
+    auto loadData = ImageLoader::LoadFromFile(in_path);
 
     if (loadData.succeed)
     {
         ComPtr<ID3D11ShaderResourceView> srv;
 
-        loadData.metadata.mipLevels = in_enableMipMap ? loadData.metadata.mipLevels : 1;
+        loadData.metadata.mipLevels = in_generateMips ? loadData.metadata.mipLevels : 1;
 
         // generate mipmap
-        if (in_enableMipMap && loadData.metadata.mipLevels == 1)
+        if (in_generateMips && loadData.metadata.mipLevels == 1)
             ImageLoader::GenerateMipmap(loadData);
 
         if (CheckD3D11Result(
@@ -159,56 +134,50 @@ Ref<TextureCube> TextureCube::CreateFromFile(
                     loadData.metadata,
                     srv.GetAddressOf())))
         {
-            image                     = CreateRef<TextureCube>();
-            image->m_srv              = srv;
-            image->m_width            = static_cast<uint32>(loadData.metadata.width);
-            image->m_height           = static_cast<uint32>(loadData.metadata.height);
-            image->m_format           = static_cast<eFormat>(loadData.metadata.format);
-            image->m_mipMapLevelCount = static_cast<uint32>(loadData.metadata.mipLevels);
-            image->m_textureType      = eTextureType::TextureCube;
+            m_srv              = srv;
+            m_width            = static_cast<uint32>(loadData.metadata.width);
+            m_height           = static_cast<uint32>(loadData.metadata.height);
+            m_format           = static_cast<eFormat>(loadData.metadata.format);
+            m_mipMapLevelCount = static_cast<uint32>(loadData.metadata.mipLevels);
+            m_textureType      = eTextureType::TextureCube;
         }
     }
     else
     {
         CRAB_DEBUG_BREAK("Load Texture Fail.");
     }
-
-    return image;
 }
 
-Ref<TextureCube> TextureCube::CreateFromTexture(
+void TextureCube::Init(
     ID3D11Texture2D* in_texture,
     eFormat          in_format)
 {
     D3D11_TEXTURE2D_DESC texDesc;
     in_texture->GetDesc(&texDesc);
 
-    if (texDesc.MiscFlags & D3D11_RESOURCE_MISC_TEXTURECUBE)
-    {
+    if (in_format == eFormat::Unknown)
+        in_format = static_cast<eFormat>(texDesc.Format);
 
-        Ref<TextureCube> outTex    = CreateRef<TextureCube>();
-        outTex->m_textureType      = eTextureType::TextureCube;
-        outTex->m_width            = texDesc.Width;
-        outTex->m_height           = texDesc.Height;
-        outTex->m_format           = static_cast<eFormat>(texDesc.Format);
-        outTex->m_mipMapLevelCount = texDesc.MipLevels;
-        outTex->m_srv              = ID3D11ShaderResourceViewUtil::CreateTextureCubeSRV(in_texture, in_format);
-        return outTex;
-    }
-    else
-    {
-        CRAB_DEBUG_BREAK("Texture is not CubeMap.");
-        return nullptr;
-    }
+    D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+    srvDesc.Format                          = static_cast<DXGI_FORMAT>(in_format);
+
+    srvDesc.ViewDimension               = D3D11_SRV_DIMENSION_TEXTURECUBE;
+    srvDesc.TextureCube.MostDetailedMip = 0;
+    srvDesc.TextureCube.MipLevels       = texDesc.MipLevels;
+
+    m_srv              = ID3D11ShaderResourceViewUtil::CreateTextureCubeSRV(in_texture, in_format);
+    m_width            = texDesc.Width;
+    m_height           = texDesc.Height;
+    m_format           = in_format;
+    m_mipMapLevelCount = texDesc.MipLevels;
+    m_textureType      = eTextureType::TextureCube;
 }
 
-Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
+void Texture2DArray::LoadFromFile(
     const std::vector<std::filesystem::path>& in_paths,
-    bool                                      in_enableMipMap,
+    bool                                      in_generateMips,
     bool                                      in_inverseToneMapping)
 {
-    Ref<Texture2DArray> image = nullptr;
-
     if (in_paths.size() > 0)
     {
         DirectX::TexMetadata standardMetadata;
@@ -233,12 +202,12 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
                     if (standardMetadata.width != loadData.metadata.width || standardMetadata.height != loadData.metadata.height || standardMetadata.format != loadData.metadata.format)
                     {
                         CRAB_DEBUG_BREAK("Texture size is not same.");
-                        return nullptr;
+                        return;
                     }
                 }
 
                 // generate mipmap
-                if (in_enableMipMap && loadData.metadata.mipLevels == 1)
+                if (in_generateMips && loadData.metadata.mipLevels == 1)
                 {
                     ImageLoader::GenerateMipmap(loadData);
                     standardMetadata = loadData.metadata;
@@ -257,7 +226,7 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
         metadata.height     = standardMetadata.height;
         metadata.depth      = 1;
         metadata.arraySize  = static_cast<uint32>(in_paths.size());
-        metadata.mipLevels  = in_enableMipMap ? standardMetadata.mipLevels : 1;
+        metadata.mipLevels  = in_generateMips ? standardMetadata.mipLevels : 1;
         metadata.format     = standardMetadata.format;
         metadata.dimension  = DirectX::TEX_DIMENSION_TEXTURE2D;
         metadata.miscFlags  = 0;
@@ -273,27 +242,22 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
                     metadata,
                     srv.GetAddressOf())))
         {
-            image                     = CreateRef<Texture2DArray>();
-            image->m_srv              = srv;
-            image->m_width            = static_cast<uint32>(metadata.width);
-            image->m_height           = static_cast<uint32>(metadata.height);
-            image->m_format           = static_cast<eFormat>(metadata.format);
-            image->m_mipMapLevelCount = static_cast<uint32>(metadata.mipLevels);
-            image->m_textureType      = eTextureType::Texture2DArray;
+            m_srv              = srv;
+            m_width            = static_cast<uint32>(metadata.width);
+            m_height           = static_cast<uint32>(metadata.height);
+            m_format           = static_cast<eFormat>(metadata.format);
+            m_mipMapLevelCount = static_cast<uint32>(metadata.mipLevels);
+            m_textureType      = eTextureType::Texture2DArray;
         }
     }
-
-    return image;
 }
 
-Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
+void Texture2DArray::LoadFromFile(
     const std::filesystem::path& in_path,
     uint32                       in_arrayMaxCount,
-    bool                         in_enableMipMap,
+    bool                         in_generateMips,
     bool                         in_inverseToneMapping)
 {
-    Ref<Texture2DArray> image = nullptr;
-
     auto loadData = in_inverseToneMapping ?
                         ImageLoader::LoadFromFileEx(in_path, DirectX::WIC_FLAGS::WIC_FLAGS_DEFAULT_SRGB) :
                         ImageLoader::LoadFromFile(in_path);
@@ -304,7 +268,7 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
     uint64 height = loadData.metadata.height;
 
     // mipmap
-    if (in_enableMipMap && loadData.metadata.mipLevels == 1)
+    if (in_generateMips && loadData.metadata.mipLevels == 1)
     {
         ImageLoader::GenerateMipmap(loadData);
         srcImage = *loadData.scratchImage.GetImage(0, 0, 0);
@@ -338,7 +302,6 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
         else
         {
             CRAB_DEBUG_BREAK("CopyRectangle Fail.");
-            return nullptr;
         }
     }
 
@@ -347,7 +310,7 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
     metadata.height     = height;
     metadata.depth      = 1;
     metadata.arraySize  = in_arrayMaxCount;
-    metadata.mipLevels  = in_enableMipMap ? loadData.metadata.mipLevels : 1;
+    metadata.mipLevels  = in_generateMips ? loadData.metadata.mipLevels : 1;
     metadata.format     = loadData.metadata.format;
     metadata.dimension  = DirectX::TEX_DIMENSION_TEXTURE2D;
     metadata.miscFlags  = 0;
@@ -364,19 +327,16 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromFile(
                 srv.GetAddressOf()),
             "CreateShaderResourceView Fail."))
     {
-        image                     = CreateRef<Texture2DArray>();
-        image->m_srv              = srv;
-        image->m_width            = static_cast<uint32>(metadata.width);
-        image->m_height           = static_cast<uint32>(metadata.height);
-        image->m_format           = static_cast<eFormat>(metadata.format);
-        image->m_mipMapLevelCount = static_cast<uint32>(metadata.mipLevels);
-        image->m_textureType      = eTextureType::Texture2DArray;
+        m_srv              = srv;
+        m_width            = static_cast<uint32>(metadata.width);
+        m_height           = static_cast<uint32>(metadata.height);
+        m_format           = static_cast<eFormat>(metadata.format);
+        m_mipMapLevelCount = static_cast<uint32>(metadata.mipLevels);
+        m_textureType      = eTextureType::Texture2DArray;
     }
-
-    return image;
 }
 
-Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromTexture(const std::vector<Ref<Texture2D>>& in_textures)
+void Texture2DArray::Init(const std::vector<Ref<Texture2D>>& in_textures)
 {
     std::vector<ID3D11Texture2D*> textures(in_textures.size());
     for (uint32 i = 0; i < in_textures.size(); ++i)
@@ -387,10 +347,10 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromTexture(const std::vec
         textures.push_back(reinterpret_cast<ID3D11Texture2D*>(res));
     }
 
-    return CreateTextureArrayFromTexture(textures);
+    return Init(textures);
 }
 
-Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromTexture(const std::vector<ID3D11Texture2D*>& in_textures)
+void Texture2DArray::Init(const std::vector<ID3D11Texture2D*>& in_textures)
 {
     D3D11_TEXTURE2D_DESC desc;
     ZeroMemory(&desc, sizeof(D3D11_TEXTURE2D_DESC));
@@ -398,19 +358,17 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromTexture(const std::vec
 
     desc.ArraySize = static_cast<uint32>(in_textures.size());
 
-    auto textureArray   = CreateRef<Texture2DArray>();
-    textureArray->m_srv = ID3D11ShaderResourceViewUtil::CreateTexture2DSRV(
+    m_srv = ID3D11ShaderResourceViewUtil::CreateTexture2DSRV(
         ID3D11Texture2DUtil::CreateTexture2DArray(in_textures).Get());
-    textureArray->m_width            = desc.Width;
-    textureArray->m_height           = desc.Height;
-    textureArray->m_format           = static_cast<eFormat>(desc.Format);
-    textureArray->m_mipMapLevelCount = desc.MipLevels;
-    textureArray->m_textureType      = eTextureType::Texture2DArray;
 
-    return textureArray;
+    m_width            = desc.Width;
+    m_height           = desc.Height;
+    m_format           = static_cast<eFormat>(desc.Format);
+    m_mipMapLevelCount = desc.MipLevels;
+    m_textureType      = eTextureType::Texture2DArray;
 }
 
-Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromTexture(
+void Texture2DArray::Init(
     ID3D11Texture2D* in_textures,
     eFormat          in_textureFormat)
 {
@@ -420,15 +378,12 @@ Ref<Texture2DArray> Texture2DArray::CreateTextureArrayFromTexture(
 
     in_textureFormat = in_textureFormat == eFormat::Unknown ? static_cast<eFormat>(desc.Format) : in_textureFormat;
 
-    auto textureArray                = CreateRef<Texture2DArray>();
-    textureArray->m_srv              = ID3D11ShaderResourceViewUtil::CreateTexture2DSRV(in_textures, in_textureFormat);
-    textureArray->m_width            = desc.Width;
-    textureArray->m_height           = desc.Height;
-    textureArray->m_format           = in_textureFormat;
-    textureArray->m_mipMapLevelCount = desc.MipLevels;
-    textureArray->m_textureType      = eTextureType::Texture2DArray;
-
-    return textureArray;
+    m_srv              = ID3D11ShaderResourceViewUtil::CreateTexture2DSRV(in_textures, in_textureFormat);
+    m_width            = desc.Width;
+    m_height           = desc.Height;
+    m_format           = in_textureFormat;
+    m_mipMapLevelCount = desc.MipLevels;
+    m_textureType      = eTextureType::Texture2DArray;
 }
 
 void Texture::Bind(uint32 in_slot, eShaderFlags in_bindFlags) const
@@ -441,7 +396,7 @@ ID3D11ShaderResourceView* Texture::GetSRV() const
     return m_srv.Get();
 }
 
-Ref<D11StagingTexture> D11StagingTexture::Create(
+void D11StagingTexture::Init(
     uint32  in_width,
     uint32  in_height,
     eFormat in_format,
@@ -456,14 +411,10 @@ Ref<D11StagingTexture> D11StagingTexture::Create(
         in_cpuWrite,
         1);
 
-    Ref<D11StagingTexture> stagingTex = CreateRef<D11StagingTexture>();
-
-    stagingTex->m_height  = in_height;
-    stagingTex->m_width   = in_width;
-    stagingTex->m_format  = in_format;
-    stagingTex->m_texture = tex;
-
-    return stagingTex;
+    m_height  = in_height;
+    m_width   = in_width;
+    m_format  = in_format;
+    m_texture = tex;
 }
 
 void D11StagingTexture::WriteToTexture(

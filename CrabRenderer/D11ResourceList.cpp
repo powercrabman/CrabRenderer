@@ -12,19 +12,11 @@ namespace crab
 // Constant Buffer State
 //===================================================
 
-ConstantList& ConstantList::Add(
-    const Ref<ConstantBufferBase>& in_constantBuffer,
-    uint32                         in_slot,
-    eShaderFlags                   in_bindFlags)
+void ConstantList::Init(const std::vector<ConstantNode>& in_constants)
 {
-    m_constantBuffers.emplace_back(in_constantBuffer, in_slot, in_bindFlags);
-    return *this;
+    m_constantBuffers = std::move(in_constants);
 }
 
-void ConstantList::ClearList()
-{
-    m_constantBuffers.clear();
-}
 
 void ConstantList::Bind() const
 {
@@ -33,26 +25,17 @@ void ConstantList::Bind() const
 }
 
 //===================================================
-// Texture2D List
+// TextureList
 //===================================================
 
-TextureList& TextureList::Add(
-    const Ref<Texture>& in_texture,
-    uint32              in_slot,
-    eShaderFlags        in_bindFlags)
+void TextureList::Init(const std::vector<TextureNode>& in_constants)
 {
-    m_images.emplace_back(in_texture, in_slot, in_bindFlags);
-    return *this;
-}
-
-void TextureList::ClearList()
-{
-    m_images.clear();
+    m_textures = std::move(in_constants);
 }
 
 void TextureList::Bind() const
 {
-    for (const auto& [image, slot, bindFlags]: m_images)
+    for (const auto& [image, slot, bindFlags]: m_textures)
         image->Bind(slot, bindFlags);
 }
 
@@ -60,18 +43,9 @@ void TextureList::Bind() const
 // Sampler List
 //===================================================
 
-SamplerList& SamplerList::Add(
-    const Ref<SamplerState>& in_sampler, 
-    uint32 in_slot, 
-    eShaderFlags in_bindFlags)
+void SamplerList::Init(const std::vector<SamplerNode>& in_samplers)
 {
-    m_samplers.emplace_back(in_sampler, in_slot, in_bindFlags);
-    return *this;
-}
-
-void SamplerList::ClearList()
-{
-    m_samplers.clear();
+    m_samplers = std::move(in_samplers);
 }
 
 void SamplerList::Bind() const

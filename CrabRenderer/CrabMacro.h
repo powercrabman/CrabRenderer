@@ -45,15 +45,5 @@
 // Rendering
 #define cbuffer struct alignas(16)
 
-#define D11_RESOURCE_CTOR(ClassName)              \
-public:                                           \
-    ~ClassName() = default;                       \
-    friend Ref<ClassName> CreateRef<ClassName>(); \
-                                                  \
-protected:                                        \
-    ClassName() = default;                        \
-                                                  \
-private:
-
-// etc..
-#define TODO(msg) static_assert(false, msg)
+// Attributes
+#define NODISCARD [[nodiscard]]

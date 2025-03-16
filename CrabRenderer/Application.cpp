@@ -21,10 +21,11 @@ Scope<Application> Application::s_instance = nullptr;
 //===================================================
 
 Application::Application(const ApplicationSetting& in_setting)
-    : m_applicationName(in_setting.applicationName)
-    , m_appWindow(CreateScope<AppWindow>())
-    , m_isRunning(true)
+    : m_isRunning(true)
+    , m_applicationName(in_setting.applicationName)
+    , m_engineDirectory(in_setting.engineDirectory)
 {
+    m_appWindow = CreateScope<AppWindow>();
     m_appWindow->Init(in_setting.windowSetting);
 
     GetRenderer().Init(
@@ -59,6 +60,13 @@ Application& Application::GetInstance()
 std::string_view Application::GetApplicationName() const
 {
     return m_applicationName;
+}
+
+void Application::_Init()
+{
+    GetRenderer().InitGlobalResources(m_engineDirectory);
+    
+    OnInit();
 }
 
 int Application::_Run()

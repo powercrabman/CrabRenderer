@@ -103,7 +103,7 @@ void AppWindow::EnableMouseRelativeMode(bool in_enabled) const
     SDL_SetWindowRelativeMouseMode(m_window, in_enabled);
 }
 
-Int2 AppWindow::GetWindowSize() const
+Int2 AppWindow::GetResolution() const
 {
     CRAB_ASSERT(m_window, "Window is not initialized.");
 
@@ -143,7 +143,7 @@ Int2 AppWindow::GetDisplaySize() const
 float AppWindow::GetAspect() const
 {
     CRAB_ASSERT(m_window, "Window is not initialized.");
-    auto [width, height] = GetWindowSize();
+    auto [width, height] = GetResolution();
     return static_cast<float>(width) / static_cast<float>(height);
 }
 

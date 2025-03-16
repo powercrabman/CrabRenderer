@@ -9,18 +9,16 @@ class Texture;
 
 class DepthBuffer
 {
-    D11_RESOURCE_CTOR(DepthBuffer);
-
 public:
     // Factory
-    static Ref<DepthBuffer> Create(
+    void Init(
         uint32  in_width,
         uint32  in_height,
         eFormat in_depthBufferFormat,
         uint32  in_MSAASampleCount,
         uint32  in_MSAAQuality);
 
-    static Ref<DepthBuffer> Create(
+    void Init(
         ID3D11Texture2D* in_texture,
         eFormat          in_depthBufferFormat = eFormat::Unknown);
 

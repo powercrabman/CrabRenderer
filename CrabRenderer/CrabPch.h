@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <memory>
+#include <optional>
 
 // - STL
 #include <array>
@@ -47,6 +48,7 @@
 #include "CrabMacro.h"
 #include "CrabMath.h"
 #include "CrabTypes.h"
+#include "StringLiteral.h"
 
 #include "InitSettings.h"
 #include "Log.h"

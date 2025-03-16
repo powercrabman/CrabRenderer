@@ -11,13 +11,12 @@
 namespace crab
 {
 
-Ref<Swapchain> Swapchain::Create(
+void Swapchain::Init(
     const SwapChainSetting& in_setting,
     const Int2&             in_screenSize,
     HWND                    in_hWnd)
 {
-    auto           d         = GetRenderer().GetDevice();
-    Ref<Swapchain> swapChain = CreateRef<Swapchain>();
+    auto d = GetRenderer().GetDevice();
 
     // - Swap Chain
     DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
@@ -33,11 +32,11 @@ Ref<Swapchain> Swapchain::Create(
     swapChainDesc.SwapEffect            = DXGI_SWAP_EFFECT_FLIP_DISCARD;
     swapChainDesc.AlphaMode             = DXGI_ALPHA_MODE_UNSPECIFIED;
     swapChainDesc.Flags                 = 0;
-    swapChain->m_vsync                  = in_setting.enableVSync;
-    swapChain->m_backBufferFormat       = in_setting.swapChainFormat;
-    swapChain->m_depthBufferFormat      = in_setting.depthBufferFormat;
-    swapChain->m_enableHDRRendering     = in_setting.enableHDRRendering;
-    swapChain->m_enableMSAA             = in_setting.enableMSAA;
+    m_vsync                             = in_setting.enableVSync;
+    m_backBufferFormat                  = in_setting.swapChainFormat;
+    m_depthBufferFormat                 = in_setting.depthBufferFormat;
+    m_enableHDRRendering                = in_setting.enableHDRRendering;
+    m_enableMSAA                        = in_setting.enableMSAA;
 
     ComPtr<IDXGIDevice2> dxgiDevice;
     CheckD3D11Result(d->QueryInterface(
@@ -63,12 +62,11 @@ Ref<Swapchain> Swapchain::Create(
                          &swapChainDesc,
                          nullptr,
                          nullptr,
-                         swapChain->m_swapChain.GetAddressOf()),
+                         m_swapChain.GetAddressOf()),
                      "CreateSwapChainForHWnd Fail.");
 
-    swapChain->_CreateResources(in_screenSize);
-
-    return swapChain;
+    _InitMSAA();
+    _CreateResources(in_screenSize);
 }
 
 void Swapchain::Present() const
@@ -87,37 +85,24 @@ void Swapchain::OnResize(Int2 in_size)
     _CreateResources(in_size);
 }
 
-void Swapchain::EnableMSAA(bool in_enable)
+void Swapchain::_InitMSAA()
 {
-    if (in_enable == m_enableMSAA)
-        return;
+    m_MSAASampleCount = UseMSAA() ? 4 : 1;
+    m_MSAAQuality     = 0;
 
-    if (in_enable)
+    if (m_enableMSAA)
     {
-        auto [width, height] = GetAppWindow().GetWindowSize();
 
-        m_enableMSAA      = true;
-        m_MSAASampleCount = 4;
-
-        if (!CheckD3D11Result(GetRenderer().GetDevice()->CheckMultisampleQualityLevels(
-                                  DXGI_FORMAT(eFormat::Float16x4),
-                                  4,
-                                  &m_MSAAQuality),
+        uint32 maxQuality = 0;
+        if (CheckD3D11Result(GetRenderer().GetDevice()->CheckMultisampleQualityLevels(
+                                  static_cast<DXGI_FORMAT>(eFormat::Float16x4),
+                                 m_MSAASampleCount,
+                                  &maxQuality),
                               "CheckMultisampleQualityLevels Fail."))
         {
-            m_enableMSAA      = false;
-            m_MSAASampleCount = 1;
-            m_MSAAQuality     = 0;
+            m_MSAAQuality = maxQuality - 1;
         }
     }
-    else
-    {
-        m_enableMSAA      = false;
-        m_MSAASampleCount = 1;
-        m_MSAAQuality     = 0;
-    }
-
-    _CreateResources(GetAppWindow().GetWindowSize());
 }
 
 Ref<DepthBuffer> Swapchain::GetDepthBuffer() const
@@ -130,7 +115,7 @@ Ref<RenderTarget> Swapchain::GetBackBuffer() const
     return m_backBuffer;
 }
 
-Ref<Texture2D> Swapchain::GetBackBufferImage() const
+Ref<Texture2D> Swapchain::GetBackBufferTexture() const
 {
     return m_backBuffer->GetImage();
 }
@@ -148,20 +133,7 @@ Ref<RenderTarget> Swapchain::GetBackBufferHDR() const
     }
 }
 
-Ref<Texture2D> Swapchain::GetBackBufferHDRImage() const
-{
-    if (m_enableHDRRendering)
-    {
-        return m_backBufferHDR->GetImage();
-    }
-    else
-    {
-        CRAB_DEBUG_BREAK("Not use Float Render Target.");
-        return nullptr;
-    }
-}
-
-Ref<Texture2D> Swapchain::GetResolvedBackBufferImage() const
+Ref<Texture2D> Swapchain::GetResolvedBackBufferHDRTexture() const
 {
     if (m_enableHDRRendering)
     {
@@ -174,7 +146,7 @@ Ref<Texture2D> Swapchain::GetResolvedBackBufferImage() const
     }
 }
 
-void Swapchain::ResolveBackBuffer() const
+void Swapchain::ResolveBackBufferHDR() const
 {
     if (m_enableHDRRendering)
     {
@@ -202,18 +174,18 @@ void Swapchain::_CreateResources(const Int2& in_size)
                                             reinterpret_cast<void**>(backBufferTexture.GetAddressOf())),
                      "GetBuffer Fail.");
 
-    m_backBuffer = RenderTarget::Create(backBufferTexture.Get());
-
-    // HDR Resources
-    _CreateHDRRenderTarget(in_size);
+    m_backBuffer = CreateRef<RenderTarget>();
+    m_backBuffer->Init(backBufferTexture.Get());
 
     // Depth stencil
-    m_depthBuffer = DepthBuffer::Create(
-        in_size.x,
-        in_size.y,
-        m_depthBufferFormat,
-        m_MSAASampleCount,
-        m_MSAAQuality);
+    m_depthBuffer = CreateRef<DepthBuffer>();
+    m_depthBuffer->Init(in_size.x, in_size.y, m_depthBufferFormat, m_MSAASampleCount, m_MSAAQuality);
+
+    if (IsHDR())
+    {
+        // HDR Resources
+        _CreateHDRRenderTarget(in_size);
+    }
 }
 
 void Swapchain::_CreateHDRRenderTarget(const Int2& in_size)
@@ -230,7 +202,8 @@ void Swapchain::_CreateHDRRenderTarget(const Int2& in_size)
         m_MSAASampleCount,
         m_MSAAQuality);
 
-    m_backBufferHDR = RenderTarget::Create(m_backBufferHDRImage.Get());
+    m_backBufferHDR = CreateRef<RenderTarget>();
+    m_backBufferHDR->Init(m_backBufferHDRImage.Get());
 
     m_resolvedBackBufferImage = ID3D11Texture2DUtil::CreateTexture2D(
         in_size.x,
@@ -242,7 +215,8 @@ void Swapchain::_CreateHDRRenderTarget(const Int2& in_size)
         1,
         0);
 
-    m_resolvedBackBuffer = RenderTarget::Create(m_resolvedBackBufferImage.Get());
+    m_resolvedBackBuffer = CreateRef<RenderTarget>();
+    m_resolvedBackBuffer->Init(m_resolvedBackBufferImage.Get());
 }
 
 }   // namespace crab

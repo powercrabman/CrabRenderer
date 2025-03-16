@@ -8,8 +8,6 @@ public:
 
     void OnInit() override;
     void OnShutdown() override;
-
-    void PreLoadResources();
 };
 
 inline Application* CreateCrabApplication(const CommandLineArgs& in_args)
@@ -29,6 +27,8 @@ inline Application* CreateCrabApplication(const CommandLineArgs& in_args)
     setting.rendererSetting.swapChainSetting.enableVSync        = true;
     setting.rendererSetting.swapChainSetting.enableHDRRendering = true;
     setting.rendererSetting.swapChainSetting.enableMSAA         = true;
+
+    setting.engineDirectory = R"(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer)";
 
     return new DemoApp(setting);
 }

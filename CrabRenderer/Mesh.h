@@ -14,21 +14,15 @@ class IndexBuffer;
 
 class Mesh
 {
-    D11_RESOURCE_CTOR(Mesh);
-
 public:
     template<typename Vertex>
-    static Ref<Mesh> Create(const std::vector<Vertex>& in_vertices,
-                            const std::vector<uint32>& in_indices,
-                            eTopology                  in_topology);
+    void Init(const std::vector<Vertex>& in_vertices,
+              const std::vector<uint32>& in_indices,
+              eTopology                  in_topology);
 
-    static Ref<Mesh> Create(const Ref<VertexBuffer>& in_vb,
-                            const Ref<IndexBuffer>&  in_ib,
-                            eTopology                in_topology);
-
-    template<typename Vertex>
-    static Ref<Mesh> Create(const std::vector<Vertex>& in_vertices, eTopology in_topology);
-    static Ref<Mesh> Create(const Ref<VertexBuffer>& in_vb, eTopology in_topology);
+    void Init(const Ref<VertexBuffer>& in_vb,
+              const Ref<IndexBuffer>&  in_ib,
+              eTopology                in_topology);
 
     eTopology GetTopology() const { return m_topology; }
     uint32    GetIndexCount() const { return m_indexBuffer->GetIndexCount(); }
@@ -36,7 +30,8 @@ public:
     uint32    GetVertexCount() const { return m_vertexBuffer->GetVertexCount(); }
     uint32    GetVertexStride() const { return m_vertexBuffer->GetVertexStride(); }
 
-    void Draw() const;
+    void Draw(eTopology in_topology) const;   // if you want to use another topology, use this
+    void Draw() const { Draw(m_topology); }
 
 private:
     Ref<VertexBuffer> m_vertexBuffer;
@@ -49,20 +44,17 @@ private:
 //===================================================
 
 template<typename Vertex>
-Ref<Mesh> Mesh::Create(const std::vector<Vertex>& in_vertices,
-                       const std::vector<uint32>& in_indices,
-                       eTopology                  in_topology)
+void Mesh::Init(const std::vector<Vertex>& in_vertices,
+                const std::vector<uint32>& in_indices,
+                eTopology                  in_topology)
 {
-    Ref<VertexBuffer> vb = VertexBuffer::Create(in_vertices);
-    Ref<IndexBuffer>  ib = IndexBuffer::Create(in_indices);
+    Ref<VertexBuffer> vb = CreateRef<VertexBuffer>();
+    vb->Init(in_vertices);
 
-    return Create(vb, ib, in_topology);
-}
+    Ref<IndexBuffer> ib = CreateRef<IndexBuffer>();
+    ib->Init(in_indices);
 
-template<typename Vertex>
-Ref<Mesh> Mesh::Create(const std::vector<Vertex>& in_vertices, eTopology in_topology)
-{
-    return Create(in_vertices, nullptr, in_topology);
+    return Init(vb, ib, in_topology);
 }
 
 }   // namespace crab

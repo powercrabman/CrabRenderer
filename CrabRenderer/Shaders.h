@@ -13,25 +13,23 @@ class ConstantBufferBase;
 
 class VertexShader
 {
-    D11_RESOURCE_CTOR(VertexShader);
-
 public:
     //===================================================
     // Factory
     //===================================================
 
-    static Ref<VertexShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
-                                            const std::string_view       in_entryPoint,
-                                            const InputElements&         in_inputElems,
-                                            const ShaderMacros&          in_macro = {});
+    void LoadFromHLSL(const std::filesystem::path& in_shaderPath,
+                      const std::string_view       in_entryPoint,
+                      const InputElements&         in_inputElems,
+                      const ShaderMacros&          in_macro = {});
 
-    static Ref<VertexShader> CreateFromCSO(const std::filesystem::path& in_shaderPath,
-                                           const InputElements&         in_inputElems);
+    void LoadFromCSO(const std::filesystem::path& in_shaderPath,
+                    const InputElements&         in_inputElems);
 
-    static Ref<VertexShader> CreateFromCode(const std::string_view in_shaderCode,
-                                            const std::string_view in_entryPoint,
-                                            const InputElements&   in_inputElems,
-                                            const ShaderMacros&    in_macro = {});
+    void InitFromCode(const std::string_view in_shaderCode,
+                      const std::string_view in_entryPoint,
+                      const InputElements&   in_inputElems,
+                      const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -57,22 +55,20 @@ private:
 
 class PixelShader
 {
-    D11_RESOURCE_CTOR(PixelShader);
-
 public:
     //===================================================
     // Factory
     //===================================================
 
-    static Ref<PixelShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
-                                           const std::string_view       in_entryPoint,
-                                           const ShaderMacros&          in_macro = {});
+    void LoadFromHLSL(const std::filesystem::path& in_shaderPath,
+                                         const std::string_view       in_entryPoint,
+                                         const ShaderMacros&          in_macro = {});
 
-    static Ref<PixelShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
+    void LoadFromCSO(const std::filesystem::path& in_shaderPath);
 
-    static Ref<PixelShader> CreateFromCode(const std::string_view in_shaderCode,
-                                           const std::string_view in_entryPoint,
-                                           const ShaderMacros&    in_macro = {});
+    void InitFromCode(const std::string_view in_shaderCode,
+                                         const std::string_view in_entryPoint,
+                                         const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -96,21 +92,19 @@ private:
 
 class GeometryShader
 {
-    D11_RESOURCE_CTOR(GeometryShader);
-
 public:
     //===================================================
     // Factory
     //===================================================
-    static Ref<GeometryShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
-                                              const std::string_view       in_entryPoint,
-                                              const ShaderMacros&          in_macro = {});
+    void LoadFromHLSL(const std::filesystem::path& in_shaderPath,
+                                            const std::string_view       in_entryPoint,
+                                            const ShaderMacros&          in_macro = {});
 
-    static Ref<GeometryShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
+    void LoadFromCSO(const std::filesystem::path& in_shaderPath);
 
-    static Ref<GeometryShader> CreateFromCode(const std::string_view in_shaderCode,
-                                              const std::string_view in_entryPoint,
-                                              const ShaderMacros&    in_macro = {});
+    void InitFromCode(const std::string_view in_shaderCode,
+                                            const std::string_view in_entryPoint,
+                                            const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -133,21 +127,19 @@ private:
 
 class DomainShader
 {
-    D11_RESOURCE_CTOR(DomainShader);
-
 public:
     //===================================================
     // Factory
     //===================================================
-    static Ref<DomainShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
-                                            const std::string_view       in_entryPoint,
-                                            const ShaderMacros&          in_macro = {});
+    void LoadFromHLSL(const std::filesystem::path& in_shaderPath,
+                                          const std::string_view       in_entryPoint,
+                                          const ShaderMacros&          in_macro = {});
 
-    static Ref<DomainShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
+    void LoadFromCSO(const std::filesystem::path& in_shaderPath);
 
-    static Ref<DomainShader> CreateFromCode(const std::string_view in_shaderCode,
-                                            const std::string_view in_entryPoint,
-                                            const ShaderMacros&    in_macro = {});
+    void InitFromCode(const std::string_view in_shaderCode,
+                                          const std::string_view in_entryPoint,
+                                          const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -173,21 +165,19 @@ private:
 
 class HullShader
 {
-    D11_RESOURCE_CTOR(HullShader);
-
 public:
     //===================================================
     // Factory
     //===================================================
-    static Ref<HullShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
-                                          const std::string_view       in_entryPoint,
-                                          const ShaderMacros&          in_macro = {});
+    void LoadFromHLSL(const std::filesystem::path& in_shaderPath,
+                                        const std::string_view       in_entryPoint,
+                                        const ShaderMacros&          in_macro = {});
 
-    static Ref<HullShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
+    void LoadFromCSO(const std::filesystem::path& in_shaderPath);
 
-    static Ref<HullShader> CreateFromCode(const std::string_view in_shaderCode,
-                                          const std::string_view in_entryPoint,
-                                          const ShaderMacros&    in_macro = {});
+    void InitFromCode(const std::string_view in_shaderCode,
+                                        const std::string_view in_entryPoint,
+                                        const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member
@@ -210,21 +200,19 @@ private:
 
 class ComputeShader
 {
-    D11_RESOURCE_CTOR(ComputeShader);
-
 public:
     //===================================================
     // Factory
     //===================================================
-    static Ref<ComputeShader> CreateFromHLSL(const std::filesystem::path& in_shaderPath,
-                                             const std::string_view       in_entryPoint,
-                                             const ShaderMacros&          in_macro = {});
+    void LoadFromHLSL(const std::filesystem::path& in_shaderPath,
+                                           const std::string_view       in_entryPoint,
+                                           const ShaderMacros&          in_macro = {});
 
-    static Ref<ComputeShader> CreateFromCSO(const std::filesystem::path& in_shaderPath);
+    void LoadFromCSO(const std::filesystem::path& in_shaderPath);
 
-    static Ref<ComputeShader> CreateFromCode(const std::string_view in_shaderCode,
-                                             const std::string_view in_entryPoint,
-                                             const ShaderMacros&    in_macro = {});
+    void InitFromCode(const std::string_view in_shaderCode,
+                                           const std::string_view in_entryPoint,
+                                           const ShaderMacros&    in_macro = {});
 
     //===================================================
     // Member

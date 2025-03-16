@@ -27,7 +27,7 @@ Ray RayCast::CreateRayFromNDCPoint(
     Vec4 posWorld = Vec4::Transform(posNDC, in_viewProj.Invert());
     Ray  ray;
     ray.position  = Vec3(posWorld.x, posWorld.y, posWorld.z);
-    ray.direction = Normalize(ray.position - in_cameraPos);
+    ray.direction = VectorUtil::Normalize(ray.position - in_cameraPos);
     return ray;
 }
 

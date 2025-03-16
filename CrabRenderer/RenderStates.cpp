@@ -11,17 +11,15 @@ namespace crab
 // Depth Stencil State
 //===================================================
 
-Ref<DepthStencilState> DepthStencilState::Create(const D3D11_DEPTH_STENCIL_DESC& in_desc)
+void DepthStencilState::Init(const D3D11_DEPTH_STENCIL_DESC& in_desc)
 {
-    Ref<DepthStencilState> depthStencilState = CreateRef<DepthStencilState>();
-    auto                   d                 = GetRenderer().GetDevice();
+    auto d = GetRenderer().GetDevice();
 
     CheckD3D11Result(
-        d->CreateDepthStencilState(&in_desc,
-                                   depthStencilState->m_depthStencil.GetAddressOf()),
+        d->CreateDepthStencilState(
+            &in_desc,
+            m_depthStencil.GetAddressOf()),
         "CreateDepthStencilState Fail.");
-
-    return depthStencilState;
 }
 
 void DepthStencilState::Bind(uint32 in_stencilRef) const
@@ -33,14 +31,14 @@ void DepthStencilState::Bind(uint32 in_stencilRef) const
 // Rasterizer State
 //===================================================
 
-Ref<RasterizerState> RasterizerState::Create(const D3D11_RASTERIZER_DESC& in_desc)
+void RasterizerState::Init(const D3D11_RASTERIZER_DESC& in_desc)
 {
-    Ref<RasterizerState> rasterizerState = CreateRef<RasterizerState>();
-    auto                 d               = GetRenderer().GetDevice();
-    CheckD3D11Result(d->CreateRasterizerState(&in_desc, rasterizerState->m_rasterizerState.GetAddressOf()),
-                   "CreateRasterizerState Fail.");
-
-    return rasterizerState;
+    auto d = GetRenderer().GetDevice();
+    CheckD3D11Result(
+        d->CreateRasterizerState(
+            &in_desc,
+            m_rasterizerState.GetAddressOf()),
+        "CreateRasterizerState Fail.");
 }
 
 void RasterizerState::Bind() const
@@ -48,14 +46,14 @@ void RasterizerState::Bind() const
     GetRenderer().SetRasterizerState(m_rasterizerState.Get());
 }
 
-Ref<BlendState> BlendState::Create(const D3D11_BLEND_DESC& in_desc)
+void BlendState::Init(const D3D11_BLEND_DESC& in_desc)
 {
-    Ref<BlendState> blendState = CreateRef<BlendState>();
-    auto            d          = GetRenderer().GetDevice();
-    CheckD3D11Result(d->CreateBlendState(&in_desc, blendState->m_blendState.GetAddressOf()),
-                   "CreateBlendState Fail.");
-
-    return blendState;
+    auto d = GetRenderer().GetDevice();
+    CheckD3D11Result(
+        d->CreateBlendState(
+            &in_desc,
+            m_blendState.GetAddressOf()),
+        "CreateBlendState Fail.");
 }
 
 //===================================================
@@ -71,14 +69,14 @@ void BlendState::Bind(const std::array<float, 4>& in_blendFactors) const
 // Sampler State
 //===================================================
 
-Ref<SamplerState> SamplerState::Create(const D3D11_SAMPLER_DESC& in_desc)
+void SamplerState::Init(const D3D11_SAMPLER_DESC& in_desc)
 {
-    Ref<SamplerState> samplerState = CreateRef<SamplerState>();
     auto              d            = GetRenderer().GetDevice();
-    CheckD3D11Result(d->CreateSamplerState(&in_desc, samplerState->m_samplerState.GetAddressOf()),
-                   "CreateSamplerState Fail.");
-
-    return samplerState;
+    CheckD3D11Result(
+        d->CreateSamplerState(
+            &in_desc,
+            m_samplerState.GetAddressOf()),
+        "CreateSamplerState Fail.");
 }
 
 void SamplerState::Bind(uint32 in_slot, eShaderFlags in_bindFlags) const

@@ -1,0 +1,27 @@
+[2025-03-10 14:01:29.596] [info] Log initialized
+[2025-03-10 14:01:29.596] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-10 14:01:30.850] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-10 14:01:30.885] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-10 14:01:30.894] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-10 14:01:30.920] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-10 14:01:30.933] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 14:01:31.543] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 14:01:31.805] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-10 14:01:32.180] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 14:01:32.289] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 14:01:32.530] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 14:01:32.788] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 14:01:33.409] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 14:01:33.492] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 14:01:33.893] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 14:01:33.972] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 14:01:34.326] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 14:01:34.421] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 14:01:34.691] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 14:01:34.803] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 14:01:35.012] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 14:01:35.112] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 14:01:37.047] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 14:01:38.331] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 14:01:38.953] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 14:01:38.956] [debug] Event Occurred. "AppClose_CoreEvent"

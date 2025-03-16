@@ -2,17 +2,17 @@
 
 #include "PostProcess.h"
 
+#include "GlobalState.h"
 #include "D11Renderer.h"
-#include "Mesh.h"
-#include "Textures.h"
 #include "ImageFilter.h"
+#include "Mesh.h"
 #include "RenderStates.h"
-#include "CommonState.h"
+#include "Textures.h"
 
 namespace crab
 {
 
-void PostProcess::AddFilter(const Ref<ImageFilter>&   in_filter)
+void PostProcess::AddFilter(const Ref<ImageFilter>& in_filter)
 {
     m_filters.push_back(in_filter);
 }
@@ -30,9 +30,9 @@ void PostProcess::ClearFilterList()
 void PostProcess::Render()
 {
     // post process common state
-    GetCommonState()->DepthStencil_DepthNone()->Bind();
-    GetCommonState()->Rasterizer_CullCounterClockwise(true)->Bind();
-    GetCommonState()->Blend_Opaque(true)->Bind();
+    GetGlobalState()->DepthStencil_DepthNone()->Bind();
+    GetGlobalState()->Rasterizer_CullBack(true)->Bind();
+    GetGlobalState()->Blend_Opaque(true)->Bind();
 
     // lazy create mesh
     if (!m_mesh)
@@ -46,7 +46,8 @@ void PostProcess::Render()
 
         std::vector<uint32> indices = { 0, 1, 2, 0, 2, 3 };
 
-        m_mesh = Mesh::Create(vertices, indices, eTopology::TriangleList);
+        m_mesh = CreateRef<Mesh>();
+        m_mesh->Init(vertices, indices, eTopology::TriangleList);
     }
 
     for (auto& filter: m_filters)

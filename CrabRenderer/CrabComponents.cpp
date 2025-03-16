@@ -60,20 +60,20 @@ Vec3 TransformComponent::Down() const
 
 void TransformComponent::AddRotatePitch(float in_degree)
 {
-    Quat q = Quat::CreateFromYawPitchRoll(0, in_degree, 0);
-    rotate = rotate * q;
+    Quat q = Quat::CreateFromAxisAngle(Vec3::Right, in_degree);
+    rotate = q * rotate;
 }
 
 void TransformComponent::AddRotateYaw(float in_degree)
 {
-    Quat q = Quat::CreateFromYawPitchRoll(in_degree, 0, 0);
-    rotate = rotate * q;
+    Quat q = Quat::CreateFromAxisAngle(Vec3::Up, in_degree);
+    rotate = q * rotate;
 }
 
 void TransformComponent::AddRotateRoll(float in_degree)
 {
-    Quat q = Quat::CreateFromYawPitchRoll(0, 0, in_degree);
-    rotate = rotate * q;
+    Quat q = Quat::CreateFromAxisAngle(Vec3::Forward, in_degree);
+    rotate = q * rotate;
 }
 
 void TransformComponent::SetRotatePitch(float in_degree)
@@ -97,19 +97,9 @@ void TransformComponent::SetRotateRoll(float in_degree)
     rotate     = Quat::CreateFromYawPitchRoll(euler.y, euler.x, euler.z);
 }
 
-Mat4 CameraComponent::GetView(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll)
-{
-    return CreateView(in_eyePosition, in_pitchYawRoll);
-}
-
-Mat4 CameraComponent::GetView(const Vec3& in_eyePosition, const Quat& in_quaternion)
-{
-    return CreateView(in_eyePosition, in_quaternion);
-}
-
 Mat4 CameraComponent::GetView(const TransformComponent& in_trans)
 {
-    return GetView(in_trans.position, in_trans.rotate);
+    return MatrixUtil::CreateViewFromQuaternion(in_trans.position, in_trans.rotate);
 }
 
 Mat4 CameraComponent::GetProj() const
@@ -117,9 +107,9 @@ Mat4 CameraComponent::GetProj() const
     switch (projectionType)
     {
         case eProjectionType::Orthographic:
-            return CreateOrthographic(width, height, nearZ, farZ);
+            return MatrixUtil::CreateOrthographic(width, height, nearZ, farZ);
         case eProjectionType::Perspective:
-            return CreatePerspective(fov, aspect, nearZ, farZ);
+            return MatrixUtil::CreatePerspective(fov, aspect, nearZ, farZ);
     }
     CRAB_DEBUG_BREAK("Invalid Projection Type.");
     return Mat4::Identity;
@@ -127,17 +117,37 @@ Mat4 CameraComponent::GetProj() const
 
 Mat4 CameraComponent::GetViewProj(const Vec3& in_eyePosition, const Quat& in_quaternion) const
 {
-    return GetView(in_eyePosition, in_quaternion) * GetProj();
+    return MatrixUtil::CreateViewFromQuaternion(in_eyePosition, in_quaternion) * GetProj();
 }
 
 Mat4 CameraComponent::GetViewProj(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll) const
 {
-    return GetView(in_eyePosition, in_pitchYawRoll) * GetProj();
+    return MatrixUtil::CreateViewFromEuler(in_eyePosition, in_pitchYawRoll) * GetProj();
 }
 
 Mat4 CameraComponent::GetViewProj(const TransformComponent& in_trans) const
 {
-    return GetView(in_trans) * GetProj();
+    return GetViewProj(in_trans.position, in_trans.rotate);
+}
+
+Frustum CameraComponent::GetViewFrustumInView() const
+{
+    return FrustumUtil::CreateFromMatrixInLocal(GetProj());
+}
+
+Frustum CameraComponent::GetViewFrustumInWorld(const Vec3& in_position, const Quat& in_quaternion) const
+{
+    return FrustumUtil::CreateFromMatrixInWorld(in_position, in_quaternion, GetProj());
+}
+
+Frustum CameraComponent::GetViewFrustumInWorld(const Vec3& in_position, const Vec3& in_pitchYawRoll) const
+{
+    return FrustumUtil::CreateFromMatrixInWorld(in_position, in_pitchYawRoll, GetProj());
+}
+
+Frustum CameraComponent::GetViewFrustumInWorld(const TransformComponent& in_trans) const
+{
+    return FrustumUtil::CreateFromMatrixInWorld(in_trans.position, in_trans.rotate, GetProj());
 }
 
 }   // namespace crab

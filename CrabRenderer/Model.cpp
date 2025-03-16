@@ -10,7 +10,6 @@
 #include <DirectXMesh.h>
 #include <DirectXMesh.inl>
 
-
 namespace crab
 {
 
@@ -22,8 +21,9 @@ bool ModelLoader::Load(const std::filesystem::path& in_modelPath)
 {
     Assimp::Importer importer;
 
-    uint32 flags = aiProcess_CalcTangentSpace
-                   | aiProcess_Triangulate
+    uint32 flags = aiProcess_Triangulate
+                   | aiProcess_CalcTangentSpace
+                   | aiProcess_GenNormals
                    | aiProcess_ConvertToLeftHanded;
 
     const aiScene* pScene = importer.ReadFile(in_modelPath.string(), flags);
@@ -45,7 +45,9 @@ bool ModelLoader::Load(const std::filesystem::path& in_modelPath)
     return true;
 }
 
-void ModelLoader::_ProcessNode(aiNode* in_node, const aiScene* in_scene)
+void ModelLoader::_ProcessNode(
+    aiNode*        in_node,
+    const aiScene* in_scene)
 {
     for (UINT i = 0; i < in_node->mNumMeshes; i++)
     {
@@ -60,29 +62,31 @@ void ModelLoader::_ProcessNode(aiNode* in_node, const aiScene* in_scene)
     }
 }
 
-void ModelLoader::_ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene)
+void ModelLoader::_ProcessMesh(
+    aiMesh*        in_mesh,
+    const aiScene* in_scene)
 {
     ModelLoaderNode modelData;
 
-    GeometryData& vertexData = modelData.geometryData;
-    vertexData.colors.reserve(in_mesh->mNumVertices);
-    vertexData.normals.reserve(in_mesh->mNumVertices);
-    vertexData.positions.reserve(in_mesh->mNumVertices);
-    vertexData.texCoords.reserve(in_mesh->mNumVertices);
-    vertexData.tangents.reserve(in_mesh->mNumVertices);
-    vertexData.indices.reserve(in_mesh->mNumFaces * 3);
-    vertexData.topology = eTopology::TriangleList;
+    std::vector<VertexData>& vertexData = modelData.geometryData.subDatas;
+    std::vector<uint32>&     indices    = modelData.geometryData.indices;
+    vertexData.reserve(in_mesh->mNumVertices);
+    indices.reserve(in_mesh->mNumFaces * 3);
+
+    modelData.geometryData.topology = eTopology::TriangleList;
 
     // Vertices
     for (uint32 idx = 0; idx < in_mesh->mNumVertices; ++idx)
     {
+        VertexData vertex;
+
         // position
         Vec3 pos;
-        auto meshPos = in_mesh->mVertices[idx];
-        pos.x        = meshPos.x;
-        pos.y        = meshPos.y;
-        pos.z        = meshPos.z;
-        vertexData.positions.emplace_back(pos);
+        auto meshPos    = in_mesh->mVertices[idx];
+        pos.x           = meshPos.x;
+        pos.y           = meshPos.y;
+        pos.z           = meshPos.z;
+        vertex.position = pos;
 
         // normal
         if (in_mesh->HasNormals())
@@ -92,11 +96,7 @@ void ModelLoader::_ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene)
             normal.x        = meshNormal.x;
             normal.y        = meshNormal.y;
             normal.z        = meshNormal.z;
-            vertexData.normals.emplace_back(normal);
-        }
-        else
-        {
-            vertexData.normals.emplace_back(Vec3 { 0.0f, 0.0f, 0.0f });
+            vertex.normal   = normal;
         }
 
         // texture coordinates
@@ -106,22 +106,25 @@ void ModelLoader::_ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene)
             auto meshTexCoord = in_mesh->mTextureCoords[0][idx];
             texCoord.x        = meshTexCoord.x;
             texCoord.y        = meshTexCoord.y;
-            vertexData.texCoords.emplace_back(texCoord);
-        }
-        else
-        {
-            vertexData.texCoords.emplace_back(Vec2 { 0.0f, 0.0f });
+            vertex.texCoord   = texCoord;
         }
 
         // tangent
         if (in_mesh->HasTangentsAndBitangents())
         {
             Vec3 tangent;
-            auto meshTan = in_mesh->mTangents[idx];
-            tangent.x    = meshTan.x;
-            tangent.y    = meshTan.y;
-            tangent.z    = meshTan.z;
-            vertexData.tangents.emplace_back(tangent);
+            auto meshTan   = in_mesh->mTangents[idx];
+            tangent.x      = meshTan.x;
+            tangent.y      = meshTan.y;
+            tangent.z      = meshTan.z;
+            vertex.tangent = tangent;
+
+            Vec3 bitangent;
+            auto meshBitan   = in_mesh->mBitangents[idx];
+            bitangent.x      = meshBitan.x;
+            bitangent.y      = meshBitan.y;
+            bitangent.z      = meshBitan.z;
+            vertex.bitangent = bitangent;
         }
 
         // color
@@ -132,12 +135,10 @@ void ModelLoader::_ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene)
             color.x        = meshColor.r;
             color.y        = meshColor.g;
             color.z        = meshColor.b;
-            vertexData.colors.emplace_back(color);
+            vertex.color   = color;
         }
-        else
-        {
-            vertexData.colors.emplace_back(Vec3 { 1.0f, 1.0f, 1.0f });
-        }
+
+        vertexData.emplace_back(vertex);
     }
 
     // Indices
@@ -146,35 +147,8 @@ void ModelLoader::_ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene)
         aiFace face = in_mesh->mFaces[idx];
         for (uint32 j = 0; j < face.mNumIndices; ++j)
         {
-            vertexData.indices.emplace_back(face.mIndices[j]);
+            indices.emplace_back(face.mIndices[j]);
         }
-    }
-
-    // Compute something
-    if (vertexData.normals.empty())
-    {
-        vertexData.normals.resize(vertexData.positions.size());
-        DirectX::ComputeNormals(
-            vertexData.indices.data(),
-            vertexData.indices.size() / 3,
-            vertexData.positions.data(),
-            vertexData.positions.size(),
-            DirectX::CNORM_DEFAULT,
-            vertexData.normals.data());
-    }
-
-    if (vertexData.tangents.empty())
-    {
-        vertexData.tangents.resize(vertexData.positions.size());
-        DirectX::ComputeTangentFrame(
-            vertexData.indices.data(),
-            vertexData.indices.size() / 3,
-            vertexData.positions.data(),
-            vertexData.normals.data(),
-            nullptr,
-            vertexData.positions.size(),
-            vertexData.tangents.data(),
-            nullptr);
     }
 
     // Material
@@ -262,12 +236,15 @@ void ModelLoader::_ProcessMesh(aiMesh* in_mesh, const aiScene* in_scene)
     m_modelNodes.emplace_back(modelData);
 }
 
-Ref<Model> Model::Create(const std::vector<ModelNode>& in_meshNodes)
+void Model::Init(const std::vector<ModelNode>& in_meshNodes)
 {
-    Ref<Model> model = CreateRef<Model>();
-    model->m_nodes   = in_meshNodes;
+    m_nodes = in_meshNodes;
+}
 
-    return model;
+void Model::Init(const Ref<Mesh>& in_mesh, const Ref<Material>& in_material)
+{
+    m_nodes.clear();
+    m_nodes.emplace_back(ModelNode { in_mesh, in_material, "Mesh" });
 }
 
 ModelNode* Model::FindNode(std::string_view in_name)

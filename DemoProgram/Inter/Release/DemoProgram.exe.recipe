@@ -5,11 +5,7 @@
       <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\DemoProgram.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles>
-    <ContentFile>
-      <FullPath>C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Release\DebugNormalMappingPS.cso</FullPath>
-    </ContentFile>
-  </ContentFiles>
+  <ContentFiles />
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>

@@ -4,10 +4,13 @@
 #include "D11Renderer.h"
 #include "ImguiGlue.h"
 
-#include "CommonState.h"
 #include "CrabEvent.h"
 #include "DepthBuffer.h"
 #include "EventDispatcher.h"
+#include "GlobalConstant.h"
+#include "GlobalPipeline.h"
+#include "GlobalShader.h"
+#include "GlobalState.h"
 #include "RenderTarget.h"
 #include "Swapchain.h"
 
@@ -54,20 +57,33 @@ void D11Renderer::Init(
                      "D3D11CreateDevice Fail.");
 
     // - Swap Chain
-    m_swapChain = Swapchain::Create(
-        in_setting.swapChainSetting,
-        in_screenSize,
-        in_hWnd);
+    m_swapChain = CreateRef<Swapchain>();
+    m_swapChain->Init(in_setting.swapChainSetting, in_screenSize, in_hWnd);
 
 #ifdef _DEBUG
     // - debug
     CheckD3D11Result(m_device->QueryInterface(IID_PPV_ARGS(m_debug.GetAddressOf())), "QueryInterface Fail.");
     CheckD3D11Result(m_debug->QueryInterface(IID_PPV_ARGS(m_infoQueue.GetAddressOf())), "QueryInterface Fail.");
 #endif
+}
 
+void D11Renderer::InitGlobalResources(const std::filesystem::path& in_engineDirectory)
+{
     // Render State Storage
-    m_renderStateStorage = CreateScope<CommonState>();
-    m_renderStateStorage->Init();
+    m_globalState = CreateScope<GlobalState>();
+    m_globalState->Init();
+
+    // Shader
+    m_globalShader = CreateScope<GlobalShader>();
+    m_globalShader->Init(in_engineDirectory);
+
+    // Constants
+    m_globalConstants = CreateScope<GlobalConstant>();
+    m_globalConstants->Init();
+
+    // Pipeline
+    m_globalPipeline = CreateScope<GlobalPipeline>();
+    m_globalPipeline->Init();
 }
 
 void D11Renderer::Shutdown()
@@ -262,11 +278,6 @@ void D11Renderer::SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, I
     m_deviceContext->OMSetRenderTargets(1, &in_renderTargetView, in_depthStencilView);
 }
 
-void D11Renderer::SetRenderTargets(const std::vector<ID3D11RenderTargetView*>& in_renderTargetViews, ID3D11DepthStencilView* in_depthStencilView) const
-{
-    m_deviceContext->OMSetRenderTargets((UINT)in_renderTargetViews.size(), in_renderTargetViews.data(), in_depthStencilView);
-}
-
 void D11Renderer::ReleaseRenderTargets() const
 {
     std::array<ID3D11RenderTargetView*, 8> nullRTVs = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
@@ -294,19 +305,6 @@ void D11Renderer::SetViewport(uint32 x, uint32 y, uint32 width, uint32 height, u
     SetViewport(vp);
 }
 
-void D11Renderer::BindBackBuffer(const Ref<DepthBuffer>& in_depthBuffer_or_null) const
-{
-    auto rtv = m_swapChain->GetBackBuffer();
-
-    SetRenderTarget(rtv->Get(),
-                    in_depthBuffer_or_null ? in_depthBuffer_or_null->Get() : nullptr);
-}
-
-void D11Renderer::ClearBackBuffer(const Color4& in_color) const
-{
-    m_swapChain->GetBackBuffer()->Clear(in_color);
-}
-
 void D11Renderer::ClearDepthBuffer(
     bool  in_clearDepth,
     float in_clearDepthFactor,
@@ -326,31 +324,9 @@ Ref<DepthBuffer> D11Renderer::GetDepthBuffer() const
     return m_swapChain->GetDepthBuffer();
 }
 
-void D11Renderer::BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_null) const
-{
-    if (auto rtv = GetBackBufferMS())
-    {
-        SetRenderTarget(rtv->Get(), in_depthBuffer_or_null ? in_depthBuffer_or_null->Get() : nullptr);
-    }
-    else
-    {
-        CRAB_DEBUG_BREAK("Not use Float Render Target.");
-    }
-}
-
-void D11Renderer::ClearBackBufferMS(const Color4& in_color) const
-{
-    GetBackBufferMS()->Clear(in_color);
-}
-
 void D11Renderer::Present() const
 {
     m_swapChain->Present();
-}
-
-Ref<RenderTarget> D11Renderer::GetBackBufferMS() const
-{
-    return m_swapChain->GetBackBufferHDR();
 }
 
 void D11Renderer::BindOnlyDepthStencilView(ID3D11DepthStencilView* in_depthBuffer) const
@@ -368,24 +344,9 @@ ID3D11DeviceContext* D11Renderer::GetContext() const
     return m_deviceContext.Get();
 }
 
-CommonState* D11Renderer::GetRenderStateStorage() const
-{
-    return m_renderStateStorage.get();
-}
-
-Ref<Swapchain> D11Renderer::GetSwapChain() const
+const Ref<Swapchain>& D11Renderer::GetSwapChain() const
 {
     return m_swapChain;
-}
-
-Ref<RenderTarget> D11Renderer::GetBackBuffer() const
-{
-    return m_swapChain->GetBackBuffer();
-}
-
-Ref<RenderTarget> D11Renderer::GetBackBuffer()
-{
-    return m_swapChain->GetBackBuffer();
 }
 
 void D11Renderer::SetShaderResourceView(

@@ -1,0 +1,25 @@
+[2025-03-11 15:09:26.188] [info] Log initialized
+[2025-03-11 15:09:26.188] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-11 15:09:26.852] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-11 15:09:26.962] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-11 15:09:26.967] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-11 15:09:27.015] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-11 15:09:27.020] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxEnvHDR.dds
+[2025-03-11 15:09:27.063] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxDiffuseHDR.dds
+[2025-03-11 15:09:27.068] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxSpecularHDR.dds
+[2025-03-11 15:09:27.110] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxBrdf.dds
+[2025-03-11 15:09:28.019] [info] Load Image: Resources\AnimationDemo\floor2\floor_tiles_06_nor_gl_2k.exr
+[2025-03-11 15:09:28.895] [info] Load Image: Resources\AnimationDemo\floor2\floor_tiles_06_rough_2k.jpg
+[2025-03-11 15:09:28.922] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-11 15:09:29.984] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-11 15:09:30.115] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-11 15:09:30.416] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-11 15:09:30.529] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-11 15:09:31.297] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-11 15:09:31.393] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-11 15:09:31.953] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-11 15:09:32.483] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-11 15:09:32.922] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-11 15:09:33.212] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-11 15:09:52.639] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-11 15:09:52.781] [debug] Event Occurred. "MouseUp_IOEvent"

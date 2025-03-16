@@ -51,12 +51,12 @@ crab::Entity Scene::CreateEntity()
 Entity Scene::CreateEntity(std::string_view in_tag)
 {
     Entity entity = _CreateEntity(m_registry.create());
-    entity.CreateComponent<LabelComponent>(std::string(in_tag));
+    entity.CreateComponent<TagComponent>(std::string(in_tag));
 
     return entity;
 }
 
-Entity Scene::FindEntity(uint32 in_id)
+Entity Scene::FindEntityByID(uint32 in_id)
 {
     Entity e { this, static_cast<entt::entity>(in_id) };
     if (m_registry.valid(e))
@@ -69,7 +69,7 @@ Entity Scene::FindEntity(uint32 in_id)
     }
 }
 
-Entity Scene::FindEntity(const IDComponent& in_id)
+Entity Scene::FindEntityByID(const IDComponent& in_id)
 {
     Entity e { this, static_cast<entt::entity>(in_id.id) };
     if (m_registry.valid(e))
@@ -82,9 +82,37 @@ Entity Scene::FindEntity(const IDComponent& in_id)
     }
 }
 
+Entity Scene::FindEntityByTag(std::string_view in_tag)
+{
+    auto view = m_registry.view<TagComponent>();
+    for (auto e: view)
+    {
+        if (view.get<TagComponent>(e) == in_tag)
+        {
+            return Entity { this, e };
+        }
+    }
+
+    return Entity::s_null;
+}
+
 void Scene::ClearRegistry()
 {
     m_registry.clear();
+}
+
+Entity Scene::FindEntityByTag(const TagComponent& in_tag)
+{
+    auto view = m_registry.view<TagComponent>();
+    for (auto e: view)
+    {
+        if (view.get<TagComponent>(e) == in_tag)
+        {
+            return Entity { this, e };
+        }
+    }
+
+    return Entity::s_null;
 }
 
 }   // namespace crab

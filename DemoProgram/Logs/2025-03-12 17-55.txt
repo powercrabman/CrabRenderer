@@ -1,0 +1,25 @@
+[2025-03-13 02:55:44.516] [info] Log initialized
+[2025-03-13 02:55:44.516] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-13 02:55:45.388] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-13 02:55:45.480] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-13 02:55:45.483] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-13 02:55:45.509] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-13 02:55:45.512] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxEnvHDR.dds
+[2025-03-13 02:55:45.536] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxDiffuseHDR.dds
+[2025-03-13 02:55:45.539] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxSpecularHDR.dds
+[2025-03-13 02:55:45.563] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxBrdf.dds
+[2025-03-13 02:55:46.496] [info] Load Image: Resources\AnimationDemo\floor2\floor_tiles_06_nor_gl_2k.exr
+[2025-03-13 02:55:47.391] [info] Load Image: Resources\AnimationDemo\floor2\floor_tiles_06_rough_2k.jpg
+[2025-03-13 02:55:47.417] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-13 02:55:48.386] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-13 02:55:48.472] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-13 02:55:48.752] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-13 02:55:48.865] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-13 02:55:49.774] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-13 02:55:51.256] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-13 02:55:53.192] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-13 02:56:02.813] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-13 02:56:06.073] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-13 02:56:06.400] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-13 02:57:57.067] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-13 02:57:57.071] [debug] Event Occurred. "AppClose_CoreEvent"

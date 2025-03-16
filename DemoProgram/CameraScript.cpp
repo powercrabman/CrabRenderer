@@ -12,6 +12,14 @@ CameraScript::~CameraScript()
     GetAppWindow().EnableMouseRelativeMode(false);
 }
 
+void CameraScript::Init()
+{
+    GetEntity().CreateComponent<CameraControlComponent>(
+        CameraControlComponent {
+            .moveSpeed = 3.f,
+            .rotSpeed  = 0.2f });
+}
+
 void CameraScript::OnUpdate(TimeStamp& in_ts)
 {
     TransformComponent& t = GetEntity().GetTransform();
@@ -50,10 +58,14 @@ void CameraScript::OnUpdate(TimeStamp& in_ts)
     if (m_isRotating)
     {
         auto [dx, dy] = Input::GetMouseRelativeDeltaPos();
-        Vec3 euler    = t.rotate.ToEuler();
+
+        Vec3 euler = GetEntity().GetTransform().rotate.ToEuler();
         euler.x += dy * _GetRotateSpeed() * in_ts.deltaTime;
         euler.y += dx * _GetRotateSpeed() * in_ts.deltaTime;
-        t.rotate = Quat::CreateFromYawPitchRoll(euler.y, euler.x, euler.z);
+
+        euler.x = std::clamp(euler.x, -89.f * DEG2RAD, 89.f * DEG2RAD);
+
+        t.rotate = Quat::CreateFromYawPitchRoll(euler.y, euler.x, 0.f);
     }
 }
 

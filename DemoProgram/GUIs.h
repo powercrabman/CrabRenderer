@@ -1,8 +1,6 @@
 #pragma once
 #include "Components.h"
 
-#include "ModelUtil.h"
-
 inline void DrawDemoInspector(
     const std::string_view       in_sceneName,
     const std::function<void()>& in_drawFunc)
@@ -35,10 +33,10 @@ inline void DrawDemoInspector(
 
     ImGui::SeparatorText("IO");
     auto [mx, my] = Input::GetMousePos();
-    ImGui::Text("Mouse Pos: %d, %d", mx, my);
+    ImGui::Text("Mouse Pos: %.1f, %.1f", mx, my);
 
     auto [dx, dy] = Input::GetMouseDeltaPos();
-    ImGui::Text("Mouse Delta: %d, %d", dx, dy);
+    ImGui::Text("Mouse Delta: %.1f, %.1f", dx, dy);
 
     if (in_drawFunc)
     {
@@ -55,53 +53,38 @@ inline void DrawDemoInspector(const std::string_view in_sceneName)
     DrawDemoInspector(in_sceneName, nullptr);
 }
 
-inline bool DrawTransformComponentInspector(TransformComponent& in_transform)
+inline void DrawTransformComponentInspector(TransformComponent& in_transform)
 {
-    bool retVal = false;
-    Vec3 euler  = in_transform.rotate.ToEuler() * RAD2DEG;
+    Vec3 euler = in_transform.rotate.ToEuler() * RAD2DEG;
 
     ImGui::PushID(0);
 
     ImGui::Text("Position");
-    if (ImGui::DragFloat3("##Position", &in_transform.position.x, 0.01f))
-        retVal = true;
+    ImGui::DragFloat3("##Position", &in_transform.position.x, 0.01f);
 
     ImGui::SameLine();
     if (ImGui::Button("Reset##Position"))
-    {
         in_transform.position = Vec3::Zero;
-        retVal                = true;
-    }
 
     ImGui::Text("Rotation (Pitch Yaw Roll)");
     if (ImGui::DragFloat3("##Rotation", &euler.x, 0.1f, 0, 0, "%.3f Deg"))
     {
         euler *= DEG2RAD;
         in_transform.rotate = Quat::CreateFromYawPitchRoll(euler.y, euler.x, euler.z);
-        retVal              = true;
-    }
-    ImGui::SameLine();
-    if (ImGui::Button("Reset##Rotation"))
-    {
-        in_transform.rotate = Quat::Identity;
-        retVal              = true;
     }
 
+    ImGui::SameLine();
+    if (ImGui::Button("Reset##Rotation"))
+        in_transform.rotate = Quat::Identity;
+
     ImGui::Text("Scale");
-    if (ImGui::DragFloat3("##Scale", &in_transform.scale.x, 0.01f))
-        retVal = true;
-    ;
+    ImGui::DragFloat3("##Scale", &in_transform.scale.x, 0.01f);
 
     ImGui::SameLine();
     if (ImGui::Button("Reset##Scale"))
-    {
         in_transform.scale = Vec3::One;
-        retVal             = true;
-    }
 
     ImGui::PopID();
-
-    return retVal;
 }
 
 inline void DrawVoidContext(Scene* in_scene)
@@ -123,11 +106,11 @@ inline void DrawVoidContext(Scene* in_scene)
 
             if (!path.empty())
             {
-                Entity e  = in_scene->CreateEntity();
-                auto&  mr = e.GetOrCreateComponent<ModelRenderer>();
-
-                mr.model = CreateModel(path);
-                e.CreateComponent<TAG("PBRPass")>();
+                Entity e = in_scene->CreateEntity();
+                ModelLoader loader;
+                loader.Load(path);
+                e.CreateComponent<ModelRenderer>(ModelRenderer { loader.CreateModel<Vertex3D>(Vertex3D::CreateVertex) });
+                e.CreateComponent<RenderGroup<"PBR">>();
             }
         }
 
@@ -165,8 +148,8 @@ public:
 
                     std::string label;
 
-                    if (entity.HasComponent<LabelComponent>())
-                        label = entity.GetComponent<LabelComponent>().name;
+                    if (entity.HaveComponents<TagComponent>())
+                        label = entity.GetComponent<TagComponent>().name;
                     else
                         label = fmt::format("Entity {}", entity.GetID().id);
 
@@ -184,8 +167,8 @@ public:
             {
                 ImGui::Text("Entity: %d", m_selectedEntity.GetID().id);
 
-                if (m_selectedEntity.HasComponent<LabelComponent>())
-                    ImGui::Text("Tag: %s", m_selectedEntity.GetComponent<LabelComponent>().name.c_str());
+                if (m_selectedEntity.HaveComponents<TagComponent>())
+                    ImGui::Text("Tag: %s", m_selectedEntity.GetComponent<TagComponent>().name.c_str());
 
                 DrawTransformComponentInspector(m_selectedEntity.GetTransform());
 
@@ -197,7 +180,7 @@ public:
                                                            ImGui::DragFloat("Rotate Speed", &cmrCont.rotSpeed, 0.01f);
                                                        });
 
-                // _DrawComponent<LightComponent>("Light",
+                // _DrawComponent<LightComponent>("LightConstantData",
                 //                                [&]()
                 //                                {
                 //                                    auto& light = m_selectedEntity.GetComponent<LightComponent>();
@@ -258,7 +241,7 @@ public:
                                                         ImGui::DragFloat("Height", &cmr.height, 0.01f, 0.01f);
 
                                                         if (s_fitScreenRatio)
-                                                            cmr.width   = cmr.height * GetAppWindow().GetAspect();
+                                                            cmr.width = cmr.height * GetAppWindow().GetAspect();
                                                     }
                                                     else
                                                     {
@@ -306,31 +289,6 @@ public:
                                                       }
                                                   }
                                               });
-
-                _DrawComponent<PlanarMirrorComponent>("Plana Mirror",
-                                                      [&]()
-                                                      {
-                                                          auto& mirror = m_selectedEntity.GetComponent<PlanarMirrorComponent>();
-                                                          if (mirror.mirrorMesh)
-                                                          {
-                                                              ImGui::Text("Mirror Mesh");
-                                                              _MeshInspector(mirror.mirrorMesh);
-                                                          }
-                                                          else
-                                                          {
-                                                              ImGui::Text("No Mirror Mesh");
-                                                          }
-
-                                                          if (mirror.mirrorMaterial)
-                                                          {
-                                                              ImGui::Text("Mirror Material");
-                                                              _MaterialInspector(mirror.mirrorMaterial);
-                                                          }
-                                                          else
-                                                          {
-                                                              ImGui::Text("No Mirror Material");
-                                                          }
-                                                      });
             }
             else
             {
@@ -377,35 +335,35 @@ private:
         if (ImGui::DragFloat("Alpha", &mat.alpha, 0.01f, 0.f, 1.f))
             in_material->SetAlpha(mat.alpha);
         ImGui::Separator();
-        if (_DrawTextureLoadReleaseItem("Base Color", mat.baseColorImage, true))
-            in_material->SetBaseColorImage(mat.baseColorImage);
+        if (_DrawTextureLoadReleaseItem("Base Color", mat.baseColorTex, true))
+            in_material->SetBaseColorTexture(mat.baseColorTex);
         ImGui::Separator();
-        if (_DrawTextureLoadReleaseItem("Normal", mat.normalImage))
-            in_material->SetNormalImage(mat.normalImage);
+        if (_DrawTextureLoadReleaseItem("Normal", mat.normalTex))
+            in_material->SetNormalTexture(mat.normalTex);
         if (ImGui::RadioButton("OpenGL", reinterpret_cast<int*>(&mat.normalMapType), 0))
             in_material->SetNormalMapType(eNormalMapType::OpenGL);
         ImGui::SameLine();
         if (ImGui::RadioButton("DirectX", reinterpret_cast<int*>(&mat.normalMapType), 1))
             in_material->SetNormalMapType(eNormalMapType::DirectX);
         ImGui::Separator();
-        if (_DrawTextureLoadReleaseItem("Metallic", mat.metallicImage))
-            in_material->SetMetallicImage(mat.metallicImage);
+        if (_DrawTextureLoadReleaseItem("Metallic", mat.metallicTex))
+            in_material->SetMetallicTexture(mat.metallicTex);
 
         ImGui::Separator();
 
-        if (_DrawTextureLoadReleaseItem("Roughness", mat.roughnessImage))
-            in_material->SetRoughnessImage(mat.roughnessImage);
+        if (_DrawTextureLoadReleaseItem("Roughness", mat.roughnessTex))
+            in_material->SetRoughnessTexture(mat.roughnessTex);
 
         ImGui::Separator();
 
-        if (_DrawTextureLoadReleaseItem("AO", mat.aoImage))
-            in_material->SetAOImage(mat.aoImage);
+        if (_DrawTextureLoadReleaseItem("AO", mat.aoTex))
+            in_material->SetAOTexture(mat.aoTex);
         ImGui::Separator();
-        if (_DrawTextureLoadReleaseItem("Emissive", mat.emissiveImage))
-            in_material->SetEmissiveImage(mat.emissiveImage);
+        if (_DrawTextureLoadReleaseItem("Emissive", mat.emissiveTex))
+            in_material->SetEmissiveTexture(mat.emissiveTex);
         ImGui::Separator();
-        if (_DrawTextureLoadReleaseItem("Displacement", mat.displacementImage))
-            in_material->SetHeightImage(mat.displacementImage);
+        if (_DrawTextureLoadReleaseItem("Displacement", mat.displacementTex))
+            in_material->SetDisplacementTexture(mat.displacementTex);
     }
 
     template<typename Ty, typename Func>
@@ -431,7 +389,10 @@ private:
             auto path = GetPathFromFileDialog();
 
             if (!path.empty())
-                in_tex = TextureCube::CreateFromFile(path);
+            {
+                in_tex = CreateRef<TextureCube>();
+                in_tex->LoadFromFile(path, true);
+            }
         }
         ImGui::SameLine();
         if (ImGui::Button(fmt::format("Release##{}", in_label).c_str()))
@@ -452,7 +413,10 @@ private:
             auto path = GetPathFromFileDialog();
 
             if (!path.empty())
-                in_tex = Texture2D::CreateFromFile(path, true, in_reverseToneMapping);
+            {
+                in_tex = CreateRef<Texture2D>();
+                in_tex->LoadFromFile(path, true, in_reverseToneMapping);
+            }
 
             return true;
         }

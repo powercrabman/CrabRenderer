@@ -1,16 +1,16 @@
 #pragma once
 
-#include <nlohmann/json.hpp>
 #include <fstream>
+#include <nlohmann/json.hpp>
 
 namespace crab
 {
 
-template <typename T>
+template<typename T>
 class JsonSerializer
 {
 public:
-    JsonSerializer() = default;
+    JsonSerializer()  = default;
     ~JsonSerializer() = default;
 
     void Serialize(const T& in_data)
@@ -36,8 +36,8 @@ public:
     }
 
 private:
-	using Json = nlohmann::json;
+    using Json = nlohmann::json;
     Json m_js;
 };
 
-}
+}   // namespace crab

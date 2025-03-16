@@ -815,7 +815,9 @@ ComPtr<ID3D11ShaderResourceView> ID3D11ShaderResourceViewUtil::CreateBufferSRV(
     return srv;
 }
 
-ComPtr<ID3D11DepthStencilView> ID3D11DepthStencilViewUtil::CreateDepthStencilView(ID3D11Texture2D* in_texture, eFormat in_format)
+ComPtr<ID3D11DepthStencilView> ID3D11DepthStencilViewUtil::CreateDepthStencilView(
+    ID3D11Texture2D* in_texture,
+    eFormat          in_format)
 {
     ComPtr<ID3D11DepthStencilView> dsv;
 

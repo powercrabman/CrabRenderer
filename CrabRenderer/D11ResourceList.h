@@ -8,32 +8,27 @@ namespace crab
 // Constant Buffer List
 //===================================================
 
+struct ConstantNode
+{
+    Ref<ConstantBufferBase> buffer;
+    uint32                  slot;
+    eShaderFlags            bindFlags;
+};
+
 class ConstantList
 {
 public:
     ConstantList()  = default;
     ~ConstantList() = default;
 
-    ConstantList& Add(
-        const Ref<ConstantBufferBase>& in_constantBuffer,
-        uint32                         in_slot,
-        eShaderFlags                   in_bindFlags);
+    void Init(const std::vector<ConstantNode>& in_constants);
+    void Bind() const;
 
     template<typename DataType>
     Ref<ConstantBuffer<DataType>> FindBuffer();
 
-    void   ClearList();
-    uint64 GetSize() const { return m_constantBuffers.size(); }
-    void   Bind() const;
-
 private:
-    struct Node
-    {
-        Ref<ConstantBufferBase> buffer;
-        uint32                  slot;
-        eShaderFlags            bindFlags;
-    };
-    std::vector<Node> m_constantBuffers = {};
+    std::vector<ConstantNode> m_constantBuffers = {};
 };
 
 template<typename DataType>
@@ -54,29 +49,25 @@ Ref<ConstantBuffer<DataType>> ConstantList::FindBuffer()
 
 class Texture;
 
+struct TextureNode
+{
+    Ref<Texture> texture;
+    uint32       slot;
+    eShaderFlags bindFlags;
+};
+
 class TextureList
 {
 public:
     TextureList()  = default;
+    TextureList(const std::vector<TextureNode>& in_textures) { Init(in_textures); }
     ~TextureList() = default;
 
-    TextureList& Add(
-        const Ref<Texture>& in_texture,
-        uint32              in_slot,
-        eShaderFlags        in_bindFlags);
-
-    void   ClearList();
-    uint64 GetSize() const { return m_images.size(); }
-    void   Bind() const;
+    void Init(const std::vector<TextureNode>& in_textures);
+    void Bind() const;
 
 private:
-    struct Node
-    {
-        Ref<Texture>   image;
-        uint32         slot;
-        eShaderFlags   bindFlags;
-    };
-    std::vector<Node> m_images = {};
+    std::vector<TextureNode> m_textures = {};
 };
 
 //===================================================
@@ -85,29 +76,25 @@ private:
 
 class SamplerState;
 
+struct SamplerNode
+{
+    Ref<SamplerState> sampler;
+    uint32            slot;
+    eShaderFlags      bindFlags;
+};
+
 class SamplerList
 {
 public:
-    SamplerList()  = default;
+    SamplerList() = default;
+    SamplerList(const std::vector<SamplerNode>& in_samplers) { Init(in_samplers); }
     ~SamplerList() = default;
 
-    SamplerList& Add(
-        const Ref<SamplerState>& in_sampler,
-        uint32                   in_slot,
-        eShaderFlags             in_bindFlags);
-
-    void   ClearList();
-    uint64 GetSize() const { return m_samplers.size(); }
-    void   Bind() const;
+    void Init(const std::vector<SamplerNode>& in_samplers);
+    void Bind() const;
 
 private:
-    struct Node
-    {
-        Ref<SamplerState> sampler;
-        uint32            slot;
-        eShaderFlags      bindFlags;
-    };
-    std::vector<Node> m_samplers = {};
+    std::vector<SamplerNode> m_samplers = {};
 };
 
 }   // namespace crab

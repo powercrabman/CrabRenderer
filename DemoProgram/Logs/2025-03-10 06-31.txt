@@ -1,0 +1,8 @@
+[2025-03-10 15:31:08.458] [info] Log initialized
+[2025-03-10 15:31:08.458] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-10 15:31:09.587] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-10 15:31:09.614] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-10 15:31:09.617] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-10 15:31:09.636] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-10 15:31:09.642] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 15:31:10.684] [debug] Event Occurred. "AppClose_CoreEvent"

@@ -12,16 +12,12 @@ namespace crab
 // Index Buffer
 //===================================================
 
-Ref<IndexBuffer> IndexBuffer::Create(const std::vector<uint32>& in_indices)
+void IndexBuffer::Init(const std::vector<uint32>& in_indices)
 {
-    Ref<IndexBuffer> ib = CreateRef<IndexBuffer>();
-
-    ib->m_buffer = ID3D11BufferUtil::CreateIndexBuffer(
+    m_indexCount = static_cast<uint32>(in_indices.size());
+    m_buffer     = ID3D11BufferUtil::CreateIndexBuffer(
         static_cast<uint32>(in_indices.size()),
         in_indices.data());
-
-    ib->m_indexCount = static_cast<uint32>(in_indices.size());
-    return ib;
 }
 
 void IndexBuffer::Bind() const
@@ -29,16 +25,15 @@ void IndexBuffer::Bind() const
     GetRenderer().SetIndexBuffer(m_buffer.Get());
 }
 
-Ref<StagingBuffer> StagingBuffer::Create(
+void StagingBuffer::Init(
     uint32 in_bufferByteWidth,
     bool   in_cpuWrite,
     bool   in_cpuRead)
 {
-    auto sb               = CreateRef<StagingBuffer>();
-    sb->m_buffer          = ID3D11BufferUtil::CreateStagingBuffer(in_bufferByteWidth, in_cpuWrite, in_cpuRead);
-    sb->m_bufferByteWidth = in_bufferByteWidth;
-    return sb;
+    m_bufferByteWidth = in_bufferByteWidth;
+    m_buffer          = ID3D11BufferUtil::CreateStagingBuffer(in_bufferByteWidth, in_cpuWrite, in_cpuRead);
 }
+
 
 void StagingBuffer::WriteToBuffer(const void* in_data, uint32 in_dataByteWidth) const
 {
@@ -86,12 +81,11 @@ void ConstantBufferBase::Bind(uint32 in_slot, eShaderFlags in_bindFlags) const
     GetRenderer().SetConstantBuffer(m_buffer.Get(), in_slot, in_bindFlags);
 }
 
-Ref<UnorderedAccessView> UnorderedAccessView::Create(ID3D11Buffer* in_buffer)
+void UnorderedAccessView::Init(ID3D11Buffer* in_buffer)
 {
-    auto uav       = CreateRef<UnorderedAccessView>();
-    uav->m_uav     = ID3D11UnorderedAccessViewUtil::CreateUAV(in_buffer);
-    uav->m_image2D = Texture2D::CreateFromBuffer(in_buffer);
-    return uav;
+    m_uav     = ID3D11UnorderedAccessViewUtil::CreateUAV(in_buffer);
+    m_texture = CreateRef<Texture2D>();
+    m_texture->Init(in_buffer);
 }
 
 void UnorderedAccessView::BindUAV(uint32 in_slot) const
@@ -102,7 +96,7 @@ void UnorderedAccessView::BindUAV(uint32 in_slot) const
 
 void UnorderedAccessView::BindImage(uint32 in_slot, eShaderFlags in_bindFlags) const
 {
-    m_image2D->Bind(in_slot, in_bindFlags);
+    m_texture->Bind(in_slot, in_bindFlags);
 }
 
 }   // namespace crab

@@ -38,7 +38,6 @@ void ImguiGlue::BeginRender()
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
-    ImGuizmo::BeginFrame();
 }
 
 void ImguiGlue::EndRender()

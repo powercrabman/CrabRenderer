@@ -26,7 +26,7 @@ public:
     void EnableMouseRelativeMode(bool in_enabled) const;
 
     // - Getter
-    Int2  GetWindowSize() const;
+    Int2  GetResolution() const;
     Int2  GetWindowPos() const;
     Int2  GetDisplaySize() const;
     float GetAspect() const;

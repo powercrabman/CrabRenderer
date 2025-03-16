@@ -11,38 +11,14 @@
     <ClInclude Include="CameraScript.h">
       <Filter>Script</Filter>
     </ClInclude>
-    <ClInclude Include="VertexType.h">
-      <Filter>Rendering\Vertex</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalShader.h">
-      <Filter>Rendering\Global Library</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalRenderPass.h">
-      <Filter>Rendering\Global Library</Filter>
-    </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Rendering\Constants</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageFilterFactory.h">
-      <Filter>Rendering\PostProcess</Filter>
-    </ClInclude>
     <ClInclude Include="Components.h">
       <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalConstants.h">
-      <Filter>Rendering\Global Library</Filter>
-    </ClInclude>
-    <ClInclude Include="28. AnimationDemo.h">
-      <Filter>Scene %28Demos%29</Filter>
     </ClInclude>
     <ClInclude Include="Tags.h">
       <Filter>ECS</Filter>
     </ClInclude>
-    <ClInclude Include="ModelUtil.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderUtil.h">
-      <Filter>Rendering</Filter>
+    <ClInclude Include="30. DemoScene.h">
+      <Filter>Scene %28Demos%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -56,32 +32,11 @@
     <ClCompile Include="CameraScript.cpp">
       <Filter>Script</Filter>
     </ClCompile>
-    <ClCompile Include="GlobalShader.cpp">
-      <Filter>Rendering\Global Library</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalRenderPass.cpp">
-      <Filter>Rendering\Global Library</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageFilterFactory.cpp">
-      <Filter>Rendering\PostProcess</Filter>
-    </ClCompile>
     <ClCompile Include="Components.cpp">
       <Filter>ECS</Filter>
     </ClCompile>
-    <ClCompile Include="GlobalConstants.cpp">
-      <Filter>Rendering\Global Library</Filter>
-    </ClCompile>
-    <ClCompile Include="Constants.cpp">
-      <Filter>Rendering\Constants</Filter>
-    </ClCompile>
-    <ClCompile Include="28. AnimationDemo.cpp">
+    <ClCompile Include="30. DemoScene.cpp">
       <Filter>Scene %28Demos%29</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelUtil.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderUtil.cpp">
-      <Filter>Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,56 +55,8 @@
     <Filter Include="Rendering">
       <UniqueIdentifier>{1833c9fc-4537-47b3-a2be-b7a9bd2e6118}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Rendering\Vertex">
-      <UniqueIdentifier>{be40b928-7f44-4567-a25c-c29c447940c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders">
-      <UniqueIdentifier>{0ad2f9d5-d9de-42b9-afa5-e9b9ceae1566}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Constants">
-      <UniqueIdentifier>{afa2ce38-d9e1-4f17-bae8-9b192534c035}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Global Library">
-      <UniqueIdentifier>{e42cfe9c-0144-40d2-ad33-f07dedf10429}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\PostProcess">
-      <UniqueIdentifier>{4b514bd6-5ea6-4c4a-ab34-ad99a7297b1b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ECS">
       <UniqueIdentifier>{57574cbb-4aa5-4e6c-a1bb-104d58e08ab7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\ComputeShader">
-      <UniqueIdentifier>{be01f0d0-ebd0-4854-9f1e-ee848e2a03bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\ComputeShader\FireParticle">
-      <UniqueIdentifier>{308adba7-d932-4f75-a5d8-dbd961ca66c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\ComputeShader\SPH">
-      <UniqueIdentifier>{b2c3d372-f728-4541-9f8a-c7313a4cdfd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\Skybox">
-      <UniqueIdentifier>{61a2f1a1-0691-44cb-9072-8b083a023487}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\Normal">
-      <UniqueIdentifier>{c5d59952-21ab-4b06-96eb-4f99cd1ae8dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\PostProcess">
-      <UniqueIdentifier>{583c60a9-83a2-4267-8534-1c70465d7383}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\PBR">
-      <UniqueIdentifier>{5841f785-2a6a-45cc-b12d-cf7f7c8c004d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\PostEffect">
-      <UniqueIdentifier>{bd83952e-deef-4537-9eef-9d43aa683f0a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\Billboard">
-      <UniqueIdentifier>{6b28d5f7-f2fe-478b-839a-531ff1789460}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\Shadow">
-      <UniqueIdentifier>{ae0074a1-897b-490e-a347-7bfd9be545b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rendering\Shaders\Common">
-      <UniqueIdentifier>{7ba5f823-73d4-42f0-835c-7b2572d0fca0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,127 +69,5 @@
     <None Include="sample.hlsli">
       <Filter>Base</Filter>
     </None>
-    <None Include="ParticleCommon.hlsli">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </None>
-    <None Include="FireParticleDemoCommon.hlsli">
-      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
-    </None>
-    <None Include="SPHCommon.hlsli">
-      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
-    </None>
-    <None Include="Shaders\PostProcessCommon.hlsli">
-      <Filter>Rendering\Shaders\PostProcess</Filter>
-    </None>
-    <None Include="ShadowShader.hlsl">
-      <Filter>Rendering\Shaders\Shadow</Filter>
-    </None>
-    <None Include="Shaders\ShaderCommon.hlsli">
-      <Filter>Rendering\Shaders\Common</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="ComputeDemoCS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="ComputeDemoVS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="ComputeDemoPS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="CSBlurXCS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="CSBlurYCS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="SBDemoPS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="SBDemoVS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="SBDemoCS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="ParticleCS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="ParticleVS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="ParticlePS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="ParticleGS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader</Filter>
-    </FxCompile>
-    <FxCompile Include="FireParticleDemoVS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
-    </FxCompile>
-    <FxCompile Include="FireParticleDemoCS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
-    </FxCompile>
-    <FxCompile Include="FireParticleDemoPS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
-    </FxCompile>
-    <FxCompile Include="FireParticleDemoGS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\FireParticle</Filter>
-    </FxCompile>
-    <FxCompile Include="SPHVS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
-    </FxCompile>
-    <FxCompile Include="SPHGS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
-    </FxCompile>
-    <FxCompile Include="SPHPS.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
-    </FxCompile>
-    <FxCompile Include="SPHComputeDensityPressure.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
-    </FxCompile>
-    <FxCompile Include="SPHComputeForce.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
-    </FxCompile>
-    <FxCompile Include="SPHIntegrate.hlsl">
-      <Filter>Rendering\Shaders\ComputeShader\SPH</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\SkyboxShader.hlsl">
-      <Filter>Rendering\Shaders\Skybox</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\BlurDownPS.hlsl">
-      <Filter>Rendering\Shaders\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\BlurUpPS.hlsl">
-      <Filter>Rendering\Shaders\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\PostProcessVS.hlsl">
-      <Filter>Rendering\Shaders\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\SamplingPS.hlsl">
-      <Filter>Rendering\Shaders\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\ToneMapPS.hlsl">
-      <Filter>Rendering\Shaders\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\CombinePS.hlsl">
-      <Filter>Rendering\Shaders\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\PBRShader.hlsl">
-      <Filter>Rendering\Shaders\PBR</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\MaskingShader.hlsl">
-      <Filter>Rendering\Shaders\PostEffect</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\FogPS.hlsl">
-      <Filter>Rendering\Shaders\PostEffect</Filter>
-    </FxCompile>
-    <FxCompile Include="DepthVisualizePS.hlsl">
-      <Filter>Rendering\Shaders\PostProcess</Filter>
-    </FxCompile>
-    <FxCompile Include="DrawNormalShader.hlsl">
-      <Filter>Rendering\Shaders\Normal</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>

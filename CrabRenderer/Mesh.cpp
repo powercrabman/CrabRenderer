@@ -9,35 +9,45 @@
 namespace crab
 {
 
-Ref<Mesh> Mesh::Create(const Ref<VertexBuffer>& in_vb,
-                       const Ref<IndexBuffer>&  in_ib,
-                       eTopology                in_topology)
+void Mesh::Init(const Ref<VertexBuffer>& in_vb,
+                const Ref<IndexBuffer>&  in_ib,
+                eTopology                in_topology)
 {
-    auto mesh            = CreateRef<Mesh>();
-    mesh->m_vertexBuffer = in_vb;
-    mesh->m_indexBuffer  = in_ib;
-    mesh->m_topology     = in_topology;
-    return mesh;
+    m_vertexBuffer = in_vb;
+    m_indexBuffer  = in_ib;
+    m_topology     = in_topology;
 }
 
-Ref<Mesh> Mesh::Create(const Ref<VertexBuffer>& in_vb, eTopology in_topology)
+void Mesh::Draw(eTopology in_topology) const
 {
-    return Create(in_vb, nullptr, in_topology);
-}
-
-void Mesh::Draw() const
-{
-    GetRenderer().SetTopology(m_topology);
+    GetRenderer().SetTopology(in_topology);
 
     m_vertexBuffer->Bind();
 
     if (m_indexBuffer)
         m_indexBuffer->Bind();
 
-    if (m_indexBuffer)
-        GetRenderer().DrawIndexed(m_indexBuffer->GetIndexCount());
-    else
-        GetRenderer().Draw(m_vertexBuffer->GetVertexCount());
+    switch (m_topology)
+    {
+        case eTopology::LineList:
+        case eTopology::LineStrip:
+        case eTopology::TriangleList:
+        case eTopology::TriangleStrip:
+            GetRenderer().DrawIndexed(m_indexBuffer->GetIndexCount());
+            break;
+
+        case eTopology::PointList:
+        case eTopology::PatchList_3:
+        case eTopology::PatchList_4:
+        case eTopology::PatchList_5:
+        case eTopology::PatchList_6:
+            GetRenderer().Draw(m_vertexBuffer->GetVertexCount());
+            break;
+
+        default:
+            CRAB_DEBUG_BREAK("Unknown topology");
+            break;
+    }
 }
 
 }   // namespace crab

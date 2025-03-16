@@ -21,23 +21,32 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="AppWindow.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="CrabLinearAlgebraUtils.h" />
+    <ClInclude Include="CrabMath.h" />
+    <ClInclude Include="CrabRandom.h" />
     <ClInclude Include="D11ResourceList.h" />
     <ClInclude Include="DepthMap.h" />
     <ClInclude Include="Draw2D.h" />
     <ClInclude Include="ErrorHandler.h" />
     <ClInclude Include="FileSystem.h" />
-    <ClInclude Include="Frustum.h" />
     <ClInclude Include="GizmoController.h" />
+    <ClInclude Include="GlobalConstant.h" />
+    <ClInclude Include="GlobalPipeline.h" />
+    <ClInclude Include="GlobalShader.h" />
+    <ClInclude Include="ImageFilterFactory.h" />
     <ClInclude Include="JsonSerializer.h" />
     <ClInclude Include="Material.h" />
-    <ClInclude Include="RenderPass.h" />
+    <ClInclude Include="CrabPass.h" />
+    <ClInclude Include="PassCommon.h" />
+    <ClInclude Include="PipelineState.h" />
     <ClInclude Include="RayCast.h" />
-    <ClInclude Include="CommonState.h" />
+    <ClInclude Include="GlobalState.h" />
     <ClInclude Include="CrabComponents.h" />
     <ClInclude Include="CrabEvent.h" />
     <ClInclude Include="CrabInclude.h" />
     <ClInclude Include="CrabMacro.h" />
-    <ClInclude Include="CrabMath.h" />
+    <ClInclude Include="CrabMathCommon.h" />
     <ClInclude Include="CrabPch.h" />
     <ClInclude Include="CrabTypes.h" />
     <ClInclude Include="Buffers.h" />
@@ -46,11 +55,13 @@
     <ClInclude Include="InputElements.h" />
     <ClInclude Include="GeometryFactory.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="RenderResourceFactory.h" />
     <ClInclude Include="RenderStates.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="D11Renderer.h" />
     <ClInclude Include="Snapshot.h" />
+    <ClInclude Include="StringLiteral.h" />
     <ClInclude Include="Swapchain.h" />
     <ClInclude Include="ImageFilter.h" />
     <ClInclude Include="PostProcess.h" />
@@ -81,21 +92,28 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="AppWindow.cpp" />
+    <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="CrabLinearAlgebraUtils.cpp" />
+    <ClCompile Include="CrabRandom.cpp" />
     <ClCompile Include="D11ResourceList.cpp" />
     <ClCompile Include="DepthMap.cpp" />
     <ClCompile Include="Draw2D.cpp" />
     <ClCompile Include="ErrorHandler.cpp" />
     <ClCompile Include="FileSystem.cpp" />
-    <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="GizmoController.cpp" />
+    <ClCompile Include="GlobalConstant.cpp" />
+    <ClCompile Include="GlobalPipeline.cpp" />
+    <ClCompile Include="GlobalShader.cpp" />
+    <ClCompile Include="ImageFilterFactory.cpp" />
     <ClCompile Include="JsonSerializer.cpp" />
     <ClCompile Include="Material.cpp" />
-    <ClCompile Include="RenderPass.cpp" />
+    <ClCompile Include="CrabPass.cpp" />
+    <ClCompile Include="PipelineState.cpp" />
     <ClCompile Include="RayCast.cpp" />
-    <ClCompile Include="CommonState.cpp" />
+    <ClCompile Include="GlobalState.cpp" />
     <ClCompile Include="CrabComponents.cpp" />
     <ClCompile Include="CrabEvent.cpp" />
-    <ClCompile Include="CrabMath.cpp" />
+    <ClCompile Include="CrabMathCommon.cpp" />
     <ClCompile Include="CrabPch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -107,6 +125,7 @@
     <ClCompile Include="InputElements.cpp" />
     <ClCompile Include="GeometryFactory.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="RenderResourceFactory.cpp" />
     <ClCompile Include="RenderStates.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="Shaders.cpp" />
@@ -140,6 +159,60 @@
   <ItemGroup>
     <None Include=".clang-format" />
     <None Include="cpp.hint" />
+    <None Include="Shaders\PostProcessCommon.hlsli">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="Shaders\ShaderCommon.hlsli">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\BlurDownPS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\BlurUpPS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\CombinePS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\DrawNormalShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\MaskingShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\PBRShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\PostProcessVS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\SamplingPS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\ShadowShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\SkyboxShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Shaders\ToneMapPS.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -10,9 +10,6 @@
     <Filter Include="98. Log">
       <UniqueIdentifier>{69fa41c5-463d-490f-90c3-c3ce3aac6969}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. AppWindow">
-      <UniqueIdentifier>{83e78efa-6a75-478f-8234-f15d1914b731}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Application\Layer">
       <UniqueIdentifier>{f8489f56-8205-4f5d-80c1-1e162cdd9ff6}</UniqueIdentifier>
     </Filter>
@@ -21,9 +18,6 @@
     </Filter>
     <Filter Include="01. Application\Event">
       <UniqueIdentifier>{13fc7adb-72ec-479a-836d-34a1381593fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="99. Base\DataStructure">
-      <UniqueIdentifier>{aa33b47a-1968-431d-a9ff-358d24a0d72f}</UniqueIdentifier>
     </Filter>
     <Filter Include="04. Renderer">
       <UniqueIdentifier>{0b98f8b0-b56d-43d7-b414-d8fb65b7c763}</UniqueIdentifier>
@@ -54,12 +48,6 @@
     </Filter>
     <Filter Include="04. Renderer\Utils\Raycast">
       <UniqueIdentifier>{9c3f5b61-66af-4a17-a1fb-5a0ac7234741}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Renderer\PostProcess\Sample">
-      <UniqueIdentifier>{f3409081-4bc9-4336-9418-d831d6efefec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. AppWindow\Third party">
-      <UniqueIdentifier>{1b4aed6a-91a0-4742-b600-b8b0803609b0}</UniqueIdentifier>
     </Filter>
     <Filter Include="04. Renderer\Mesh/Material">
       <UniqueIdentifier>{8f476673-fe22-429f-a800-0a19e7f0ee92}</UniqueIdentifier>
@@ -94,14 +82,68 @@
     <Filter Include="04. Renderer\DirectX\Texture">
       <UniqueIdentifier>{b2a082e9-c170-42b9-b5aa-199fb4927c4e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\DirectX\RenderPass">
-      <UniqueIdentifier>{122212a8-7316-458f-b4e0-9d842786739a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04. Renderer\Draw2D">
       <UniqueIdentifier>{38b36db8-09aa-4024-bb2e-9d555b174152}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Renderer\Light&amp;Shadow">
+    <Filter Include="04. Renderer\DirectX\PipelineState">
+      <UniqueIdentifier>{122212a8-7316-458f-b4e0-9d842786739a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Light/Shadow">
+      <UniqueIdentifier>{e9c9fc1f-0e92-43cd-9e9d-529a120b62fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader">
+      <UniqueIdentifier>{2761f112-83d4-43a9-b9b5-3d8ecbce22fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader\Common">
+      <UniqueIdentifier>{3bcb15b6-1781-4614-a6b2-f041f40f8c0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader\Normal">
+      <UniqueIdentifier>{68ae6ed6-58aa-4e46-885f-2f9ec6119484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader\Skybox">
+      <UniqueIdentifier>{3fbc4d1d-97fe-4cd4-9bf8-90ab11278de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader\PBR">
+      <UniqueIdentifier>{ee335e11-6d9a-4068-8704-f5aed0569f61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader\PostProcess">
+      <UniqueIdentifier>{20ef81aa-e7d7-4dd2-9875-8207d2d82bd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader\Shadow">
+      <UniqueIdentifier>{2246ecf5-0e82-4278-ae5a-e2f60fbd0965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Shader\Mask">
+      <UniqueIdentifier>{21d24431-4860-4ec6-81a0-9532699613e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Global">
+      <UniqueIdentifier>{046484a4-456c-437c-a711-93ebaffdeba2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Constants">
+      <UniqueIdentifier>{607a0217-7147-4e30-abdc-e076befa630b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Pass">
+      <UniqueIdentifier>{30b447d4-79d6-4b34-98ad-65e372134a0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Pass\Light/Shadow">
       <UniqueIdentifier>{52092a0d-3053-4a7b-9357-1746739b57c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Pass\Reflection">
+      <UniqueIdentifier>{bc4a25a4-deee-441d-b6ae-9e19d2c09030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Pass\DepthVisualize">
+      <UniqueIdentifier>{7d3b4986-36d2-4292-9e62-7746e6d0d38a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Renderer\Factory">
+      <UniqueIdentifier>{a29cd7f8-4b63-4f0e-8bcd-cc75f74fb8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Base\DataStructure">
+      <UniqueIdentifier>{aa33b47a-1968-431d-a9ff-358d24a0d72f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. AppWindow">
+      <UniqueIdentifier>{83e78efa-6a75-478f-8234-f15d1914b731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. AppWindow\Third party">
+      <UniqueIdentifier>{1b4aed6a-91a0-4742-b600-b8b0803609b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +207,7 @@
     <ClCompile Include="Entity.cpp">
       <Filter>06. ECS</Filter>
     </ClCompile>
-    <ClCompile Include="CrabMath.cpp">
+    <ClCompile Include="CrabMathCommon.cpp">
       <Filter>99. Base\Math</Filter>
     </ClCompile>
     <ClCompile Include="ImguiGlue.cpp">
@@ -210,11 +252,8 @@
     <ClCompile Include="GeometryFactory.cpp">
       <Filter>04. Renderer\Mesh/Material</Filter>
     </ClCompile>
-    <ClCompile Include="CommonState.cpp">
-      <Filter>04. Renderer\DirectX\RenderState</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderPass.cpp">
-      <Filter>04. Renderer\DirectX\RenderPass</Filter>
+    <ClCompile Include="PipelineState.cpp">
+      <Filter>04. Renderer\DirectX\PipelineState</Filter>
     </ClCompile>
     <ClCompile Include="RayCast.cpp">
       <Filter>04. Renderer\Utils\Raycast</Filter>
@@ -253,9 +292,36 @@
       <Filter>04. Renderer\Draw2D</Filter>
     </ClCompile>
     <ClCompile Include="DepthMap.cpp">
-      <Filter>04. Renderer\Light&amp;Shadow</Filter>
+      <Filter>04. Renderer\Light/Shadow</Filter>
     </ClCompile>
-    <ClCompile Include="Frustum.cpp">
+    <ClCompile Include="GlobalState.cpp">
+      <Filter>04. Renderer\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalConstant.cpp">
+      <Filter>04. Renderer\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalShader.cpp">
+      <Filter>04. Renderer\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalPipeline.cpp">
+      <Filter>04. Renderer\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>04. Renderer\Constants</Filter>
+    </ClCompile>
+    <ClCompile Include="CrabPass.cpp">
+      <Filter>04. Renderer\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFilterFactory.cpp">
+      <Filter>04. Renderer\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderResourceFactory.cpp">
+      <Filter>04. Renderer\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="CrabRandom.cpp">
+      <Filter>99. Base\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CrabLinearAlgebraUtils.cpp">
       <Filter>99. Base\Math</Filter>
     </ClCompile>
   </ItemGroup>
@@ -335,7 +401,7 @@
     <ClInclude Include="Entity.h">
       <Filter>06. ECS</Filter>
     </ClInclude>
-    <ClInclude Include="CrabMath.h">
+    <ClInclude Include="CrabMathCommon.h">
       <Filter>99. Base\Math</Filter>
     </ClInclude>
     <ClInclude Include="ImguiGlue.h">
@@ -386,11 +452,8 @@
     <ClInclude Include="GeometryFactory.h">
       <Filter>04. Renderer\Mesh/Material</Filter>
     </ClInclude>
-    <ClInclude Include="CommonState.h">
-      <Filter>04. Renderer\DirectX\RenderState</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderPass.h">
-      <Filter>04. Renderer\DirectX\RenderPass</Filter>
+    <ClInclude Include="PipelineState.h">
+      <Filter>04. Renderer\DirectX\PipelineState</Filter>
     </ClInclude>
     <ClInclude Include="RayCast.h">
       <Filter>04. Renderer\Utils\Raycast</Filter>
@@ -429,9 +492,45 @@
       <Filter>99. Base</Filter>
     </ClInclude>
     <ClInclude Include="DepthMap.h">
-      <Filter>04. Renderer\Light&amp;Shadow</Filter>
+      <Filter>04. Renderer\Light/Shadow</Filter>
     </ClInclude>
-    <ClInclude Include="Frustum.h">
+    <ClInclude Include="GlobalState.h">
+      <Filter>04. Renderer\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalConstant.h">
+      <Filter>04. Renderer\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalShader.h">
+      <Filter>04. Renderer\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalPipeline.h">
+      <Filter>04. Renderer\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>04. Renderer\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="StringLiteral.h">
+      <Filter>99. Base\CompileTimeAlgorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabPass.h">
+      <Filter>04. Renderer\Pass</Filter>
+    </ClInclude>
+    <ClInclude Include="PassCommon.h">
+      <Filter>04. Renderer\Pass</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilterFactory.h">
+      <Filter>04. Renderer\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderResourceFactory.h">
+      <Filter>04. Renderer\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabRandom.h">
+      <Filter>99. Base\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabLinearAlgebraUtils.h">
+      <Filter>99. Base\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabMath.h">
       <Filter>99. Base\Math</Filter>
     </ClInclude>
   </ItemGroup>
@@ -442,5 +541,46 @@
     <None Include="cpp.hint">
       <Filter>99. Base</Filter>
     </None>
+    <None Include="Shaders\PostProcessCommon.hlsli">
+      <Filter>04. Renderer\Shader\PostProcess</Filter>
+    </None>
+    <None Include="Shaders\ShaderCommon.hlsli">
+      <Filter>04. Renderer\Shader</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\DrawNormalShader.hlsl">
+      <Filter>04. Renderer\Shader\Normal</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PostProcessVS.hlsl">
+      <Filter>04. Renderer\Shader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ToneMapPS.hlsl">
+      <Filter>04. Renderer\Shader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SamplingPS.hlsl">
+      <Filter>04. Renderer\Shader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\BlurDownPS.hlsl">
+      <Filter>04. Renderer\Shader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\BlurUpPS.hlsl">
+      <Filter>04. Renderer\Shader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\CombinePS.hlsl">
+      <Filter>04. Renderer\Shader\PostProcess</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PBRShader.hlsl">
+      <Filter>04. Renderer\Shader\PBR</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SkyboxShader.hlsl">
+      <Filter>04. Renderer\Shader\Skybox</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ShadowShader.hlsl">
+      <Filter>04. Renderer\Shader\Shadow</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\MaskingShader.hlsl">
+      <Filter>04. Renderer\Shader\Mask</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

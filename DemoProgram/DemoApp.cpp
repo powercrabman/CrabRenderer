@@ -2,10 +2,7 @@
 
 #include "DemoApp.h"
 
-#include "GlobalRenderPass.h"
-#include "GlobalShader.h"
-
-#include "28. AnimationDemo.h"
+#include "30. DemoScene.h"
 
 DemoApp::DemoApp(const ApplicationSetting& in_setting)
     : Application(in_setting)
@@ -18,21 +15,14 @@ DemoApp::~DemoApp()
 
 void DemoApp::OnInit()
 {
-    PreLoadResources();
-
     SceneManager& sm = GetSceneManager();
 
-    sm.CreateScene<AnimationDemo>();
-    sm.ChangeScene<AnimationDemo>();
+    sm.CreateScene<DemoScene>();
+    sm.ChangeScene<DemoScene>();
 }
 
 void DemoApp::OnShutdown()
 {
 }
 
-void DemoApp::PreLoadResources()
-{
-    GetGlobalConstants().Init();
-    GetShaderLibrary().Init();
-    GetGlobalRenderPass().Init();
-}
+

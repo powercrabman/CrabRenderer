@@ -10,10 +10,8 @@
 namespace crab
 {
 
-Ref<RenderTarget> RenderTarget::Create(ID3D11Texture2D* in_texture)
+void RenderTarget::Init(ID3D11Texture2D* in_texture)
 {
-    Ref<RenderTarget> rt = CreateRef<RenderTarget>();
-
     D3D11_TEXTURE2D_DESC texDesc = {};
     in_texture->GetDesc(&texDesc);
 
@@ -25,24 +23,21 @@ Ref<RenderTarget> RenderTarget::Create(ID3D11Texture2D* in_texture)
     CheckD3D11Result(
         GetRenderer().GetDevice()->CreateRenderTargetView(in_texture,
                                                           &desc,
-                                                          rt->m_renderTargetView.GetAddressOf()),
+                                                          m_renderTargetView.GetAddressOf()),
         "CreateRenderTargetView Fail.");
 
-    rt->m_image  = Texture2D::CreateFromTexture(in_texture);
-    rt->m_format = static_cast<eFormat>(texDesc.Format);
-
-    return rt;
+    m_image = CreateRef<Texture2D>();
+    m_image->Init(in_texture, static_cast<eFormat>(texDesc.Format));
+    m_format = static_cast<eFormat>(texDesc.Format);
 }
 
-Ref<RenderTarget> RenderTarget::Create(
+void RenderTarget::Init(
     uint32  in_width,
     uint32  in_height,
     eFormat in_format,
     uint32  in_MSAASampleCount,
     uint32  in_MSAAQuality)
 {
-    Ref<RenderTarget> rt = CreateRef<RenderTarget>();
-
     auto tex = ID3D11Texture2DUtil::CreateDefaultTexture2D(
         in_width,
         in_height,
@@ -53,7 +48,7 @@ Ref<RenderTarget> RenderTarget::Create(
         D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE,
         0);
 
-    return Create(tex.Get());
+    Init(tex.Get());
 }
 
 void RenderTarget::Bind() const

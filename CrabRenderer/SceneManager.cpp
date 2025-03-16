@@ -96,6 +96,12 @@ void SceneManager::OnUpdate(TimeStamp& in_ts) const
         m_currentScene->GetView<ScriptComponent>().each(
             [&](const ScriptComponent& in_script)
             {
+                if (!in_script.script->IsInited())
+                {
+                    in_script.script->Init();
+                    in_script.script->m_isInited = true;
+                }
+
                 in_script.script->OnUpdate(in_ts);
             });
 

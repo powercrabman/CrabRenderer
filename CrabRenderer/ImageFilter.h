@@ -18,16 +18,14 @@ class SamplerState;
 
 class ImageFilter
 {
-    D11_RESOURCE_CTOR(ImageFilter);
-
 public:
-    static Ref<ImageFilter> Create(uint32                    in_filterWidth,
-                                   uint32                    in_filterHeight,
-                                   const Ref<VertexShader>&  in_vertexShader,
-                                   const Ref<PixelShader>&   in_pixelShader,
-                                   const TextureList&        in_inputTextures,
-                                   const SamplerList&   in_samplerLists,
-                                   const ConstantList& in_constantBuffers);
+    void Init(uint32                   in_filterWidth,
+              uint32                   in_filterHeight,
+              const Ref<VertexShader>& in_vertexShader,
+              const Ref<PixelShader>&  in_pixelShader,
+              const TextureList&       in_inputTextures,
+              const SamplerList&       in_samplerLists,
+              const ConstantList&      in_constantBuffers);
 
     Ref<ImageFilter> Clone() const;
 
@@ -37,7 +35,7 @@ public:
     void SetRenderTarget(const Ref<RenderTarget>& in_rt);
 
     // Getter
-    auto         GetResolution() const;
+    auto           GetResolution() const;
     Ref<Texture2D> GetOutputTexture() const;
 
 private:
@@ -47,8 +45,8 @@ private:
     Ref<VertexShader> m_vertexShader;
     Ref<PixelShader>  m_pixelShader;
 
-    TextureList        m_inputImages;
-    SamplerList   m_samplerStates;
+    TextureList  m_inputImages;
+    SamplerList  m_samplerStates;
     ConstantList m_constantBuffers;
 };
 

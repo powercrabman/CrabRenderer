@@ -33,10 +33,11 @@ public:
     void Quit();
 
     // - Getter
-    AppWindow&          GetAppWindow() const;
-    static Application& GetInstance();
-    std::string_view    GetApplicationName() const;
-    const TimeStamp&    GetTimeStamp() const;
+    AppWindow&            GetAppWindow() const;
+    static Application&   GetInstance();
+    std::string_view      GetApplicationName() const;
+    const TimeStamp&      GetTimeStamp() const;
+    std::filesystem::path GetEngineDirectory() const { return m_engineDirectory; }
 
     // - Event
     template<typename Ty>
@@ -52,12 +53,15 @@ private:
     virtual void OnInit()     = 0;   // in the derived class
     virtual void OnShutdown() = 0;   // in the derived class
 
+    void _Init();
     int  _Run();
     void _OnEvent(CrabEvent& in_event);
 
     std::string      m_applicationName;
     Scope<AppWindow> m_appWindow;
     TimeStamp        m_timeStamp;
+
+    std::filesystem::path m_engineDirectory;
 
     bool m_isRunning;
 

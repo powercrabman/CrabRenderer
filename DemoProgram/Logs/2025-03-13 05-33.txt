@@ -1,0 +1,17 @@
+[2025-03-13 14:33:39.331] [info] Log initialized
+[2025-03-13 14:33:39.331] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-13 14:33:40.670] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-13 14:33:40.763] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-13 14:33:40.773] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-13 14:33:40.813] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-13 14:33:40.823] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxEnvHDR.dds
+[2025-03-13 14:33:40.875] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxDiffuseHDR.dds
+[2025-03-13 14:33:40.886] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxSpecularHDR.dds
+[2025-03-13 14:33:40.937] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxBrdf.dds
+[2025-03-13 14:33:41.921] [info] Load Image: Resources\AnimationDemo\floor2\floor_tiles_06_nor_gl_2k.exr
+[2025-03-13 14:33:42.798] [info] Load Image: Resources\AnimationDemo\floor2\floor_tiles_06_rough_2k.jpg
+[2025-03-13 14:33:42.825] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-13 14:33:44.225] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-13 14:33:44.345] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-13 14:33:45.756] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-13 14:33:45.760] [debug] Event Occurred. "AppClose_CoreEvent"

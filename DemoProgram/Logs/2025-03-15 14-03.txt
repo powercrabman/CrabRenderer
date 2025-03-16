@@ -1,0 +1,27 @@
+[2025-03-15 23:03:30.586] [info] Log initialized
+[2025-03-15 23:03:30.586] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-15 23:03:31.514] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-15 23:03:31.670] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-15 23:03:31.684] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-15 23:03:31.745] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-15 23:03:31.757] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxEnvHDR.dds
+[2025-03-15 23:03:31.816] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxDiffuseHDR.dds
+[2025-03-15 23:03:31.829] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxSpecularHDR.dds
+[2025-03-15 23:03:31.883] [info] Load Image: Resources\AnimationDemo\NightSkybox\skyboxBrdf.dds
+[2025-03-15 23:03:35.152] [info] Load Image: Resources\AnimationDemo\floor2\floor_tiles_06_nor_gl_2k.exr
+[2025-03-15 23:03:36.057] [info] Load Image: Resources\AnimationDemo\floor2\floor_tiles_06_rough_2k.jpg
+[2025-03-15 23:03:36.085] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-15 23:03:37.117] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.383] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.433] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.450] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.484] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.517] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.551] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.584] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.617] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.651] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:37.684] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-15 23:03:38.446] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-15 23:03:38.835] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-15 23:05:31.971] [debug] Event Occurred. "AppClose_CoreEvent"

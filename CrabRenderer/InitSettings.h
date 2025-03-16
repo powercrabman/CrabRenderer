@@ -31,7 +31,7 @@ enum class eRendererAPI
 struct SwapChainSetting
 {
     eFormat swapChainFormat   = eFormat::UNorm8x4;
-    eFormat depthBufferFormat = eFormat::Depth_Float32_Stencil_UInt8;
+    eFormat depthBufferFormat = eFormat::Depth_UNorm24_Stencil_UInt8;
 
     bool enableVSync        = true;
     bool enableHDRRendering = false;
@@ -61,6 +61,8 @@ struct ApplicationSetting
 
     // - Renderer
     RendererSetting rendererSetting = {};
+
+    std::string engineDirectory = "";
 };
 
 }   // namespace crab

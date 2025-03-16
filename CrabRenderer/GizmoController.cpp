@@ -16,7 +16,7 @@ void GizmoController::BeginGizmo(
     Quat&             in_rotation,
     Vec3&             in_scale)
 {
-    auto [width, height] = GetAppWindow().GetWindowSize();
+    auto [width, height] = GetAppWindow().GetResolution();
 
     BeginGizmo(
         in_view,

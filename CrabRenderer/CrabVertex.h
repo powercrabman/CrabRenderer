@@ -12,17 +12,21 @@ namespace crab
  * This is just sample.
  */
 
+struct VertexData
+{
+    Vec3 position  = Vec3::Zero;
+    Vec3 normal    = Vec3::Zero;
+    Vec2 texCoord  = Vec2::Zero;
+    Vec3 tangent   = Vec3::Zero;
+    Vec3 bitangent = Vec3::Zero;
+    Vec3 color     = Vec3::Zero;
+};
+
 struct GeometryData
 {
-    std::vector<Vec3> positions;
-    std::vector<Vec3> normals;
-    std::vector<Vec2> texCoords;
-    std::vector<Vec3> tangents;
-    std::vector<Vec3> bitangents;
-    std::vector<Vec3> colors;
-
-    std::vector<uint32> indices;
-    eTopology           topology;
+    std::vector<VertexData> subDatas;   // this is
+    std::vector<uint32>     indices;
+    eTopology               topology;
 };
 
 // This Vertex Is STANDARD
@@ -41,51 +45,13 @@ struct Vertex2D
         return elements;
     }();
 
-    static std::vector<Vertex2D> CreateVertices(
-        const std::vector<Vec2>& in_positions,
-        const std::vector<Vec2>& in_texCoords)
+    inline static Vertex2D CreateVertex(
+        const VertexData& in_data)
     {
-        std::vector<Vertex2D> vertices;
-        vertices.reserve(in_positions.size());
-        for (uint32 i = 0; i < in_positions.size(); i++)
-        {
-            Vertex2D vertex;
-            vertex.position = in_positions[i];
-            vertex.texCoord = in_texCoords[i];
-            vertices.push_back(vertex);
-        }
-        return vertices;
-    }
-
-    static std::vector<Vertex2D> CreateVertices(
-        const std::vector<Vec3>& in_positions,
-        const std::vector<Vec2>& in_texCoords)
-    {
-        std::vector<Vertex2D> vertices;
-        vertices.reserve(in_positions.size());
-        for (uint32 i = 0; i < in_positions.size(); i++)
-        {
-            Vertex2D vertex;
-            vertex.position = Vec2(in_positions[i].x, in_positions[i].y);
-            vertex.texCoord = in_texCoords[i];
-            vertices.push_back(vertex);
-        }
-        return vertices;
-    }
-
-    static std::vector<Vertex2D> CreateVertices(
-        const GeometryData& in_geoData)
-    {
-        std::vector<Vertex2D> vertices;
-        vertices.reserve(in_geoData.positions.size());
-        for (uint32 i = 0; i < in_geoData.positions.size(); i++)
-        {
-            Vertex2D vertex;
-            vertex.position = Vec2(in_geoData.positions[i].x, in_geoData.positions[i].y);
-            vertex.texCoord = in_geoData.texCoords[i];
-            vertices.push_back(vertex);
-        }
-        return vertices;
+        Vertex2D vertex = {};
+        vertex.position = Vec2(in_data.position.x, in_data.position.y);
+        vertex.texCoord = in_data.texCoord;
+        return vertex;
     }
 };
 
@@ -109,41 +75,15 @@ struct Vertex3D
         return elements;
     }();
 
-    static std::vector<Vertex3D> CreateVertices(
-        const std::vector<Vec3>& in_positions,
-        const std::vector<Vec3>& in_normals,
-        const std::vector<Vec2>& in_texCoords,
-        const std::vector<Vec3>& in_tangents)
+    inline static Vertex3D CreateVertex(
+        const VertexData& in_data)
     {
-        std::vector<Vertex3D> vertices;
-        vertices.reserve(in_positions.size());
-        for (uint32 i = 0; i < in_positions.size(); i++)
-        {
-            Vertex3D vertex;
-            vertex.position = in_positions[i];
-            vertex.normal   = in_normals[i];
-            vertex.texCoord = in_texCoords[i];
-            vertex.tangent  = in_tangents[i];
-            vertices.push_back(vertex);
-        }
-        return vertices;
-    }
-
-    static std::vector<Vertex3D> CreateVertices(
-        const GeometryData& in_geoData)
-    {
-        std::vector<Vertex3D> vertices;
-        vertices.reserve(in_geoData.positions.size());
-        for (uint32 i = 0; i < in_geoData.positions.size(); i++)
-        {
-            Vertex3D vertex;
-            vertex.position = in_geoData.positions[i];
-            vertex.normal   = in_geoData.normals[i];
-            vertex.texCoord = in_geoData.texCoords[i];
-            vertex.tangent  = in_geoData.tangents[i];
-            vertices.push_back(vertex);
-        }
-        return vertices;
+        Vertex3D vertex = {};
+        vertex.position = in_data.position;
+        vertex.normal   = in_data.normal;
+        vertex.texCoord = in_data.texCoord;
+        vertex.tangent  = in_data.tangent;
+        return vertex;
     }
 };
 
@@ -157,49 +97,6 @@ struct SkinnedVertex3D
 
     std::array<float, CRAB_SKIN_MAX> boneWeight;
     std::array<uint8, CRAB_SKIN_MAX> boneIndices;
-
-    static std::vector<SkinnedVertex3D> CreateVertices(
-        const std::vector<Vec3>&                             in_positions,
-        const std::vector<Vec3>&                             in_normals,
-        const std::vector<Vec2>&                             in_texCoords,
-        const std::vector<Vec3>&                             in_tangents,
-        const std::vector<std::array<float, CRAB_SKIN_MAX>>& in_boneWeights,
-        const std::vector<std::array<uint8, CRAB_SKIN_MAX>>& in_boneIndices)
-    {
-        std::vector<SkinnedVertex3D> vertices;
-        vertices.reserve(in_positions.size());
-        for (uint32 i = 0; i < in_positions.size(); i++)
-        {
-            SkinnedVertex3D vertex;
-            vertex.position    = in_positions[i];
-            vertex.normal      = in_normals[i];
-            vertex.texCoord    = in_texCoords[i];
-            vertex.tangent     = in_tangents[i];
-            vertex.boneWeight  = in_boneWeights[i];
-            vertex.boneIndices = in_boneIndices[i];
-            vertices.push_back(vertex);
-        }
-        return vertices;
-    }
-
-    static std::vector<SkinnedVertex3D> CreateVertices(
-        const GeometryData& in_geoData)
-    {
-        std::vector<SkinnedVertex3D> vertices;
-        vertices.reserve(in_geoData.positions.size());
-        for (uint32 i = 0; i < in_geoData.positions.size(); i++)
-        {
-            SkinnedVertex3D vertex;
-            vertex.position    = in_geoData.positions[i];
-            vertex.normal      = in_geoData.normals[i];
-            vertex.texCoord    = in_geoData.texCoords[i];
-            vertex.tangent     = in_geoData.tangents[i];
-            vertex.boneWeight  = { 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f };
-            vertex.boneIndices = { 0, 0, 0, 0, 0, 0, 0, 0 };
-            vertices.push_back(vertex);
-        }
-        return vertices;
-    }
 };
 
 }   // namespace crab

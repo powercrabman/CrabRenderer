@@ -3,6 +3,11 @@
 
 namespace crab
 {
+struct TagComponent;
+}
+
+namespace crab
+{
 
 struct TimeStamp;
 
@@ -40,8 +45,10 @@ public:
     Entity CreateEntity(uint32 in_id);
     Entity CloneEntity(Entity in_src);
 
-    Entity FindEntity(uint32 in_id);
-    Entity FindEntity(const IDComponent& in_id);
+    Entity FindEntityByID(uint32 in_id);
+    Entity FindEntityByID(const IDComponent& in_id);
+    Entity FindEntityByTag(std::string_view in_tag);
+    Entity FindEntityByTag(const TagComponent& in_tag);
 
     template<class... Types, class... Exclude>
     auto GetView(entt::exclude_t<Exclude...> exclude = entt::exclude_t {});

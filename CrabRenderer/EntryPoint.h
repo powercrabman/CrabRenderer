@@ -18,7 +18,7 @@ int main(int argc, char** argv)
     Application::s_instance = Scope<Application>(::CreateCrabApplication(commandLineArgs));
 
     Application& app = GetApplication();
-    app.OnInit();
+    app._Init();
     const int output = app._Run();
     Log::Shutdown();
     return output;

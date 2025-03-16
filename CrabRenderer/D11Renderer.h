@@ -5,6 +5,10 @@
 namespace crab
 {
 
+class GlobalPipeline;
+class GlobalConstant;
+class GlobalShader;
+
 class VertexShader;
 class PixelShader;
 class VertexBuffer;
@@ -18,7 +22,7 @@ class RenderStates;
 class Swapchain;
 class RenderTarget;
 class DepthBuffer;
-class CommonState;
+class GlobalState;
 
 class D11Renderer : public Singleton<D11Renderer>
 {
@@ -29,6 +33,7 @@ public:
 
     // - Core
     void Init(const RendererSetting& in_setting, const Int2& in_screenSize, HWND in_hWnd);
+    void InitGlobalResources(const std::filesystem::path& in_engineDirectory);
     void Shutdown();
 
     void OnEvent(CrabEvent& in_event) const;
@@ -60,21 +65,12 @@ public:
     void DispatchComputeShader(ID3D11ComputeShader* in_cs, uint32 in_threadGroupCountX, uint32 in_threadGroupCountY, uint32 in_threadGroupCountZ) const;
 
     void SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, ID3D11DepthStencilView* in_depthStencilView) const;
-    void SetRenderTargets(const std::vector<ID3D11RenderTargetView*>& in_renderTargetViews, ID3D11DepthStencilView* in_depthStencilView) const;
     void ReleaseRenderTargets() const;
 
     void SetViewport(const Viewport& in_viewport);
     void SetViewport(uint32 x, uint32 y, uint32 width, uint32 height, uint32 minDepth = 0, uint32 maxDepth = 1);
+    Viewport GetViewport() const { return m_viewport; }
     void BindOnlyDepthStencilView(ID3D11DepthStencilView* in_depthBuffer) const;
-
-    // back texture helper
-    void              BindBackBuffer(const Ref<DepthBuffer>& in_depthBuffer_or_null) const;
-    void              ClearBackBuffer(const Color4& in_color) const;
-    Ref<RenderTarget> GetBackBuffer();
-
-    void              BindBackBufferMS(const Ref<DepthBuffer>& in_depthBuffer_or_null) const;
-    void              ClearBackBufferMS(const Color4& in_color) const;
-    Ref<RenderTarget> GetBackBufferMS() const;
 
     void ClearDepthBuffer(bool  in_clearDepth,
                           float in_clearDepthFactor,
@@ -85,14 +81,16 @@ public:
 
     // - Swap Chain
     void              Present() const;
-    Ref<Swapchain>    GetSwapChain() const;
-    Ref<RenderTarget> GetBackBuffer() const;
+    const Ref<Swapchain>& GetSwapChain() const;
 
     // - Getter (Native)
     ID3D11Device*        GetDevice() const;
     ID3D11DeviceContext* GetContext() const;
 
-    CommonState* GetRenderStateStorage() const;
+    GlobalState*     GetGlobalState() const { return m_globalState.get(); }
+    GlobalPipeline*  GetGlobalPipeline() const { return m_globalPipeline.get(); }
+    GlobalConstant* GetGlobalConstants() const { return m_globalConstants.get(); }
+    GlobalShader*    GetGlobalShader() const { return m_globalShader.get(); }
 
 private:
     D11Renderer();
@@ -110,7 +108,10 @@ private:
     D3D_FEATURE_LEVEL m_featureLevel;
 
     // Storage
-    Scope<CommonState> m_renderStateStorage;
+    Scope<GlobalState>     m_globalState;
+    Scope<GlobalPipeline>  m_globalPipeline;
+    Scope<GlobalConstant> m_globalConstants;
+    Scope<GlobalShader>    m_globalShader;
 
     using ConstantBufferArray = std::array<ID3D11Buffer*, CONSTANT_BUFFER_SLOT_MAX>;
     using TextureArray        = std::array<ID3D11ShaderResourceView*, TEXTURE_SLOT_MAX>;
@@ -169,9 +170,24 @@ inline D11Renderer& GetRenderer()
     return D11Renderer::GetInstance();
 }
 
-inline CommonState* GetCommonState()
+inline GlobalState* GetGlobalState()
 {
-    return GetRenderer().GetRenderStateStorage();
-}
+    return GetRenderer().GetGlobalState();
+};
+
+inline GlobalPipeline* GetGlobalPipeline()
+{
+    return GetRenderer().GetGlobalPipeline();
+};
+
+inline GlobalConstant* GetGlobalConstants()
+{
+    return GetRenderer().GetGlobalConstants();
+};
+
+inline GlobalShader* GetGlobalShader()
+{
+    return GetRenderer().GetGlobalShader();
+};
 
 }   // namespace crab

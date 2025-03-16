@@ -15,22 +15,21 @@
 namespace crab
 {
 
-Ref<ImageFilter> ImageFilter::Create(
-    uint32                    in_filterWidth,
-    uint32                    in_filterHeight,
-    const Ref<VertexShader>&  in_vertexShader,
-    const Ref<PixelShader>&   in_pixelShader,
-    const TextureList&        in_inputTextures,
-    const SamplerList&   in_samplerLists,
-    const ConstantList& in_constantBuffers)
+void ImageFilter::Init(
+    uint32                   in_filterWidth,
+    uint32                   in_filterHeight,
+    const Ref<VertexShader>& in_vertexShader,
+    const Ref<PixelShader>&  in_pixelShader,
+    const TextureList&       in_inputTextures,
+    const SamplerList&       in_samplerLists,
+    const ConstantList&      in_constantBuffers)
 {
-    auto             d  = GetRenderer().GetDevice();
-    Ref<ImageFilter> pp = CreateRef<ImageFilter>();
+    auto d = GetRenderer().GetDevice();
 
     CRAB_ASSERT(in_vertexShader, "Invalid Vertex Shader.");
     CRAB_ASSERT(in_pixelShader, "Invalid Pixel Shader.");
 
-    auto [scrWidth, scrHeight] = GetApplication().GetAppWindow().GetWindowSize();
+    auto [scrWidth, scrHeight] = GetApplication().GetAppWindow().GetResolution();
 
     uint32 width  = in_filterWidth;
     uint32 height = in_filterHeight;
@@ -61,7 +60,8 @@ Ref<ImageFilter> ImageFilter::Create(
                                         texture.GetAddressOf()),
                      "CreateTexture2D Fail.");
 
-    Ref<RenderTarget> rt = RenderTarget::Create(texture.Get());
+    Ref<RenderTarget> rt = CreateRef<RenderTarget>();
+    rt->Init(texture.Get());
 
     Viewport vp = {};
     vp.width    = static_cast<float>(width);
@@ -71,18 +71,15 @@ Ref<ImageFilter> ImageFilter::Create(
     vp.x        = 0.f;
     vp.y        = 0.f;
 
-    pp->m_renderTarget = rt;
-    pp->m_viewport     = vp;
+    m_renderTarget = rt;
+    m_viewport     = vp;
 
-    // - Shader
-    pp->m_vertexShader = in_vertexShader;
-    pp->m_pixelShader  = in_pixelShader;
+    m_vertexShader = in_vertexShader;
+    m_pixelShader  = in_pixelShader;
 
-    pp->m_constantBuffers = in_constantBuffers;
-    pp->m_samplerStates   = in_samplerLists;
-    pp->m_inputImages     = in_inputTextures;
-
-    return pp;
+    m_constantBuffers = in_constantBuffers;
+    m_samplerStates   = in_samplerLists;
+    m_inputImages     = in_inputTextures;
 }
 
 Ref<ImageFilter> ImageFilter::Clone() const

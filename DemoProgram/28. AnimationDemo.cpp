@@ -23,19 +23,23 @@ void AnimationDemo::Init()
 
         auto geo = GeometryFactory::CreateSphere(1000.f, 32.f, 32.f);
         std::ranges::reverse(geo.indices);
-        sr.mesh = Mesh::Create(
-            Vertex3D::CreateVertices(geo),
-            geo.indices,
-            eTopology::TriangleList);
+        sr.mesh = RenderUtil::CreateMesh(geo);
 
         std::filesystem::path skyboxPath = "Resources\\AnimationDemo\\DaySkybox";
 
-        sr.brdfImage   = Texture2D::CreateFromFile(skyboxPath / "skyboxBrdf.dds", false);
-        sr.envCubemap  = TextureCube::CreateFromFile(skyboxPath / "skyboxEnvHDR.dds");
-        sr.irrCubemap  = TextureCube::CreateFromFile(skyboxPath / "skyboxDiffuseHDR.dds");
-        sr.specCubemap = TextureCube::CreateFromFile(skyboxPath / "skyboxSpecularHDR.dds");
+        sr.brdfImage = CreateRef<Texture2D>();
+        sr.brdfImage->LoadFromFile(skyboxPath / "skyboxBrdf.dds", false);
 
-        e.CreateComponent<TAG("SkyboxGroup")>();
+        sr.envCubemap = CreateRef<TextureCube>();
+        sr.envCubemap->LoadFromFile(skyboxPath / "skyboxEnvHDR.dds");
+
+        sr.irrCubemap = CreateRef<TextureCube>();
+        sr.irrCubemap->LoadFromFile(skyboxPath / "skyboxDiffuseHDR.dds");
+
+        sr.specCubemap = CreateRef<TextureCube>();
+        sr.specCubemap->LoadFromFile(skyboxPath / "skyboxSpecularHDR.dds");
+
+        e.CreateComponent<RenderTag<"Skybox">>();
 
         m_skyboxDayEntity = e;
     }
@@ -49,10 +53,17 @@ void AnimationDemo::Init()
 
         std::filesystem::path skyboxPath = "Resources\\AnimationDemo\\NightSkybox";
 
-        sr.brdfImage   = Texture2D::CreateFromFile(skyboxPath / "SkyboxBrdf.dds", false);
-        sr.envCubemap  = TextureCube::CreateFromFile(skyboxPath / "SkyboxEnvHDR.dds");
-        sr.irrCubemap  = TextureCube::CreateFromFile(skyboxPath / "SkyboxDiffuseHDR.dds");
-        sr.specCubemap = TextureCube::CreateFromFile(skyboxPath / "SkyboxSpecularHDR.dds");
+        sr.brdfImage = CreateRef<Texture2D>();
+        sr.brdfImage->LoadFromFile(skyboxPath / "skyboxBrdf.dds", false);
+
+        sr.envCubemap = CreateRef<TextureCube>();
+        sr.envCubemap->LoadFromFile(skyboxPath / "skyboxEnvHDR.dds");
+
+        sr.irrCubemap = CreateRef<TextureCube>();
+        sr.irrCubemap->LoadFromFile(skyboxPath / "skyboxDiffuseHDR.dds");
+
+        sr.specCubemap = CreateRef<TextureCube>();
+        sr.specCubemap->LoadFromFile(skyboxPath / "skyboxSpecularHDR.dds");
 
         m_skyboxNightEntity = e;
     }
@@ -100,26 +111,33 @@ void AnimationDemo::Init()
         matData.roughness    = 1.f;
 
         std::filesystem::path floorPath = "Resources\\AnimationDemo\\floor";
-        matData.baseColorImage          = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_albedo.png", true, true);
-        matData.aoImage                 = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_ao.png");
-        matData.metallicImage           = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_metallic.png");
-        matData.normalImage             = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_normal-dx.png");
-        matData.roughnessImage          = Texture2D::CreateFromFile(floorPath / "angled-tiled-floor_roughness.png");
-        matData.normalMapType           = eNormalMapType::DirectX;
-        matData.alpha                   = 0.8f;
+        matData.baseColorTex          = CreateRef<Texture2D>();
+        matData.baseColorTex->LoadFromFile(floorPath / "angled-tiled-floor_albedo.png", true, true);
 
-        mirror.mirrorMesh = Mesh::Create(
-            Vertex3D::CreateVertices(geo),
-            geo.indices,
-            eTopology::TriangleList);
+        matData.aoTex = CreateRef<Texture2D>();
+        matData.aoTex->LoadFromFile(floorPath / "angled-tiled-floor_ao.png");
 
-        mirror.mirrorMaterial = Material::Create(matData);
+        matData.metallicTex = CreateRef<Texture2D>();
+        matData.metallicTex->LoadFromFile(floorPath / "angled-tiled-floor_metallic.png");
+
+        matData.normalTex = CreateRef<Texture2D>();
+        matData.normalTex->LoadFromFile(floorPath / "angled-tiled-floor_normal-dx.png");
+
+        matData.roughnessTex = CreateRef<Texture2D>();
+        matData.roughnessTex->LoadFromFile(floorPath / "angled-tiled-floor_roughness.png");
+
+        matData.normalMapType = eNormalMapType::DirectX;
+        matData.alpha         = 0.8f;
+
+        mirror.mirrorMesh     = RenderUtil::CreateMesh(geo);
+        mirror.mirrorMaterial = CreateRef<Material>();
+        mirror.mirrorMaterial->Init(matData);
 
         auto& t    = e.GetTransform();
         t.position = Vec3 { 0.f, -1.f, 0.f };
         t.SetRotateYaw(180.f * DEG2RAD);
         t.SetRotatePitch(-90.f * DEG2RAD);
-        e.CreateComponent<TAG("MirrorGroup")>();
+        e.CreateComponent<RenderTag<"Mirror">>();
     }
 
     // Cube
@@ -134,16 +152,16 @@ void AnimationDemo::Init()
         matData.baseColor    = Vec3 { 0.9f, 0.2f, 0.2f };
         //
         //  std::filesystem::path cubePath = "Resources\\AnimationDemo\\Leather";
-        //  matData.baseColorImage         = Texture2D::CreateFromFile(cubePath / "Leather037_2K-JPG_Color.jpg", true, true);
-        //  matData.roughnessImage         = Texture2D::CreateFromFile(cubePath / "Leather037_2K-JPG_Roughness.jpg");
-        //  matData.normalImage            = Texture2D::CreateFromFile(cubePath / "Leather037_2K-JPG_NormalGL.jpg");
+        //  matData.baseColorTex         = Texture2D::LoadFromFile(cubePath / "Leather037_2K-JPG_Color.jpg", true, true);
+        //  matData.roughnessTex         = Texture2D::LoadFromFile(cubePath / "Leather037_2K-JPG_Roughness.jpg");
+        //  matData.normalTex            = Texture2D::LoadFromFile(cubePath / "Leather037_2K-JPG_NormalGL.jpg");
         //
         model.model = Model::Create({ { RenderUtil::CreateMesh(geo), Material::Create(matData) } });
 
         auto& t    = e.GetTransform();
         t.position = Vec3 { -2.f, 0.f, 3.f };
 
-        e.CreateComponent<TAG("PBRGroup")>();
+        e.CreateComponent<RenderTag<"PBR">>();
     }
 
     // Sphere
@@ -158,17 +176,17 @@ void AnimationDemo::Init()
         matData.roughness    = 0.f;
         //
         // std::filesystem::path spherePath = "Resources\\AnimationDemo\\MetalBall";
-        // matData.baseColorImage           = Texture2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Color.jpg", true, true);
-        // matData.metallicImage            = Texture2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Metalness.jpg");
-        // matData.normalImage              = Texture2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_NormalGL.jpg");
-        // matData.roughnessImage           = Texture2D::CreateFromFile(spherePath / "Metal049A_2K-JPG_Roughness.jpg");
+        // matData.baseColorTex           = Texture2D::LoadFromFile(spherePath / "Metal049A_2K-JPG_Color.jpg", true, true);
+        // matData.metallicTex            = Texture2D::LoadFromFile(spherePath / "Metal049A_2K-JPG_Metalness.jpg");
+        // matData.normalTex              = Texture2D::LoadFromFile(spherePath / "Metal049A_2K-JPG_NormalGL.jpg");
+        // matData.roughnessTex           = Texture2D::LoadFromFile(spherePath / "Metal049A_2K-JPG_Roughness.jpg");
         //
         model.model = Model::Create({ { RenderUtil::CreateMesh(geo), Material::Create(matData) } });
 
         auto& t    = e.GetTransform();
         t.position = Vec3 { 0.f, 0.f, 3.f };
 
-        e.CreateComponent<TAG("PBRGroup")>();
+        e.CreateComponent<RenderTag<"PBR">>();
     }
 
     // model
@@ -182,7 +200,7 @@ void AnimationDemo::Init()
     //    t.position = Vec3 { 2.f, 0.f, 3.f };
     //    t.scale    = Vec3 { 3.f, 3.f, 3.f };
     //
-    //    e.CreateComponent<TAG("PBRGroup")>();
+    //    e.CreateComponent<TAG("PBR")>();
     //
     //    std::filesystem::path path  = R"(Resources\AnimationDemo\Model\textures)";
     //    auto&                 model = msh.model;
@@ -190,7 +208,7 @@ void AnimationDemo::Init()
     //    auto LoadFunc = [](Ref<Model>& model, const std::filesystem::path& path, std::string_view in_string)
     //    {
     //        auto* node = model->FindNode(in_string);
-    //        node->material->SetBaseColorImage(Texture2D::CreateFromFile(path / (std::string(in_string) + ".png"), true, true));
+    //        node->material->SetBaseColorTexture(Texture2D::LoadFromFile(path / (std::string(in_string) + ".png"), true, true));
     //        node->material->SetMetallic(0.f);
     //    };
     //
@@ -215,9 +233,9 @@ void AnimationDemo::Init()
         lc.fallOffStart  = 5.f;
         lc.lightRadiance = color3::WHITE;
         lc.lightStrength = 1.f;
-        lc.lightType     = eLightType::Directional;
+        lc.lightType     = eLightType::Point;
 
-        lc.shadowMap = DepthMap::CreateDepthMapArray(1024, 1024, 4);
+        lc.shadowMap = DepthMapCube::Create(1024, 1024);
         lc.useShadow = true;
 
         e.GetTransform().position = Vec3 { 0.f, 5.f, 0.f };
@@ -226,7 +244,7 @@ void AnimationDemo::Init()
     // Resources
     {
         m_sceneHierarchy = CreateScope<SceneHierarchy>();
-        m_depthMap       = DepthMap::Create(1024, 1024);
+        m_depthMap       = DepthMapTexture::Create(1024, 1024);
     }
 }
 
@@ -292,7 +310,7 @@ void AnimationDemo::_DrawSkybox(bool in_bindTexture)
 
 void AnimationDemo::_DrawBasic(bool in_bindTexture)
 {
-    GetView<TransformComponent, ModelRenderer, TAG("PBRGroup")>().each(
+    GetView<TransformComponent, ModelRenderer, RenderTag<"PBR">>().each(
         [&](const TransformComponent& t, const ModelRenderer& m)
         {
             for (const auto& node: m.model->GetNodes())
@@ -304,7 +322,7 @@ void AnimationDemo::_DrawBasic(bool in_bindTexture)
 
 void AnimationDemo::_DrawMirror(bool in_bindTexture)
 {
-    GetView<TransformComponent, PlanarMirrorComponent, TAG("MirrorGroup")>().each(
+    GetView<TransformComponent, PlanarMirrorComponent, RenderTag<"Mirror">>().each(
         [&](const TransformComponent& t, const PlanarMirrorComponent& m)
         {
             TransformConstant tc = {};
@@ -346,15 +364,15 @@ void AnimationDemo::_DrawPBRMesh(
 
         mc.usingTextureFlags = eMaterialTextureUsingFlags_None;
 
-        if (md.baseColorImage)
+        if (md.baseColorTex)
         {
-            md.baseColorImage->Bind(0, eShaderFlags_PixelShader);
+            md.baseColorTex->Bind(0, eShaderFlags_PixelShader);
             mc.usingTextureFlags |= eMaterialTextureUsingFlags_BaseColor;
         }
 
-        if (md.normalImage)
+        if (md.normalTex)
         {
-            md.normalImage->Bind(1, eShaderFlags_PixelShader);
+            md.normalTex->Bind(1, eShaderFlags_PixelShader);
 
             if (md.normalMapType == eNormalMapType::DirectX)
                 mc.usingTextureFlags |= eMaterialTextureUsingFlags_Normal_DX;
@@ -362,30 +380,30 @@ void AnimationDemo::_DrawPBRMesh(
                 mc.usingTextureFlags |= eMaterialTextureUsingFlags_Normal_GL;
         }
 
-        if (md.metallicImage)
+        if (md.metallicTex)
         {
-            md.metallicImage->Bind(3, eShaderFlags_PixelShader);
+            md.metallicTex->Bind(3, eShaderFlags_PixelShader);
             mc.usingTextureFlags |= eMaterialTextureUsingFlags_Metallic;
         }
 
-        if (md.roughnessImage)
+        if (md.roughnessTex)
         {
-            md.roughnessImage->Bind(4, eShaderFlags_PixelShader);
+            md.roughnessTex->Bind(4, eShaderFlags_PixelShader);
             mc.usingTextureFlags |= eMaterialTextureUsingFlags_Roughness;
         }
-        if (md.aoImage)
+        if (md.aoTex)
         {
-            md.aoImage->Bind(2, eShaderFlags_PixelShader);
+            md.aoTex->Bind(2, eShaderFlags_PixelShader);
             mc.usingTextureFlags |= eMaterialTextureUsingFlags_AO;
         }
-        if (md.emissiveImage)
+        if (md.emissiveTex)
         {
-            md.emissiveImage->Bind(5, eShaderFlags_PixelShader);
+            md.emissiveTex->Bind(5, eShaderFlags_PixelShader);
             mc.usingTextureFlags |= eMaterialTextureUsingFlags_Emissive;
         }
-        if (md.displacementImage)
+        if (md.displacementTex)
         {
-            md.displacementImage->Bind(0, eShaderFlags_VertexShader);
+            md.displacementTex->Bind(0, eShaderFlags_VertexShader);
             mc.usingTextureFlags |= eMaterialTextureUsingFlags_Displacement;
         }
 
@@ -657,7 +675,7 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
     if (m_renderNormalMode)
     {
         GetGlobalRenderPass().BeginDrawNormalPass();
-        GetView<TransformComponent, ModelRenderer, TAG("PBRGroup")>().each(
+        GetView<TransformComponent, ModelRenderer, RenderTag<"PBR">>().each(
             [&](const TransformComponent& t, const ModelRenderer& m)
             {
                 for (const auto& node: m.model->GetNodes())
@@ -679,7 +697,7 @@ void AnimationDemo::OnRender(TimeStamp& in_ts)
     r.ClearDepthBuffer(true, 1.f, false, 0);
 
     // 3. Draw Reflection Pass
-    GetView<TransformComponent, TAG("MirrorGroup")>().each(
+    GetView<TransformComponent, RenderTag<"Mirror">>().each(
         [&](const TransformComponent& t)
         {
             CameraComponent    cmr      = m_cameraEntity.GetComponent<CameraComponent>();

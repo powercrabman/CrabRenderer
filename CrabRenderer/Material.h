@@ -23,23 +23,21 @@ struct MaterialData
     float shininess            = 32.f;                  // Phong
     float alpha                = 1.f;
 
-    Ref<Texture2D> baseColorImage    = nullptr;
-    Ref<Texture2D> normalImage       = nullptr;
-    Ref<Texture2D> metallicImage     = nullptr;
-    Ref<Texture2D> roughnessImage    = nullptr;
-    Ref<Texture2D> aoImage           = nullptr;
-    Ref<Texture2D> emissiveImage     = nullptr;
-    Ref<Texture2D> displacementImage = nullptr;
+    Ref<Texture2D> baseColorTex    = nullptr;
+    Ref<Texture2D> normalTex       = nullptr;
+    Ref<Texture2D> metallicTex     = nullptr;
+    Ref<Texture2D> roughnessTex    = nullptr;
+    Ref<Texture2D> aoTex           = nullptr;
+    Ref<Texture2D> emissiveTex     = nullptr;
+    Ref<Texture2D> displacementTex = nullptr;
 
     eNormalMapType normalMapType = eNormalMapType::OpenGL;
 };
 
 class Material
 {
-    D11_RESOURCE_CTOR(Material);
-
 public:
-    static Ref<Material> Create(const MaterialData& in_materialData = {});
+    void Init(const MaterialData& in_data);
 
     // color
     void SetBaseColor(const Vec3& in_color) { m_data.baseColor = in_color; }
@@ -55,13 +53,13 @@ public:
     void SetNormalMapType(eNormalMapType in_type) { m_data.normalMapType = in_type; }
 
     // image
-    void SetBaseColorImage(const Ref<Texture2D>& in_image) { m_data.baseColorImage = in_image; }
-    void SetNormalImage(const Ref<Texture2D>& in_image) { m_data.normalImage = in_image; }
-    void SetMetallicImage(const Ref<Texture2D>& in_image) { m_data.metallicImage = in_image; }
-    void SetRoughnessImage(const Ref<Texture2D>& in_image) { m_data.roughnessImage = in_image; }
-    void SetAOImage(const Ref<Texture2D>& in_image) { m_data.aoImage = in_image; }
-    void SetEmissiveImage(const Ref<Texture2D>& in_image) { m_data.emissiveImage = in_image; }
-    void SetHeightImage(const Ref<Texture2D>& in_image) { m_data.displacementImage = in_image; }
+    void SetBaseColorTexture(const Ref<Texture2D>& in_image) { m_data.baseColorTex = in_image; }
+    void SetNormalTexture(const Ref<Texture2D>& in_image) { m_data.normalTex = in_image; }
+    void SetMetallicTexture(const Ref<Texture2D>& in_image) { m_data.metallicTex = in_image; }
+    void SetRoughnessTexture(const Ref<Texture2D>& in_image) { m_data.roughnessTex = in_image; }
+    void SetAOTexture(const Ref<Texture2D>& in_image) { m_data.aoTex = in_image; }
+    void SetEmissiveTexture(const Ref<Texture2D>& in_image) { m_data.emissiveTex = in_image; }
+    void SetDisplacementTexture(const Ref<Texture2D>& in_image) { m_data.displacementTex = in_image; }
 
     // getter
     const MaterialData& GetMaterialData() const { return m_data; }
@@ -77,13 +75,13 @@ public:
     float               GetAlpha() const { return m_data.alpha; }
     eNormalMapType      GetNormalMapType() const { return m_data.normalMapType; }
 
-    const Ref<Texture2D>& GetBaseColorImage() const { return m_data.baseColorImage; }
-    const Ref<Texture2D>& GetNormalImage() const { return m_data.normalImage; }
-    const Ref<Texture2D>& GetMetallicImage() const { return m_data.metallicImage; }
-    const Ref<Texture2D>& GetRoughnessImage() const { return m_data.roughnessImage; }
-    const Ref<Texture2D>& GetAOImage() const { return m_data.aoImage; }
-    const Ref<Texture2D>& GetEmissiveImage() const { return m_data.emissiveImage; }
-    const Ref<Texture2D>& GetHeightImage() const { return m_data.displacementImage; }
+    const Ref<Texture2D>& GetBaseColorTexture() const { return m_data.baseColorTex; }
+    const Ref<Texture2D>& GetNormalTexture() const { return m_data.normalTex; }
+    const Ref<Texture2D>& GetMetallicTexture() const { return m_data.metallicTex; }
+    const Ref<Texture2D>& GetRoughnessTexture() const { return m_data.roughnessTex; }
+    const Ref<Texture2D>& GetAOTexture() const { return m_data.aoTex; }
+    const Ref<Texture2D>& GetEmissiveTexture() const { return m_data.emissiveTex; }
+    const Ref<Texture2D>& GetDisplacementTexture() const { return m_data.displacementTex; }
 
 private:
     MaterialData m_data;

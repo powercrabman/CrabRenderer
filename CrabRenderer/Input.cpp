@@ -151,7 +151,7 @@ void Input::SetMousePos(const Vec2& in_screenPos)
 
 void Input::SetMousePosToCenter()
 {
-    Int2 size = GetAppWindow().GetWindowSize();
+    Int2 size = GetAppWindow().GetResolution();
     SetMousePos(Int2(size * 0.5f).ToVec2());
 }
 

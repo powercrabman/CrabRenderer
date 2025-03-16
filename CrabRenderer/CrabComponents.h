@@ -11,16 +11,18 @@ struct IDComponent
 };
 
 // Name
-struct LabelComponent
+struct TagComponent
 {
+    bool operator==(const TagComponent& in_other) const { return name == in_other.name; }
+    bool operator==(const std::string& in_other) const { return name == in_other; }
+    bool operator==(const std::string_view in_other) const { return name == in_other; }
+
+    bool operator!=(const TagComponent& in_other) const { return name != in_other.name; }
+    bool operator!=(const std::string& in_other) const { return name != in_other; }
+    bool operator!=(const std::string_view in_other) const { return name != in_other; }
+
     std::string name;
 };
-
-// Tag
-template<typename entt::id_type Value>
-using Tag = entt::tag<Value>;
-
-#define TAG(text) Tag<entt::hashed_string::value(text)>
 
 // TransformComponent
 struct TransformComponent
@@ -57,8 +59,6 @@ enum class eProjectionType
 
 struct CameraComponent
 {
-    static Mat4 GetView(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll);
-    static Mat4 GetView(const Vec3& in_eyePosition, const Quat& in_quaternion);
     static Mat4 GetView(const TransformComponent& in_trans);
     Mat4        GetProj() const;
 
@@ -66,8 +66,10 @@ struct CameraComponent
     Mat4 GetViewProj(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll) const;
     Mat4 GetViewProj(const TransformComponent& in_trans) const;
 
-    Frustum GetFrustum(const Vec3& in_eyePosition, const Quat& in_quaternion) const;
-    Frustum GetFrustum(const Vec3& in_eyePosition, const Vec3& in_pitchYawRoll) const;
+    Frustum GetViewFrustumInView() const;
+    Frustum GetViewFrustumInWorld(const Vec3& in_position, const Quat& in_quaternion) const;
+    Frustum GetViewFrustumInWorld(const Vec3& in_position, const Vec3& in_pitchYawRoll) const;
+    Frustum GetViewFrustumInWorld(const TransformComponent& in_trans) const;
 
     eProjectionType projectionType = eProjectionType::Perspective;
     float           nearZ          = 0.1f;
@@ -87,6 +89,63 @@ class Script;
 struct ScriptComponent
 {
     Scope<Script> script;
+};
+
+template<StringLiteral Tag>
+struct RenderGroup
+{
+};
+
+class Model;
+
+struct ModelRenderer
+{
+    Ref<Model> model;
+};
+
+class Mesh;
+class TextureCube;
+
+struct SkyboxRenderer
+{
+    Ref<Mesh>        mesh;
+    Ref<TextureCube> envCubemap;
+    Ref<TextureCube> irrCubemap;
+    Ref<TextureCube> specCubemap;
+    Ref<Texture2D>   brdfImage;
+
+    enum eMappingType
+    {
+        Environment = 0,
+        Irradiance,
+        Specular,
+    };
+
+    eMappingType mappingType = Environment;
+};
+
+class DepthMap;
+
+struct LightComponent
+{
+    // About LightConstantData
+    Color3 lightRadiance = color3::WHITE;
+
+    float fallOffStart   = 5.f;
+    float fallOffEnd     = 100.f;
+    float lightStrength  = 1.f;
+    float innerConeAngle = 15.f * DEG2RAD;
+    float outerConeAngle = 30.f * DEG2RAD;
+
+    eLightType lightType = eLightType::None;
+
+    // shadow
+    bool          useShadow = false;
+    Ref<DepthMap> shadowMap;
+
+    // in cascade shadow
+    constexpr static uint32               s_cascadeCount = MAX_CASCADE_SHADOW_LEVEL;
+    std::array<float, s_cascadeCount - 1> cascadeRange   = { 50.f, 150.f, 300.f };
 };
 
 }   // namespace crab

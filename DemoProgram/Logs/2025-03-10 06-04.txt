@@ -1,0 +1,35 @@
+[2025-03-10 15:04:53.715] [info] Log initialized
+[2025-03-10 15:04:53.715] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe
+[2025-03-10 15:04:54.786] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxEnvHDR.dds
+[2025-03-10 15:04:54.811] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxDiffuseHDR.dds
+[2025-03-10 15:04:54.813] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxSpecularHDR.dds
+[2025-03-10 15:04:54.832] [info] Load Image: Resources\AnimationDemo\DaySkybox\skyboxBrdf.dds
+[2025-03-10 15:04:54.837] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 15:04:55.847] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 15:04:55.970] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 15:04:56.422] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 15:04:56.429] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.563] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 15:04:56.684] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.713] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.747] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.776] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.809] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.855] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.889] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.917] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:56.934] [debug] Event Occurred. "KeyUp_IOEvent"
+[2025-03-10 15:04:56.951] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 15:04:57.080] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 15:04:57.255] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 15:04:57.367] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 15:04:58.135] [debug] Event Occurred. "MouseDown_IOEvent"
+[2025-03-10 15:04:58.350] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 15:04:58.359] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 15:04:58.367] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 15:04:58.375] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 15:04:58.383] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 15:04:58.396] [debug] Event Occurred. "Move_WindowEvent"
+[2025-03-10 15:04:58.421] [debug] Event Occurred. "MouseUp_IOEvent"
+[2025-03-10 15:04:58.780] [debug] Event Occurred. "KeyDown_IOEvent"
+[2025-03-10 15:04:58.783] [debug] Event Occurred. "AppClose_CoreEvent"

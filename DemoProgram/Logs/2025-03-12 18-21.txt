@@ -1,0 +1,2 @@
+[2025-03-13 03:21:04.698] [info] Log initialized
+[2025-03-13 03:21:04.698] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\Bin\Debug\DemoProgram.exe

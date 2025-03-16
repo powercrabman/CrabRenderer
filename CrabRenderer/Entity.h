@@ -22,10 +22,22 @@ public:
         m_registry->destroy(m_entity);
     }
 
+    template<typename Ty>
+    NODISCARD bool HasComponent() const
+    {
+        return m_registry->all_of<Ty>(m_entity);
+    }
+
     template<typename... Ty>
-    bool HasComponent() const
+    NODISCARD bool HaveComponents() const
     {
         return m_registry->all_of<Ty...>(m_entity);
+    }
+
+    template<typename ... Ty>
+    NODISCARD bool HasAnyOfComponent() const
+    {
+        return m_registry->any_of<Ty...>(m_entity);
     }
 
     template<typename Ty, typename... Args>
@@ -35,9 +47,9 @@ public:
     }
 
     template<typename Ty, typename... Args>
-    Ty& GetOrCreateComponent(Args&&... in_args)
+    void ReplaceComponent(Args&&... in_args)
     {
-        return m_registry->emplace<Ty>(m_entity, std::forward<Args>(in_args)...);
+        m_registry->replace<Ty>(m_entity, std::forward<Args>(in_args)...);
     }
 
     template<typename... Ty>
@@ -47,24 +59,24 @@ public:
     }
 
     template<typename Ty>
-    Ty& GetComponent()
+    NODISCARD Ty& GetComponent()
     {
         return m_registry->get<Ty>(m_entity);
     }
 
     template<typename... Ty>
-    auto GetComponents() const
+    NODISCARD auto GetComponents() const
     {
         return m_registry->get<Ty...>(m_entity);
     }
 
     template<typename Ty>
-    const Ty& GetComponent() const
+    NODISCARD const Ty& GetComponent() const
     {
         return m_registry->get<Ty>(m_entity);
     }
 
-    bool IsValid() const
+    NODISCARD bool IsValid() const
     {
         if (m_registry == nullptr)
             return false;

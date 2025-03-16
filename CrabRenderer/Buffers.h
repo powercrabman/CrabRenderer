@@ -11,23 +11,19 @@ namespace crab
 
 class VertexBuffer
 {
-    D11_RESOURCE_CTOR(VertexBuffer);
-
 public:
+    VertexBuffer()  = default;
+    ~VertexBuffer() = default;
+
     template<typename VertexType>
-    static Ref<VertexBuffer> Create(const std::vector<VertexType>& in_vertices)
+    void Init(const std::vector<VertexType>& in_vertices)
     {
-        auto vb = CreateRef<VertexBuffer>();
-
-        vb->m_buffer = ID3D11BufferUtil::CreateVertexBuffer(
-            sizeof(VertexType),
+        m_vertexCount  = static_cast<uint32>(in_vertices.size());
+        m_vertexStride = sizeof(VertexType);
+        m_buffer       = ID3D11BufferUtil::CreateVertexBuffer(
             static_cast<uint32>(in_vertices.size()),
+            sizeof(VertexType),
             in_vertices.data());
-
-        vb->m_vertexCount  = static_cast<uint32>(in_vertices.size());
-        vb->m_vertexStride = sizeof(VertexType);
-
-        return vb;
     }
 
     uint32 GetVertexStride() const { return m_vertexStride; }
@@ -38,7 +34,6 @@ private:
     ComPtr<ID3D11Buffer> m_buffer;
     uint32               m_vertexCount  = 0;
     uint32               m_vertexStride = 0;
-    // uint32 m_offset       = 0;
 };
 
 //===================================================
@@ -47,10 +42,8 @@ private:
 
 class IndexBuffer
 {
-    D11_RESOURCE_CTOR(IndexBuffer);
-
 public:
-    static Ref<IndexBuffer> Create(const std::vector<uint32>& in_indices);
+    void Init(const std::vector<uint32>& in_indices);
 
     void   Bind() const;
     uint32 GetIndexCount() const { return m_indexCount; }
@@ -66,10 +59,8 @@ private:
 
 class StagingBuffer
 {
-    D11_RESOURCE_CTOR(StagingBuffer);
-
 public:
-    static Ref<StagingBuffer> Create(uint32 in_bufferByteWidth, bool in_cpuWrite, bool in_cpuRead);
+    void Init(uint32 in_bufferByteWidth, bool in_cpuWrite, bool in_cpuRead);
 
     void WriteToBuffer(const void* in_data, uint32 in_dataByteWidth) const;
     void ReadFromBuffer(void* out_data, uint32 in_dataByteWidth) const;
@@ -93,20 +84,18 @@ class Texture2D;
 
 class UnorderedAccessView
 {
-    D11_RESOURCE_CTOR(UnorderedAccessView);
-
 public:
-    static Ref<UnorderedAccessView> Create(ID3D11Buffer* in_buffer);
+    void Init(ID3D11Buffer* in_buffer);
 
     void BindUAV(uint32 in_slot) const;
     void BindImage(uint32 in_slot, eShaderFlags in_bindFlags) const;
 
     ID3D11UnorderedAccessView* GetUAV() const { return m_uav.Get(); }
-    Ref<Texture2D>               GetImage2D() const { return m_image2D; }
+    Ref<Texture2D>             GetImage2D() const { return m_texture; }
 
 private:
     ComPtr<ID3D11UnorderedAccessView> m_uav;
-    Ref<Texture2D>                      m_image2D;
+    Ref<Texture2D>                    m_texture;
 };
 
 //===================================================
@@ -139,26 +128,24 @@ protected:
 template<typename T>
 class StructuredBuffer : public StructuredBufferBase
 {
-    D11_RESOURCE_CTOR(StructuredBuffer);
-
 public:
-    static Ref<StructuredBuffer<T>> Create(const std::vector<T>& in_data)
+    void Init(const std::vector<T>& in_data)
     {
-        auto sb = CreateRef<StructuredBuffer<T>>();
-
-        sb->m_buffer = ID3D11BufferUtil::CreateStructuredBuffer(
+        m_buffer = ID3D11BufferUtil::CreateStructuredBuffer(
             static_cast<uint32>(in_data.size()),
             sizeof(T),
             in_data.data());
 
-        sb->m_stagingBuffer = StagingBuffer::Create(
+        m_stagingBuffer = CreateRef<StagingBuffer>();
+        m_stagingBuffer->Init(
             static_cast<uint32>(in_data.size() * sizeof(T)),
             true,
             true);
 
-        sb->m_uav          = UnorderedAccessView::Create(sb->m_buffer.Get());
-        sb->m_itemMaxCount = static_cast<uint32>(in_data.size());
-        return sb;
+        m_uav = CreateRef<UnorderedAccessView>();
+        m_uav->Init(m_buffer.Get());
+
+        m_itemMaxCount = static_cast<uint32>(in_data.size());
     }
 
     void WriteToBuffer(const std::vector<T>& in_data)
@@ -208,11 +195,9 @@ protected:
 template<typename Ty>
 class ConstantBuffer : public ConstantBufferBase
 {
-    D11_RESOURCE_CTOR(ConstantBuffer);
-
 public:
-    static Ref<ConstantBuffer<Ty>> Create();
-    static Ref<ConstantBuffer<Ty>> Create(const Ty& in_data);
+    void Init();
+    void Init(const Ty& in_data);
 
     void WriteToBuffer(const Ty& in_data);
 
@@ -221,27 +206,26 @@ private:
 };
 
 template<typename Ty>
-Ref<ConstantBuffer<Ty>> ConstantBuffer<Ty>::Create()
+void ConstantBuffer<Ty>::Init()
 {
-    auto cb              = CreateRef<ConstantBuffer<Ty>>();
-    cb->m_buffer         = ID3D11BufferUtil::CreateConstantBuffer(sizeof(Ty));
-    cb->m_itemByteStride = sizeof(Ty);
-    cb->m_itemType       = TypeInfo::Get<Ty>();
-    return cb;
+    Init({});
 }
 
 template<typename Ty>
-Ref<ConstantBuffer<Ty>> ConstantBuffer<Ty>::Create(const Ty& in_data)
+void ConstantBuffer<Ty>::Init(const Ty& in_data)
 {
-    auto cb = ConstantBuffer<Ty>::Create();
-    cb->WriteToBuffer(in_data);   // this code can be optimized, but it's okay for now
-    return cb;
+    m_buffer         = ID3D11BufferUtil::CreateConstantBuffer(sizeof(Ty));
+    m_itemByteStride = sizeof(Ty);
+    m_itemType       = TypeInfo::Get<Ty>();
+    ZeroMemory(&in_cpuData, sizeof(Ty));
+
+    WriteToBuffer(in_data);
 }
 
 template<typename Ty>
 void ConstantBuffer<Ty>::WriteToBuffer(const Ty& in_data)
 {
-    if (std::memcmp(&in_cpuData, &in_data, sizeof(Ty)))
+    if (std::memcmp(&in_cpuData, &in_data, sizeof(Ty)) != 0)
     {
         ID3D11BufferUtil::WriteToDynamicBuffer(
             m_buffer.Get(),
@@ -250,7 +234,6 @@ void ConstantBuffer<Ty>::WriteToBuffer(const Ty& in_data)
 
         in_cpuData = in_data;
     }
-
 }
 
 }   // namespace crab

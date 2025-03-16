@@ -1,8 +1,8 @@
-// │╫└╠╣╓
+// я┐╜я┐╜я┐╜╠╣я┐╜
 
-╡е└╠┼═ ╟╧│к└╟ ╣┘└╠╞о ╗ч└╠┴ю			itemByteStride = sizeof(╡е└╠┼═)
-┤▄╝° ╡е└╠┼═ ╣╢─б└╟ ╣┘└╠╞о ╗ч└╠┴ю		byteWidth = itemCount * itemByteStride
-╣ш┐н└╟ └№├╝ ╣┘└╠╞о ╗ч└╠┴ю			bufferByteWidth = itemCount * itemByteWidth
+я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜╧│я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜╞о я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜			itemByteStride = sizeof(я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜)
+я┐╜▄╝я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜─бя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜╞о я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜		byteWidth = itemCount * itemByteStride
+я┐╜ш┐ня┐╜я┐╜ я┐╜я┐╜├╝ я┐╜я┐╜я┐╜я┐╜╞о я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜			bufferByteWidth = itemCount * itemByteWidth
 
-╟Ў└ч ╣ш┐н ╝╙ ╛╞└╠┼█└╟ ░│╝Ў			itemCount
-╟Ў└ч ╣ш┐н└╟ ├╤ ┐ы╖о				itemMaxCount
+я┐╜я┐╜я┐╜я┐╜ я┐╜ш┐н я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜			itemCount
+я┐╜я┐╜я┐╜я┐╜ я┐╜ш┐ня┐╜я┐╜ я┐╜я┐╜ я┐╜ы╖о				itemMaxCount

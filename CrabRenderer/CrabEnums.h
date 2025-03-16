@@ -7,8 +7,12 @@ namespace crab
 // Rendering
 //===================================================
 
-constexpr uint32 MAX_LIGHTS          = 4;
-constexpr uint32 CASCADE_COUNT       = 4;
+constexpr uint32 MAX_LIGHTS               = 4;
+constexpr uint32 MAX_CASCADE_SHADOW_LEVEL = 4;
+constexpr uint32 SHADOW_MAP_LENGTH        = 2048;
+
+constexpr float LIGHT_NEAR_PLANE = 0.1f;
+
 constexpr uint32 SHADOW_SLOT_OFFSET  = 20;
 constexpr uint32 BASIC_SHADOW_SLOT   = SHADOW_SLOT_OFFSET;
 constexpr uint32 OMNI_SHADOW_SLOT    = BASIC_SHADOW_SLOT + MAX_LIGHTS;
@@ -22,13 +26,12 @@ enum class eLightType
     Spot        = 3,
 };
 
-enum class eShadowPCFKernel
+enum class eTextureType
 {
-    None = 0,
-    Sample3x3,
-    Sample5x5,
-    Sample7x7,
-    Sample9x9
+    Unknown,
+    Texture2D,
+    Texture2DArray,
+    TextureCube
 };
 
 //===================================================

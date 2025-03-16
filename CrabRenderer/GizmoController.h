@@ -45,13 +45,14 @@ public:
         Quat&             inout_rotation,
         Vec3&             inout_scale)
     {
+        ImGuizmo::BeginFrame();
+
         ImGuizmo::SetRect(
             static_cast<float>(in_viewRect.position.x),
             static_cast<float>(in_viewRect.position.y),
             static_cast<float>(in_viewRect.size.x),
             static_cast<float>(in_viewRect.size.y));
 
-        ImGuizmo::SetDrawlist();
         ImGuizmo::SetOrthographic(in_projType == eProjectionType::Orthographic);
 
         Mat4 world = Mat4::CreateScale(inout_scale) * Mat4::CreateFromQuaternion(inout_rotation) * Mat4::CreateTranslation(inout_position);

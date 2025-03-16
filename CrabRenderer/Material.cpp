@@ -4,12 +4,10 @@
 
 namespace crab
 {
-    
-Ref<Material> Material::Create(const MaterialData& in_materialData)
+
+void Material::Init(const MaterialData& in_data)
 {
-    auto material    = CreateRef<Material>();
-    material->m_data = in_materialData;
-    return material;
+    m_data = in_data;
 }
 
 }   // namespace crab
