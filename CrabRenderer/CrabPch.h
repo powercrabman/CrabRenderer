@@ -43,16 +43,16 @@
 #include <magic_enum/magic_enum.hpp>
 
 // - Base
-#include "TypeInfo.h"
-#include "CrabColors.h"
+#include "Colors.h"
 #include "CrabMacro.h"
 #include "CrabMath.h"
-#include "CrabTypes.h"
-#include "StringLiteral.h"
-
+#include "ErrorHandler.h"
 #include "InitSettings.h"
 #include "Log.h"
 #include "ErrorHandler.h"
+#include "StringLiteral.h"
+#include "TypeInfo.h"
+#include "Types.h"
 
 // - Data Structure
 #include "SCircularQueue.h"

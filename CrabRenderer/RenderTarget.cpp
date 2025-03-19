@@ -20,7 +20,7 @@ void RenderTarget::Init(ID3D11Texture2D* in_texture)
     desc.Texture2D.MipSlice            = 0;
     desc.ViewDimension                 = texDesc.SampleDesc.Count > 1 ? D3D11_RTV_DIMENSION_TEXTURE2DMS : D3D11_RTV_DIMENSION_TEXTURE2D;
 
-    CheckD3D11Result(
+    d3d::CheckOK(
         GetRenderer().GetDevice()->CreateRenderTargetView(in_texture,
                                                           &desc,
                                                           m_renderTargetView.GetAddressOf()),
@@ -32,21 +32,24 @@ void RenderTarget::Init(ID3D11Texture2D* in_texture)
 }
 
 void RenderTarget::Init(
-    uint32  in_width,
-    uint32  in_height,
-    eFormat in_format,
-    uint32  in_MSAASampleCount,
-    uint32  in_MSAAQuality)
+    uint32     in_width,
+    uint32     in_height,
+    eFormat    in_format,
+    eBindFlags in_bindFlags, 
+    MSAA in_MSAA)
 {
-    auto tex = ID3D11Texture2DUtil::CreateDefaultTexture2D(
+    auto tex = ID3D11Texture2DUtil::CreateTexture2D(
         in_width,
         in_height,
         in_format,
-        in_MSAASampleCount,
-        in_MSAAQuality,
         D3D11_USAGE_DEFAULT,
-        D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE,
-        0);
+        in_bindFlags,
+        eCPUAccessFlags_None,
+        in_MSAA,
+        1,
+        1,
+        eTextureCreationFlags_None,
+        nullptr);
 
     Init(tex.Get());
 }
@@ -58,7 +61,7 @@ void RenderTarget::Bind() const
 
 void RenderTarget::Bind(const Ref<DepthBuffer>& in_depthBuffer) const
 {
-    GetRenderer().SetRenderTarget(m_renderTargetView.Get(), in_depthBuffer->Get());
+    GetRenderer().SetRenderTarget(m_renderTargetView.Get(), in_depthBuffer->GetDSV());
 }
 
 void RenderTarget::Clear(const Color4& in_color) const

@@ -51,14 +51,14 @@ void VertexShader::_CreateVertexShader(
     auto d = GetRenderer().GetDevice();
 
     // - Create Vertex Shader
-    CheckD3D11Result(d->CreateVertexShader(in_blob->GetBufferPointer(),
+    d3d::CheckOK(d->CreateVertexShader(in_blob->GetBufferPointer(),
                                            in_blob->GetBufferSize(),
                                            nullptr,
                                            m_vertexShader.GetAddressOf()),
                      "CreateVertexShader Fail.");
 
     // - Create Input Layout
-    CheckD3D11Result(d->CreateInputLayout(in_inputElems.Get(),
+    d3d::CheckOK(d->CreateInputLayout(in_inputElems.Get(),
                                           in_inputElems.GetSize(),
                                           in_blob->GetBufferPointer(),
                                           in_blob->GetBufferSize(),
@@ -106,7 +106,7 @@ void PixelShader::_CreatePixelShader(const ComPtr<ID3DBlob>& in_blob)
     auto d = GetRenderer().GetDevice();
 
     // - Create Pixel Shader
-    CheckD3D11Result(d->CreatePixelShader(in_blob->GetBufferPointer(),
+    d3d::CheckOK(d->CreatePixelShader(in_blob->GetBufferPointer(),
                                           in_blob->GetBufferSize(),
                                           nullptr,
                                           m_pixelShader.GetAddressOf()),
@@ -151,7 +151,7 @@ void GeometryShader::_CreateGeometryShader(const ComPtr<ID3DBlob>& in_blob)
     auto d = GetRenderer().GetDevice();
 
     // - Create Geometry Shader
-    CheckD3D11Result(d->CreateGeometryShader(in_blob->GetBufferPointer(),
+    d3d::CheckOK(d->CreateGeometryShader(in_blob->GetBufferPointer(),
                                              in_blob->GetBufferSize(),
                                              nullptr,
                                              m_geometryShader.GetAddressOf()),
@@ -197,7 +197,7 @@ void DomainShader::_CreateDomainShader(const ComPtr<ID3DBlob>& in_blob)
     auto d = GetRenderer().GetDevice();
 
     // - Create Domain Shader
-    CheckD3D11Result(d->CreateDomainShader(in_blob->GetBufferPointer(),
+    d3d::CheckOK(d->CreateDomainShader(in_blob->GetBufferPointer(),
                                            in_blob->GetBufferSize(),
                                            nullptr,
                                            m_domainShader.GetAddressOf()),
@@ -242,7 +242,7 @@ void HullShader::_CreateHullShader(const ComPtr<ID3DBlob>& in_blob)
     auto d = GetRenderer().GetDevice();
 
     // - Create Hull Shader
-    CheckD3D11Result(d->CreateHullShader(in_blob->GetBufferPointer(),
+    d3d::CheckOK(d->CreateHullShader(in_blob->GetBufferPointer(),
                                          in_blob->GetBufferSize(),
                                          nullptr,
                                          m_hullShader.GetAddressOf()),
@@ -287,7 +287,7 @@ void ComputeShader::_CreateComputeShader(const ComPtr<ID3DBlob>& in_blob)
     auto d = GetRenderer().GetDevice();
 
     // - Create Compute Shader
-    CheckD3D11Result(d->CreateComputeShader(in_blob->GetBufferPointer(),
+    d3d::CheckOK(d->CreateComputeShader(in_blob->GetBufferPointer(),
                                             in_blob->GetBufferSize(),
                                             nullptr,
                                             m_computeShader.GetAddressOf()),

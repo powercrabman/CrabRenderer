@@ -2,7 +2,7 @@
 
 #include "GlobalConstant.h"
 
-#include "RenderResourceFactory.h"
+#include "RenderFactory.h"
 
 namespace crab
 {

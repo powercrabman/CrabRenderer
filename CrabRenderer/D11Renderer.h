@@ -1,5 +1,5 @@
 #pragma once
-#include "D11Utils.h"
+#include "RenderUtils.h"
 #include "Singleton.h"
 
 namespace crab
@@ -19,7 +19,7 @@ class DepthStencilState;
 class BlendState;
 class ConstantBufferBase;
 class RenderStates;
-class Swapchain;
+class SwapChain;
 class RenderTarget;
 class DepthBuffer;
 class GlobalState;
@@ -32,7 +32,10 @@ public:
     ~D11Renderer();
 
     // - Core
-    void Init(const RendererSetting& in_setting, const Int2& in_screenSize, HWND in_hWnd);
+    void Init(const RendererSetting& in_setting,
+              const Int2&            in_screenSize,
+              HWND                   in_hWnd);
+
     void InitGlobalResources(const std::filesystem::path& in_engineDirectory);
     void Shutdown();
 
@@ -64,13 +67,13 @@ public:
     void SetUnorderedAccessView(ID3D11UnorderedAccessView* in_uav, uint32 in_slot) const;
     void DispatchComputeShader(ID3D11ComputeShader* in_cs, uint32 in_threadGroupCountX, uint32 in_threadGroupCountY, uint32 in_threadGroupCountZ) const;
 
-    void SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, ID3D11DepthStencilView* in_depthStencilView) const;
-    void ReleaseRenderTargets() const;
+    void SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, ID3D11DepthStencilView* in_depthStencilView);
+    void SetRenderTargets(ID3D11RenderTargetView** in_renderTargetViews, uint32 in_renderTargetCount, ID3D11DepthStencilView* in_depthStencilView);
+    void ReleaseRenderTargets();
 
-    void SetViewport(const Viewport& in_viewport);
-    void SetViewport(uint32 x, uint32 y, uint32 width, uint32 height, uint32 minDepth = 0, uint32 maxDepth = 1);
+    void     SetViewport(const Viewport& in_viewport);
+    void     SetViewport(uint32 x, uint32 y, uint32 width, uint32 height, uint32 minDepth = 0, uint32 maxDepth = 1);
     Viewport GetViewport() const { return m_viewport; }
-    void BindOnlyDepthStencilView(ID3D11DepthStencilView* in_depthBuffer) const;
 
     void ClearDepthBuffer(bool  in_clearDepth,
                           float in_clearDepthFactor,
@@ -80,17 +83,21 @@ public:
     Ref<DepthBuffer> GetDepthBuffer() const;
 
     // - Swap Chain
-    void              Present() const;
-    const Ref<Swapchain>& GetSwapChain() const;
+    void                  Present();
+    const Ref<SwapChain>& GetSwapChain() const;
 
     // - Getter (Native)
     ID3D11Device*        GetDevice() const;
     ID3D11DeviceContext* GetContext() const;
 
-    GlobalState*     GetGlobalState() const { return m_globalState.get(); }
-    GlobalPipeline*  GetGlobalPipeline() const { return m_globalPipeline.get(); }
+    GlobalState*    GetGlobalState() const { return m_globalState.get(); }
+    GlobalPipeline* GetGlobalPipeline() const { return m_globalPipeline.get(); }
     GlobalConstant* GetGlobalConstants() const { return m_globalConstants.get(); }
-    GlobalShader*    GetGlobalShader() const { return m_globalShader.get(); }
+    GlobalShader*   GetGlobalShader() const { return m_globalShader.get(); }
+
+    MSAA              GetMSAA() const { return m_config.msaa; }
+    HDR               GetHDR() const { return m_config.hdr; }
+    D3D_FEATURE_LEVEL GetFeatureLevel() const { return m_device->GetFeatureLevel(); }
 
 private:
     D11Renderer();
@@ -102,20 +109,21 @@ private:
     ComPtr<ID3D11InfoQueue>     m_infoQueue;   // only debug
 
     // Swap Chain
-    Ref<Swapchain> m_swapChain;
+    Ref<SwapChain> m_swapChain;
 
-    // Feature Level
-    D3D_FEATURE_LEVEL m_featureLevel;
+    // Config
+    RendererConfig m_config;
 
     // Storage
-    Scope<GlobalState>     m_globalState;
-    Scope<GlobalPipeline>  m_globalPipeline;
+    Scope<GlobalState>    m_globalState;
+    Scope<GlobalPipeline> m_globalPipeline;
     Scope<GlobalConstant> m_globalConstants;
-    Scope<GlobalShader>    m_globalShader;
+    Scope<GlobalShader>   m_globalShader;
 
-    using ConstantBufferArray = std::array<ID3D11Buffer*, CONSTANT_BUFFER_SLOT_MAX>;
-    using TextureArray        = std::array<ID3D11ShaderResourceView*, TEXTURE_SLOT_MAX>;
-    using SamplerStateArray   = std::array<ID3D11SamplerState*, SAMPLER_SLOT_MAX>;
+    using ConstantBufferArray = std::array<ID3D11Buffer*, SHADER_CONSTANTS_SLOT_COUNT>;
+    using TextureArray        = std::array<ID3D11ShaderResourceView*, SHADER_SRV_SLOT_COUNT>;
+    using SamplerStateArray   = std::array<ID3D11SamplerState*, SHADER_SAMPLER_SLOT_COUNT>;
+    using RenderTargetArray   = std::array<ID3D11RenderTargetView*, SHADER_RENDER_TARGET_SLOT_COUNT>;
 
     // Input Assembler
     D3D11_PRIMITIVE_TOPOLOGY m_topology     = D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED;
@@ -157,8 +165,12 @@ private:
     ID3D11DepthStencilState* m_dsState     = nullptr;
     ID3D11BlendState*        m_bState      = nullptr;
     std::array<float, 4>     m_blendFactor = { 1.0f, 1.0f, 1.0f, 1.0f };
-    Viewport                 m_viewport;
-    uint32                   m_stencilRef = 0;
+    uint32                   m_stencilRef  = 0;
+
+    // Framebuffer
+    Viewport                m_viewport;
+    RenderTargetArray       m_renderTargetViews = {};
+    ID3D11DepthStencilView* m_depthStencilView  = nullptr;
 };
 
 //===================================================

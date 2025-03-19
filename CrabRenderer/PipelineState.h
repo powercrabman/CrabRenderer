@@ -19,7 +19,7 @@ class BlendState;
 
 struct PipelineBindArgument
 {
-    PipelineBindArgument()           = default;
+    PipelineBindArgument() = default;
     PipelineBindArgument(uint32 in_stencilRef, const std::array<float, 4>& in_blendFactor)
         : stencilRef(in_stencilRef)
         , blendFactor(in_blendFactor)
@@ -71,7 +71,7 @@ public:
     void SetSamplers(const SamplerList& in_states);
     void SetConstants(const ConstantList& in_buffers);
 
-    void Bind(const PipelineBindArgument& in_args = {}) const;
+    void Bind(const PipelineBindArgument& in_args) const;
 
 private:
     Ref<VertexShader>   m_vertexShader;

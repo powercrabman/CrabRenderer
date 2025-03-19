@@ -1,8 +1,0 @@
-// ���̹�
-
-������ �ϳ��� ����Ʈ ������			itemByteStride = sizeof(������)
-�ܼ� ������ ��ġ�� ����Ʈ ������		byteWidth = itemCount * itemByteStride
-�迭�� ��ü ����Ʈ ������			bufferByteWidth = itemCount * itemByteWidth
-
-���� �迭 �� �������� ����			itemCount
-���� �迭�� �� �뷮				itemMaxCount

@@ -1,5 +1,4 @@
 #pragma once
-#include "CrabEnums.h"
 
 namespace crab
 {
@@ -70,7 +69,7 @@ using eMaterialTextureUsingFlags = uint32;
 enum eMaterialTextureUsingFlags_ : uint32
 {
     eMaterialTextureUsingFlags_None         = 0,
-    eMaterialTextureUsingFlags_BaseColor    = BIT(0),
+    eMaterialTextureUsingFlags_Albedo    = BIT(0),
     eMaterialTextureUsingFlags_Normal_GL    = BIT(1),
     eMaterialTextureUsingFlags_Normal_DX    = BIT(2),
     eMaterialTextureUsingFlags_Metallic     = BIT(3),

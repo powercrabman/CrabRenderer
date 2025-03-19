@@ -3,7 +3,7 @@
 #include "CrabComponents.h"
 
 #include "D11Renderer.h"
-#include "D11Utils.h"
+#include "RenderUtils.h"
 #include "Mesh.h"
 #include "Shaders.h"
 #include "Textures.h"
@@ -111,7 +111,7 @@ Mat4 CameraComponent::GetProj() const
         case eProjectionType::Perspective:
             return MatrixUtil::CreatePerspective(fov, aspect, nearZ, farZ);
     }
-    CRAB_DEBUG_BREAK("Invalid Projection Type.");
+    DEBUG_BREAK("Invalid Projection Type.");
     return Mat4::Identity;
 }
 

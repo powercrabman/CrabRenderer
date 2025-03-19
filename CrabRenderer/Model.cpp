@@ -30,7 +30,9 @@ bool ModelLoader::Load(const std::filesystem::path& in_modelPath)
 
     if (!pScene)
     {
-        CRAB_DEBUG_BREAK_V("Failed to load mesh file: {0}\n{1}", in_modelPath.string().c_str(), importer.GetErrorString());
+        DEBUG_BREAK(fmt::format(
+                        "Failed to load mesh file: {0}\n{1}", in_modelPath.string().c_str(), importer.GetErrorString())
+                        .c_str());
         return false;
     }
 
@@ -259,7 +261,9 @@ ModelNode* Model::FindNode(std::string_view in_name)
     }
     else
     {
-        CRAB_DEBUG_BREAK_V("Model node not found: {0}", in_name.data());
+        DEBUG_BREAK(fmt::format(
+                        "Model node not found: {0}", in_name.data())
+                        .data());
         return nullptr;
     }
 }

@@ -2,7 +2,7 @@
 #include "DepthBuffer.h"
 #include "DepthMap.h"
 #include "PassCommon.h"
-#include "RenderResourceFactory.h"
+#include "RenderFactory.h"
 
 namespace crab
 {
@@ -45,7 +45,7 @@ public:
 
                     if (const auto& tex = material->GetBaseColorTexture())
                     {
-                        mat.usingTextureFlags |= eMaterialTextureUsingFlags_BaseColor;
+                        mat.usingTextureFlags |= eMaterialTextureUsingFlags_Albedo;
                         tex->Bind(0, eShaderFlags_PixelShader);
                     }
 
@@ -247,8 +247,12 @@ public:
                     {
                         case eLightType::Directional:
                         {
-                            if (!shadowMap || shadowMap->GetTextureType() != eTextureType::Texture2DArray)
-                                shadowMap = CreateDepthMapArray(SHADOW_MAP_LENGTH, SHADOW_MAP_LENGTH, MAX_CASCADE_SHADOW_LEVEL);
+                            if (!shadowMap || shadowMap->GetTextureType() != eResourceType::Texture2DArray)
+                                shadowMap = CreateDepthMapArray(SHADOW_MAP_LENGTH,
+                                                                SHADOW_MAP_LENGTH,
+                                                                MAX_CASCADE_SHADOW_LEVEL,
+                                                                eFormat::Depth_Float32,
+                                                                eFormat::Float32_1);
 
                             // update constant buffer
                             CameraComponent& cmr = in_cameraEntity.GetComponent<CameraComponent>();
@@ -301,8 +305,11 @@ public:
 
                         case eLightType::Point:
                         {
-                            if (!shadowMap || shadowMap->GetTextureType() != eTextureType::TextureCube)
-                                shadowMap = CreateDepthMapCube(SHADOW_MAP_LENGTH, SHADOW_MAP_LENGTH);
+                            if (!shadowMap || shadowMap->GetTextureType() != eResourceType::TextureCube)
+                                shadowMap = CreateDepthMapCube(SHADOW_MAP_LENGTH,
+                                                               SHADOW_MAP_LENGTH,
+                                                               eFormat::Depth_Float32,
+                                                               eFormat::Float32_1);
 
                             // update constant buffer
                             Mat4 proj = MatrixUtil::CreatePerspective(PI_DIV2, 1.f, LIGHT_NEAR_PLANE, l.fallOffEnd);
@@ -338,8 +345,8 @@ public:
 
                         case eLightType::Spot:
                         {
-                            if (!shadowMap || shadowMap->GetTextureType() != eTextureType::Texture2D)
-                                shadowMap = CreateDepthMapTexture(SHADOW_MAP_LENGTH, SHADOW_MAP_LENGTH);
+                            if (!shadowMap || shadowMap->GetTextureType() != eResourceType::Texture2D)
+                                shadowMap = CreateDepthMapTexture(SHADOW_MAP_LENGTH, SHADOW_MAP_LENGTH, eFormat::Depth_Float32, eFormat::Float32_1);
 
                             // update constant buffer
                             Mat4 lightViewProj = MatrixUtil::CreateViewFromQuaternion(t.position, t.rotate)
@@ -365,7 +372,7 @@ public:
                         break;
 
                         default:
-                            CRAB_DEBUG_BREAK("Light type is not supported for shadow mapping");
+                            DEBUG_BREAK("Light type is not supported for shadow mapping");
                             break;
                     }
                 }

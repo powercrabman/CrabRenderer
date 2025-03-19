@@ -62,8 +62,12 @@ protected:
     // Core Renderer Resource
     //===================================================
 
+    // G-buffer
+    PBRGeometryPass m_gBufferPass;
+
+    // HDR
     Ref<RenderTarget> m_backBufferHDR;
-    Ref<Texture2D>    m_stagingBackBufferTexture;
+    Ref<Texture2D>    m_copyOfBackBufferHDR;
 
     Ref<DepthBuffer> m_backBufferDepthBuffer;
     Viewport         m_screenViewport;
@@ -98,7 +102,7 @@ private:
         uint32 bloomBlurCount     = 3;
 
         // Tone Mapping
-        bool  useToneMapping = GetRenderer().GetSwapChain()->IsHDR();
+        bool  useToneMapping = GetRenderer().GetHDR().enableHDR;
         float exposure       = 1.f;
         float gamma          = 2.2f;
     };

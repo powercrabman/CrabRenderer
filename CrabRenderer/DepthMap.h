@@ -1,12 +1,16 @@
 #pragma once
-#include "CrabEnums.h"
+#include "RenderCommon.h"
 #include "Textures.h"
 
 namespace crab
 {
 
-class Texture;
+class ShaderResource;
 class DepthBuffer;
+
+//===================================================
+// Depth Only Buffer With ShaderResource
+//===================================================
 
 class DepthMap
 {
@@ -18,27 +22,26 @@ public:
 
     Int2             GetResolution() const;
     Ref<DepthBuffer> GetDepthBuffer() const { return m_depthBuffer; }
-    Ref<Texture>     GetTexture() const { return m_texture; }
-    eTextureType     GetTextureType() const { return m_texture->GetTextureType(); }
+    Ref<ShaderResource>     GetTexture() const { return m_texture; }
+    eResourceType     GetTextureType() const { return m_texture->GetResourceType(); }
 
 protected:
     DepthMap() = default;
 
-    Ref<Texture>     m_texture;
+    Ref<ShaderResource>     m_texture;
     Ref<DepthBuffer> m_depthBuffer;
 };
 
 //===================================================
-// DepthMap Texture
+// DepthMap ShaderResource
 //===================================================
 class DepthMapTexture : public DepthMap
 {
 public:
-    void Init(
-        uint32  in_width,
-        uint32  in_height,
-        eFormat in_depthFormat   = eFormat::Depth_Float32,
-        eFormat in_textureFormat = eFormat::Float32);
+    void Init(uint32  in_width,
+              uint32  in_height,
+              eFormat in_depthFormat,
+              eFormat in_textureFormat);
 };
 
 //===================================================
@@ -47,12 +50,11 @@ public:
 class DepthMapArray : public DepthMap
 {
 public:
-    void Init(
-        uint32  in_width,
-        uint32  in_height,
-        uint32  in_arraySize,
-        eFormat in_depthFormat   = eFormat::Depth_Float32,
-        eFormat in_textureFormat = eFormat::Float32);
+    void Init(uint32  in_width,
+              uint32  in_height,
+              uint32  in_arraySize,
+              eFormat in_depthFormat,
+              eFormat in_textureFormat);
 };
 
 //===================================================
@@ -61,11 +63,10 @@ public:
 class DepthMapCube : public DepthMap
 {
 public:
-    void Init(
-        uint32  in_width,
-        uint32  in_height,
-        eFormat in_depthFormat   = eFormat::Depth_Float32,
-        eFormat in_textureFormat = eFormat::Float32);
+    void Init(uint32  in_width,
+              uint32  in_height,
+              eFormat in_depthFormat,
+              eFormat in_textureFormat);
 };
 
 }   // namespace crab

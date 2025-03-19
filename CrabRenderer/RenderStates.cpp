@@ -15,7 +15,7 @@ void DepthStencilState::Init(const D3D11_DEPTH_STENCIL_DESC& in_desc)
 {
     auto d = GetRenderer().GetDevice();
 
-    CheckD3D11Result(
+    d3d::CheckOK(
         d->CreateDepthStencilState(
             &in_desc,
             m_depthStencil.GetAddressOf()),
@@ -34,7 +34,7 @@ void DepthStencilState::Bind(uint32 in_stencilRef) const
 void RasterizerState::Init(const D3D11_RASTERIZER_DESC& in_desc)
 {
     auto d = GetRenderer().GetDevice();
-    CheckD3D11Result(
+    d3d::CheckOK(
         d->CreateRasterizerState(
             &in_desc,
             m_rasterizerState.GetAddressOf()),
@@ -49,7 +49,7 @@ void RasterizerState::Bind() const
 void BlendState::Init(const D3D11_BLEND_DESC& in_desc)
 {
     auto d = GetRenderer().GetDevice();
-    CheckD3D11Result(
+    d3d::CheckOK(
         d->CreateBlendState(
             &in_desc,
             m_blendState.GetAddressOf()),
@@ -71,8 +71,8 @@ void BlendState::Bind(const std::array<float, 4>& in_blendFactors) const
 
 void SamplerState::Init(const D3D11_SAMPLER_DESC& in_desc)
 {
-    auto              d            = GetRenderer().GetDevice();
-    CheckD3D11Result(
+    auto d = GetRenderer().GetDevice();
+    d3d::CheckOK(
         d->CreateSamplerState(
             &in_desc,
             m_samplerState.GetAddressOf()),

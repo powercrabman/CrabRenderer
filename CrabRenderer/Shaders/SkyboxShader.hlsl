@@ -26,12 +26,12 @@ float4 PSmain(PS_Input input) : SV_TARGET
 {
     if (g_textureCubeType == 1)
     {
-        return g_diffuseCube.Sample(g_wrapSampler, input.posW);
+        return g_diffuseCube.Sample(g_linearWrapSampler, input.posW);
     }
     else if (g_textureCubeType == 2)
     {
-        return g_specularCube.Sample(g_wrapSampler, input.posW);
+        return g_specularCube.Sample(g_linearWrapSampler, input.posW);
     }
 
-    return g_skyboxCube.Sample(g_wrapSampler, input.posW);
+    return g_skyboxCube.Sample(g_linearWrapSampler, input.posW);
 }

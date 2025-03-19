@@ -1,5 +1,5 @@
 #pragma once
-#include "CrabEnums.h"
+#include "RenderCommon.h"
 
 namespace crab
 {
@@ -15,7 +15,7 @@ struct AppWindowSetting
     Int2        windowPos   = { CENTER_ALIGNMENT, CENTER_ALIGNMENT };
 
     // clang-format off
-    enum : int32 { CENTER_ALIGNMENT = CRAB_INT32_MAX };
+    enum : int32 { CENTER_ALIGNMENT = -1 };
     // clang-format on
 };
 
@@ -28,23 +28,16 @@ enum class eRendererAPI
     DirectX11
 };
 
-struct SwapChainSetting
-{
-    eFormat swapChainFormat   = eFormat::UNorm8x4;
-    eFormat depthBufferFormat = eFormat::Depth_UNorm24_Stencil_UInt8;
-
-    bool enableVSync        = true;
-    bool enableHDRRendering = false;
-
-    // MSAA
-    bool enableMSAA = false;
-};
-
 struct RendererSetting
 {
     eRendererAPI rendererAPI = eRendererAPI::DirectX11;
 
-    SwapChainSetting swapChainSetting = {};
+    eFormat backBufferFormat      = eFormat::UNorm8_4;
+    eFormat backBufferDepthFormat = eFormat::Depth_UNorm24_Stencil_UInt8;
+
+    bool enableVSync = true;
+    bool enableHDR   = false;
+    bool enableMSAA  = false;
 };
 
 //===================================================
@@ -62,7 +55,7 @@ struct ApplicationSetting
     // - Renderer
     RendererSetting rendererSetting = {};
 
-    std::string engineDirectory = "";
+    std::string engineDirectory = {};
 };
 
 }   // namespace crab

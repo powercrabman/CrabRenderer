@@ -121,9 +121,10 @@ TextureCube g_diffuseCube : register(t11);
 TextureCube g_specularCube : register(t12);
 Texture2D g_brdfTex : register(t13);
 
-SamplerState g_wrapSampler : register(s0);
-SamplerState g_clampSampler : register(s1);
-SamplerComparisonState g_shadowSampler : register(s2);
+SamplerState g_linearWrapSampler : register(s0);
+SamplerState g_linearClampSampler : register(s1);
+SamplerState g_pointClampSampler : register(s2);
+SamplerComparisonState g_shadowSampler : register(s3);
 
 //===================================================
 // Common Function
@@ -155,6 +156,24 @@ float Hermite(float p0, float m0, float p1, float m1, float t)
     float h11 = t3 - t2;
 
     return h00 * p0 + h10 * m0 + h01 * p1 + h11 * m1;
+}
+
+float3 GetNormal(float3 tangent, float3 bitangent, float3 normal, float2 texCoord, Texture2D normalMap)
+{
+    float3 output = normal;
+    
+    if (g_usingTextureFlags & (USING_TEXTURE_NORMAL_GL | USING_TEXTURE_NORMAL_DX))
+    {
+        float3 normalTex = normalMap.Sample(g_linearWrapSampler, texCoord).rgb;
+        normalTex = normalize(2.0 * normalTex - 1.0);
+
+        normalTex.y = (g_usingTextureFlags & USING_TEXTURE_NORMAL_GL) ? -normalTex.y : normalTex.y;
+
+        float3x3 TBN = float3x3(tangent, bitangent, normal);
+        output = normalize(mul(normalTex, TBN));
+    }
+    
+    return output;
 }
 
 //===================================================

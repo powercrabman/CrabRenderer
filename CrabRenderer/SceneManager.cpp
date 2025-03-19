@@ -43,7 +43,7 @@ Scene* SceneManager::FindSceneByName(std::string_view in_name)
     }
     else
     {
-        CRAB_DEBUG_BREAK("Scene not found!");
+        DEBUG_BREAK("Scene not found!");
         return nullptr;
     }
 }
@@ -69,7 +69,7 @@ void SceneManager::DeleteScene(const Scene* in_scene)
     }
     else
     {
-        CRAB_DEBUG_BREAK("Scene not found!");
+        DEBUG_BREAK("Scene not found!");
     }
 }
 

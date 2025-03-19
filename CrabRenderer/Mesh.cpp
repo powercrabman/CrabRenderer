@@ -45,7 +45,7 @@ void Mesh::Draw() const
             break;
 
         default:
-            CRAB_DEBUG_BREAK("Unknown topology");
+            DEBUG_BREAK("Unknown topology");
             break;
     }
 }

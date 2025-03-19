@@ -26,8 +26,8 @@ void ImageFilter::Init(
 {
     auto d = GetRenderer().GetDevice();
 
-    CRAB_ASSERT(in_vertexShader, "Invalid Vertex Shader.");
-    CRAB_ASSERT(in_pixelShader, "Invalid Pixel Shader.");
+    ASSERT(in_vertexShader, "Invalid Vertex Shader.");
+    ASSERT(in_pixelShader, "Invalid Pixel Shader.");
 
     auto [scrWidth, scrHeight] = GetApplication().GetAppWindow().GetResolution();
 
@@ -55,10 +55,10 @@ void ImageFilter::Init(
     texDesc.CPUAccessFlags          = 0;
     texDesc.MiscFlags               = 0;
 
-    CheckD3D11Result(d->CreateTexture2D(&texDesc,
+    d3d::CheckOK(d->CreateTexture2D(&texDesc,
                                         nullptr,
                                         texture.GetAddressOf()),
-                     "CreateTexture2D Fail.");
+                     "CreateSRV Fail.");
 
     Ref<RenderTarget> rt = CreateRef<RenderTarget>();
     rt->Init(texture.Get());

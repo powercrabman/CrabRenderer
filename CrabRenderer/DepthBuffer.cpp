@@ -9,37 +9,39 @@
 namespace crab
 {
 
-void DepthBuffer::Init(
-    uint32  in_width,
-    uint32  in_height,
-    eFormat in_depthBufferFormat,
-    uint32  in_MSAASampleCount,
-    uint32  in_MSAAQuality)
+void DepthBuffer::Init(uint32  in_width,
+                       uint32  in_height,
+                       eFormat in_depthBufferFormat,
+                       MSAA    in_MSAA)
 {
 
-    ComPtr<ID3D11Texture2D> depthBufferTexture = ID3D11Texture2DUtil::CreateDefaultTexture2D(
-        in_width,
-        in_height,
-        in_depthBufferFormat,
-        eBindFlags_DepthStencil,
-        in_MSAASampleCount,
-        in_MSAAQuality);
+    ComPtr<ID3D11Texture2D> depthBufferTexture =
+        ID3D11Texture2DUtil::CreateTexture2D(in_width,
+                                             in_height,
+                                             eFormat::Typeless32_1,
+                                             D3D11_USAGE_DEFAULT,
+                                             eBindFlags_DepthStencil,
+                                             eCPUAccessFlags_None,
+                                             in_MSAA,
+                                             1,
+                                             1,
+                                             eTextureCreationFlags_None,
+                                             nullptr);
 
     m_format     = in_depthBufferFormat;
     m_resolution = { static_cast<int32>(in_width), static_cast<int32>(in_height) };
     m_dsv        = ID3D11DepthStencilViewUtil::CreateDepthStencilView(depthBufferTexture.Get(), in_depthBufferFormat);
 }
 
-void DepthBuffer::Init(
-    ID3D11Texture2D* in_texture,
-    eFormat          in_depthBufferFormat)
+void DepthBuffer::Init(ID3D11Texture2D* in_texture,
+                       eFormat          in_depthBufferFormat)
 {
-    D3D11_TEXTURE2D_DESC m_desc;
-    in_texture->GetDesc(&m_desc);
+    D3D11_TEXTURE2D_DESC desc;
+    in_texture->GetDesc(&desc);
 
     m_dsv        = ID3D11DepthStencilViewUtil::CreateDepthStencilView(in_texture, in_depthBufferFormat);
-    m_format     = in_depthBufferFormat == eFormat::Unknown ? static_cast<eFormat>(m_desc.Format) : in_depthBufferFormat;
-    m_resolution = { static_cast<int32>(m_desc.Width), static_cast<int32>(m_desc.Height) };
+    m_format     = in_depthBufferFormat;
+    m_resolution = { static_cast<int32>(desc.Width), static_cast<int32>(desc.Height) };
 }
 
 void DepthBuffer::Clear(

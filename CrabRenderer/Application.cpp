@@ -47,13 +47,13 @@ Application::~Application()
 
 crab::AppWindow& Application::GetAppWindow() const
 {
-    CRAB_ASSERT(m_appWindow, "AppWindow is null!");
+    ASSERT(m_appWindow, "AppWindow is null!");
     return *m_appWindow;
 }
 
 Application& Application::GetInstance()
 {
-    CRAB_ASSERT(s_instance, "Application instance is null!");
+    ASSERT(s_instance, "Application instance is null!");
     return *s_instance;
 }
 

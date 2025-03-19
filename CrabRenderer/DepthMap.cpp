@@ -2,6 +2,7 @@
 
 #include "DepthMap.h"
 
+#include "D11Renderer.h"
 #include "DepthBuffer.h"
 #include "Textures.h"
 
@@ -15,7 +16,7 @@ void DepthMap::Clear(float in_clearValue) const
 
 void DepthMap::BindDepthBuffer() const
 {
-    GetRenderer().BindOnlyDepthStencilView(m_depthBuffer->Get());
+    GetRenderer().SetRenderTarget(nullptr, m_depthBuffer->GetDSV());
 }
 
 void DepthMap::BindDepthMapTexture(uint32 in_slot, eShaderFlags in_bindFlags) const
@@ -28,23 +29,23 @@ Int2 DepthMap::GetResolution() const
     return m_depthBuffer->GetResolution();
 }
 
-void DepthMapTexture::Init(
-    uint32  in_width,
-    uint32  in_height,
-    eFormat in_depthFormat,
-    eFormat in_textureFormat)
+void DepthMapTexture::Init(uint32  in_width,
+                           uint32  in_height,
+                           eFormat in_depthFormat,
+                           eFormat in_textureFormat)
 {
     auto depthTex = ID3D11Texture2DUtil::CreateTexture2D(
         in_width,
         in_height,
-        eFormat::Float32_Typeless,
+        eFormat::Typeless32_1,
         D3D11_USAGE_DEFAULT,
         eBindFlags_DepthStencil | eBindFlags_ShaderResource,
         eCPUAccessFlags_None,
+        MSAA::DisableMSAA(),
         1,
-        0,
         1,
-        1);
+        eTextureCreationFlags_None,
+        nullptr);
 
     auto tex = CreateRef<Texture2D>();
     tex->Init(depthTex.Get(), in_textureFormat);
@@ -64,14 +65,15 @@ void DepthMapArray::Init(
     auto depthTex = ID3D11Texture2DUtil::CreateTexture2D(
         in_width,
         in_height,
-        eFormat::Float32_Typeless,
+        eFormat::Typeless32_1,
         D3D11_USAGE_DEFAULT,
-        eBindFlags_DepthStencil | eBindFlags_ShaderResource,
+        eBindFlags_ShaderResource | eBindFlags_DepthStencil,
         eCPUAccessFlags_None,
+        MSAA::DisableMSAA(),
         1,
-        0,
-        1,
-        in_arraySize);
+        in_arraySize,
+        eTextureCreationFlags_None,
+        nullptr);
 
     auto texArray = CreateRef<Texture2DArray>();
     texArray->Init(depthTex.Get(), in_textureFormat);
@@ -90,15 +92,15 @@ void DepthMapCube::Init(
     auto depthTex = ID3D11Texture2DUtil::CreateTexture2D(
         in_width,
         in_height,
-        eFormat::Float32_Typeless,
+        eFormat::Typeless32_1,
         D3D11_USAGE_DEFAULT,
-        eBindFlags_DepthStencil | eBindFlags_ShaderResource,
+        eBindFlags_ShaderResource | eBindFlags_DepthStencil,
         eCPUAccessFlags_None,
-        1,
-        0,
+        MSAA::DisableMSAA(),
         1,
         6,
-        true);
+        eTextureCreationFlags_CubeMap,
+        nullptr);
 
     auto texCube = CreateRef<TextureCube>();
     texCube->Init(depthTex.Get(), in_textureFormat);

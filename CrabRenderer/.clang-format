@@ -7,7 +7,7 @@ AlignEscapedNewlines: Right
 AlignTrailingComments: 'true'
 AlwaysBreakBeforeMultilineStrings: 'false'
 AlwaysBreakTemplateDeclarations: 'Yes'
-AllowShortEnumsOnASingleLine: 'true'
+AllowShortEnumsOnASingleLine: 'false'
 BinPackArguments: 'false'
 BinPackParameters: 'false'
 BreakBeforeBraces: Allman

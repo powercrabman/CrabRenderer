@@ -399,7 +399,7 @@ private:
             in_tex = nullptr;
     }
 
-    bool _DrawTextureLoadReleaseItem(const char* in_label, Ref<Texture2D>& in_tex, bool in_reverseToneMapping = false)
+    bool _DrawTextureLoadReleaseItem(const char* in_label, Ref<Texture2D>& in_tex, eTextureLoadFlags in_flags = eTextureCreationFlags_None)
     {
         ImGui::Text(in_label);
 
@@ -415,7 +415,7 @@ private:
             if (!path.empty())
             {
                 in_tex = CreateRef<Texture2D>();
-                in_tex->LoadFromFile(path, true, in_reverseToneMapping);
+                in_tex->LoadFromFile(path, in_flags);
             }
 
             return true;

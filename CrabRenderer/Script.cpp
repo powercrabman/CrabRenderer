@@ -20,7 +20,7 @@ Entity Script::GetEntity()
 {
     if (!m_ownerEntity.IsValid())
     {
-        CRAB_DEBUG_BREAK(" m_ownerEntity is nullptr.");
+        DEBUG_BREAK(" m_ownerEntity is nullptr.");
         return Entity::s_null;
     }
     return m_ownerEntity;

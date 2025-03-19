@@ -27,6 +27,8 @@ class Draw2D
 public:
     static void Init();
 
+    static void DrawFullScreenMesh();
+
 private:
     struct Impl;
     static Scope<Impl> m_impl;

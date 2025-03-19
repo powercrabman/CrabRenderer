@@ -4,6 +4,12 @@
 namespace crab
 {
 
+struct ResourceBindDesc
+{
+    uint32       slot;
+    eShaderFlags bindFlags;
+};
+
 //===================================================
 // Constant Buffer List
 //===================================================
@@ -11,8 +17,7 @@ namespace crab
 struct ConstantNode
 {
     Ref<ConstantBufferBase> buffer;
-    uint32                  slot;
-    eShaderFlags            bindFlags;
+    ResourceBindDesc        bindDesc;
 };
 
 class ConstantList
@@ -39,7 +44,7 @@ Ref<ConstantBuffer<DataType>> ConstantList::FindBuffer()
         if (buffer->GetItemType() == TypeInfo::Get<DataType>())
             return std::static_pointer_cast<ConstantBuffer<DataType>>(buffer);
     }
-    CRAB_DEBUG_BREAK("Cannot find the buffer. Check the buffer type.");
+    DEBUG_BREAK("Cannot find the buffer. Check the buffer type.");
     return nullptr;
 }
 
@@ -47,13 +52,12 @@ Ref<ConstantBuffer<DataType>> ConstantList::FindBuffer()
 // Texture2D List
 //===================================================
 
-class Texture;
+class ShaderResource;
 
 struct TextureNode
 {
-    Ref<Texture> texture;
-    uint32       slot;
-    eShaderFlags bindFlags;
+    Ref<ShaderResource> texture;
+    ResourceBindDesc bindDesc;
 };
 
 class TextureList
@@ -79,8 +83,7 @@ class SamplerState;
 struct SamplerNode
 {
     Ref<SamplerState> sampler;
-    uint32            slot;
-    eShaderFlags      bindFlags;
+    ResourceBindDesc  bindDesc;
 };
 
 class SamplerList

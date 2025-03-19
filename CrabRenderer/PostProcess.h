@@ -31,10 +31,9 @@ public:
     Ref<ImageFilter> GetLastFilter() const;
     void             ClearFilterList();
 
-    void Render();
+    void Render() const;
 
 private:
-    Ref<Mesh>                     m_mesh;
     std::vector<Ref<ImageFilter>> m_filters;
 };
 

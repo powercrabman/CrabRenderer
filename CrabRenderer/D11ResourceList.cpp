@@ -20,8 +20,8 @@ void ConstantList::Init(const std::vector<ConstantNode>& in_constants)
 
 void ConstantList::Bind() const
 {
-    for (const auto& [buffer, slot, bindFlags]: m_constantBuffers)
-        buffer->Bind(slot, bindFlags);
+    for (const auto& [buffer, bindDesc]: m_constantBuffers)
+        buffer->Bind(bindDesc.slot, bindDesc.bindFlags);
 }
 
 //===================================================
@@ -35,8 +35,8 @@ void TextureList::Init(const std::vector<TextureNode>& in_constants)
 
 void TextureList::Bind() const
 {
-    for (const auto& [image, slot, bindFlags]: m_textures)
-        image->Bind(slot, bindFlags);
+    for (const auto& [image, bindDesc]: m_textures)
+        image->Bind(bindDesc.slot, bindDesc.bindFlags);
 }
 
 //===================================================
@@ -50,8 +50,8 @@ void SamplerList::Init(const std::vector<SamplerNode>& in_samplers)
 
 void SamplerList::Bind() const
 {
-    for (const auto& [sampler, slot, bindFlags]: m_samplers)
-        sampler->Bind(slot, bindFlags);
+    for (const auto& [sampler, bindDesc]: m_samplers)
+        sampler->Bind(bindDesc.slot, bindDesc.bindFlags);
 }
 
 }   // namespace crab

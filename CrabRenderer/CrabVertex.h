@@ -39,8 +39,8 @@ struct Vertex2D
     {
         InputElements elements = {};
         elements
-            .Add("POSITION", 0, eFormat::Float32x2)
-            .Add("TEXCOORD", 0, eFormat::Float32x2);
+            .Add("POSITION", 0, eFormat::Float32_2)
+            .Add("TEXCOORD", 0, eFormat::Float32_2);
 
         return elements;
     }();
@@ -67,10 +67,10 @@ struct Vertex3D
     {
         InputElements elements = {};
         elements
-            .Add("POSITION", 0, eFormat::Float32x3)
-            .Add("NORMAL", 0, eFormat::Float32x3)
-            .Add("TEXCOORD", 0, eFormat::Float32x2)
-            .Add("TANGENT", 0, eFormat::Float32x3);
+            .Add("POSITION", 0, eFormat::Float32_3)
+            .Add("NORMAL", 0, eFormat::Float32_3)
+            .Add("TEXCOORD", 0, eFormat::Float32_2)
+            .Add("TANGENT", 0, eFormat::Float32_3);
 
         return elements;
     }();

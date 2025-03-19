@@ -1,5 +1,5 @@
 #pragma once
 
-#include "CrabMathCommon.h"
-#include "CrabRandom.h"
-#include "CrabLinearAlgebraUtils.h"
+#include "MathCommon.h"
+#include "Random.h"
+#include "LinearAlgebraUtils.h"

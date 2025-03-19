@@ -11,8 +11,7 @@
 #include "GlobalPipeline.h"
 #include "GlobalShader.h"
 #include "GlobalState.h"
-#include "RenderTarget.h"
-#include "Swapchain.h"
+#include "SwapChain.h"
 
 namespace crab
 {
@@ -43,27 +42,38 @@ void D11Renderer::Init(
 #endif
 
     // - Create Device
+    d3d::CheckOK(D3D11CreateDevice(nullptr,
+                                   D3D_DRIVER_TYPE_HARDWARE,
+                                   NULL,
+                                   createDeviceFlags,
+                                   featureLevels,
+                                   ARRAYSIZE(featureLevels),
+                                   D3D11_SDK_VERSION,
+                                   m_device.GetAddressOf(),
+                                   &m_config.featureLevel,
+                                   m_deviceContext.GetAddressOf()),
+                 "D3D11CreateDevice Fail.");
 
-    CheckD3D11Result(D3D11CreateDevice(nullptr,
-                                       D3D_DRIVER_TYPE_HARDWARE,
-                                       NULL,
-                                       createDeviceFlags,
-                                       featureLevels,
-                                       ARRAYSIZE(featureLevels),
-                                       D3D11_SDK_VERSION,
-                                       m_device.GetAddressOf(),
-                                       &m_featureLevel,
-                                       m_deviceContext.GetAddressOf()),
-                     "D3D11CreateDevice Fail.");
+    m_config.hdr         = HDR { .enableHDR = in_setting.enableHDR };
+    m_config.msaa        = MSAA::ComputeBestMSAA(in_setting.enableMSAA,
+                                          m_device.Get(),
+                                          static_cast<DXGI_FORMAT>(in_setting.backBufferFormat),
+                                          MSAA_SAMPLE_COUNT);
+    m_config.enableVSync = in_setting.enableVSync;
 
     // - Swap Chain
-    m_swapChain = CreateRef<Swapchain>();
-    m_swapChain->Init(in_setting.swapChainSetting, in_screenSize, in_hWnd);
+    m_swapChain = CreateRef<SwapChain>();
+    m_swapChain->Init(
+        in_setting,
+        in_screenSize,
+        m_config.msaa,
+        m_config.hdr,
+        in_hWnd);
 
 #ifdef _DEBUG
     // - debug
-    CheckD3D11Result(m_device->QueryInterface(IID_PPV_ARGS(m_debug.GetAddressOf())), "QueryInterface Fail.");
-    CheckD3D11Result(m_debug->QueryInterface(IID_PPV_ARGS(m_infoQueue.GetAddressOf())), "QueryInterface Fail.");
+    d3d::CheckOK(m_device->QueryInterface(IID_PPV_ARGS(m_debug.GetAddressOf())), "QueryInterface Fail.");
+    d3d::CheckOK(m_debug->QueryInterface(IID_PPV_ARGS(m_infoQueue.GetAddressOf())), "QueryInterface Fail.");
 #endif
 }
 
@@ -273,15 +283,53 @@ void D11Renderer::SetBlendState(ID3D11BlendState* in_blendState, const std::arra
     }
 }
 
-void D11Renderer::SetRenderTarget(ID3D11RenderTargetView* in_renderTargetView, ID3D11DepthStencilView* in_depthStencilView) const
+void D11Renderer::SetRenderTarget(
+    ID3D11RenderTargetView* in_renderTargetView,
+    ID3D11DepthStencilView* in_depthStencilView)
 {
-    m_deviceContext->OMSetRenderTargets(1, &in_renderTargetView, in_depthStencilView);
+    if (m_renderTargetViews[0] != in_renderTargetView
+        || m_depthStencilView != in_depthStencilView)
+    {
+        m_renderTargetViews[0] = in_renderTargetView;
+        m_depthStencilView     = in_depthStencilView;
+        m_deviceContext->OMSetRenderTargets(1, &in_renderTargetView, in_depthStencilView);
+    }
 }
 
-void D11Renderer::ReleaseRenderTargets() const
+void D11Renderer::SetRenderTargets(
+    ID3D11RenderTargetView** in_renderTargetViews,
+    uint32                   in_renderTargetCount,
+    ID3D11DepthStencilView*  in_depthStencilView)
 {
-    std::array<ID3D11RenderTargetView*, 8> nullRTVs = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
-    m_deviceContext->OMSetRenderTargets((UINT)nullRTVs.size(), nullRTVs.data(), nullptr);
+    bool dirty = false;
+    for (uint32 i = 0; i < in_renderTargetCount; ++i)
+    {
+        if (m_renderTargetViews[i] != in_renderTargetViews[i])
+        {
+            m_renderTargetViews[i] = in_renderTargetViews[i];
+            dirty                  = true;
+        }
+    }
+
+    if (m_depthStencilView != in_depthStencilView)
+    {
+        m_depthStencilView = in_depthStencilView;
+        dirty              = true;
+    }
+
+    if (dirty)
+    {
+        m_deviceContext->OMSetRenderTargets(
+            in_renderTargetCount,
+            in_renderTargetViews,
+            in_depthStencilView);
+    }
+}
+
+void D11Renderer::ReleaseRenderTargets()
+{
+    static RenderTargetArray nullRTVs = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
+    SetRenderTargets(nullRTVs.data(), static_cast<uint32>(nullRTVs.size()), nullptr);
 }
 
 void D11Renderer::SetViewport(const Viewport& in_viewport)
@@ -324,14 +372,14 @@ Ref<DepthBuffer> D11Renderer::GetDepthBuffer() const
     return m_swapChain->GetDepthBuffer();
 }
 
-void D11Renderer::Present() const
+void D11Renderer::Present()
 {
-    m_swapChain->Present();
-}
+    m_swapChain->Present(m_config.enableVSync);
 
-void D11Renderer::BindOnlyDepthStencilView(ID3D11DepthStencilView* in_depthBuffer) const
-{
-    m_deviceContext->OMSetRenderTargets(0, nullptr, in_depthBuffer);
+    // back buffer use DXGI_SWAP_EFFECT_FLIP_DISCARD
+    // this model make render target view invalid after present
+    m_renderTargetViews.fill(nullptr);
+    m_depthStencilView = nullptr;
 }
 
 ID3D11Device* D11Renderer::GetDevice() const
@@ -344,7 +392,7 @@ ID3D11DeviceContext* D11Renderer::GetContext() const
     return m_deviceContext.Get();
 }
 
-const Ref<Swapchain>& D11Renderer::GetSwapChain() const
+const Ref<SwapChain>& D11Renderer::GetSwapChain() const
 {
     return m_swapChain;
 }
@@ -482,10 +530,10 @@ void D11Renderer::DispatchComputeShader(
     m_deviceContext->Dispatch(in_threadGroupCountX, in_threadGroupCountY, in_threadGroupCountZ);
 
     // cs barrier
-    static ID3D11UnorderedAccessView* nullUAVs[UAV_SLOT_MAX] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
-    m_deviceContext->CSSetUnorderedAccessViews(0, UAV_SLOT_MAX, nullUAVs, nullptr);
+    static ID3D11UnorderedAccessView* nullUAVs[SHADER_UAV_SLOT_COUNT] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr };
+    m_deviceContext->CSSetUnorderedAccessViews(0, SHADER_UAV_SLOT_COUNT, nullUAVs, nullptr);
 
-    static std::vector<ID3D11ShaderResourceView*> nullSRVs { TEXTURE_SLOT_MAX, nullptr };
+    static std::vector<ID3D11ShaderResourceView*> nullSRVs { SHADER_SRV_SLOT_COUNT, nullptr };
     m_deviceContext->CSSetShaderResources(0, m_csBigestTextureBindedSlot + 1, nullSRVs.data());
 }
 

@@ -74,7 +74,7 @@ Scene* crab::SceneManager::CreateScene()
 
     auto [it, _] = m_scenes.emplace(scene->GetName(), std::move(scene));
     m_sceneNames.push_back(it->first);
-    CRAB_ASSERT(_, "Scene already exists!");
+    ASSERT(_, "Scene already exists!");
     return it->second.get();
 }
 
@@ -101,7 +101,7 @@ Scene* crab::SceneManager::FindScene()
     }
     else
     {
-        CRAB_DEBUG_BREAK("Scene not found!");
+        DEBUG_BREAK("Scene not found!");
         return nullptr;
     }
 }

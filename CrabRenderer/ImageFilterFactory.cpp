@@ -2,10 +2,11 @@
 
 #include "ImageFilterFactory.h"
 
+#include "D11Renderer.h"
 #include "GlobalShader.h"
 #include "GlobalState.h"
 #include "ImageFilter.h"
-#include "RenderResourceFactory.h"
+#include "RenderFactory.h"
 #include "Textures.h"
 
 namespace crab
@@ -34,8 +35,8 @@ Ref<ImageFilter> ImageFilterFactory::CreateBlurDown(
     filter->Init(
         in_width,
         in_height,
-        GetGlobalShader()->PostProcessVS(),
-        GetGlobalShader()->BlurDownPS(),
+        GetGlobalShader()->GetScreenSpaceVS(),
+        GetGlobalShader()->GetBlurDownPS(),
         textures,
         samplers,
         constants);
@@ -67,8 +68,8 @@ Ref<ImageFilter> ImageFilterFactory::CreateBlurUp(
     filter->Init(
         in_width,
         in_height,
-        GetGlobalShader()->PostProcessVS(),
-        GetGlobalShader()->BlurUpPS(),
+        GetGlobalShader()->GetScreenSpaceVS(),
+        GetGlobalShader()->GetBlurUpPS(),
         textures,
         samplers,
         constants);
@@ -93,8 +94,8 @@ Ref<ImageFilter> ImageFilterFactory::CreateSampling(
     filter->Init(
         in_width,
         in_height,
-        GetGlobalShader()->PostProcessVS(),
-        GetGlobalShader()->SamplingPS(),
+        GetGlobalShader()->GetScreenSpaceVS(),
+        GetGlobalShader()->GetSamplingPS(),
         textures,
         samplers,
         constants);
@@ -126,8 +127,8 @@ Ref<ImageFilter> ImageFilterFactory::CreateToneMapping(
     filter->Init(
         in_width,
         in_height,
-        GetGlobalShader()->PostProcessVS(),
-        GetGlobalShader()->ToneMappingPS(),
+        GetGlobalShader()->GetScreenSpaceVS(),
+        GetGlobalShader()->GetToneMapPS(),
         textures,
         samplers,
         constants);
@@ -165,8 +166,8 @@ Ref<ImageFilter> ImageFilterFactory::CreateCombine(
     filter->Init(
         in_width,
         in_height,
-        GetGlobalShader()->PostProcessVS(),
-        GetGlobalShader()->CombinePS(),
+        GetGlobalShader()->GetScreenSpaceVS(),
+        GetGlobalShader()->GetCombinePS(),
         textures,
         samplers,
         constants);

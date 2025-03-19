@@ -23,10 +23,10 @@ void Snapshot::Capture(const Ref<RenderTarget>& in_rt)
     auto ctx = GetRenderer().GetContext();
 
     ComPtr<ID3D11Resource> res;
-    in_rt->Get()->GetResource(res.GetAddressOf());
+    in_rt->GetRTV()->GetResource(res.GetAddressOf());
 
     ComPtr<ID3D11Texture2D> tex;
-    CheckD3D11Result(res.As(&tex), "As Fail.");
+    d3d::CheckOK(res.As(&tex), "As Fail.");
 
     D3D11_TEXTURE2D_DESC desc = {};
     tex->GetDesc(&desc);
@@ -37,11 +37,11 @@ void Snapshot::Capture(const Ref<RenderTarget>& in_rt)
     captureDesc.Usage                = D3D11_USAGE_STAGING;
     m_format                         = desc.Format;
 
-    CheckD3D11Result(dx->CreateTexture2D(
+    d3d::CheckOK(dx->CreateTexture2D(
                          &captureDesc,
                          nullptr,
                          m_texture.GetAddressOf()),
-                     "CreateTexture2D Fail.");
+                     "CreateSRV Fail.");
 
     ctx->CopyResource(m_texture.Get(), tex.Get());
     m_width  = desc.Width;
@@ -53,7 +53,7 @@ void Snapshot::Save(const std::filesystem::path& in_path)
 {
     if (m_texture == nullptr)
     {
-        CRAB_DEBUG_BREAK("Texture is nullptr.");
+        DEBUG_BREAK("Texture is nullptr.");
         return;
     }
 
@@ -61,13 +61,13 @@ void Snapshot::Save(const std::filesystem::path& in_path)
     auto ctx = GetRenderer().GetContext();
 
     D3D11_MAPPED_SUBRESOURCE mapped = {};
-    CheckD3D11Result(ctx->Map(m_texture.Get(), 0, D3D11_MAP_READ, 0, &mapped), "Map Fail.");
+    d3d::CheckOK(ctx->Map(m_texture.Get(), 0, D3D11_MAP_READ, 0, &mapped), "Map Fail.");
 
     DirectX::ScratchImage image;
 
     D3D11_TEXTURE2D_DESC desc = {};
     m_texture->GetDesc(&desc);
-    CheckD3D11Result(image.Initialize2D(m_format,
+    d3d::CheckOK(image.Initialize2D(m_format,
                                         desc.Width,
                                         desc.Height,
                                         1,
@@ -105,11 +105,11 @@ void Snapshot::Save(const std::filesystem::path& in_path)
         codec = DirectX::WIC_CODEC_PNG;
     else
     {
-        CRAB_DEBUG_BREAK("Invalid extension.");
+        DEBUG_BREAK("Invalid extension.");
         return;
     }
 
-    CheckD3D11Result(DirectX::SaveToWICFile(image.GetImages(),
+    d3d::CheckOK(DirectX::SaveToWICFile(image.GetImages(),
                                             image.GetImageCount(),
                                             DirectX::WIC_FLAGS_NONE,
                                             DirectX::GetWICCodec(codec),
@@ -123,20 +123,20 @@ Vec4 Snapshot::GetPixelColorFloat(const Int2& in_pos) const
 {
     if (m_texture == nullptr)
     {
-        CRAB_DEBUG_BREAK("Texture is nullptr.");
+        DEBUG_BREAK("Texture is nullptr.");
         return Vec4::Zero;
     }
 
     if (in_pos.x < 0 || in_pos.y < 0)
     {
-        CRAB_DEBUG_BREAK("Invalid x, y.");
+        DEBUG_BREAK("Invalid x, y.");
         return Vec4::Zero;
     }
 
     auto ctx = GetRenderer().GetContext();
 
     D3D11_MAPPED_SUBRESOURCE mapped = {};
-    CheckD3D11Result(ctx->Map(m_texture.Get(),
+    d3d::CheckOK(ctx->Map(m_texture.Get(),
                               0,
                               D3D11_MAP_READ,
                               0,
@@ -163,17 +163,17 @@ Int4 Snapshot::GetPixelColorUInt(const Int2& in_pos) const
 {
     if (m_texture == nullptr)
     {
-        CRAB_DEBUG_BREAK("Texture is nullptr.");
+        DEBUG_BREAK("Texture is nullptr.");
         return Int4 { 0, 0, 0, 0 };
     }
     if (in_pos.x < 0 || in_pos.y < 0)
     {
-        CRAB_DEBUG_BREAK("Invalid x, y.");
+        DEBUG_BREAK("Invalid x, y.");
         return Int4 { 0, 0, 0, 0 };
     }
     auto                     ctx    = GetRenderer().GetContext();
     D3D11_MAPPED_SUBRESOURCE mapped = {};
-    CheckD3D11Result(ctx->Map(m_texture.Get(),
+    d3d::CheckOK(ctx->Map(m_texture.Get(),
                               0,
                               D3D11_MAP_READ,
                               0,

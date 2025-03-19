@@ -8,12 +8,13 @@ Scene3DBase::~Scene3DBase()
 
 void Scene3DBase::Init()
 {
-    auto&       r  = GetRenderer();
-    const auto& sc = r.GetSwapChain();
+    auto&       r                    = GetRenderer();
+    const auto& sc                   = r.GetSwapChain();
+    auto [screenWidth, screenHeight] = GetAppWindow().GetResolution();
 
-    if (!sc->IsHDR())
+    if (!GetRenderer().GetHDR().enableHDR)
     {
-        CRAB_DEBUG_BREAK("this class requires HDR swap chain.");
+        DEBUG_BREAK("this class requires HDR swap chain.");
         return;
     }
 
@@ -21,11 +22,22 @@ void Scene3DBase::Init()
     // Core Renderer Resource
     //===================================================
 
+    // G-buffer
+
+    eBindFlags bindFlags = eBindFlags_ShaderResource | eBindFlags_RenderTarget;
+
+    m_gBufferPass.Init(
+        CreateRenderTarget(screenWidth, screenHeight, eFormat::Float16_4, bindFlags, MSAA::DisableMSAA()),   // Position (3) + Pad       (1)
+        CreateRenderTarget(screenWidth, screenHeight, eFormat::Float16_4, bindFlags, MSAA::DisableMSAA()),   // Normal   (3) + Pad       (1)
+        CreateRenderTarget(screenWidth, screenHeight, eFormat::UNorm8_4, bindFlags, MSAA::DisableMSAA()),    // Emissive (3) + Pad       (1)
+        CreateRenderTarget(screenWidth, screenHeight, eFormat::UNorm8_4, bindFlags, MSAA::DisableMSAA()),    // Albedo   (3) + Roughness (1)
+        CreateRenderTarget(screenWidth, screenHeight, eFormat::UNorm8_4, bindFlags, MSAA::DisableMSAA()),    // Metallic (1) + AO        (1) + Pad   (2)
+        CreateDepthBuffer(screenWidth, screenHeight, eFormat::Depth_Float32, MSAA::DisableMSAA()));
+
+    // HDR
     m_backBufferHDR         = sc->GetBackBufferHDR();
     m_backBufferDepthBuffer = sc->GetDepthBuffer();
-
-    auto [screenWidth, screenHeight] = GetAppWindow().GetResolution();
-    m_screenViewport                 = Viewport { 0.f, 0.f, static_cast<float>(screenWidth), static_cast<float>(screenHeight) };
+    m_screenViewport        = Viewport { 0.f, 0.f, static_cast<float>(screenWidth), static_cast<float>(screenHeight) };
     _CreateStagingTexture(screenWidth, screenHeight);
 
     // camera
@@ -59,61 +71,61 @@ void Scene3DBase::OnRender(TimeStamp& in_ts)
     auto&       r                    = GetRenderer();
     const auto* pipe                 = GetGlobalPipeline();
 
-    //===================================================
-    // Update LightData
-    //===================================================
-
-    CrabPass::LightShadowPass<"PBR">(this, GetCameraEntity());
-
-    //===================================================
-    // Begin Render
-    //===================================================
-
-    {
-        m_backBufferHDR->Bind(m_backBufferDepthBuffer);
-        m_backBufferHDR->Clear(color4::BLACK);
-        m_backBufferDepthBuffer->Clear(true, 1.f, false, 0);
-        r.SetViewport(0, 0, screenWidth, screenHeight);
-
-        // Update Camera
-        auto& cmr = GetCameraComponent();
-
-        GetGlobalConstants()->UpdateCamera(
-            CameraConstant {
-                .view           = cmr.GetView(GetCameraTransform()),
-                .viewProj       = cmr.GetViewProj(GetCameraTransform()),
-                .invViewProj    = cmr.GetViewProj(GetCameraTransform()).Invert(),
-                .cameraPosition = GetCameraTransform().position,
-            });
-    }
-
-    //===================================================
-    // Main Render
-    //===================================================
-
-    CrabPass::SkyboxPass<"Skybox">(this);
-    CrabPass::PBRPass<"PBR">(this, {}, IsWireframeModeEnabled() ? pipe->GetPBRWireframe() : nullptr);
-
-    if (IsDrawNormalEnabled())
-    {
-        CrabPass::DrawNormalPass<"PBR">(this);
-    }
-
-    //===================================================
-    // Mirror Reflection
-    //===================================================
-
-    CrabPass::MirrorPass<"Mirror">(
-        this,
-        m_backBufferDepthBuffer,
-        GetCameraEntity(),
-        1,
-        [&](Scene* in_scene)
-        {
-            CrabPass::SkyboxPass<"Skybox">(this, PipelineBindArgument { 1 }, pipe->GetSkyboxReflection());
-            CrabPass::PBRPass<"PBR">(this, PipelineBindArgument { 1 }, IsWireframeModeEnabled() ? pipe->GetPBRRefractionWireframe() : pipe->GetPBRReflection());
-            CrabPass::PBRPass<"Mirror">(this, PipelineBindArgument { 1 }, IsWireframeModeEnabled() ? pipe->GetPBRWireframeOnMask() : pipe->GetPBROnMask());
-        });
+    // ////===================================================
+    // //// Update LightData
+    // ////===================================================
+    // //
+    // // CrabPass::LightShadowPass<"PBR">(this, GetCameraEntity());
+    //
+    // //===================================================
+    // // Begin Render
+    // //===================================================
+    //
+    // {
+    //     m_backBufferHDR->Bind(m_backBufferDepthBuffer);
+    //     m_backBufferHDR->Clear(color4::BLACK);
+    //     m_backBufferDepthBuffer->Clear(true, 1.f, false, 0);
+    //     r.SetViewport(0, 0, screenWidth, screenHeight);
+    //
+    //     // Update Camera
+    //     auto& cmr = GetCameraComponent();
+    //
+    //     GetGlobalConstants()->UpdateCamera(
+    //         CameraConstant {
+    //             .view           = cmr.GetView(GetCameraTransform()),
+    //             .viewProj       = cmr.GetViewProj(GetCameraTransform()),
+    //             .invViewProj    = cmr.GetViewProj(GetCameraTransform()).Invert(),
+    //             .cameraPosition = GetCameraTransform().position,
+    //         });
+    // }
+    //
+    // //===================================================
+    // // Main Render
+    // //===================================================
+    //
+    // CrabPass::SkyboxPass<"GetSkybox">(this);
+    // CrabPass::PBRPass<"PBR">(this, {}, IsWireframeModeEnabled() ? pipe->GetPBRWireframe() : nullptr);
+    //
+    // if (IsDrawNormalEnabled())
+    // {
+    //     CrabPass::DrawNormalPass<"PBR">(this);
+    // }
+    //
+    // //===================================================
+    // // Mirror Reflection
+    // //===================================================
+    //
+    // CrabPass::MirrorPass<"Mirror">(
+    //     this,
+    //     m_backBufferDepthBuffer,
+    //     GetCameraEntity(),
+    //     1,
+    //     [&](Scene* in_scene)
+    //     {
+    //         CrabPass::SkyboxPass<"GetSkybox">(this, PipelineBindArgument { 1 }, pipe->GetSkyboxReflection());
+    //         CrabPass::PBRPass<"PBR">(this, PipelineBindArgument { 1 }, IsWireframeModeEnabled() ? pipe->GetPBRRefractionWireframe() : pipe->GetPBRReflection());
+    //         CrabPass::PBRPass<"Mirror">(this, PipelineBindArgument { 1 }, IsWireframeModeEnabled() ? pipe->GetPBRWireframeOnMask() : pipe->GetPBROnMask());
+    //     });
 }
 
 void Scene3DBase::OnPostRender(TimeStamp& in_ts)
@@ -128,7 +140,7 @@ void Scene3DBase::OnPostRender(TimeStamp& in_ts)
         // sampling
         m_postProcess.AddFilter(
             ImageFilterFactory::CreateSampling(
-                screenWidth, screenHeight, m_stagingBackBufferTexture));
+                screenWidth, screenHeight, m_copyOfBackBufferHDR));
 
         // bloom
         if (m_postProcessProp.useBloom)
@@ -158,7 +170,7 @@ void Scene3DBase::OnPostRender(TimeStamp& in_ts)
                     screenWidth,
                     screenHeight,
                     m_postProcess.GetLastFilter()->GetOutputTexture(),
-                    m_stagingBackBufferTexture,
+                    m_copyOfBackBufferHDR,
                     CombineConstant { m_postProcessProp.bloomCombineFactor },
                     &m_postprocessCombineConst));
         }
@@ -181,10 +193,10 @@ void Scene3DBase::OnPostRender(TimeStamp& in_ts)
         m_postProcessProp.dirtyBit = false;
     }
 
-    ID3D11Texture2D* stagingTexture    = m_stagingBackBufferTexture->GetResource<ID3D11Texture2D>();
-    ID3D11Texture2D* backBufferTexture = swapChain->GetBackBufferHDR()->GetTexture()->GetResource<ID3D11Texture2D>();
+    ID3D11Texture2D* stagingTexture    = m_copyOfBackBufferHDR->GetTexture();
+    ID3D11Texture2D* backBufferTexture = swapChain->GetBackBufferHDR()->GetTexture()->GetTexture();
 
-    if (swapChain->UseMSAA())
+    if (GetRenderer().GetMSAA().enableMSAA)
     {
         ID3D11Texture2DUtil::ResolveTexture2D(
             backBufferTexture,
@@ -212,7 +224,7 @@ void Scene3DBase::EnablePostProcessBloom(bool in_enable)
 
 void Scene3DBase::SetBloomCombineFactor(float in_factor)
 {
-    CRAB_ASSERT(m_postprocessCombineConst != nullptr, "Constant buffer is not initialized.");
+    ASSERT(m_postprocessCombineConst != nullptr, "Constant buffer is not initialized.");
     m_postProcessProp.bloomCombineFactor = in_factor;
     m_postprocessCombineConst->WriteToBuffer(
         CombineConstant {
@@ -227,17 +239,22 @@ void Scene3DBase::SetBloomBlurRadius(float in_radius)
 
 void Scene3DBase::_CreateStagingTexture(uint32 in_width, uint32 in_height)
 {
-    const auto& sc             = GetRenderer().GetSwapChain();
-    m_stagingBackBufferTexture = CreateRef<Texture2D>();
-    m_stagingBackBufferTexture->Init(
-        ID3D11Texture2DUtil::CreateTexture2D(
-            in_width,
-            in_height,
-            m_backBufferHDR->GetFormat(),
-            D3D11_USAGE_DEFAULT,
-            eBindFlags_ShaderResource | eBindFlags_RenderTarget,
-            eCPUAccessFlags_None)
-            .Get());
+    ComPtr<ID3D11Texture2D> tex = ID3D11Texture2DUtil::CreateTexture2D(
+        in_width,
+        in_height,
+        m_backBufferHDR->GetTexture()->GetFormat(),
+        D3D11_USAGE_DEFAULT,
+        eBindFlags_None,
+        eCPUAccessFlags_None,
+        MSAA::DisableMSAA(),
+        1,
+        1,
+        eTextureCreationFlags_None,
+        nullptr);
+
+    m_copyOfBackBufferHDR = CreateRef<Texture2D>();
+    m_copyOfBackBufferHDR->Init(tex.Get(),
+                                m_backBufferHDR->GetTexture()->GetFormat());
 }
 
 void Scene3DBase::SetBloomBlurCount(uint32 in_count)

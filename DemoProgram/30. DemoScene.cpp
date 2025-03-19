@@ -19,7 +19,7 @@ void DemoScene::Init()
     //===================================================
 
     {
-        m_sceneHierarchy        = CreateScope<SceneHierarchy>();
+        m_sceneHierarchy = CreateScope<SceneHierarchy>();
 
         GeometryData skyboxData = GeometryFactory::CreateSphere(500.f, 32, 32);
         std::ranges::reverse(skyboxData.indices);
@@ -27,19 +27,19 @@ void DemoScene::Init()
         std::filesystem::path nightSkyboxPath = "Resources\\AnimationDemo\\NightSkybox";
 
         m_daySkybox = SkyboxRenderer {
-            .mesh        = CreateMesh(skyboxData),
-            .envCubemap  = CreateTextureCubeFromFile(daySkyboxPath / "skyboxEnvHDR.dds"),
-            .irrCubemap  = CreateTextureCubeFromFile(daySkyboxPath / "skyboxDiffuseHDR.dds"),
-            .specCubemap = CreateTextureCubeFromFile(daySkyboxPath / "skyboxSpecularHDR.dds"),
-            .brdfImage   = CreateTexture2DFromFile(daySkyboxPath / "skyboxBrdf.dds")
+            .mesh        = RenderFactory::CreateMesh(skyboxData),
+            .envCubemap  = RenderFactory::CreateTextureCubeFromFile(daySkyboxPath / "skyboxEnvHDR.dds"),
+            .irrCubemap  = RenderFactory::CreateTextureCubeFromFile(daySkyboxPath / "skyboxDiffuseHDR.dds"),
+            .specCubemap = RenderFactory::CreateTextureCubeFromFile(daySkyboxPath / "skyboxSpecularHDR.dds"),
+            .brdfImage   = RenderFactory::CreateTexture2DFromFile(daySkyboxPath / "skyboxBrdf.dds")
         };
 
         m_nightSkybox = SkyboxRenderer {
-            .mesh        = CreateMesh(skyboxData),
-            .envCubemap  = CreateTextureCubeFromFile(nightSkyboxPath / "skyboxEnvHDR.dds"),
-            .irrCubemap  = CreateTextureCubeFromFile(nightSkyboxPath / "skyboxDiffuseHDR.dds"),
-            .specCubemap = CreateTextureCubeFromFile(nightSkyboxPath / "skyboxSpecularHDR.dds"),
-            .brdfImage   = CreateTexture2DFromFile(nightSkyboxPath / "skyboxBrdf.dds")
+            .mesh        = RenderFactory::CreateMesh(skyboxData),
+            .envCubemap  = RenderFactory::CreateTextureCubeFromFile(nightSkyboxPath / "skyboxEnvHDR.dds"),
+            .irrCubemap  = RenderFactory::CreateTextureCubeFromFile(nightSkyboxPath / "skyboxDiffuseHDR.dds"),
+            .specCubemap = RenderFactory::CreateTextureCubeFromFile(nightSkyboxPath / "skyboxSpecularHDR.dds"),
+            .brdfImage   = RenderFactory::CreateTexture2DFromFile(nightSkyboxPath / "skyboxBrdf.dds")
         };
     }
 
@@ -70,9 +70,9 @@ void DemoScene::Init()
 
         e.CreateComponent<ModelRenderer>(
             ModelRenderer {
-                CreateModel(
-                    CreateMesh(cubeData),
-                    CreateMaterial(materialData)) });
+                RenderFactory::CreateModel(
+                    RenderFactory::CreateMesh(cubeData),
+                    RenderFactory::CreateMaterial(materialData)) });
 
         e.CreateComponent<RenderGroup<"PBR">>();
 
@@ -94,9 +94,9 @@ void DemoScene::Init()
 
         e.CreateComponent<ModelRenderer>(
             ModelRenderer {
-                CreateModel(
-                    CreateMesh(sphereData),
-                    CreateMaterial(materialData)) });
+                RenderFactory::CreateModel(
+                    RenderFactory::CreateMesh(sphereData),
+                    RenderFactory::CreateMaterial(materialData)) });
 
         e.CreateComponent<RenderGroup<"PBR">>();
         e.GetTransform().position.x = 2.f;
@@ -139,9 +139,9 @@ void DemoScene::Init()
 
         std::filesystem::path path = "Resources\\AnimationDemo\\floor2";
         MaterialData          materialData;
-        materialData.baseColorTex  = CreateTexture2DFromFile(path / "floor_tiles_06_diff_2k.jpg", true, true);
-        materialData.normalTex     = CreateTexture2DFromFile(path / "floor_tiles_06_nor_gl_2k.exr", true);
-        materialData.roughnessTex  = CreateTexture2DFromFile(path / "floor_tiles_06_rough_2k.jpg", true);
+        materialData.baseColorTex  = RenderFactory::CreateTexture2DFromFile(path / "floor_tiles_06_diff_2k.jpg", eTextureLoadFlags_ReverseTone);
+        materialData.normalTex     = RenderFactory::CreateTexture2DFromFile(path / "floor_tiles_06_nor_gl_2k.exr");
+        materialData.roughnessTex  = RenderFactory::CreateTexture2DFromFile(path / "floor_tiles_06_rough_2k.jpg");
         materialData.normalMapType = eNormalMapType::OpenGL;
         materialData.metallic      = 0.5f;
         materialData.roughness     = 0.5f;
@@ -149,9 +149,9 @@ void DemoScene::Init()
 
         e.CreateComponent<ModelRenderer>(
             ModelRenderer {
-                CreateModel(
-                    CreateMesh(planeData),
-                    CreateMaterial(materialData)) });
+                RenderFactory::CreateModel(
+                    RenderFactory::CreateMesh(planeData),
+                    RenderFactory::CreateMaterial(materialData)) });
 
         e.CreateComponent<RenderGroup<"Mirror">>();
         e.GetTransform().position.y = -1.5f;
@@ -191,9 +191,9 @@ void DemoScene::OnRenderGUI(TimeStamp& in_ts)
                       {
                           ImGui::Text("Hello, World!");
 
-                          bool wireframeMode = IsWireframeModeEnabled();
-                          bool drawNormal    = IsDrawNormalEnabled();
-                          bool useBloom      = IsPostProcessBloomEnabled();
+                          bool  wireframeMode = IsWireframeModeEnabled();
+                          bool  drawNormal    = IsDrawNormalEnabled();
+                          bool  useBloom      = IsPostProcessBloomEnabled();
                           float combineFactor = GetBloomCombineFactor();
                           float bloomRadius   = GetBloomBlurRadius();
 

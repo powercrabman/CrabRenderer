@@ -1,9 +1,11 @@
 #pragma once
 
-#include "D11Utils.h"
+#include "RenderUtils.h"
 
 namespace crab
 {
+class ShaderResourceBuffer;
+class ShaderResource;
 
 //===================================================
 // Vertex Buffer
@@ -20,9 +22,11 @@ public:
     {
         m_vertexCount  = static_cast<uint32>(in_vertices.size());
         m_vertexStride = sizeof(VertexType);
-        m_buffer       = ID3D11BufferUtil::CreateVertexBuffer(
-            static_cast<uint32>(in_vertices.size()),
-            sizeof(VertexType),
+        m_buffer       = ID3D11BufferUtil::CreateBuffer(
+            static_cast<uint32>(in_vertices.size() * sizeof(VertexType)),
+            D3D11_USAGE_IMMUTABLE,
+            eBindFlags_VertexBuffer,
+            eCPUAccessFlags_None,
             in_vertices.data());
     }
 
@@ -43,7 +47,7 @@ private:
 class IndexBuffer
 {
 public:
-    void Init(const std::vector<uint32>& in_indices);
+    void Init(const std::vector<Index>& in_indices);
 
     void   Bind() const;
     uint32 GetIndexCount() const { return m_indexCount; }
@@ -62,13 +66,13 @@ class StagingBuffer
 public:
     void Init(uint32 in_bufferByteWidth, bool in_cpuWrite, bool in_cpuRead);
 
-    void WriteToBuffer(const void* in_data, uint32 in_dataByteWidth) const;
-    void ReadFromBuffer(void* out_data, uint32 in_dataByteWidth) const;
+    void WriteToBuffer(const void* in_writeData, uint32 in_dataByteWidth) const;
+    void ReadFromBuffer(void* out_data, OPTIONAL uint32* out_dataByteWidth) const;
 
     // argument buffer will be DEFAULT_USAGE
     // DYNAMIC_USAGE can use Map/Unmap
-    void CopyTo(ID3D11Buffer* in_destBuffer, uint32 in_copyDataByteWidth) const;
-    void CopyFrom(ID3D11Buffer* in_srcBuffer, uint32 in_copyDataByteWidth) const;
+    void CopyTo(ID3D11Buffer* in_destBuffer) const;
+    void CopyFrom(ID3D11Buffer* in_srcBuffer) const;
 
     uint32 GetBufferByteWidth() const;
 
@@ -88,14 +92,14 @@ public:
     void Init(ID3D11Buffer* in_buffer);
 
     void BindUAV(uint32 in_slot) const;
-    void BindImage(uint32 in_slot, eShaderFlags in_bindFlags) const;
+    void BindSRV(uint32 in_slot, eShaderFlags in_bindFlags) const;
 
     ID3D11UnorderedAccessView* GetUAV() const { return m_uav.Get(); }
-    Ref<Texture2D>             GetImage2D() const { return m_texture; }
+    Ref<ShaderResourceBuffer>  GetShaderResource() const { return m_shaderResource; }
 
 private:
     ComPtr<ID3D11UnorderedAccessView> m_uav;
-    Ref<Texture2D>                    m_texture;
+    Ref<ShaderResourceBuffer>         m_shaderResource;
 };
 
 //===================================================
@@ -112,17 +116,17 @@ public:
 
     Ref<UnorderedAccessView> GetUAV() const { return m_uav; }
 
-    uint32 GetItemMaxCount() const { return m_itemMaxCount; }
+    uint32 GetCapacity() const { return m_capacity; }
 
 protected:
     StructuredBufferBase() = default;
 
-    ComPtr<ID3D11Buffer> m_buffer;
-    Ref<StagingBuffer>   m_stagingBuffer;
+    Ref<StagingBuffer> m_stagingBuffer;
 
+    Ref<ID3D11Buffer>        m_gpuBuffer;
     Ref<UnorderedAccessView> m_uav;
 
-    uint32 m_itemMaxCount = 0;
+    uint32 m_capacity = 0;
 };
 
 template<typename T>
@@ -131,42 +135,50 @@ class StructuredBuffer : public StructuredBufferBase
 public:
     void Init(const std::vector<T>& in_data)
     {
-        m_buffer = ID3D11BufferUtil::CreateStructuredBuffer(
-            static_cast<uint32>(in_data.size()),
-            sizeof(T),
+        uint32 byteWidth = static_cast<uint32>(in_data.size() * sizeof(T));
+
+        m_gpuBuffer = ID3D11BufferUtil::CreateBuffer(
+            byteWidth,
+            D3D11_USAGE_DEFAULT,
+            eBindFlags_ShaderResource | eBindFlags_UnorderedAccess,
+            eCPUAccessFlags_None,
             in_data.data());
 
         m_stagingBuffer = CreateRef<StagingBuffer>();
-        m_stagingBuffer->Init(
-            static_cast<uint32>(in_data.size() * sizeof(T)),
-            true,
-            true);
+        m_stagingBuffer->Init(static_cast<uint32>(in_data.size() * sizeof(T)),
+                              true,
+                              true);
 
         m_uav = CreateRef<UnorderedAccessView>();
-        m_uav->Init(m_buffer.Get());
+        m_uav->Init(m_gpuBuffer.get());
 
-        m_itemMaxCount = static_cast<uint32>(in_data.size());
+        m_capacity = static_cast<uint32>(in_data.size());
     }
 
     void WriteToBuffer(const std::vector<T>& in_data)
     {
         uint32 size = static_cast<uint32>(in_data.size()) * sizeof(T);
-        size        = std::clamp(size, 0u, static_cast<uint32>(m_itemMaxCount * sizeof(T)));
+        size        = std::clamp(size, 0u, static_cast<uint32>(m_capacity * sizeof(T)));
 
-        m_stagingBuffer->WriteToBuffer(in_data.data(), size);
-        m_stagingBuffer->CopyTo(m_buffer.Get(), size);
+        m_stagingBuffer->WriteToBuffer(in_data, size);
+        m_stagingBuffer->CopyTo(m_gpuBuffer.get());
     }
 
     std::vector<T> ReadFromBuffer()
     {
-        std::vector<T> data(m_itemMaxCount);
+        m_stagingBuffer->CopyFrom(m_gpuBuffer.get());
 
-        m_stagingBuffer->CopyFrom(m_buffer.Get(),
-                                  static_cast<uint32>(data.size() * sizeof(T)));
+        uint32 dataByteWidth;
+        void*  dataPtr;
+        m_stagingBuffer->ReadFromBuffer(&dataPtr, &dataByteWidth);
 
-        m_stagingBuffer->ReadFromBuffer(data.data(),
-                                        static_cast<uint32>(data.size() * sizeof(T)));
-        return data;
+        std::vector<T> output;
+        output.reserve(m_capacity);
+
+        uint32 elementCount = dataByteWidth / sizeof(T);
+        output.insert(output.end(), static_cast<T*>(dataPtr), static_cast<T*>(dataPtr) + elementCount);
+
+        return output;
     }
 };
 
@@ -214,7 +226,13 @@ void ConstantBuffer<Ty>::Init()
 template<typename Ty>
 void ConstantBuffer<Ty>::Init(const Ty& in_data)
 {
-    m_buffer         = ID3D11BufferUtil::CreateConstantBuffer(sizeof(Ty));
+    m_buffer = ID3D11BufferUtil::CreateBuffer(
+        sizeof(Ty),
+        D3D11_USAGE_DYNAMIC,
+        eBindFlags_ConstantBuffer,
+        eCPUAccessFlags_Write,
+        static_cast<const void*>(&in_data));
+
     m_itemByteStride = sizeof(Ty);
     m_itemType       = TypeInfo::Get<Ty>();
     ZeroMemory(&in_cpuData, sizeof(Ty));

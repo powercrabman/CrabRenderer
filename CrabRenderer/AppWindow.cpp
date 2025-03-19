@@ -33,7 +33,7 @@ bool AppWindow::Init(const AppWindowSetting& in_setting)
     // SDL Init
     if (!SDL_Init(SDL_INIT_VIDEO))
     {
-        CRAB_DEBUG_BREAK_V("Failed to initialize SDL. {0}", SDL_GetError());
+        DEBUG_BREAK(fmt::format("Failed to initialize SDL. {0}", SDL_GetError()).c_str());
         return false;
     }
 
@@ -49,7 +49,7 @@ bool AppWindow::Init(const AppWindowSetting& in_setting)
 
     if (!m_window)
     {
-        CRAB_DEBUG_BREAK_V("Failed to create window. {0}", SDL_GetError());
+        ASSERT(false, "Failed to create window. {0}");
         return false;
     }
 
@@ -68,7 +68,7 @@ bool AppWindow::Init(const AppWindowSetting& in_setting)
 
     if (!m_window)
     {
-        CRAB_DEBUG_BREAK("Failed to create window.");
+        DEBUG_BREAK("Failed to create window.");
         return false;
     }
 
@@ -77,19 +77,19 @@ bool AppWindow::Init(const AppWindowSetting& in_setting)
 
 void AppWindow::ResizeWindow(const Int2& in_size) const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
     SDL_SetWindowSize(m_window, in_size.x, in_size.y);
 }
 
 void AppWindow::MoveWindow(const Int2& in_position) const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
     SDL_SetWindowPosition(m_window, in_position.x, in_position.y);
 }
 
 void AppWindow::SetWindowTitle(const std::string_view in_title) const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
     SDL_SetWindowTitle(m_window, in_title.data());
 }
 
@@ -105,7 +105,7 @@ void AppWindow::EnableMouseRelativeMode(bool in_enabled) const
 
 Int2 AppWindow::GetResolution() const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
 
     Int2 size;
     SDL_GetWindowSize(m_window, &size.x, &size.y);
@@ -115,7 +115,7 @@ Int2 AppWindow::GetResolution() const
 
 Int2 AppWindow::GetWindowPos() const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
 
     Int2 pos;
     SDL_GetWindowPosition(m_window, &pos.x, &pos.y);
@@ -124,7 +124,7 @@ Int2 AppWindow::GetWindowPos() const
 
 Int2 AppWindow::GetDisplaySize() const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
 
     SDL_DisplayID id = SDL_GetDisplayForWindow(m_window);
 
@@ -135,14 +135,14 @@ Int2 AppWindow::GetDisplaySize() const
     }
     else
     {
-        CRAB_DEBUG_BREAK("Failed to get display size.");
+        DEBUG_BREAK("Failed to get display size.");
         return {};
     }
 }
 
 float AppWindow::GetAspect() const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
     auto [width, height] = GetResolution();
     return static_cast<float>(width) / static_cast<float>(height);
 }
@@ -150,7 +150,7 @@ float AppWindow::GetAspect() const
 // - Getter
 HWND AppWindow::GetWindowHandle() const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
 
     SDL_PropertiesID id = SDL_GetWindowProperties(m_window);
 
@@ -160,13 +160,13 @@ HWND AppWindow::GetWindowHandle() const
         SDL_PROP_WINDOW_WIN32_HWND_POINTER,
         defaultValue);
 
-    CRAB_ASSERT(hwnd, "Failed to get native window handle.");
+    ASSERT(hwnd, "Failed to get native window handle.");
     return static_cast<HWND>(hwnd);
 }
 
 SDL_Window* AppWindow::GetSDLWindow() const
 {
-    CRAB_ASSERT(m_window, "Window is not initialized.");
+    ASSERT(m_window, "Window is not initialized.");
     return m_window;
 }
 

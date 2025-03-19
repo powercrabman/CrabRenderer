@@ -25,7 +25,7 @@ public:
     {
         if (IsFull())
         {
-            CRAB_ASSERT(false, "SCircularQueue is full");
+            DEBUG_BREAK("SCircularQueue is full");
             return;
         }
 
@@ -37,7 +37,7 @@ public:
     {
         if (IsEmpty())
         {
-            CRAB_ASSERT(false, "SCircularQueue is empty");
+            DEBUG_BREAK("SCircularQueue is empty");
             return;
         }
 
@@ -48,7 +48,7 @@ public:
     {
         if (IsEmpty())
         {
-            CRAB_ASSERT(false, "SCircularQueue is empty");
+            DEBUG_BREAK("SCircularQueue is empty");
             return m_data[m_front];
         }
 
