@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="inc\Application.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\CrabComponents.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabEngine.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\CrabEvent.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\EngineConfigs.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Entity.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\EntryPoint.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\EventDispatcher.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\AppWindow.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Input.h">
+      <Filter>Input &amp; Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\InternalPCH.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\JsonSerializer.h">
+      <Filter>Serializer</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\SceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Script.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Timer.h">
+      <Filter>Input &amp; Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\tinyfiledialogs.h">
+      <Filter>Window\FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\FileSystem.h">
+      <Filter>Window\FileSystem</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Application.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CrabComponents.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CrabEvent.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EventDispatcher.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AppWindow.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input.cpp">
+      <Filter>Input &amp; Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InternalPCH.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JsonSerializer.cpp">
+      <Filter>Serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Script.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Timer.cpp">
+      <Filter>Input &amp; Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tinyfiledialogs.cpp">
+      <Filter>Window\FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileSystem.cpp">
+      <Filter>Window\FileSystem</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{cfac32a3-c8c9-4f77-88f7-92399bfe0e0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{6d2b1104-00d4-42ca-b2b9-4adac29225b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{8e77c357-82e4-405f-8be1-4100b72593a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS">
+      <UniqueIdentifier>{3c31fc69-f06f-48ef-946e-0f167b6ef4b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{6b211318-5f52-4355-a9bc-dcb0631ca141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{ab852de0-6838-4b4b-8afb-6525a9f6d4e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Serializer">
+      <UniqueIdentifier>{cd9ff91a-5efd-41e2-a34b-d9e31e3c4b36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{224e63fd-22d5-4daa-bb20-917fb22b7b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\FileSystem">
+      <UniqueIdentifier>{bb2e6764-e383-44eb-a384-e5b3cc4aa3b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input &amp; Timer">
+      <UniqueIdentifier>{26a3d793-5353-405d-bb88-2972cc04dba7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-format">
+      <Filter>Base</Filter>
+    </None>
+  </ItemGroup>
+</Project>

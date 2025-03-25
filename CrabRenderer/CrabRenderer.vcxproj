@@ -19,205 +19,174 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="AppWindow.h" />
-    <ClInclude Include="Constants.h" />
-    <ClInclude Include="LinearAlgebraUtils.h" />
-    <ClInclude Include="CrabMath.h" />
-    <ClInclude Include="PBRLightingPass.h" />
-    <ClInclude Include="PBRPassBase.h" />
-    <ClInclude Include="Random.h" />
-    <ClInclude Include="D11ResourceList.h" />
-    <ClInclude Include="DepthMap.h" />
-    <ClInclude Include="Draw2D.h" />
-    <ClInclude Include="ErrorHandler.h" />
-    <ClInclude Include="FileSystem.h" />
-    <ClInclude Include="PBRGeometryPass.h" />
-    <ClInclude Include="GizmoController.h" />
-    <ClInclude Include="GlobalConstant.h" />
-    <ClInclude Include="GlobalPipeline.h" />
-    <ClInclude Include="GlobalShader.h" />
-    <ClInclude Include="ImageFilterFactory.h" />
-    <ClInclude Include="JsonSerializer.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="CrabPass.h" />
-    <ClInclude Include="PassCommon.h" />
-    <ClInclude Include="PipelineState.h" />
-    <ClInclude Include="RayCast.h" />
-    <ClInclude Include="GlobalState.h" />
-    <ClInclude Include="CrabComponents.h" />
-    <ClInclude Include="CrabEvent.h" />
-    <ClInclude Include="CrabInclude.h" />
-    <ClInclude Include="CrabMacro.h" />
-    <ClInclude Include="MathCommon.h" />
-    <ClInclude Include="CrabPch.h" />
-    <ClInclude Include="Types.h" />
-    <ClInclude Include="Buffers.h" />
-    <ClInclude Include="DepthBuffer.h" />
-    <ClInclude Include="ImguiGlue.h" />
-    <ClInclude Include="InputElements.h" />
-    <ClInclude Include="GeometryFactory.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="RenderFactory.h" />
-    <ClInclude Include="RenderStates.h" />
-    <ClInclude Include="RenderTarget.h" />
-    <ClInclude Include="Shaders.h" />
-    <ClInclude Include="D11Renderer.h" />
-    <ClInclude Include="Snapshot.h" />
-    <ClInclude Include="StringLiteral.h" />
-    <ClInclude Include="SwapChain.h" />
-    <ClInclude Include="ImageFilter.h" />
-    <ClInclude Include="PostProcess.h" />
-    <ClInclude Include="Script.h" />
-    <ClInclude Include="Textures.h" />
-    <ClInclude Include="RenderUtils.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="EntryPoint.h" />
-    <ClInclude Include="EventDispatcher.h" />
-    <ClInclude Include="ILayer.h" />
-    <ClInclude Include="InitSettings.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="LayerStack.h" />
-    <ClInclude Include="Log.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SCircularQueue.h" />
-    <ClInclude Include="Singleton.h" />
-    <ClInclude Include="TextureLoader.h" />
-    <ClInclude Include="Timer.h" />
-    <ClInclude Include="TypeInfo.h" />
-    <ClInclude Include="CrabVertex.h" />
-    <ClInclude Include="Colors.h" />
-    <ClInclude Include="tinyfiledialogs.h" />
-    <ClInclude Include="RenderCommon.h" />
+    <ClInclude Include="inc\FrameBuffer.h" />
+    <ClInclude Include="inc\BasicPipeline.h" />
+    <ClInclude Include="inc\BlurDownFilter.h" />
+    <ClInclude Include="inc\BlurUpFilter.h" />
+    <ClInclude Include="inc\Buffers.h" />
+    <ClInclude Include="inc\CombineFilter.h" />
+    <ClInclude Include="inc\CrabPass.h" />
+    <ClInclude Include="CrabRenderer.h" />
+    <ClInclude Include="inc\CrabVertex.h" />
+    <ClInclude Include="inc\D3D11Utils.h" />
+    <ClInclude Include="inc\DebugNormalPipeline.h" />
+    <ClInclude Include="inc\DepthBuffer.h" />
+    <ClInclude Include="inc\Draw2D.h" />
+    <ClInclude Include="inc\D3D11ErrorHandler.h" />
+    <ClInclude Include="inc\GeometryFactory.h" />
+    <ClInclude Include="inc\GlobalConstants.h" />
+    <ClInclude Include="inc\GlobalShader.h" />
+    <ClInclude Include="inc\GlobalState.h" />
+    <ClInclude Include="inc\ImageFilterBase.h" />
+    <ClInclude Include="inc\ImguiGlue.h" />
+    <ClInclude Include="inc\InputLayout.h" />
+    <ClInclude Include="inc\Material.h" />
+    <ClInclude Include="inc\Mesh.h" />
+    <ClInclude Include="inc\Model.h" />
+    <ClInclude Include="inc\PBRGeometryPass.h" />
+    <ClInclude Include="inc\PBRGeometryPipeline.h" />
+    <ClInclude Include="inc\PBRLightingPass.h" />
+    <ClInclude Include="inc\PBRPassBase.h" />
+    <ClInclude Include="inc\PipelineBase.h" />
+    <ClInclude Include="inc\PostProcess.h" />
+    <ClInclude Include="inc\RayCast.h" />
+    <ClInclude Include="inc\RenderDefinition.h" />
+    <ClInclude Include="inc\Renderer.h" />
+    <ClInclude Include="inc\RendererConfig.h" />
+    <ClInclude Include="inc\RenderFactory.h" />
+    <ClInclude Include="inc\RenderResourceNodes.h" />
+    <ClInclude Include="inc\RenderStates.h" />
+    <ClInclude Include="inc\RenderTarget.h" />
+    <ClInclude Include="inc\SamplingFilter.h" />
+    <ClInclude Include="inc\ShaderResource.h" />
+    <ClInclude Include="inc\Shaders.h" />
+    <ClInclude Include="inc\ShaderSharedData.h" />
+    <ClInclude Include="inc\SkyboxPipeline.h" />
+    <ClInclude Include="inc\Snapshot.h" />
+    <ClInclude Include="inc\SwapChain.h" />
+    <ClInclude Include="inc\TextureLoader.h" />
+    <ClInclude Include="inc\ToneMapFilter.h" />
+    <ClInclude Include="inc\Viewport.h" />
+    <ClInclude Include="inc\InternalPCH.h" />
+    <ClInclude Include="inc\RenderResourceIDGenerator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="AppWindow.cpp" />
-    <ClCompile Include="Constants.cpp" />
-    <ClCompile Include="LinearAlgebraUtils.cpp" />
-    <ClCompile Include="Random.cpp" />
-    <ClCompile Include="D11ResourceList.cpp" />
-    <ClCompile Include="DepthMap.cpp" />
-    <ClCompile Include="Draw2D.cpp" />
-    <ClCompile Include="ErrorHandler.cpp" />
-    <ClCompile Include="FileSystem.cpp" />
-    <ClCompile Include="GizmoController.cpp" />
-    <ClCompile Include="GlobalConstant.cpp" />
-    <ClCompile Include="GlobalPipeline.cpp" />
-    <ClCompile Include="GlobalShader.cpp" />
-    <ClCompile Include="ImageFilterFactory.cpp" />
-    <ClCompile Include="JsonSerializer.cpp" />
-    <ClCompile Include="Material.cpp" />
-    <ClCompile Include="CrabPass.cpp" />
-    <ClCompile Include="PipelineState.cpp" />
-    <ClCompile Include="RayCast.cpp" />
-    <ClCompile Include="GlobalState.cpp" />
-    <ClCompile Include="CrabComponents.cpp" />
-    <ClCompile Include="CrabEvent.cpp" />
-    <ClCompile Include="MathCommon.cpp" />
-    <ClCompile Include="CrabPch.cpp">
+    <ClCompile Include="src\RenderResourceIDGenerator.cpp" />
+    <ClCompile Include="src\FrameBuffer.cpp" />
+    <ClCompile Include="src\InternalPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Buffers.cpp" />
-    <ClCompile Include="DepthBuffer.cpp" />
-    <ClCompile Include="ImguiGlue.cpp" />
-    <ClCompile Include="InputElements.cpp" />
-    <ClCompile Include="GeometryFactory.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="RenderFactory.cpp" />
-    <ClCompile Include="RenderStates.cpp" />
-    <ClCompile Include="RenderTarget.cpp" />
-    <ClCompile Include="Shaders.cpp" />
-    <ClCompile Include="D11Renderer.cpp" />
-    <ClCompile Include="Snapshot.cpp" />
-    <ClCompile Include="SwapChain.cpp" />
-    <ClCompile Include="ImageFilter.cpp" />
-    <ClCompile Include="PostProcess.cpp" />
-    <ClCompile Include="Script.cpp" />
-    <ClCompile Include="Textures.cpp" />
-    <ClCompile Include="RenderUtils.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="EventDispatcher.cpp" />
-    <ClCompile Include="ILayer.cpp" />
-    <ClCompile Include="InitSetting.cpp" />
-    <ClCompile Include="Input.cpp" />
-    <ClCompile Include="LayerStack.cpp" />
-    <ClCompile Include="Log.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="TextureLoader.cpp" />
-    <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="CrabVertex.cpp" />
-    <ClCompile Include="tinyfiledialogs.cpp" />
+    <ClCompile Include="src\BasicPipeline.cpp" />
+    <ClCompile Include="src\BlurDownFilter.cpp" />
+    <ClCompile Include="src\BlurUpFilter.cpp" />
+    <ClCompile Include="src\Buffers.cpp" />
+    <ClCompile Include="src\CombineFilter.cpp" />
+    <ClCompile Include="src\CrabPass.cpp" />
+    <ClCompile Include="src\CrabVertex.cpp" />
+    <ClCompile Include="src\D3D11Utils.cpp" />
+    <ClCompile Include="src\DebugNormalPipeline.cpp" />
+    <ClCompile Include="src\DepthBuffer.cpp" />
+    <ClCompile Include="src\Draw2D.cpp" />
+    <ClCompile Include="src\D3D11ErrorHandler.cpp" />
+    <ClCompile Include="src\GeometryFactory.cpp" />
+    <ClCompile Include="src\GlobalConstants.cpp" />
+    <ClCompile Include="src\GlobalShader.cpp" />
+    <ClCompile Include="src\GlobalState.cpp" />
+    <ClCompile Include="src\ImageFilterBase.cpp" />
+    <ClCompile Include="src\ImguiGlue.cpp" />
+    <ClCompile Include="src\InputLayout.cpp" />
+    <ClCompile Include="src\Material.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Model.cpp" />
+    <ClCompile Include="src\PBRGeometryPipeline.cpp" />
+    <ClCompile Include="src\PipelineBase.cpp" />
+    <ClCompile Include="src\PostProcess.cpp" />
+    <ClCompile Include="src\RayCast.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\RenderFactory.cpp" />
+    <ClCompile Include="src\RenderStates.cpp" />
+    <ClCompile Include="src\RenderTarget.cpp" />
+    <ClCompile Include="src\SamplingFilter.cpp" />
+    <ClCompile Include="src\ShaderResource.cpp" />
+    <ClCompile Include="src\Shaders.cpp" />
+    <ClCompile Include="src\SkyboxPipeline.cpp" />
+    <ClCompile Include="src\Snapshot.cpp" />
+    <ClCompile Include="src\SwapChain.cpp" />
+    <ClCompile Include="src\TextureLoader.cpp" />
+    <ClCompile Include="src\ToneMapFilter.cpp" />
+    <ClCompile Include="src\Viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
-    <None Include="Shaders\PBRCommon.hlsli">
+    <None Include="src\.clang-format" />
+    <None Include="Shaders\HLSL\PBRCommon.hlsli">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
-    <None Include="Shaders\PostProcessCommon.hlsli">
+    <None Include="Shaders\HLSL\PostProcessCommon.hlsli">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
-    <None Include="Shaders\ShaderCommon.hlsli">
+    <None Include="Shaders\HLSL\ShaderCommon.hlsli">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shaders\BlurDownPS.hlsl">
+    <FxCompile Include="Shaders\HLSL\BlurCombinePS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\BlurUpPS.hlsl">
+    <FxCompile Include="Shaders\HLSL\BlurDownPS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\CombinePS.hlsl">
+    <FxCompile Include="Shaders\HLSL\BlurUpPS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\PBRGeometryShader.hlsl">
+    <FxCompile Include="Shaders\HLSL\DebugNormalShader.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\DrawNormalShader.hlsl">
+    <FxCompile Include="Shaders\HLSL\PBRGeometryShader.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\MaskShader.hlsl">
+    <FxCompile Include="Shaders\HLSL\PBRLightingShader.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\PBRLightingShader.hlsl">
+    <FxCompile Include="Shaders\HLSL\PostProcessVS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\PostProcessVS.hlsl">
+    <FxCompile Include="Shaders\HLSL\SamplingPS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\SamplingPS.hlsl">
+    <FxCompile Include="Shaders\HLSL\ShaderCastShader.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\ShaderCastShader.hlsl">
+    <FxCompile Include="Shaders\HLSL\SkyboxShader.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\SkyboxShader.hlsl">
+    <FxCompile Include="Shaders\HLSL\StencilMaskShader.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Shaders\ToneMapPS.hlsl">
+    <FxCompile Include="Shaders\HLSL\ToneMapPS.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrabCommon\CrabCommon.vcxproj">
+      <Project>{c60e1024-864b-41ea-b592-252fce1d3ade}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -274,15 +243,17 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(SolutionDir)\Inter\$(Configuration)\</IntDir>
-    <OutDir>$(SolutionDir)\Bin\$(Configuration)\</OutDir>
-    <TargetName>$(ProjectName)_d</TargetName>
-    <IncludePath>$(SolutionDir)Vendor\</IncludePath>
+    <IntDir>$(ProjectDir)inter\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>$(ProjectDir)inc;$(SolutionDir)CrabCommon</IncludePath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)\Bin\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\Inter\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)Vendor\</IncludePath>
+    <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)inter\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(ProjectDir)inc;$(SolutionDir)CrabCommon</IncludePath>
+    <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -325,13 +296,16 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>CrabPch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>InternalPCH.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinFilesInUnityFile>5</MinFilesInUnityFile>
+      <MaxFilesInUnityFile>10</MaxFilesInUnityFile>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -348,13 +322,16 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>CrabPch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>InternalPCH.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinFilesInUnityFile>5</MinFilesInUnityFile>
+      <MaxFilesInUnityFile>10</MaxFilesInUnityFile>
     </ClCompile>
     <Link>
       <SubSystem>

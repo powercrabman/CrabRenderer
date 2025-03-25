@@ -1,0 +1,7 @@
+[2025-03-25 01:25:16.186] [info] Log initialized
+[2025-03-25 01:25:16.479] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\bin\x64\Debug\DemoProgram.exe
+[2025-03-25 01:25:17.365] [debug] Event Occurred. "ннннннннннннннннннннннннннннннннннннннннннннннннннннOR"
+[2025-03-25 01:25:17.365] [debug] Event Occurred. "нннннннннннннннннннннннннннннннннннннннннннннннннннн"
+[2025-03-25 01:25:17.367] [debug] Event Occurred. "Renderer Resize BackBuffer Event"
+[2025-03-25 01:25:18.550] [debug] Event Occurred. "нннннннннннннннннннннннннннннннннннн"
+[2025-03-25 01:25:18.554] [debug] Event Occurred. "Application Close Event"

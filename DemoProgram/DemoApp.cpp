@@ -2,10 +2,11 @@
 
 #include "DemoApp.h"
 
-#include "30. DemoScene.h"
+#include "TestScene.h"
 
-DemoApp::DemoApp(const ApplicationSetting& in_setting)
-    : Application(in_setting)
+
+DemoApp::DemoApp(const ApplicationCreateInfo& info)
+    : Application(info)
 {
 }
 
@@ -17,12 +18,10 @@ void DemoApp::OnInit()
 {
     SceneManager& sm = GetSceneManager();
 
-    sm.CreateScene<DemoScene>();
-    sm.ChangeScene<DemoScene>();
+    sm.CreateScene<TestScene>();
+    sm.ChangeScene<TestScene>();
 }
 
 void DemoApp::OnShutdown()
 {
 }
-
-

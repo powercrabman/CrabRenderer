@@ -1,9 +1,10 @@
 #pragma once
+#include "inc/EngineConfigs.h"
 
 class DemoApp : public Application
 {
 public:
-    DemoApp(const ApplicationSetting& in_setting);
+    DemoApp(const ApplicationCreateInfo& in_info);
     ~DemoApp() override;
 
     void OnInit() override;
@@ -18,22 +19,46 @@ inline Application* CreateCrabApplication(const CommandLineArgs& in_args)
         Log::Trace(arg.c_str());
 
     // Application Setting
-    ApplicationSetting setting = {};
-    setting.applicationName    = "Demo App";
+    ApplicationCreateInfo info;
 
-    setting.windowSetting.windowTitle = "Demo App";
-    setting.windowSetting.windowSize  = { 1920, 1080 };
+    info.applicationName = "Demo Application";
 
-    setting.rendererSetting.rendererAPI = eRendererAPI::DirectX11;
+    using namespace std::chrono;
+    auto           now   = system_clock::now();
+    auto           today = floor<days>(now);
+    year_month_day ymd   = year_month_day { today };
+    info.windowTitle     = fmt::format("DemoApp - {0}/{1}/{2}",
+                                   static_cast<int32>(ymd.year()),
+                                   static_cast<uint32>(ymd.month()),
+                                   static_cast<uint32>(ymd.day()));
 
-    setting.rendererSetting.backBufferDepthFormat = eFormat::Depth_UNorm24_Stencil_UInt8;
-    setting.rendererSetting.backBufferFormat      = eFormat::UNorm8_4;
+    info.windowWidth  = 1920;
+    info.windowHeight = 1080;
 
-    setting.rendererSetting.enableMSAA  = true;
-    setting.rendererSetting.enableHDR   = true;
-    setting.rendererSetting.enableVSync = false;
+    info.windowPosX = 0;
+    info.windowPosY = 0;
 
-    setting.engineDirectory = R"(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer)";
+    info.flags = eApplicationCreateFlags_Window_CenterAlign |
+                 eApplicationCreateFlags_Renderer_EnableDepthBuffer |
+                 eApplicationCreateFlags_Renderer_EnableMSAA |
+                 // eApplicationCreateFlags_Renderer_EnableHDR |
+                 eApplicationCreateFlags_Renderer_EnableVSync;
 
-    return new DemoApp(setting);
+    info.backBufferFormat            = eFormat::UNorm8_4;
+    info.backBufferDepthBufferFormat = eFormat::Depth_UNorm24_Stencil_UInt8;
+    info.HDRBackBufferFormat         = eFormat::Float16_4;
+
+    info.projectDirectories.engineDirectory  = R"(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabEngine)";
+    info.projectDirectories.shaderDirectory  = R"(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\Shaders)";
+    info.projectDirectories.projectDirectory = R"(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram)";
+
+    return new DemoApp(info);
 }
+
+/*
+ *
+ *  todo 1 : m_mainFrameBuffer
+ *  todo 2 : post process 현재 프레임워크에 맞게 수정
+ *
+ *
+ */

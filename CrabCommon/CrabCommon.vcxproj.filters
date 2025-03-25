@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\InternalPCH.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LinearAlgebraUtils.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Log.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Random.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\CrabAssert.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\CrabMacro.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabCommon.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\InternalPCH.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Colors.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\LinearAlgebraUtils.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Log.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\MathCommon.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Random.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\TypeInfo.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Types.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Singleton.h">
+      <Filter>DesignPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\StringLiteral.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Event.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Types">
+      <UniqueIdentifier>{473d0613-5661-42a4-b107-f2611edb9fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{dbca8c22-3326-409e-9577-929c37a16adf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{62db6a74-df80-4b01-bdce-efd23eda51ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{ab5c324e-de2c-4728-8ebd-1a791cab24b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{2ca6724c-934b-442e-ac66-56053b6bd95c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DesignPattern">
+      <UniqueIdentifier>{078176b1-b426-41a9-a043-6d5605559a2e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".clang-format">
+      <Filter>Base</Filter>
+    </None>
+  </ItemGroup>
+</Project>

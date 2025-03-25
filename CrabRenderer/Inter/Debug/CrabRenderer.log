@@ -1,3 +1,16 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 중간 디렉터리(C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\\Inter\Debug\)에 다른 프로젝트(DemoProgram.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
-  unity_S66HRPP3FTWD4NK6.cpp
-  CrabRenderer.vcxproj -> C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\Bin\Debug\CrabRenderer_d.lib
+﻿  InternalPCH.cpp
+  unity_QBVGEXO86LE2UGF5.cpp
+  unity_W6B7LI0F4CPJUTXB.cpp
+  unity_W9GLXSXHP36NUGV0.cpp
+  unity_L27MERGMIM5JU4G3.cpp
+  unity_4MQLPVCVF11SVUYB.cpp
+  unity_JFKCY4FK9MN60HD8.cpp
+  unity_T5QML2XZUD32H43Z.cpp
+  unity_F1DUNUMDC118R38I.cpp
+  unity_O4U1Z1T58IWFK8P4.cpp
+  unity_MRYCARZRKEO472CR.cpp
+  unity_62FWK5N128CREFY3.cpp
+  unity_KBRECHKZ80DE89CN.cpp
+  unity_78GCYJULV3V1TTUL.cpp
+  unity_FF90OLEAGWGBEI1R.cpp
+  CrabRenderer.vcxproj -> C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\CrabRenderer\bin\Debug\CrabRenderer.lib

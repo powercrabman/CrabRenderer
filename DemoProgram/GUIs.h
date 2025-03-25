@@ -137,7 +137,7 @@ public:
         if (ImGui::BeginChild("Entity view", { 0.f, 300.f }, ImGuiChildFlags_Border))
         {
             ImGuiListClipper clipper;
-            clipper.Begin(view.size());
+            clipper.Begin(static_cast<int>(view.size()));
 
             while (clipper.Step())
             {
@@ -180,15 +180,15 @@ public:
                                                            ImGui::DragFloat("Rotate Speed", &cmrCont.rotSpeed, 0.01f);
                                                        });
 
-                // _DrawComponent<LightComponent>("LightConstantData",
+                // _DrawComponent<LightComponent>("LightSubdata",
                 //                                [&]()
                 //                                {
                 //                                    auto& light = m_selectedEntity.GetComponent<LightComponent>();
-                //                                    ImGui::ColorEdit3("Radiance", &light.lightRadiance.x);
-                //                                    ImGui::DragFloat("FallOff Start", &light.fallOffStart, 0.01f, 0.f, light.fallOffEnd);
-                //                                    ImGui::DragFloat("FallOff End", &light.fallOffEnd, 0.01f, light.fallOffStart);
+                //                                    ImGui::ColorEdit3("Radiance", &light.cb_lightRadiance.x);
+                //                                    ImGui::DragFloat("FallOff Start", &light.cb_fallOffStart, 0.01f, 0.f, light.cb_fallOffEnd);
+                //                                    ImGui::DragFloat("FallOff End", &light.cb_fallOffEnd, 0.01f, light.cb_fallOffStart);
                 //                                    ImGui::DragFloat("Spot Power", &light.spotPower, 0.1f);
-                //                                    ImGui::DragFloat("Strength", &light.lightStrength, 0.01f);
+                //                                    ImGui::DragFloat("Strength", &light.cb_lightStrength, 0.01f);
                 //                                    ImGui::RadioButton("Directional", reinterpret_cast<int*>(&light.type), 1);
                 //                                    ImGui::SameLine();
                 //                                    ImGui::RadioButton("Point", reinterpret_cast<int*>(&light.type), 2);
@@ -304,7 +304,6 @@ public:
 private:
     void _MeshInspector(Ref<Mesh>& in_mesh)
     {
-        ImGui::Text("Primitive Topology: %s", magic_enum::enum_name(in_mesh->GetTopology()));
         ImGui::Text("Vertex Count: %d", in_mesh->GetVertexCount());
         ImGui::Text("Vertex Stride: %d byte", in_mesh->GetVertexStride());
         ImGui::Text("Index Count: %d", in_mesh->GetIndexCount());

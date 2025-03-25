@@ -91,7 +91,7 @@ void Scene3DBase::OnRender(TimeStamp& in_ts)
     //     auto& cmr = GetCameraComponent();
     //
     //     GetGlobalConstants()->UpdateCamera(
-    //         CameraConstant {
+    //         CB_CAMERA {
     //             .view           = cmr.GetView(GetCameraTransform()),
     //             .viewProj       = cmr.GetViewProj(GetCameraTransform()),
     //             .invViewProj    = cmr.GetViewProj(GetCameraTransform()).Invert(),
@@ -198,13 +198,13 @@ void Scene3DBase::OnPostRender(TimeStamp& in_ts)
 
     if (GetRenderer().GetMSAA().enableMSAA)
     {
-        ID3D11Texture2DUtil::ResolveTexture2D(
+        D3D11Utils::ResolveTexture2D(
             backBufferTexture,
             stagingTexture);
     }
     else
     {
-        ID3D11Texture2DUtil::CopyBetween(
+        D3D11Utils::CopyBetween(
             backBufferTexture,
             stagingTexture);
     }
@@ -239,7 +239,7 @@ void Scene3DBase::SetBloomBlurRadius(float in_radius)
 
 void Scene3DBase::_CreateStagingTexture(uint32 in_width, uint32 in_height)
 {
-    ComPtr<ID3D11Texture2D> tex = ID3D11Texture2DUtil::CreateTexture2D(
+    ComPtr<ID3D11Texture2D> tex = D3D11Utils::CreateTexture2D(
         in_width,
         in_height,
         m_backBufferHDR->GetTexture()->GetFormat(),

@@ -1,0 +1,15 @@
+[2025-03-24 16:18:34.760] [info] Log initialized
+[2025-03-24 16:18:34.955] [trace] C:\Users\Ahnjiwoo\Desktop\Projects\CrabRenderer\DemoProgram\bin\x64\Debug\DemoProgram.exe
+[2025-03-24 16:18:35.782] [debug] Event Occurred. "WindowEvent_WindowMove"
+[2025-03-24 16:18:35.782] [debug] Event Occurred. "WindowEvent_WindowResize"
+[2025-03-24 16:18:36.487] [debug] Event Occurred. "IOEvent_MouseDown"
+[2025-03-24 16:18:36.644] [debug] Event Occurred. "IOEvent_MouseUp"
+[2025-03-24 16:18:37.596] [debug] Event Occurred. "IOEvent_MouseDown"
+[2025-03-24 16:18:38.068] [debug] Event Occurred. "IOEvent_MouseUp"
+[2025-03-24 16:18:40.184] [debug] Event Occurred. "WindowEvent_WindowMove"
+[2025-03-24 16:18:41.182] [debug] Event Occurred. "WindowEvent_WindowMove"
+[2025-03-24 16:18:42.023] [debug] Event Occurred. "IOEvent_MouseDown"
+[2025-03-24 16:18:42.144] [debug] Event Occurred. "IOEvent_MouseUp"
+[2025-03-24 16:18:42.549] [debug] Event Occurred. "IOEvent_KeyDown"
+[2025-03-24 16:18:42.732] [debug] Event Occurred. "IOEvent_KeyUp"
+[2025-03-24 16:18:43.957] [debug] Event Occurred. "ApplicationEvent_AppClose"

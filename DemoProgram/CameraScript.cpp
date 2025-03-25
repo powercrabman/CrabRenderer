@@ -2,6 +2,8 @@
 
 #include "CameraScript.h"
 
+#include "Components.h"
+
 CameraScript::CameraScript(Entity in_owner)
     : Script(in_owner)
 {

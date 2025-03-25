@@ -1,11 +1,5 @@
 #pragma once
 
-#include "../CrabRenderer/CrabPch.h"
-#include "../CrabRenderer/CrabInclude.h"
+#include "CrabEngine.h"
 using namespace crab;
 
-// Rendering
-#include "Constants.h"
-
-// ECS
-#include "Components.h"

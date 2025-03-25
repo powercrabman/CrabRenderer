@@ -62,9 +62,6 @@ protected:
     // Core Renderer Resource
     //===================================================
 
-    // G-buffer
-    PBRGeometryPass m_gBufferPass;
-
     // HDR
     Ref<RenderTarget> m_backBufferHDR;
     Ref<Texture2D>    m_copyOfBackBufferHDR;
